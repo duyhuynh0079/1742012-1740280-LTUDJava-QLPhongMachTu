@@ -1,5 +1,6 @@
-/DAO/
-/enity/
-/layoutandrun/
-/util/
 /show/
+/layoutandrun/
+/enity/
+/hibernate.cfg.xml
+/entity/
+/DAO/
