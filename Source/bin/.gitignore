@@ -1,5 +1,6 @@
-/admin.class
-/enity/
+/show/
 /layoutandrun/
-/util/
+/enity/
+/hibernate.cfg.xml
+/entity/
 /DAO/
