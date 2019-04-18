@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> <!-- Generated Oct 14, 2011 4:33:03 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="entity.nhanvien" table="nhanvien"
+		catalog="qlphongmachtu">
+		<id name="ID" type="int">
+			<column name="ID" length="100" />
+			<generator class="assigned" />
+		</id>
+		<property name="TenDangNhap" type="string">
+			<column name="TenDangNhap" length="100" />
+		</property>
+		<property name="MatKhau" type="string">
+			<column name="MatKhau" length="100" />
+		</property>
+		<property name="HoTenNV" type="string">
+			<column name="HoTenNV" length="100" />
+		</property>
+		<property name="NgaySinh" type="date">
+			<column name="NgaySinh" length="100" />
+		</property>
+		<property name="DiaChi" type="string">
+			<column name="DiaChi" length="100" />
+		</property>
+		<property name="SDT" type="string">
+			<column name="SDT" length="100" />
+		</property>
+		<property name="TinhTrang" type="int">
+			<column name="TinhTrang" length="100" />
+		</property>
+		<property name="MaCV" type="int">
+			<column name="MaCV" length="100" />
+		</property>
+	</class>
+</hibernate-mapping>
