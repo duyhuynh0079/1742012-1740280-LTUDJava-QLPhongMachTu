@@ -1,16 +1,22 @@
 package entity;
 
 public class benhnhan  {
-	int MaBenhNhan;
+	int ID;
+	String MaBenhNhan;
 	String TenBenhNhan;
 	String GioiTinh;
 	int NamSinh;
 	String DiaChi;
-	
-	public int getMaBenhNhan() {
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public String getMaBenhNhan() {
 		return MaBenhNhan;
 	}
-	public void setMaBenhNhan(int maBenhNhan) {
+	public void setMaBenhNhan(String maBenhNhan) {
 		MaBenhNhan = maBenhNhan;
 	}
 	public String getTenBenhNhan() {
@@ -37,8 +43,9 @@ public class benhnhan  {
 	public void setDiaChi(String diaChi) {
 		DiaChi = diaChi;
 	}
-	public benhnhan(int maBenhNhan, String tenBenhNhan, String gioiTinh, int namSinh, String diaChi) {
+	public benhnhan(int iD, String maBenhNhan, String tenBenhNhan, String gioiTinh, int namSinh, String diaChi) {
 		super();
+		ID = iD;
 		MaBenhNhan = maBenhNhan;
 		TenBenhNhan = tenBenhNhan;
 		GioiTinh = gioiTinh;
@@ -47,5 +54,8 @@ public class benhnhan  {
 	}
 	public benhnhan() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
 }
