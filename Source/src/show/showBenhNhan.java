@@ -69,7 +69,7 @@ public class showBenhNhan extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 4;//lay 4 cot tu database
+		return 5;//lay 5 cot tu database
 	}
 
 	@Override
@@ -82,12 +82,14 @@ public class showBenhNhan extends AbstractTableModel {
 		benhnhan bn = (benhnhan)lbn.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
 		switch (cow) {//ghep thuoc tinh cho tung cot
 		case 0:
-			return bn.getTenBenhNhan();	
+			return bn.getMaBenhNhan();	
 		case 1:
-			return bn.getGioiTinh();
+			return bn.getTenBenhNhan();	
 		case 2:
-			return bn.getNamSinh();
+			return bn.getGioiTinh();
 		case 3:
+			return bn.getNamSinh();
+		case 4:
 			return bn.getDiaChi();
 		default:
 			return null;
@@ -95,7 +97,7 @@ public class showBenhNhan extends AbstractTableModel {
 	}
 	// set ten cot
 	public String getColumnName(int col) {
-		String[] columnNames=new String[] {"Họ Tên","Giới Tính","Năm Sinh","Địa Chỉ"};
+		String[] columnNames=new String[] {"Mã Bệnh Nhân","Họ Tên","Giới Tính","Năm Sinh","Địa Chỉ"};
 		return columnNames[col];
 	}
 }
