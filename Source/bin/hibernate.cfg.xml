@@ -9,6 +9,8 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.current_session_context_class">thread</property>
+		<mapping resource="entity/nhanvien.hbm.xml" />
+		<mapping resource="entity/quidinh.hbm.xml" />
 		<mapping resource="entity/benhnhan.hbm.xml" />
 	</session-factory>
 </hibernate-configuration> 
