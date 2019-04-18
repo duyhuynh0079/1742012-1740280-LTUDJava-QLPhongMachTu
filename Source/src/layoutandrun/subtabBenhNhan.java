@@ -42,6 +42,9 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 	private JComboBox jcbb;
 	private JTable jtb;
 	static int index; // bat vi tri duyet al de sua
+	private JLabel lblNewLabel_2;
+	private JLabel label_1;
+	private JLabel jlMaBenhNhan;
 
 	public void controlBenhNhan(JPanel jpn) {
 
@@ -49,7 +52,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		jtTimKiem = new JTextField();
 		jtTimKiem.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		jtTimKiem.setToolTipText("Nhập tên bệnh nhân\r\n");
-		jtTimKiem.setBounds(89, 99, 249, 37);
+		jtTimKiem.setBounds(35, 99, 249, 37);
 		jpn.add(jtTimKiem);
 		jtTimKiem.setColumns(10);
 
@@ -58,14 +61,14 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\search.png"));
 		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnTimKiem.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnTimKiem.setBounds(364, 99, 137, 37);
+		btnTimKiem.setBounds(324, 99, 137, 37);
 		jpn.add(btnTimKiem);
 
 		btnXemDanhSach = new JButton("Xem Danh Sách");
 		btnXemDanhSach.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\load.png"));
 		btnXemDanhSach.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnXemDanhSach.setBounds(527, 99, 184, 37);
+		btnXemDanhSach.setBounds(499, 99, 184, 37);
 		jpn.add(btnXemDanhSach);
 
 		JLabel lblNewLabel = new JLabel("QUẢN LÝ BỆNH NHÂN");
@@ -74,33 +77,33 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(527, 11, 299, 38);
 		jpn.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Họ Tên");
+		JLabel lblNewLabel_1 = new JLabel("Mã Bệnh Nhân");
 		lblNewLabel_1.setForeground(Color.BLUE);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(921, 200, 61, 25);
+		lblNewLabel_1.setBounds(880, 214, 103, 25);
 		jpn.add(lblNewLabel_1);
 
 		JLabel lblaCh = new JLabel("Địa Chỉ");
 		lblaCh.setForeground(Color.BLUE);
 		lblaCh.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblaCh.setBounds(921, 424, 61, 25);
+		lblaCh.setBounds(880, 490, 61, 25);
 		jpn.add(lblaCh);
 
 		JLabel lblGiiTnh = new JLabel("Giới Tính");
 		lblGiiTnh.setForeground(Color.BLUE);
 		lblGiiTnh.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblGiiTnh.setBounds(921, 276, 71, 25);
+		lblGiiTnh.setBounds(880, 352, 71, 25);
 		jpn.add(lblGiiTnh);
 
 		JLabel lblNmSinh = new JLabel("Năm Sinh");
 		lblNmSinh.setForeground(Color.BLUE);
 		lblNmSinh.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNmSinh.setBounds(921, 348, 71, 25);
+		lblNmSinh.setBounds(880, 421, 71, 25);
 		jpn.add(lblNmSinh);
 
 		jtHoTen = new JTextField();
 		jtHoTen.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		jtHoTen.setBounds(1025, 188, 254, 37);
+		jtHoTen.setBounds(1025, 267, 254, 37);
 		jtHoTen.setToolTipText("Nhập họ tên bệnh nhân\r\n");
 		jpn.add(jtHoTen);
 		jtHoTen.setColumns(10);
@@ -109,18 +112,18 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		jtNamSinh.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		jtNamSinh.setToolTipText("Nhập năm sinh(số)\r\n");
 		jtNamSinh.setColumns(10);
-		jtNamSinh.setBounds(1025, 336, 111, 37);
+		jtNamSinh.setBounds(1025, 409, 111, 37);
 		jpn.add(jtNamSinh);
 
 		jtDiaChi = new JTextField();
 		jtDiaChi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		jtDiaChi.setColumns(10);
 		jtDiaChi.setToolTipText("Nhập địa chỉ bệnh nhân\r\n");
-		jtDiaChi.setBounds(1025, 412, 254, 37);
+		jtDiaChi.setBounds(1025, 478, 254, 37);
 		jpn.add(jtDiaChi);
 
 		jcbb = new JComboBox(displayCBB);
-		jcbb.setBounds(1025, 263, 111, 38);
+		jcbb.setBounds(1025, 339, 111, 38);
 		jpn.add(jcbb);
 
 		btnThem = new JButton("Thêm");
@@ -128,14 +131,14 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnThem.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add.png"));
 		btnThem.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnThem.setBounds(929, 516, 111, 38);
+		btnThem.setBounds(880, 589, 111, 38);
 		jpn.add(btnThem);
 
 		btnSua = new JButton("Sửa");
 		btnSua.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update.png"));
 		btnSua.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSua.setBounds(1083, 516, 103, 38);
+		btnSua.setBounds(1025, 589, 103, 38);
 		jpn.add(btnSua);
 
 		JLabel label = new JLabel("");
@@ -147,7 +150,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnRong = new JButton("");
 		btnRong.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\xoay.png"));
-		btnRong.setBounds(1239, 516, 40, 38);
+		btnRong.setBounds(1239, 589, 40, 38);
 		jpn.add(btnRong);
 
 		jtb = new JTable();
@@ -158,7 +161,24 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		scrollPane.add(jsb);
 		scrollPane.setBounds(35, 188, 744, 481);
 		jpn.add(scrollPane);
-
+		
+		lblNewLabel_2 = new JLabel("Tên Bệnh Nhân");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_2.setBounds(35, 74, 96, 14);
+		jpn.add(lblNewLabel_2);
+		
+		label_1 = new JLabel("Họ Tên");
+		label_1.setForeground(Color.BLUE);
+		label_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		label_1.setBounds(880, 279, 61, 25);
+		jpn.add(label_1);
+		
+		jlMaBenhNhan = new JLabel();
+		jlMaBenhNhan.setToolTipText("Nhập họ tên bệnh nhân\r\n");
+		jlMaBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jlMaBenhNhan.setBounds(1025, 195, 111, 37);
+		jpn.add(jlMaBenhNhan);
+		
 		btnThem.setActionCommand("Them");
 		btnThem.addActionListener(this);
 		btnSua.setActionCommand("Sua");
@@ -186,10 +206,11 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			public void valueChanged(ListSelectionEvent event) {
 				// dat if tranh loi
 				if (jtb.getSelectedRow() >= 0) {
-					jtHoTen.setText(jtb.getValueAt(jtb.getSelectedRow(), 0).toString());
-					jcbb.setSelectedItem(jtb.getValueAt(jtb.getSelectedRow(), 1).toString());
-					jtNamSinh.setText(jtb.getValueAt(jtb.getSelectedRow(), 2).toString());
-					jtDiaChi.setText(jtb.getValueAt(jtb.getSelectedRow(), 3).toString());
+					jlMaBenhNhan.setText(jtb.getValueAt(jtb.getSelectedRow(), 0).toString());
+					jtHoTen.setText(jtb.getValueAt(jtb.getSelectedRow(), 1).toString());
+					jcbb.setSelectedItem(jtb.getValueAt(jtb.getSelectedRow(), 2).toString());
+					jtNamSinh.setText(jtb.getValueAt(jtb.getSelectedRow(), 3).toString());
+					jtDiaChi.setText(jtb.getValueAt(jtb.getSelectedRow(), 4).toString());
 					index = jtb.getSelectedRow();
 				}
 			}
@@ -201,15 +222,28 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		String command = ae.getActionCommand();
 		System.out.println(command);
 		if (command.equals("Them")) {
+			String mabenhnhanthem = "";
 			String hoten = jtHoTen.getText();
 			String gioitinh = jcbb.getSelectedItem().toString();
 			String namsinh = jtNamSinh.getText();
 			String diachi = jtDiaChi.getText();
+			ArrayList<benhnhan> alBN = showBenhNhan.albn;
 			if (hoten.equals("") || namsinh.equals("") || diachi.equals("")) {
 				JOptionPane.showMessageDialog(null, "Xuất hiện rỗng, Vui lòng nhập đầy đủ !", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
 				benhnhan bn = new benhnhan();
+				if(alBN.size()==0)
+				{
+					bn.setMaBenhNhan("BN1");
+				}
+				else {
+					String mabenhnhan;
+					mabenhnhan = alBN.get(alBN.size()-1).getMaBenhNhan();
+					int sothutu = Integer.parseInt(mabenhnhan.replace("BN",""));
+					mabenhnhanthem ="BN" + (sothutu + 1); 
+				}
+				bn.setMaBenhNhan(mabenhnhanthem);
 				bn.setTenBenhNhan(hoten);
 				bn.setGioiTinh(gioitinh);
 				bn.setNamSinh(Integer.parseInt(namsinh));
@@ -223,6 +257,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 						jtHoTen.setText("");
 						jtNamSinh.setText("");
 						jtDiaChi.setText("");
+						jlMaBenhNhan.setText("");
 					} else {
 						JOptionPane.showMessageDialog(null, "Thêm thất bại !", "WARNING", JOptionPane.WARNING_MESSAGE);
 					}
@@ -235,6 +270,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		}
 
 		if (command.equals("Sua")) {
+			String mabenhnhan = jlMaBenhNhan.getText();
 			String hoten = jtHoTen.getText();
 			String gioitinh = jcbb.getSelectedItem().toString();
 			String namsinh = jtNamSinh.getText();
@@ -251,7 +287,8 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 					benhnhan bn = new benhnhan();
 					for (int i = 0; i < alBN.size(); i++) {
 						if (index == i) {
-							bn.setMaBenhNhan(alBN.get(i).getMaBenhNhan());
+							bn.setID(alBN.get(i).getID());
+							bn.setMaBenhNhan(mabenhnhan);
 							bn.setTenBenhNhan(hoten);
 							bn.setGioiTinh(gioitinh);
 							bn.setNamSinh(Integer.parseInt(namsinh));
@@ -264,6 +301,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 									JOptionPane.WARNING_MESSAGE);
 							showBenhNhan modelBenhNhan = new showBenhNhan();
 							jtb.setModel(modelBenhNhan);
+							jlMaBenhNhan.setText("");
 							jtHoTen.setText("");
 							jtNamSinh.setText("");
 							jtDiaChi.setText("");
@@ -286,6 +324,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			jtb.setModel(modelBenhNhan);
 		}
 		if (command.equals("Rong")) {
+			jlMaBenhNhan.setText("");
 			jtHoTen.setText("");
 			jtNamSinh.setText("");
 			jtDiaChi.setText("");
