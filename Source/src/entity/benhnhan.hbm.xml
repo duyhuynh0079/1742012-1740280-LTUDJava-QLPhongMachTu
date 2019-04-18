@@ -3,10 +3,13 @@
 <hibernate-mapping>
 	<class name="entity.benhnhan" table="benhnhan"
 		catalog="qlphongmachtu"> 
-		<id name="MaBenhNhan" type="int">
-			<column name="MaBenhNhan" length="100" />
+		<id name="ID" type="int">
+			<column name="ID" length="100" />
 			<generator class="assigned" />
 		</id>
+		<property name="MaBenhNhan" type="string">
+			<column name="MaBenhNhan" length="100" />
+		</property>
 		<property name="TenBenhNhan" type="string">
 			<column name="TenBenhNhan" length="100" />
 		</property>
