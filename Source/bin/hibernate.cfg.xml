@@ -10,7 +10,9 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<mapping resource="entity/nhanvien.hbm.xml" />
-		<mapping resource="entity/quidinh.hbm.xml" />
 		<mapping resource="entity/benhnhan.hbm.xml" />
+		<mapping resource="entity/donvi.hbm.xml" />
+		<mapping resource="entity/cachdung.hbm.xml" />
+		<mapping resource="entity/quydinh.hbm.xml" />
 	</session-factory>
 </hibernate-configuration> 
