@@ -42,15 +42,29 @@ public class showBenhNhan extends AbstractTableModel {
 		sf.close();
 	}
 	
-	public showBenhNhan(String timkiem)
+	public showBenhNhan(String timkiem, int loai)
 	{
 		super();
+		String sql = "";
 		//tao session ket noi hibernate den du lieu
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang sinh vien
-		String sql = "SELECT * FROM benhnhan bn WHERE bn.TenBenhNhan Like '%"+timkiem+"%'";
+		if(loai==1)
+		{
+			 sql = "SELECT * FROM benhnhan bn WHERE bn.TenBenhNhan Like '%"+timkiem+"%'";
+		}
+		else{
+			if(loai==2) 
+			{
+				 sql = "SELECT * FROM benhnhan bn WHERE bn.MaBenhNhan Like '%"+timkiem+"%'";
+
+			}
+			else sql = "SELECT * FROM benhnhan";
+				
+		}
+		
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(benhnhan.class);
 		lbn = query.list();
@@ -66,7 +80,8 @@ public class showBenhNhan extends AbstractTableModel {
 		//ngat ket noi
 		sf.close();
 	}
-
+	
+	
 	@Override
 	public int getColumnCount() {
 		return 5;//lay 5 cot tu database
