@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+    <class name="entity.ctloaibenh" table="ctloaibenh" catalog="qlphongmachtu">
+        <composite-id>
+            <key-property name="ID_LoaiBenh" column="ID_LoaiBenh" />
+            <key-property name="ID_PhieuKhamBenh" column="ID_PhieuKhamBenh" />
+        </composite-id>
+    </class>
+</hibernate-mapping>

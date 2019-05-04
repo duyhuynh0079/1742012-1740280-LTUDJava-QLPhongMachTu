@@ -9,53 +9,53 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import entity.benhnhan;
+import entity.loaibenh;
 import entity.thuoc;
 import util.HibernateUtil;
 
-public class thuocDAO {
-	public static ArrayList<thuoc> layThuoc()
+public class loaibenhDAO {
+	public static ArrayList<loaibenh> layLoaiBenh()
 	{
 		List lst;
-		ArrayList<thuoc> alThuoc = new ArrayList<thuoc>();
+		ArrayList<loaibenh> alLoaiBenh = new ArrayList<loaibenh>();
 		//tao session ket noi hibernate den du lieu
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang sinh vien
-		String sql = "SELECT * FROM thuoc";
+		String sql = "SELECT * FROM loaibenh";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(thuoc.class);
+		query.addEntity(loaibenh.class);
 		lst = query.list();
 
 		//ham hung 1 array list rieng từ list truyen qua
 		for (Iterator iterator = lst.iterator(); iterator.hasNext();) {
-			thuoc th = (thuoc) iterator.next();
-			alThuoc.add(th);
+			loaibenh lb = (loaibenh) iterator.next();
+			alLoaiBenh.add(lb);
 		}
-		return alThuoc;
+		return alLoaiBenh;
 	}
 
-	public static String[] layDanhSachTenThuoc() {
+	public static String[] layDanhSachTenLoaiBenh() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		ArrayList<String> lst = new ArrayList<>();
-
+		
 		session.beginTransaction();
-		String sql = "SELECT * FROM thuoc";
+		String sql = "SELECT * FROM loaibenh";
 		SQLQuery query = session.createSQLQuery(sql);	
-		query.addEntity(thuoc.class);
-
+		query.addEntity(loaibenh.class);
+		
 		List employees = query.list();
 
 		// System.out.println("Loi ngay day");
 		for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
-			thuoc employee = (thuoc) iterator.next();
+			loaibenh employee = (loaibenh) iterator.next();
 			//System.out.println(employee.getMaMonHoc());
-			lst.add(employee.getTenThuoc());
+			lst.add(employee.getTenLoaiBenh());
 		}
-		String[] lstDSTh = lst.toArray(new String[lst.size()]);
+		String[] lstDSLB = lst.toArray(new String[lst.size()]);
 		session.close();
-		return lstDSTh;
+		return lstDSLB;
 	}
-
+	
 }

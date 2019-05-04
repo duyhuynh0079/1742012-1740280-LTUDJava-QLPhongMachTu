@@ -5,12 +5,10 @@ import java.util.Date;
 public class phieukhambenh {
 	private int ID;
 	private String MaPhieuKhamBenh;
-	private int MaBenhNhan;
 	private Date NgayKham;
-	private String TrieuChung;
 	private float TongTienThuoc;
-	private int MaLoaiBenh;
 	private int TinhTrang;
+	private int ID_CachDung;
 	public int getID() {
 		return ID;
 	}
@@ -23,23 +21,11 @@ public class phieukhambenh {
 	public void setMaPhieuKhamBenh(String maPhieuKhamBenh) {
 		MaPhieuKhamBenh = maPhieuKhamBenh;
 	}
-	public int getMaBenhNhan() {
-		return MaBenhNhan;
-	}
-	public void setMaBenhNhan(int maBenhNhan) {
-		MaBenhNhan = maBenhNhan;
-	}
 	public Date getNgayKham() {
 		return NgayKham;
 	}
 	public void setNgayKham(Date ngayKham) {
 		NgayKham = ngayKham;
-	}
-	public String getTrieuChung() {
-		return TrieuChung;
-	}
-	public void setTrieuChung(String trieuChung) {
-		TrieuChung = trieuChung;
 	}
 	public float getTongTienThuoc() {
 		return TongTienThuoc;
@@ -47,29 +33,27 @@ public class phieukhambenh {
 	public void setTongTienThuoc(float tongTienThuoc) {
 		TongTienThuoc = tongTienThuoc;
 	}
-	public int getMaLoaiBenh() {
-		return MaLoaiBenh;
-	}
-	public void setMaLoaiBenh(int maLoaiBenh) {
-		MaLoaiBenh = maLoaiBenh;
-	}
 	public int getTinhTrang() {
 		return TinhTrang;
 	}
 	public void setTinhTrang(int tinhTrang) {
 		TinhTrang = tinhTrang;
 	}
-	public phieukhambenh(int iD, String maPhieuKhamBenh, int maBenhNhan, Date ngayKham, String trieuChung,
-			float tongTienThuoc, int maLoaiBenh, int tinhTrang) {
+	public int getID_CachDung() {
+		return ID_CachDung;
+	}
+	public void setID_CachDung(int iD_CachDung) {
+		ID_CachDung = iD_CachDung;
+	}
+	public phieukhambenh(int iD, String maPhieuKhamBenh, Date ngayKham, float tongTienThuoc, int tinhTrang,
+			int iD_CachDung) {
 		super();
 		ID = iD;
 		MaPhieuKhamBenh = maPhieuKhamBenh;
-		MaBenhNhan = maBenhNhan;
 		NgayKham = ngayKham;
-		TrieuChung = trieuChung;
 		TongTienThuoc = tongTienThuoc;
-		MaLoaiBenh = maLoaiBenh;
 		TinhTrang = tinhTrang;
+		ID_CachDung = iD_CachDung;
 	}
 	public phieukhambenh() {
 		super();
