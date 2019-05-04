@@ -15,11 +15,17 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import DAO.cachdungDAO;
+import DAO.ctbenhnhanDAO;
+import DAO.ctloaibenhDAO;
+import DAO.ctthuocDAO;
 import DAO.loaibenhDAO;
 import DAO.phieukhamDAO;
 import DAO.thuocDAO;
 import entity.benhnhan;
 import entity.cachdung;
+import entity.ctbenhnhan;
+import entity.ctloaibenh;
+import entity.ctthuoc;
 import entity.loaibenh;
 import entity.phieukhambenh;
 import entity.thuoc;
@@ -140,6 +146,22 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	static ArrayList<benhnhan> albn = showBenhNhan.albn;
 	static ArrayList<cachdung> alcd = cachdungDAO.layCachDung();
 	static private JDatePickerImpl datePicker;
+	// bien loai benh va thuoc toan cuc
+	int idbenh1 = 0;
+	int idbenh2 = 0;
+	int idbenh3 = 0;
+	int idthuoc1 = 0;
+	int idthuoc2 = 0;
+	int idthuoc3 = 0;
+	int idthuoc4 = 0;
+	int idthuoc5 = 0;
+	int idthuoc6 = 0;
+	int idthuoc7 = 0;
+	int idthuoc8 = 0;
+	int idthuoc9 = 0;
+	int idthuoc10 = 0;
+	int soluong1 = 0, soluong2 = 0, soluong3 = 0, soluong4 = 0, soluong5 = 0, soluong6 = 0, soluong7 = 0, soluong8 = 0,
+			soluong9 = 0, soluong10 = 0;
 
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -159,19 +181,17 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	public formThemPhieu(String MaBenhNhan, String TenBenhNhan) {
 		this.mabenhnhan = MaBenhNhan;
 		this.tenbenhnhan = TenBenhNhan;
-		//neu trong db chua co phieu kham
-		if(alpk.size()==0)
-		{
+		// neu trong db chua co phieu kham
+		if (alpk.size() == 0) {
 			maphieukham = "PK1";
-		}
-		else {
-			//neu da co roi thi tao chuoi mahphieukham moi tu phieukham cu + 1
-			maphieukham = alpk.get(alpk.size()-1).getMaPhieuKhamBenh();
-			int sothutu = Integer.parseInt(maphieukham.replace("PK",""));
-			maphieukham ="PK" + (sothutu + 1); 
+		} else {
+			// neu da co roi thi tao chuoi mahphieukham moi tu phieukham cu + 1
+			maphieukham = alpk.get(alpk.size() - 1).getMaPhieuKhamBenh();
+			int sothutu = Integer.parseInt(maphieukham.replace("PK", ""));
+			maphieukham = "PK" + (sothutu + 1);
 		}
 
-		this.setTitle("Mã Phiếu Khám "+maphieukham);
+		this.setTitle("Mã Phiếu Khám " + maphieukham);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(getMaximumSize());
 		jp = new JPanel();
@@ -612,7 +632,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		lblDonGia10.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDonGia10.setBounds(1170, 492, 103, 32);
 		jp.add(lblDonGia10);
-		
 
 		truyenDuLieuCombobox();
 		ArrayList<thuoc> alThuoc = thuocDAO.layThuoc();
@@ -657,8 +676,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		cbLoaiBenh1.setActionCommand("loaibenh1");
 		cbLoaiBenh2.setActionCommand("loaibenh2");
 		cbLoaiBenh3.setActionCommand("loaibenh3");
-		
-		
+
 		// cac su kien thay doi cac textfield
 		jtSoLuong1.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
@@ -1139,9 +1157,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		ArrayList<thuoc> alThuoc = thuocDAO.layThuoc();
 		ArrayList<loaibenh> alLoaiBenh = loaibenhDAO.layLoaiBenh();
-		int idbenh1 = 0, idbenh2 = 0, idbenh3 = 0;
-		int idthuoc1 = 0, idthuoc2 = 0, idthuoc3 = 0, idthuoc4 = 0, idthuoc5 = 0, idthuoc6 = 0, idthuoc7 = 0,
-				idthuoc8 = 0, idthuoc9 = 0, idthuoc10 = 0;
+
 		// su kien thay doi cbb thi dongia doi theo
 		for (int i = 0; i < alThuoc.size(); i++) {
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
@@ -1179,16 +1195,14 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		String command = ae.getActionCommand();
 
 		if (command.equals("loaibenh1")) {
-			//neu click vao nhan id trong db, bo click nhan 0
+			// neu click vao nhan id trong db, bo click nhan 0
 			if (cbLoaiBenh1.isSelected()) {
 				for (int i = 0; i < alLoaiBenh.size(); i++) {
 					if (alLoaiBenh.get(i).getTenLoaiBenh().equals(cbbLoaiBenh1.getSelectedItem().toString())) {
 						idbenh1 = alLoaiBenh.get(i).getID();
-						System.out.println(Integer.toString(idbenh1));
 					}
 				}
-			} else
-				idbenh1 = 0;
+			} 
 		}
 		if (command.equals("loaibenh2")) {
 			if (cbLoaiBenh2.isSelected()) {
@@ -1197,8 +1211,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 						idbenh2 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} else
-				idbenh2 = 0;
+			}
 		}
 		if (command.equals("loaibenh3")) {
 			if (cbLoaiBenh3.isSelected()) {
@@ -1207,16 +1220,14 @@ public class formThemPhieu extends JFrame implements ActionListener {
 						idbenh3 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} else
-				idbenh3 = 0;
+			} 
 		}
 
 		// su kien khi click checkbox thuoc
 		switch (command) {
 		case "tick1":
-			int soluong1;
 			if (cbThuoc1.isSelected()) {
-				//neu click vao id thuoc1 la id trong db
+				// neu click vao id thuoc1 la id trong db
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
 						idthuoc1 = alThuoc.get(i).getID();
@@ -1224,21 +1235,20 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				}
 				if (jtSoLuong1.getText().equals("")) {
 					soluong1 = 0;
-				} else {//neu co so luong thi * len ra tongtien1
+				} else {// neu co so luong thi * len ra tongtien1
 					soluong1 = Integer.parseInt(jtSoLuong1.getText());
 					tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
 					tongtien = tongtien1;
 					lblTongTien.setText(Float.toString(tongtien));
 				}
 			} else {
-				//bo click thi idthuoc1 la 0
+				// bo click thi idthuoc1 la 0
 				idthuoc1 = 0;
 				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien1));//tong tien - lai tong tien 1
+				lblTongTien.setText(Float.toString(tongtien - tongtien1));// tong tien - lai tong tien 1
 			}
 			break;
 		case "tick2":
-			int soluong2;
 			if (cbThuoc2.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())) {
@@ -1260,12 +1270,10 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick3":
-			int soluong3;
 			if (cbThuoc3.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())) {
 						idthuoc3 = alThuoc.get(i).getID();
-						System.out.println(Integer.toString(idthuoc3));
 					}
 				}
 				if (jtSoLuong3.getText().equals("")) {
@@ -1283,7 +1291,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick4":
-			int soluong4;
 			if (cbThuoc4.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())) {
@@ -1299,13 +1306,11 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					lblTongTien.setText(Float.toString(tongtien));
 				}
 			} else {
-				idthuoc4 = 0;
 				tongtien = Float.parseFloat(lblTongTien.getText());
 				lblTongTien.setText(Float.toString(tongtien - tongtien4));
 			}
 			break;
 		case "tick5":
-			int soluong5;
 			if (cbThuoc5.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())) {
@@ -1327,7 +1332,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick6":
-			int soluong6;
 			if (cbThuoc6.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())) {
@@ -1349,7 +1353,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick7":
-			int soluong7;
 			if (cbThuoc7.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())) {
@@ -1371,7 +1374,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick8":
-			int soluong8;
 			if (cbThuoc8.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())) {
@@ -1394,7 +1396,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick9":
-			int soluong9;
 			if (cbThuoc9.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())) {
@@ -1417,7 +1418,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 			}
 			break;
 		case "tick10":
-			int soluong10;
 			if (cbThuoc10.isSelected()) {
 				for (int i = 0; i < alThuoc.size(); i++) {
 					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())) {
@@ -1442,14 +1442,13 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		}
 
 		if (command.equals("them")) {
-
-			//lay id benh nhan va id cach dung, id loaibenh va id thuoc o tren
-			int idbenhnhan = 0 ;
-			int idcachdung = 0 ;
+			int idbenhnhan = 0;
+			int idcachdung = 0;
 			Date ngaykham = new Date();
+			// lay id benh nhan va id cach dung, id loaibenh va id thuoc o tren
 			for (int i = 0; i < albn.size(); i++) {
 				if (albn.get(i).getMaBenhNhan().equals(mabenhnhan)) {
-					idbenhnhan = alThuoc.get(i).getID();
+					idbenhnhan = albn.get(i).getID();
 				}
 			}
 			for (int j = 0; j < alcd.size(); j++) {
@@ -1464,23 +1463,134 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			phieukhambenh pkb = new phieukhambenh();
-			pkb.setMaPhieuKhamBenh(maphieukham);
-			pkb.setNgayKham(ngaykham);
-			pkb.setTinhTrang(0);
-			pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
-			pkb.setID_CachDung(idcachdung);
-			int idpk = phieukhamDAO.themPhieuKham(pkb);
-//			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected())
-//					|| (!cbThuoc1.isSelected() && !cbThuoc2.isSelected() && !cbThuoc3.isSelected()
-//							&& !cbThuoc4.isSelected() && !cbThuoc5.isSelected() && !cbThuoc6.isSelected()
-//							&& !cbThuoc7.isSelected() && !cbThuoc9.isSelected() && !cbThuoc10.isSelected())) {
-//				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh và 1 thuốc !", "WARNING",
-//						JOptionPane.WARNING_MESSAGE);
-//			} else {
-//				
-//			}
+
+			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected())
+					|| (!cbThuoc1.isSelected() && !cbThuoc2.isSelected() && !cbThuoc3.isSelected()
+							&& !cbThuoc4.isSelected() && !cbThuoc5.isSelected() && !cbThuoc6.isSelected()
+							&& !cbThuoc7.isSelected() && !cbThuoc9.isSelected() && !cbThuoc10.isSelected())) {
+				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh và 1 thuốc !", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+			} else {
+				if((cbThuoc1.isSelected()&& validate.isNumber(jtSoLuong1.getText()) == false)||
+						(cbThuoc2.isSelected()&& validate.isNumber(jtSoLuong2.getText()) == false)||
+						(cbThuoc3.isSelected()&& validate.isNumber(jtSoLuong3.getText()) == false)||
+						(cbThuoc4.isSelected()&& validate.isNumber(jtSoLuong4.getText()) == false)||
+						(cbThuoc5.isSelected()&& validate.isNumber(jtSoLuong5.getText()) == false)||
+						(cbThuoc6.isSelected()&& validate.isNumber(jtSoLuong6.getText()) == false)||
+						(cbThuoc7.isSelected()&& validate.isNumber(jtSoLuong7.getText()) == false)||
+						(cbThuoc8.isSelected()&& validate.isNumber(jtSoLuong8.getText()) == false)||
+						(cbThuoc9.isSelected()&& validate.isNumber(jtSoLuong9.getText()) == false)||
+						(cbThuoc10.isSelected()&& validate.isNumber(jtSoLuong10.getText()) == false)
+						) {
+							JOptionPane.showMessageDialog(null, "Nhập số cho số lượng thuốc đã chọn!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);}
+				else {
+					// them bang phieu kham benh truoc
+					phieukhambenh pkb = new phieukhambenh();
+					pkb.setMaPhieuKhamBenh(maphieukham);
+					pkb.setNgayKham(ngaykham);
+					pkb.setTinhTrang(0);
+					pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
+					pkb.setID_CachDung(idcachdung);
+					int idpk = phieukhamDAO.themPhieuKham(pkb);
+					// them cac bang trung gian
+					// them bang ctbenhnhan
+					ctbenhnhan ctbn = new ctbenhnhan();
+					ctbn.setID_BenhNhan(idbenhnhan);
+					ctbn.setID_PhieuKhamBenh(idpk);
+					ctbenhnhanDAO.themCTBenhNhan(ctbn);
+					// them bang ctloaibenh
+					ctloaibenh ctlb = new ctloaibenh();
+					if (idbenh1 != 0) {
+						ctlb.setID_LoaiBenh(idbenh1);
+						ctlb.setID_PhieuKhamBenh(idpk);
+						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+					}
+					if (idbenh2 != 0) {
+						ctlb.setID_LoaiBenh(idbenh2);
+						ctlb.setID_PhieuKhamBenh(idpk);
+						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+					}
+					if (idbenh3 != 0) {
+						ctlb.setID_LoaiBenh(idbenh3);
+						ctlb.setID_PhieuKhamBenh(idpk);
+						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+					}
+					ctthuoc ctthuoc = new ctthuoc();
+					if (idthuoc1 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc1);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong1);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc2 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc2);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong2);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc3 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc3);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong3);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc4 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc4);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong4);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc5 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc5);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong5);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc6 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc6);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong6);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc7 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc7);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong7);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc8 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc8);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong8);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc9 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc9);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong9);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					if (idthuoc10 !=0)
+					{
+						ctthuoc.setID_Thuoc(idthuoc10);
+						ctthuoc.setID_PhieuKhamBenh(idpk);
+						ctthuoc.setSoLuong(soluong10);
+						ctthuocDAO.themCTThuoc(ctthuoc);
+					}
+					JOptionPane.showMessageDialog(null, "Thêm phiếu khám thành công!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				}
+			}
 		}
 	}
 }
