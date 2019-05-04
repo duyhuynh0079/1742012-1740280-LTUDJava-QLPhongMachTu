@@ -206,18 +206,6 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnThemPhieu.setActionCommand("ThemPhieu");
 		btnThemPhieu.addActionListener(this);
 
-		// jtTimKiem.addKeyListener(new KeyAdapter() {
-		// @Override
-		// public void keyPressed(KeyEvent e) {
-		// if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-		// String timkiem = jtTimKiem.getText();
-		// showBenhNhan modelBenhNhan = new showBenhNhan(timkiem);
-		// jtb.setModel(modelBenhNhan);
-		// }
-		// }
-		//
-		// });
-
 		jtb.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
 				// dat if tranh loi
