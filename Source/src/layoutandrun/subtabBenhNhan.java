@@ -55,7 +55,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 
 		String[] displayCBB = { "Nam", "Nữ", "Khác" };
 		jtTimKiem = new JTextField();
-		jtTimKiem.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtTimKiem.setFont(new Font("Arial", Font.PLAIN, 14));
 		jtTimKiem.setToolTipText("Nhập tên hoặc mã bệnh nhân\r\n");
 		jtTimKiem.setBounds(35, 99, 202, 37);
 		jpn.add(jtTimKiem);
@@ -107,21 +107,21 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		jpn.add(lblNmSinh);
 
 		jtHoTen = new JTextField();
-		jtHoTen.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtHoTen.setFont(new Font("Arial", Font.PLAIN, 14));
 		jtHoTen.setBounds(1035, 249, 241, 37);
 		jtHoTen.setToolTipText("Nhập họ tên bệnh nhân\r\n");
 		jpn.add(jtHoTen);
 		jtHoTen.setColumns(10);
 
 		jtNamSinh = new JTextField();
-		jtNamSinh.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtNamSinh.setFont(new Font("Arial", Font.PLAIN, 14));
 		jtNamSinh.setToolTipText("Nhập năm sinh(số)\r\n");
 		jtNamSinh.setColumns(10);
 		jtNamSinh.setBounds(1035, 395, 111, 37);
 		jpn.add(jtNamSinh);
 
 		jtDiaChi = new JTextField();
-		jtDiaChi.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtDiaChi.setFont(new Font("Arial", Font.PLAIN, 14));
 		jtDiaChi.setColumns(10);
 		jtDiaChi.setToolTipText("Nhập địa chỉ bệnh nhân\r\n");
 		jtDiaChi.setBounds(1035, 467, 241, 37);
@@ -155,6 +155,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		jtb = new JTable();
 		showBenhNhan modelBenhNhan = new showBenhNhan();
 		jtb.setModel(modelBenhNhan);// fill modelStudent vao jtable
+		jtb.setFont(new Font("Arial", Font.PLAIN, 14));
 		JScrollPane scrollPane = new JScrollPane(jtb);// dan table vao khung jsp
 		JScrollBar jsb = new JScrollBar();
 		scrollPane.add(jsb);
@@ -174,13 +175,13 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		jpn.add(jlMaBenhNhan);
 
 		rdbTenBenhNhan = new JRadioButton("Tên Bệnh Nhân");
-		rdbTenBenhNhan.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbTenBenhNhan.setBounds(267, 87, 111, 23);
+		rdbTenBenhNhan.setFont(new Font("Arial", Font.BOLD, 12));
+		rdbTenBenhNhan.setBounds(267, 87, 120, 30);
 		jpn.add(rdbTenBenhNhan);
 
-		rdbMaBenhNhan = new JRadioButton("Mã bệnh nhân");
-		rdbMaBenhNhan.setFont(new Font("Tahoma", Font.BOLD, 11));
-		rdbMaBenhNhan.setBounds(267, 125, 109, 23);
+		rdbMaBenhNhan = new JRadioButton("Mã Bệnh Nhân");
+		rdbMaBenhNhan.setFont(new Font("Arial", Font.BOLD, 12));
+		rdbMaBenhNhan.setBounds(267, 125, 120, 15);
 		jpn.add(rdbMaBenhNhan);
 
 		ButtonGroup group = new ButtonGroup();
@@ -204,18 +205,6 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnTimKiem.addActionListener(this);
 		btnThemPhieu.setActionCommand("ThemPhieu");
 		btnThemPhieu.addActionListener(this);
-
-		// jtTimKiem.addKeyListener(new KeyAdapter() {
-		// @Override
-		// public void keyPressed(KeyEvent e) {
-		// if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-		// String timkiem = jtTimKiem.getText();
-		// showBenhNhan modelBenhNhan = new showBenhNhan(timkiem);
-		// jtb.setModel(modelBenhNhan);
-		// }
-		// }
-		//
-		// });
 
 		jtb.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
@@ -256,7 +245,6 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 					if(alBN.size()==0)
 					{
 						mabenhnhanthem = "BN1";
-						System.out.println("abc");
 					}
 					else {
 						String mabenhnhan;
@@ -381,11 +369,9 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			}
 			else {
 				try {
-					System.out.println("vao equal them phieu");
 					formThemPhieu ftp = new formThemPhieu(mabenhnhan,tenbenhnhan);
 					ftp.setVisible(true);
 					ftp.setLocationRelativeTo(null);
-
 				} catch (Exception e) {
 					// TODO: handle exception
 				}

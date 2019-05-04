@@ -35,11 +35,6 @@ public class showBenhNhan extends AbstractTableModel {
 			benhnhan bn = (benhnhan) iterator.next();
 			albn.add(bn);
 		}
-
-		//dong session
-		s.close();
-		//ngat ket noi
-		sf.close();
 	}
 	
 	public showBenhNhan(String timkiem, int loai)
@@ -68,12 +63,6 @@ public class showBenhNhan extends AbstractTableModel {
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(benhnhan.class);
 		lbn = query.list();
-
-		//ham hung 1 array list rieng từ list truyen qua
-//		for (Iterator iterator = lbn.iterator(); iterator.hasNext();) {
-//			benhnhan bn = (benhnhan) iterator.next();
-//			albn.add(bn);
-//		}
 
 		//dong session
 		s.close();

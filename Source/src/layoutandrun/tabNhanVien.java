@@ -46,7 +46,7 @@ public class tabNhanVien extends JFrame {
 //	private JTable jtb;
 //	private JLabel lblNewLabel_2;
 	
-
+//dsahjdhasjdsa
 	
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
