@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +22,17 @@ import util.HibernateUtil;
 
 public class phieukhamDAO {
 	public static ArrayList<phieukhambenh> alpk = new ArrayList<phieukhambenh>();
+	//cau query field data vao model
+	public static List<Object[]> layDanhSanhPhieuKham() {
+	        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	        session.beginTransaction();
+	        String sql = "SELECT DISTINCT p.MaPhieuKhamBenh,b.MaBenhNhan, b.TenBenhNhan,p.NgayKham,p.TinhTrang FROM phieukhambenh p inner join ctbenhnhan ct on p.ID = ct.ID_PhieuKhamBenh inner join benhnhan b on ct.ID_BenhNhan = b.ID";
+	        SQLQuery query = session.createSQLQuery(sql);
+	        List<Object[]> o = query.list();
+	        session.close();
+	        return o;
+	}
+
 	public static ArrayList phieukham()
 	{
 		List lpk;
@@ -50,5 +69,5 @@ public class phieukhamDAO {
             return id;
         }
     }
-
+	
 }
