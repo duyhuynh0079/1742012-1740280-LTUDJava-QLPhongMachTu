@@ -30,7 +30,7 @@ public class showBenhNhan extends AbstractTableModel {
 		query.addEntity(benhnhan.class);
 		lbn = query.list();
 
-		//ham hung 1 array list rieng tá»« list truyen qua
+		//ham hung 1 array list rieng từ list truyen qua
 		for (Iterator iterator = lbn.iterator(); iterator.hasNext();) {
 			benhnhan bn = (benhnhan) iterator.next();
 			albn.add(bn);
@@ -42,31 +42,38 @@ public class showBenhNhan extends AbstractTableModel {
 		sf.close();
 	}
 	
-	public showBenhNhan(String timkiem)
+	public showBenhNhan(String timkiem, int loai)
 	{
 		super();
+		String sql = "";
 		//tao session ket noi hibernate den du lieu
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang sinh vien
-		String sql = "SELECT * FROM benhnhan bn WHERE bn.TenBenhNhan Like '%"+timkiem+"%'";
+		if(loai==1)
+		{
+			 sql = "SELECT * FROM benhnhan bn WHERE bn.TenBenhNhan Like '%"+timkiem+"%'";
+		}
+		else{
+			if(loai==2) 
+			{
+				 sql = "SELECT * FROM benhnhan bn WHERE bn.MaBenhNhan Like '%"+timkiem+"%'";
+
+			}
+			else sql = "SELECT * FROM benhnhan";
+				
+		}
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(benhnhan.class);
 		lbn = query.list();
-
-		//ham hung 1 array list rieng tá»« list truyen qua
-//		for (Iterator iterator = lbn.iterator(); iterator.hasNext();) {
-//			benhnhan bn = (benhnhan) iterator.next();
-//			albn.add(bn);
-//		}
 
 		//dong session
 		s.close();
 		//ngat ket noi
 		sf.close();
 	}
-
+  
 	@Override
 	public int getColumnCount() {
 		return 5;//lay 5 cot tu database
@@ -97,7 +104,7 @@ public class showBenhNhan extends AbstractTableModel {
 	}
 	// set ten cot
 	public String getColumnName(int col) {
-		String[] columnNames=new String[] {"MÃ£ Bá»‡nh NhÃ¢n","Há»� TÃªn","Giá»›i TÃ­nh","NÄƒm Sinh","Ä�á»‹a Chá»‰"};
+		String[] columnNames=new String[] {"Mã Bệnh Nhân","Họ Tên","Giới Tính","Năm Sinh","Địa Chỉ"};
 		return columnNames[col];
 	}
 }

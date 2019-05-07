@@ -56,5 +56,4 @@ public class thuoc {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 }

@@ -71,7 +71,7 @@ public class QuiDinhModel extends AbstractTableModel{
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID quy dinh","Ma quy dinh","Ten quy dinh","Gia tri"};
+			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh","Giá trị"};
 			return columnNames[col];
 		}
 

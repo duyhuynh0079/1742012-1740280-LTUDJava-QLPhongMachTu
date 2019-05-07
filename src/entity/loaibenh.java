@@ -23,7 +23,6 @@ public class loaibenh {
 	public void setTenLoaiBenh(String tenLoaiBenh) {
 		TenLoaiBenh = tenLoaiBenh;
 	}
-	
 	public String getTrieuChung() {
 		return TrieuChung;
 	}
