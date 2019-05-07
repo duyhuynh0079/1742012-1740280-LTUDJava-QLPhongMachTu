@@ -19,8 +19,5 @@
 		<property name="TinhTrang" type="int">
 			<column name="TinhTrang" length="100" />
 		</property>
-		<property name="ID_CachDung" type="int">
-			<column name="ID_CachDung" length="100" />
-		</property>
 	</class>
 </hibernate-mapping>

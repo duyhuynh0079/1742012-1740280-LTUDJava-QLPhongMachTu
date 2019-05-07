@@ -19,6 +19,7 @@
 		<mapping resource="entity/phieukhambenh.hbm.xml" />	
 		<mapping resource="entity/ctloaibenh.hbm.xml" />	
 		<mapping resource="entity/ctbenhnhan.hbm.xml" />	
-		<mapping resource="entity/ctthuoc.hbm.xml" />	
+		<mapping resource="entity/ctthuoc.hbm.xml" />
+		<mapping resource="entity/thuoc1.hbm.xml" />	
 	</session-factory>
 </hibernate-configuration> 

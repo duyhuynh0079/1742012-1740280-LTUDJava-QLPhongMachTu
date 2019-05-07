@@ -28,7 +28,7 @@ import entity.ctloaibenh;
 import entity.ctthuoc;
 import entity.loaibenh;
 import entity.phieukhambenh;
-import entity.thuoc;
+import entity.thuoc1;
 import show.showBenhNhan;
 
 import javax.swing.JButton;
@@ -94,7 +94,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	private JLabel lblLoiBnh_2;
 	static private JComboBox cbbLoaiBenh3;
 	private JLabel lblCchDng;
-	static private JComboBox cbbCachDung;
 	private JLabel lblMBnhNhn;
 	private JLabel lblMaBenhNhan;
 	static String mabenhnhan = "";
@@ -446,17 +445,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		cbbLoaiBenh3.setBounds(1035, 136, 199, 31);
 		jp.add(cbbLoaiBenh3);
 
-		lblCchDng = new JLabel("Cách dùng");
-		lblCchDng.setForeground(Color.BLUE);
-		lblCchDng.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCchDng.setBounds(56, 586, 101, 19);
-		jp.add(lblCchDng);
-
-		cbbCachDung = new JComboBox();
-		cbbCachDung.setBounds(152, 574, 199, 31);
-		cbbCachDung.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		jp.add(cbbCachDung);
-
 		lblMBnhNhn = new JLabel("Mã bệnh nhân:");
 		lblMBnhNhn.setForeground(Color.BLUE);
 		lblMBnhNhn.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -634,7 +622,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		jp.add(lblDonGia10);
 
 		truyenDuLieuCombobox();
-		ArrayList<thuoc> alThuoc = thuocDAO.layThuoc();
+		ArrayList<thuoc1> alThuoc = thuocDAO.layThuoc();
 
 		cbbThuoc1.addActionListener(this);
 		cbbThuoc2.addActionListener(this);
@@ -1150,12 +1138,11 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		cbbLoaiBenh1.setModel(new showCombobox(loaibenhDAO.layDanhSachTenLoaiBenh()));
 		cbbLoaiBenh2.setModel(new showCombobox(loaibenhDAO.layDanhSachTenLoaiBenh()));
 		cbbLoaiBenh3.setModel(new showCombobox(loaibenhDAO.layDanhSachTenLoaiBenh()));
-		cbbCachDung.setModel(new showCombobox(cachdungDAO.LayDanhSachCachDung()));
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		ArrayList<thuoc> alThuoc = thuocDAO.layThuoc();
+		ArrayList<thuoc1> alThuoc = thuocDAO.layThuoc();
 		ArrayList<loaibenh> alLoaiBenh = loaibenhDAO.layLoaiBenh();
 
 		// su kien thay doi cbb thi dongia doi theo
@@ -1451,11 +1438,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					idbenhnhan = albn.get(i).getID();
 				}
 			}
-			for (int j = 0; j < alcd.size(); j++) {
-				if (alcd.get(j).getTenCachDung().equals(cbbCachDung.getSelectedItem().toString())) {
-					idcachdung = alcd.get(j).getID();
-				}
-			}
 			String ngay = datePicker.getJFormattedTextField().getText();
 			try {
 				ngaykham = new SimpleDateFormat("dd-MM-yyyy").parse(ngay);
@@ -1491,7 +1473,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					pkb.setNgayKham(ngaykham);
 					pkb.setTinhTrang(0);
 					pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
-					pkb.setID_CachDung(idcachdung);
 					int idpk = phieukhamDAO.themPhieuKham(pkb);
 					// them cac bang trung gian
 					// them bang ctbenhnhan

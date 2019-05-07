@@ -12,14 +12,15 @@ import org.hibernate.cfg.Configuration;
 import entity.benhnhan;
 import entity.quidinh;
 import entity.thuoc;
+import entity.thuoc1;
 import util.HibernateUtil;
 
 public class thuocDAO {
 
-	public static ArrayList<thuoc> layThuoc()
+	public static ArrayList<thuoc1> layThuoc()
 	{
 		List lst;
-		ArrayList<thuoc> alThuoc = new ArrayList<thuoc>();
+		ArrayList<thuoc1> alThuoc = new ArrayList<thuoc1>();
 		//tao session ket noi hibernate den du lieu
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		//mo ket noi bang session
@@ -27,12 +28,12 @@ public class thuocDAO {
 		//tao cau query truy van den bang sinh vien
 		String sql = "SELECT * FROM thuoc";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(thuoc.class);
+		query.addEntity(thuoc1.class);
 		lst = query.list();
 
 		//ham hung 1 array list rieng từ list truyen qua
 		for (Iterator iterator = lst.iterator(); iterator.hasNext();) {
-			thuoc th = (thuoc) iterator.next();
+			thuoc1 th = (thuoc1) iterator.next();
 			alThuoc.add(th);
 		}
 		return alThuoc;
@@ -45,13 +46,13 @@ public class thuocDAO {
 		session.beginTransaction();
 		String sql = "SELECT * FROM thuoc";
 		SQLQuery query = session.createSQLQuery(sql);	
-		query.addEntity(thuoc.class);
+		query.addEntity(thuoc1.class);
 
 		List employees = query.list();
 
 		// System.out.println("Loi ngay day");
 		for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
-			thuoc employee = (thuoc) iterator.next();
+			thuoc1 employee = (thuoc1) iterator.next();
 			//System.out.println(employee.getMaMonHoc());
 			lst.add(employee.getTenThuoc());
 		}
