@@ -140,8 +140,7 @@ public class nhanvienlayout extends JFrame {
 		contentPane.add(tabbedPane);
 
 		JPanel pnNhanVien = new JPanel();
-		tabbedPane.addTab("Nhan Vien\r\n", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Pharmacist_Male_Light.png"),
+		tabbedPane.addTab("Nhan Vien\r\n", new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Pharmacist_Male_Light.png"),
 				pnNhanVien, null);
 		tabbedPane.setBackgroundAt(0, new Color(255, 255, 255));
 		pnNhanVien.setLayout(null);
@@ -540,15 +539,6 @@ public class nhanvienlayout extends JFrame {
 					cmbChucVuNV.setSelectedItem(tableNV.getValueAt(tableNV.getSelectedRow(), 7).toString());
 					jpNhapLaiMatKhauNV.setText(tableNV.getValueAt(tableNV.getSelectedRow(), 2).toString());
 					index = tableNV.getSelectedRow();
-//					try {
-//						System.out.println(nhanvienDAO.unHash(jpMatKhauNV.getText().toString()));
-//					} catch (NoSuchAlgorithmException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (UnsupportedEncodingException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
 				}
 			}
 		});
@@ -581,7 +571,7 @@ public class nhanvienlayout extends JFrame {
 				nhanvienlayout.this.setVisible(false);
 			}
 		});
-		btnDangXuat.setToolTipText("Ä�Äƒng xuáº¥t");
+		btnDangXuat.setToolTipText("Dang xuat");
 		btnDangXuat.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
 		btnDangXuat.setForeground(Color.RED);
 		btnDangXuat.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -591,8 +581,7 @@ public class nhanvienlayout extends JFrame {
 		
 
 		JPanel pnLoaiBenh = new JPanel();
-		tabbedPane.addTab("Loai Benh", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\loaibenh.png"),
+		tabbedPane.addTab("Loai Benh", new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\loaibenh.png"),
 				pnLoaiBenh, null);
 		pnLoaiBenh.setLayout(null);
 
@@ -654,9 +643,9 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtMaLoaiBenh.getText().equals("") || txtTenLoaiBenh.getText().equals("")
 						|| taTrieuChungLoaiBenh.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng nháº­p Ä‘á»§ thÃ´ng tin!");
+					JOptionPane.showMessageDialog(null, "Vui long nhap thong tin!");
 				} else if (loaibenhDAO.timMaLoaiBenh(txtMaLoaiBenh.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "MÃ£ loáº¡i bá»‡nh Ä‘Ã£ tá»“n táº¡i!");
+					JOptionPane.showMessageDialog(null, "Ma loai benh da ton tai!");
 				} else {
 					loaibenh lb = new loaibenh();
 					lb.setMaLoaiBenh(txtMaLoaiBenh.getText());
@@ -664,7 +653,7 @@ public class nhanvienlayout extends JFrame {
 					lb.setTrieuChung(taTrieuChungLoaiBenh.getText());
 					try {
 						if (DAO.loaibenhDAO.themLoaiBenh(lb) == true) {
-							JOptionPane.showMessageDialog(null, "Ä�Ã£ thÃªm loáº¡i bá»‡nh: " + txtMaLoaiBenh.getText());
+							JOptionPane.showMessageDialog(null, "Da them loai benh: " + txtMaLoaiBenh.getText());
 							lblIDLoaiBenh.setText(null);
 							txtMaLoaiBenh.setText(null);
 							txtTenLoaiBenh.setText(null);
@@ -672,12 +661,12 @@ public class nhanvienlayout extends JFrame {
 							LoaiBenhModel mdLoaiBenh = new LoaiBenhModel();
 							tableLoaiBenh.setModel(mdLoaiBenh);
 						} else {
-							JOptionPane.showMessageDialog(null, "ThÃªm tháº¥t báº¡i!", "WARNING",
+							JOptionPane.showMessageDialog(null, "Them that bai!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -697,7 +686,7 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtMaLoaiBenh.getText().equals("") || txtTenLoaiBenh.getText().equals("")
 						|| taTrieuChungLoaiBenh.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng click báº£ng!", "WARNING", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Vui long click bang!", "WARNING", JOptionPane.WARNING_MESSAGE);
 				} else {
 					loaibenh lb = new loaibenh();
 					ArrayList<loaibenh> allb = LoaiBenhModel.listLB;
@@ -711,7 +700,7 @@ public class nhanvienlayout extends JFrame {
 					}
 					try {
 						if (loaibenhDAO.suaLoaiBenh(lb) == true) {
-							JOptionPane.showMessageDialog(null, "Sá»­a thÃ nh cÃ´ng !", "WARNING",
+							JOptionPane.showMessageDialog(null, "Sua thanh cong !", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 							lblIDLoaiBenh.setText(null);
 							txtMaLoaiBenh.setText(null);
@@ -721,11 +710,11 @@ public class nhanvienlayout extends JFrame {
 							tableLoaiBenh.setModel(mdLoaiBenh);
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Sá»­a tháº¥t báº¡i, vui lÃ²ng click báº£ng chá»�n loáº¡i bá»‡nh sá»­a !", "WARNING",
+									"Sua that bai, vui long click bang chon loai benh can sua!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -796,8 +785,7 @@ public class nhanvienlayout extends JFrame {
 
 		// ql Thuoc
 		JPanel pnThuoc = new JPanel();
-		tabbedPane.addTab("Thuoc", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\thuoc.jpg"),
+		tabbedPane.addTab("Thuoc", new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\thuoc.jpg"),
 				pnThuoc, null);
 		tabbedPane.setBackgroundAt(2, new Color(255, 255, 255));
 		pnThuoc.setLayout(null);
@@ -873,9 +861,9 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng nháº­p Ä‘á»§ thÃ´ng tin!");
+					JOptionPane.showMessageDialog(null, "Vui long nhap thong tin!");
 				}else if (thuocDAO.timMaThuoc(txtMaThuoc.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "MÃ£ Ä‘Æ¡n vá»‹ Ä‘Ã£ tá»“n táº¡i!");
+					JOptionPane.showMessageDialog(null, "Ma thuoc da ton tai!");
 				} else {
 					thuoc t = new thuoc();
 					donvi dv = new donvi();
@@ -887,7 +875,7 @@ public class nhanvienlayout extends JFrame {
 					t.setDv(dv);
 					try {
 						if (DAO.thuocDAO.themThuoc(t) == true) {
-							JOptionPane.showMessageDialog(null, "Ä�Ã£ thÃªm thuá»‘c: " + txtMaThuoc.getText());
+							JOptionPane.showMessageDialog(null, "Da them thuoc: " + txtMaThuoc.getText());
 							lblIDThuoc.setText(null);
 							txtMaThuoc.setText(null);
 							txtTenThuoc.setText(null);
@@ -896,12 +884,12 @@ public class nhanvienlayout extends JFrame {
 							ThuocModel mdT = new ThuocModel();
 							tableThuoc.setModel(mdT);
 						} else {
-							JOptionPane.showMessageDialog(null, "ThÃªm tháº¥t báº¡i!", "WARNING",
+							JOptionPane.showMessageDialog(null, "Them that bai!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -921,7 +909,7 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng click báº£ng chá»�n thuá»‘c sá»­a!", "WARNING", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Vui long click bang chon thuoc can sua!", "WARNING", JOptionPane.WARNING_MESSAGE);
 				} else {
 					thuoc t = new thuoc();
 					donvi dv = new donvi();
@@ -939,7 +927,7 @@ public class nhanvienlayout extends JFrame {
 					}
 					try {
 						if (thuocDAO.suaThuoc(t) == true) {
-							JOptionPane.showMessageDialog(null, "Sá»­a thÃ nh cÃ´ng !", "WARNING",
+							JOptionPane.showMessageDialog(null, "Sua thanh cong!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 							lblIDThuoc.setText(null);
 							txtMaThuoc.setText(null);
@@ -950,11 +938,11 @@ public class nhanvienlayout extends JFrame {
 							tableThuoc.setModel(mdT);
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Sá»­a tháº¥t báº¡i, vui lÃ²ng click báº£ng chá»�n thuá»‘c sá»­a !", "WARNING",
+									"Sua that bai, vui long click bang chon thuoc can sua!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -973,7 +961,7 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng click báº£ng chá»�n thuá»‘c xÃ³a!", "WARNING", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Vui long click bang chon thuoc can xoa!", "WARNING", JOptionPane.WARNING_MESSAGE);
 				} else {
 					thuoc t = new thuoc();
 					donvi dv = new donvi();
@@ -990,7 +978,7 @@ public class nhanvienlayout extends JFrame {
 					}
 					try {
 						if (thuocDAO.suaThuoc(t) == true) {
-							JOptionPane.showMessageDialog(null, "XÃ³a thÃ nh cÃ´ng !", "WARNING",
+							JOptionPane.showMessageDialog(null, "Xoa thanh cong !", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 							lblIDThuoc.setText(null);
 							txtMaThuoc.setText(null);
@@ -1001,11 +989,11 @@ public class nhanvienlayout extends JFrame {
 							tableThuoc.setModel(mdT);
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"XÃ³a tháº¥t báº¡i, vui lÃ²ng click báº£ng chá»�n thuá»‘c xÃ³a!", "WARNING",
+									"Xoa that bai!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -1055,7 +1043,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatT.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
-		btnDangXuatT.setToolTipText("Ä�Äƒng xuáº¥t");
+		btnDangXuatT.setToolTipText("Dang xuat");
 		btnDangXuatT.setForeground(Color.RED);
 		btnDangXuatT.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnDangXuatT.setBounds(806, 0, 42, 42);
@@ -1077,8 +1065,7 @@ public class nhanvienlayout extends JFrame {
 
 		// ql Don vi thuoc
 		JPanel pnDonViThuoc = new JPanel();
-		tabbedPane.addTab("Don Vi Thuoc", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\donvithuoc.jpg"),
+		tabbedPane.addTab("Don Vi Thuoc", new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\donvithuoc.jpg"),
 				pnDonViThuoc, null);
 		tabbedPane.setBackgroundAt(3, new Color(255, 255, 255));
 		pnDonViThuoc.setLayout(null);
@@ -1129,28 +1116,28 @@ public class nhanvienlayout extends JFrame {
 		tbnThemDonViThuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtMaDonViThuoc.getText().equals("") || txtTenDonViThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng nháº­p Ä‘á»§ thÃ´ng tin!");
+					JOptionPane.showMessageDialog(null, "Vui long nhap thong tin!");
 				} else if (donvithuocDAO.timMaDonVi(txtMaDonViThuoc.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "MÃ£ Ä‘Æ¡n vá»‹ Ä‘Ã£ tá»“n táº¡i!");
+					JOptionPane.showMessageDialog(null, "Ma don vi thuoc da ton tai!");
 				} else {
 					donvi dv = new donvi();
 					dv.setMaDonVi(txtMaDonViThuoc.getText());
 					dv.setTenDonVi(txtTenDonViThuoc.getText());
 					try {
 						if (DAO.donvithuocDAO.themDonViThuoc(dv) == true) {
-							JOptionPane.showMessageDialog(null, "Ä�Ã£ thÃªm Ä‘Æ¡n vá»‹ thuá»‘c: " + txtMaDonViThuoc.getText());
+							JOptionPane.showMessageDialog(null, "Da them don vi thuoc: " + txtMaDonViThuoc.getText());
 							lblIDDonViThuoc.setText(null);
 							txtMaDonViThuoc.setText(null);
 							txtTenDonViThuoc.setText(null);
 							DonViTinhThuocModelqlt mdDonVi = new DonViTinhThuocModelqlt();
 							tableDonViThuoc.setModel(mdDonVi);
 						} else {
-							JOptionPane.showMessageDialog(null, "ThÃªm tháº¥t báº¡i!", "WARNING",
+							JOptionPane.showMessageDialog(null, "Them that bai!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -1183,7 +1170,7 @@ public class nhanvienlayout extends JFrame {
 					}
 					try {
 						if (donvithuocDAO.suaDonViThuoc(dv) == true) {
-							JOptionPane.showMessageDialog(null, "Sá»­a thÃ nh cÃ´ng !", "WARNING",
+							JOptionPane.showMessageDialog(null, "Sua thanh cong!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 							lblIDDonViThuoc.setText(null);
 							txtMaDonViThuoc.setText(null);
@@ -1191,11 +1178,11 @@ public class nhanvienlayout extends JFrame {
 							DonViTinhThuocModelqlt mdDonVi = new DonViTinhThuocModelqlt();
 							tableDonViThuoc.setModel(mdDonVi);
 						} else {
-							JOptionPane.showMessageDialog(null, "Sá»­a tháº¥t báº¡i, vui lÃ²ng click báº£ng chá»�n Ä‘Æ¡n vá»‹ sá»¯a !",
+							JOptionPane.showMessageDialog(null, "Sua that bai!",
 									"WARNING", JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -1266,8 +1253,7 @@ public class nhanvienlayout extends JFrame {
 
 		// ql cach dung
 		JPanel pnCachDung = new JPanel();
-		tabbedPane.addTab("Cach Dung", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\huongdan.png"),
+		tabbedPane.addTab("Cach Dung", new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\huongdan.png"),
 				pnCachDung, null);
 		tabbedPane.setBackgroundAt(4, new Color(255, 255, 255));
 		pnCachDung.setLayout(null);
@@ -1343,8 +1329,7 @@ public class nhanvienlayout extends JFrame {
 
 			}
 		});
-		btnThemCachDung.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+		btnThemCachDung.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
 		btnThemCachDung.setForeground(Color.RED);
 		btnThemCachDung.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemCachDung.setBounds(166, 233, 115, 41);

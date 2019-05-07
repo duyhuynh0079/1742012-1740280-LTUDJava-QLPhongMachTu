@@ -129,7 +129,7 @@ public class dangnhap extends JFrame {
 				}
 			}
 		});
-		btnDangNhap.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\check.png"));
+		btnDangNhap.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\check.png"));
 		btnDangNhap.setForeground(Color.RED);
 		btnDangNhap.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnDangNhap.setBounds(59, 151, 158, 41);
@@ -141,7 +141,7 @@ public class dangnhap extends JFrame {
 				dispose();
 			}
 		});
-		btnThoat.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));
+		btnThoat.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));
 		btnThoat.setForeground(Color.RED);
 		btnThoat.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThoat.setBounds(257, 151, 130, 41);
