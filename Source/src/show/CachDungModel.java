@@ -71,7 +71,7 @@ public class CachDungModel extends AbstractTableModel{
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID cách dùng","Mã cách dùng","Tên cách dùng"};
+			String[] columnNames=new String[] {"ID cach dung","Ma cach dung","Ten cach dung"};
 			return columnNames[col];
 		}
 

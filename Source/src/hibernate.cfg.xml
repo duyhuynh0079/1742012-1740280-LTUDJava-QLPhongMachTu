@@ -14,5 +14,7 @@
 		<mapping resource="entity/donvi.hbm.xml" />
 		<mapping resource="entity/cachdung.hbm.xml" />
 		<mapping resource="entity/quydinh.hbm.xml" />
+		<mapping resource="entity/loaibenh.hbm.xml" />
+		<mapping resource="entity/thuoc.hbm.xml" />
 	</session-factory>
 </hibernate-configuration> 

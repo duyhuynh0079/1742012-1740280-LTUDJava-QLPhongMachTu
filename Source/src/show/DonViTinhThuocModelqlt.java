@@ -71,7 +71,7 @@ public class DonViTinhThuocModelqlt extends AbstractTableModel{
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID đơn vị","Mã đơn vị","Tên đơn vị"};
+			String[] columnNames=new String[] {"ID Don vi","Ma don vi","Ten don vi"};
 			return columnNames[col];
 		}
 

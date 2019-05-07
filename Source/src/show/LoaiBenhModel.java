@@ -11,12 +11,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import entity.loaibenh;
 import entity.quidinh;
 
-public class QuiDinhModel extends AbstractTableModel{
-	private List qd; // list kieu ob sinhvien lay tu enity.sinhvien
-	public static ArrayList<quidinh> listQD = new ArrayList<quidinh>();
-	public QuiDinhModel()
+public class LoaiBenhModel extends AbstractTableModel{
+	private List lb; // list kieu ob sinhvien lay tu enity.sinhvien
+	public static ArrayList<loaibenh> listLB = new ArrayList<loaibenh>();
+	public LoaiBenhModel()
 	{
 		super();
 		//tao session ket noi hibernate den du lieu
@@ -24,15 +25,15 @@ public class QuiDinhModel extends AbstractTableModel{
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
-		String sql = "SELECT * FROM quidinh";
+		String sql = "SELECT * FROM loaibenh";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(quidinh.class);
-		qd = query.list();
+		query.addEntity(loaibenh.class);
+		lb = query.list();
 		
 		//ham hung 1 array list rieng tÃ¡Â»Â« list truyen qua
-		for (Iterator iterator = qd.iterator(); iterator.hasNext();) {
-			quidinh qd2 = (quidinh) iterator.next();
-			listQD.add(qd2);
+		for (Iterator iterator = lb.iterator(); iterator.hasNext();) {
+			loaibenh lb2 = (loaibenh) iterator.next();
+			listLB.add(lb2);
 		}
 		
 		//dong ket noi
@@ -50,28 +51,28 @@ public class QuiDinhModel extends AbstractTableModel{
 
 	@Override
 	public int getRowCount() {
-		return qd.size();//so dong bang so dong du lieu DB
+		return lb.size();//so dong bang so dong du lieu DB
 	}
 
 	@Override
 	public Object getValueAt(int row, int cow) {
-		quidinh qd2 = (quidinh)qd.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
+		loaibenh lb2 = (loaibenh)lb.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
 		switch (cow) {//ghep thuoc tinh cho tung cot
 		case 0:
-			return qd2.getID();	
+			return lb2.getID();	
 		case 1:
-			return qd2.getMaQuiDinh();
+			return lb2.getMaLoaiBenh();
 		case 2:
-			return qd2.getTenQuiDinh();
+			return lb2.getTenLoaiBenh();
 		case 3: 
-			return qd2.getGiaTri();
+			return lb2.getTrieuChung();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID quy dinh","Ma quy dinh","Ten quy dinh","Gia tri"};
+			String[] columnNames=new String[] {"ID loai benh","Ma loai benh","Ten loai benh","Trieu chung"};
 			return columnNames[col];
 		}
 

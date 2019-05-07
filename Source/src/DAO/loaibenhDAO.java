@@ -5,33 +5,33 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import entity.quidinh;
-import entity.thuoc;
+import entity.cachdung;
+import entity.loaibenh;
 import util.HibernateUtil;
 
-public class thuocDAO {
-	public static  thuoc timMaThuoc(String mat) {
+public class loaibenhDAO {
+	public static  loaibenh timMaLoaiBenh(String malb) {
 
-	    List<thuoc> t = new ArrayList<thuoc>();
+	    List<loaibenh> lb = new ArrayList<loaibenh>();
 
 	    //Session session = this.sessionFactory.getCurrentSession();
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    session.beginTransaction();
-	    t = session.createQuery("from thuoc where MaThuoc=?").setParameter(0, mat).list();
+	    lb = session.createQuery("from loaibenh where MaLoaiBenh=?").setParameter(0, malb).list();
 	    session.getTransaction().commit();
 	    session.close();
-	    if (t.size() > 0) {
-	        return t.get(0);
+	    if (lb.size() > 0) {
+	        return lb.get(0);
 	    } else {
 	        return null;
 	    }
 	}
-	public static boolean themThuoc(thuoc t) {
+	public static boolean themLoaiBenh(loaibenh lb) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try {
 			session.beginTransaction();
-			session.save(t);
+			session.save(lb);
 			session.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
@@ -42,11 +42,11 @@ public class thuocDAO {
 			session.close();
 		}
 	}
-	public static boolean suaThuoc(thuoc t) {
+	public static boolean suaLoaiBenh(loaibenh lb) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
-			session.update(t); 
+			session.update(lb); 
 			session.getTransaction().commit();
 			return true;
 		}catch (Exception e) {
