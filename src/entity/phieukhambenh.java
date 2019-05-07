@@ -8,7 +8,7 @@ public class phieukhambenh {
 	private Date NgayKham;
 	private float TongTienThuoc;
 	private int TinhTrang;
-	private int ID_CachDung;
+  
 	public int getID() {
 		return ID;
 	}
@@ -39,21 +39,13 @@ public class phieukhambenh {
 	public void setTinhTrang(int tinhTrang) {
 		TinhTrang = tinhTrang;
 	}
-	public int getID_CachDung() {
-		return ID_CachDung;
-	}
-	public void setID_CachDung(int iD_CachDung) {
-		ID_CachDung = iD_CachDung;
-	}
-	public phieukhambenh(int iD, String maPhieuKhamBenh, Date ngayKham, float tongTienThuoc, int tinhTrang,
-			int iD_CachDung) {
+	public phieukhambenh(int iD, String maPhieuKhamBenh, Date ngayKham, float tongTienThuoc, int tinhTrang) {
 		super();
 		ID = iD;
 		MaPhieuKhamBenh = maPhieuKhamBenh;
 		NgayKham = ngayKham;
 		TongTienThuoc = tongTienThuoc;
 		TinhTrang = tinhTrang;
-		ID_CachDung = iD_CachDung;
 	}
 	public phieukhambenh() {
 		super();

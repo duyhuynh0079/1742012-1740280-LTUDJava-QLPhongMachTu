@@ -19,8 +19,8 @@
 		<property name="TinhTrang" type="int">
 			<column name="TinhTrang" length="100" />
 		</property>
-		<property name="ID_DonVi" type="int">
-			<column name="ID_DonVi" length="100" />
-		</property>
+		<many-to-one name="dv" class="entity.donvi" lazy="false" fetch="join" cascade="all"> 
+			<column name="ID_DonVi" /> 
+		</many-to-one>
 	</class>
 </hibernate-mapping>

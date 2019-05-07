@@ -52,7 +52,6 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 
 	public void controlBenhNhan(JPanel jpn) {
 
-
 		String[] displayCBB = { "Nam", "Nữ", "Khác" };
 		jtTimKiem = new JTextField();
 		jtTimKiem.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -333,7 +332,6 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			showBenhNhan modelBenhNhan = new showBenhNhan();
 			jtb.setModel(modelBenhNhan);
 		}
-
 		if (command.equals("Tim")) {
 			int loai = 0;
 			if(rdbTenBenhNhan.isSelected())

@@ -36,15 +36,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
 public class tabNhanVien extends JFrame {
-//	private JLabel jlMaBenhNhan;
-//	private JTextField jtTimPhieu;
-//	private JButton btnSuaPhieu;
-//	private JButton btnXemDanhSach;
-//	private JButton btnTimKiem;
-//	private JComboBox jcbb;
-//	private JTable jtb;
-//	private JLabel lblNewLabel_2;
-	
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

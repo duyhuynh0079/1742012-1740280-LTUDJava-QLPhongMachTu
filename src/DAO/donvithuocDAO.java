@@ -58,6 +58,24 @@ public class donvithuocDAO {
 	        return null;
 	    }
 	}
+
+	public static  donvi timDonViTheoTenDonVi(String tendv) {
+
+	    List<donvi> dv = new ArrayList<donvi>();
+
+	    //Session session = this.sessionFactory.getCurrentSession();
+	    Session session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    dv = session.createQuery("from donvi where TenDonVi=?").setParameter(0, tendv).list();
+	    session.getTransaction().commit();
+	    session.close();
+	    if (dv.size() > 0) {
+	        return dv.get(0);
+	    } else {
+	        return null;
+	    }
+	}
+
 	public static boolean themDonViThuoc(donvi dv) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 

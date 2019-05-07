@@ -12,11 +12,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import entity.quidinh;
+import entity.thuoc;
 
-public class QuiDinhModel extends AbstractTableModel{
-	private List qd; // list kieu ob sinhvien lay tu enity.sinhvien
-	public static ArrayList<quidinh> listQD = new ArrayList<quidinh>();
-	public QuiDinhModel()
+public class ThuocModel extends AbstractTableModel{
+	private List t; // list kieu ob sinhvien lay tu enity.sinhvien
+	public static ArrayList<thuoc> listT = new ArrayList<thuoc>();
+	public ThuocModel()
 	{
 		super();
 		//tao session ket noi hibernate den du lieu
@@ -24,15 +25,16 @@ public class QuiDinhModel extends AbstractTableModel{
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
-		String sql = "SELECT * FROM quidinh";
+		//String sql = "SELECT * FROM thuoc left outer join donvi on thuoc.ID_DonVi=donvi.ID WHERE thuoc.TinhTrang=0";
+		String sql = "SELECT * FROM thuoc WHERE thuoc.TinhTrang=0";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(quidinh.class);
-		qd = query.list();
+		query.addEntity(thuoc.class);
+		t = query.list();
 		
 		//ham hung 1 array list rieng tÃ¡Â»Â« list truyen qua
-		for (Iterator iterator = qd.iterator(); iterator.hasNext();) {
-			quidinh qd2 = (quidinh) iterator.next();
-			listQD.add(qd2);
+		for (Iterator iterator = t.iterator(); iterator.hasNext();) {
+			thuoc t2 = (thuoc) iterator.next();
+			listT.add(t2);
 		}
 		
 		//dong ket noi
@@ -45,33 +47,35 @@ public class QuiDinhModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 4;//lay 4 cot tu database
+		return 5;//lay 5 cot tu database
 	}
 
 	@Override
 	public int getRowCount() {
-		return qd.size();//so dong bang so dong du lieu DB
+		return t.size();//so dong bang so dong du lieu DB
 	}
 
 	@Override
 	public Object getValueAt(int row, int cow) {
-		quidinh qd2 = (quidinh)qd.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
+		thuoc t2 = (thuoc)t.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
 		switch (cow) {//ghep thuoc tinh cho tung cot
 		case 0:
-			return qd2.getID();	
+			return t2.getID();
 		case 1:
-			return qd2.getMaQuiDinh();
+			return t2.getMaThuoc();
 		case 2:
-			return qd2.getTenQuiDinh();
+			return t2.getTenThuoc();
 		case 3: 
-			return qd2.getGiaTri();
+			return t2.getDonGia();
+		case 4:
+			return t2.getDv().getTenDonVi();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh","Giá trị"};
+			String[] columnNames=new String[] {"ID thuoc","Ma thuoc","Ten thuoc","Don gia","Don vi"};
 			return columnNames[col];
 		}
 

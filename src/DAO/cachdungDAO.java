@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import entity.cachdung;
 import entity.donvi;
@@ -15,22 +13,18 @@ import entity.phieukhambenh;
 import util.HibernateUtil;
 
 public class cachdungDAO {
-	public static ArrayList<cachdung> alcd = new ArrayList<cachdung>();
-
+  public static ArrayList<cachdung> alcd = new ArrayList<cachdung>();
 	public static String[] LayDanhSachCachDung() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		ArrayList<String> lst = new ArrayList<>();
-
 		session.beginTransaction();
 		String sql = "SELECT TenCachDung FROM cachdung";
 		SQLQuery query = session.createSQLQuery(sql);
 		List employees = query.list();
-		// System.out.println("size employees" + employees.iterator());
 
 		for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
 			String employee = (String) iterator.next();
 			lst.add(employee);
-
 		}
 		String[] lstDSCD = lst.toArray(new String[lst.size()]);
 		session.close();
@@ -92,18 +86,17 @@ public class cachdungDAO {
 
 	public static boolean suaCachDung(cachdung cd) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		try {
+		try{
 			session.beginTransaction();
-			session.update(cd);
+			session.update(cd); 
 			session.getTransaction().commit();
 			return true;
-		} catch (Exception e) {
+		}catch (Exception e) {
 			session.getTransaction().rollback();
 			System.out.println(e);
-			return false;
-		} finally {
-			session.close();
+			return false; 
+		}finally {
+			session.close(); 
 		}
 	}
-
 }

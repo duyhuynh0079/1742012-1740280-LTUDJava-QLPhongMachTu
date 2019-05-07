@@ -35,6 +35,11 @@ public class showBenhNhan extends AbstractTableModel {
 			benhnhan bn = (benhnhan) iterator.next();
 			albn.add(bn);
 		}
+
+		//dong session
+		s.close();
+		//ngat ket noi
+		sf.close();
 	}
 	
 	public showBenhNhan(String timkiem, int loai)
@@ -59,7 +64,6 @@ public class showBenhNhan extends AbstractTableModel {
 			else sql = "SELECT * FROM benhnhan";
 				
 		}
-		
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(benhnhan.class);
 		lbn = query.list();
@@ -69,8 +73,7 @@ public class showBenhNhan extends AbstractTableModel {
 		//ngat ket noi
 		sf.close();
 	}
-	
-	
+  
 	@Override
 	public int getColumnCount() {
 		return 5;//lay 5 cot tu database
