@@ -3,13 +3,20 @@ package layoutandrun;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -20,18 +27,20 @@ import javax.swing.table.DefaultTableModel;
 
 import DAO.phieukhamDAO;
 
-public class subtabPhieuKhamBenh {
+public class subtabPhieuKhamBenh implements ActionListener {
 	private JLabel lblMaPhieuKham;
 	private JLabel lblMaBenhNhan;
 	private JLabel lblTenBenhNhan;
 	private JLabel lblNgayKham;
 	private JLabel lblTinhTrang;
+	private JTable jtb;
 	private JTextField jtTimPhieu;
+	private JButton btnChiTiet;
 	private JButton btnSuaPhieu;
 	private JButton btnXemDanhSach;
+	private JButton btnThanhToan;
 	private JButton btnTimKiem;
 	private JComboBox jcbb;
-	private JTable jtb;
 	private JLabel lblNewLabel_2;
 	int index;
 
@@ -47,26 +56,16 @@ public class subtabPhieuKhamBenh {
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
 		
-		jtTimPhieu = new JTextField();
-		jtTimPhieu.setToolTipText("Nhập đối tượng tìm kiếm ");
-		jtTimPhieu.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		jtTimPhieu.setBounds(34, 102, 347, 37);
-		jpn.add(jtTimPhieu);
-		jtTimPhieu.setColumns(10);
-		
-		btnTimKiem = new JButton("Tìm Kiếm");
-		btnTimKiem.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\search.png"));
-		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnTimKiem.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnTimKiem.setBounds(460, 102, 159, 37);
-		jpn.add(btnTimKiem);
+		JLabel lblNewLabel_5 = new JLabel("Tìm kiếm");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_5.setBounds(36, 74, 72, 23);
+		jpn.add(lblNewLabel_5);
 		
 		btnXemDanhSach = new JButton("Danh Sách");
 		btnXemDanhSach.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\load.png"));
 		btnXemDanhSach.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnXemDanhSach.setBounds(655, 102, 159, 37);
+		btnXemDanhSach.setBounds(643, 95, 174, 50);
 		jpn.add(btnXemDanhSach);
 		
 		btnSuaPhieu = new JButton("Sửa Phiếu");
@@ -75,7 +74,7 @@ public class subtabPhieuKhamBenh {
 		btnSuaPhieu.setBounds(959, 627, 174, 61);
 		jpn.add(btnSuaPhieu);
 		
-		JButton btnThanhToan = new JButton("Thanh \r\nToán");
+		btnThanhToan = new JButton("Thanh \r\nToán");
 		btnThanhToan.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\hoadon.png"));
 		btnThanhToan.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThanhToan.setBounds(1164, 627, 174, 61);
@@ -137,7 +136,7 @@ public class subtabPhieuKhamBenh {
 		lblNewLabel_4.setBounds(959, 199, 304, 29);
 		jpn.add(lblNewLabel_4);
 		
-		JButton btnChiTiet = new JButton("Chi Tiết");
+		btnChiTiet = new JButton("Chi Tiết");
 		btnChiTiet.setHorizontalAlignment(SwingConstants.LEFT);
 		btnChiTiet.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Phieukham.png"));
 		btnChiTiet.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -161,16 +160,36 @@ public class subtabPhieuKhamBenh {
 		int i = 1;
 		List<Object[]> o = phieukhamDAO.layDanhSanhPhieuKham();
 		for (Object[] countResult : o) {
+			//chinh sua hien thi ngay mat gio giay
+			Date ngay = (Date)countResult[3];//chuyen object vi tri do sang ngay
+			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); //format kieu mong muon
+			String ngaykham = dateFormat.format(ngay);//chuyen ngay sang chuoi
+			int sotinhtrang = (Integer)countResult[4];//chuyen object sang so
+			String tinhtrang = "";
+			if(sotinhtrang == 0)
+			{
+				tinhtrang = "Chưa thanh toán";
+			}
+			else tinhtrang = "Đã thanh toán";
 			modelPhieuKham.addRow(
-					new Object[] { countResult[0], countResult[1], countResult[2], countResult[3], countResult[4] });
+					new Object[] { countResult[0], countResult[1], countResult[2], ngaykham, tinhtrang });
 		}
 		jtb = new JTable(modelPhieuKham);
 		jtb.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtb.setDefaultEditor(Object.class, null);
 		JScrollPane scrollPane = new JScrollPane(jtb);
+		JScrollBar scb = new JScrollBar();
+		scrollPane.add(scb);
 		scrollPane.setBounds(34, 199, 854, 489);
 		jpn.add(scrollPane);
 		
+		
 		jtTimPhieu = textfieldSearch.createRowFilter(jtb);
+		jtTimPhieu.setToolTipText("Nhập đối tượng tìm kiếm ");
+		jtTimPhieu.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jtTimPhieu.setBounds(34, 102, 347, 37);
+		jpn.add(jtTimPhieu);
+		jtTimPhieu.setColumns(10);
 		
 		jtb.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
@@ -178,16 +197,49 @@ public class subtabPhieuKhamBenh {
 				if (jtb.getSelectedRow() >= 0) {
 					lblMaPhieuKham.setText(jtb.getValueAt(jtb.getSelectedRow(), 0).toString());
 					lblMaBenhNhan.setText(jtb.getValueAt(jtb.getSelectedRow(), 1).toString());
-					lblTenBenhNhan.setText(jtb.getValueAt(jtb.getSelectedRow(), 1).toString());
+					lblTenBenhNhan.setText(jtb.getValueAt(jtb.getSelectedRow(), 2).toString());
 					lblNgayKham.setText(jtb.getValueAt(jtb.getSelectedRow(), 3).toString());
-					if(jtb.getValueAt(jtb.getSelectedRow(), 4).toString().equals("0"))
-					{
-						lblTinhTrang.setText("Chưa thanh toán");
-					}
-					else lblTinhTrang.setText("Đã thanh toán");
+					lblTinhTrang.setText(jtb.getValueAt(jtb.getSelectedRow(), 4).toString());
 					index = jtb.getSelectedRow();
 				}
 			}
 		});
+		
+		btnChiTiet.addActionListener(this);
+		btnChiTiet.setActionCommand("ChiTiet");
+		btnSuaPhieu.addActionListener(this);
+		btnSuaPhieu.setActionCommand("Sua");
+		btnThanhToan.addActionListener(this);
+		btnThanhToan.setActionCommand("ChiTiet");
+		btnXemDanhSach.addActionListener(this);
+		btnXemDanhSach.setActionCommand("Xem");
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		String command = ae.getActionCommand();
+		if(command.equals("ChiTiet"))
+		{
+			String maphieukham = lblMaPhieuKham.getText();
+			String mabenhnhan = lblMaBenhNhan.getText();
+			String tenbenhnhan = lblTenBenhNhan.getText();
+			String ngaykham = lblNgayKham.getText();
+			String tinhtrang = lblTinhTrang.getText();
+			if(maphieukham=="")
+			{
+				JOptionPane.showMessageDialog(null,
+						"Xem thất bại, vui lòng click bảng chọn phiếu khám !", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				try {
+					formChiTietPhieu ctp = new formChiTietPhieu(maphieukham,mabenhnhan,tenbenhnhan,ngaykham,tinhtrang);
+					ctp.setVisible(true);
+					ctp.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		}
 	}
 }

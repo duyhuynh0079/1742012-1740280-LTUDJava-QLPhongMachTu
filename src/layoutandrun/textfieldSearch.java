@@ -1,9 +1,6 @@
 package layoutandrun;
 
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.RowFilter;
-import javax.swing.RowSorter;
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableModel;
@@ -25,7 +22,7 @@ public class textfieldSearch {
             throw new RuntimeException("Cannot find appropriate rowSorter: " + rs);
         }
 
-        final JTextField tf = new JTextField(15);
+        final JTextField tf = new JTextField();
         tf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -41,7 +38,7 @@ public class textfieldSearch {
             public void changedUpdate(DocumentEvent e) {
                 update(e);
             }
-
+            
             private void update(DocumentEvent e) {
                 String text = tf.getText();
                 if (text.trim().length() == 0) {

@@ -688,13 +688,13 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					tongtien1 = 0;
 				} else {
 					if (jtSoLuong1.getText().equals("")) {
-						tongtien2 = 0;
+						tongtien1 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
 						lblTongTien.setText(Float.toString(tongtien));
 					} else {
 						soluong1 = Integer.parseInt(jtSoLuong1.getText());
-						tongtien2 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+						tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
 						lblTongTien.setText(Float.toString(tongtien));
@@ -1570,6 +1570,8 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					}
 					JOptionPane.showMessageDialog(null, "Thêm phiếu khám thành công!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
+					ArrayList<phieukhambenh> alpk = phieukhamDAO.phieukham();//set lại array list de maphieu tang
+					this.dispose();
 				}
 			}
 		}
