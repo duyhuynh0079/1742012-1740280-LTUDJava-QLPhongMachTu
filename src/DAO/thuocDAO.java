@@ -108,4 +108,21 @@ public class thuocDAO {
 			session.close(); 
 		}
 	}
+	
+	public static List<Object[]>laydanhsachTheoMaPhieuKhamBenh(String maphieukham)
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String sql = "SELECT DISTINCT th.TenThuoc,ct.SoLuong, th.DonGia,dv.TenDonVi,cd.TenCachDung\r\n" + 
+        		"FROM thuoc th inner join donvi dv on th.ID_DonVi = dv.ID\r\n" + 
+        		"inner JOIN cachdung cd on th.ID_CachDung = cd.ID\r\n" + 
+        		"inner join ctthuoc ct on ct.ID_Thuoc = th.ID\r\n" + 
+        		"inner join phieukhambenh p on ct.ID_PhieuKhamBenh = p.ID\r\n" + 
+        		"where p.MaPhieuKhamBenh =:m";
+        SQLQuery query = session.createSQLQuery(sql);
+        query.setParameter("m", maphieukham);
+        List<Object[]> o = query.list();
+        session.close();
+        return o;
+	}
 }

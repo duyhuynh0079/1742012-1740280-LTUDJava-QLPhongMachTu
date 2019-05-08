@@ -4,20 +4,27 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import DAO.loaibenhDAO;
 import DAO.phieukhamDAO;
+import DAO.thuocDAO;
 import entity.loaibenh;
 import entity.phieukhambenh;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class formChiTietPhieu extends JFrame {
 	private JPanel jp;
@@ -26,6 +33,7 @@ public class formChiTietPhieu extends JFrame {
 	static String tenbenhnhan = "";
 	static String ngaykham = "";
 	static String tinhtrang = "";
+	private JTable jtb;
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -198,10 +206,6 @@ public class formChiTietPhieu extends JFrame {
 		lblTongTien.setBounds(1120, 119, 228, 26);
 		jp.add(lblTongTien);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(114, 318, 1075, 405);
-		jp.add(scrollPane);
-		
 		lblMaPhieuKham.setText(maphieukham);
 		lblMaBenhNhan.setText(mabenhnhan);
 		lblTenBenhNhan.setText(tenbenhnhan);
@@ -235,5 +239,21 @@ public class formChiTietPhieu extends JFrame {
 			stt++;
 		}
 		lblTongTien.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
+		
+		// Tao default model
+				DefaultTableModel modelPhieuKham = new DefaultTableModel(
+						new String[] { "Tên Thuốc", "Số Lượng", "Đơn Giá" , "Đơn Vị", "Cách Dùng" }, 0);
+				int i = 1;
+				List<Object[]> ob = thuocDAO.laydanhsachTheoMaPhieuKhamBenh(maphieukham);
+				for (Object[] countResult : ob) {
+					modelPhieuKham.addRow(
+							new Object[] { countResult[0], countResult[1], countResult[2], countResult[3], countResult[4]});
+				}
+				jtb = new JTable(modelPhieuKham);
+				jtb.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				jtb.setDefaultEditor(Object.class, null);
+				JScrollPane scrollPane = new JScrollPane(jtb);
+				scrollPane.setBounds(100, 316, 1130, 400);
+				jp.add(scrollPane);
 	}
 }
