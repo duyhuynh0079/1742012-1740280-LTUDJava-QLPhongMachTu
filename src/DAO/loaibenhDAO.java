@@ -115,4 +115,16 @@ public class loaibenhDAO {
         session.close();
         return o;
 	}
+	
+	public static List<Object[]>layTenBenhTheoMaPhieuKhamBenh(String maphieukham)
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String sql = "SELECT l.* FROM phieukhambenh p inner join ctloaibenh ct on p.ID = ct.ID_PhieuKhamBenh inner join loaibenh l on ct.ID_LoaiBenh = l.ID where p.MaPhieuKhamBenh =:m";
+        SQLQuery query = session.createSQLQuery(sql);
+        query.setParameter("m", maphieukham);
+        List<Object[]> o = query.list();
+        session.close();
+        return o;
+	}
 }

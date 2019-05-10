@@ -44,19 +44,19 @@ public class formChiTietPhieu extends JFrame {
 
 	private static void createAndShowGUI() {
 		formChiTietPhieu fctp = new formChiTietPhieu(maphieukham,mabenhnhan,tenbenhnhan,ngaykham,tinhtrang);
-		fctp.setLocationRelativeTo(null);
-		fctp.setVisible(true);
-		fctp.setResizable(false);
 	}
 	
 	public formChiTietPhieu(String MaPhieuKham, String MaBenhNhan, String TenBenhNhan, String NgayKham, String TinhTrang) {
+		setSize(1000,600);
+		setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setVisible(true);
 		this.maphieukham = MaPhieuKham;
 		this.mabenhnhan = MaBenhNhan;
 		this.tenbenhnhan = TenBenhNhan;
 		this.ngaykham = NgayKham;
 		this.tinhtrang = TinhTrang;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//đóng form
-		setSize(getMaximumSize());
 		jp = new JPanel();
 		jp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		getContentPane().add(jp);
@@ -253,7 +253,7 @@ public class formChiTietPhieu extends JFrame {
 				jtb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 				jtb.setDefaultEditor(Object.class, null);
 				JScrollPane scrollPane = new JScrollPane(jtb);
-				scrollPane.setBounds(100, 316, 1130, 400);
+				scrollPane.setBounds(100, 316, 1130, 375);
 				jp.add(scrollPane);
 	}
 }

@@ -71,13 +71,13 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnSuaPhieu = new JButton("Sửa Phiếu");
 		btnSuaPhieu.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\edit2.png"));
 		btnSuaPhieu.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSuaPhieu.setBounds(959, 627, 174, 61);
+		btnSuaPhieu.setBounds(959, 610, 174, 61);
 		jpn.add(btnSuaPhieu);
 		
 		btnThanhToan = new JButton("Thanh \r\nToán");
 		btnThanhToan.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\hoadon.png"));
 		btnThanhToan.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnThanhToan.setBounds(1164, 627, 174, 61);
+		btnThanhToan.setBounds(1164, 610, 174, 61);
 		jpn.add(btnThanhToan);
 		
 		JLabel lblNewLabel_1 = new JLabel("*Có thể nhập tìm theo tên bệnh nhân, mã phiếu khám, ngày khám...\r\n");
@@ -101,13 +101,13 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		JLabel lblMPhiuKhm = new JLabel("Tên Bệnh Nhân");
 		lblMPhiuKhm.setForeground(Color.BLUE);
 		lblMPhiuKhm.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblMPhiuKhm.setBounds(959, 379, 115, 23);
+		lblMPhiuKhm.setBounds(959, 373, 115, 23);
 		jpn.add(lblMPhiuKhm);
 		
 		JLabel lblNgyKhm = new JLabel("Ngày Khám");
 		lblNgyKhm.setForeground(Color.BLUE);
 		lblNgyKhm.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNgyKhm.setBounds(959, 436, 88, 29);
+		lblNgyKhm.setBounds(959, 425, 88, 29);
 		jpn.add(lblNgyKhm);
 		
 		lblMaPhieuKham = new JLabel("");
@@ -122,12 +122,12 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		
 		lblTenBenhNhan = new JLabel("");
 		lblTenBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTenBenhNhan.setBounds(1108, 373, 230, 29);
+		lblTenBenhNhan.setBounds(1108, 367, 230, 29);
 		jpn.add(lblTenBenhNhan);
 		
 		lblNgayKham = new JLabel("");
 		lblNgayKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNgayKham.setBounds(1108, 436, 230, 29);
+		lblNgayKham.setBounds(1108, 425, 230, 29);
 		jpn.add(lblNgayKham);
 		
 		JLabel lblNewLabel_4 = new JLabel("THÔNG TIN PHIẾU KHÁM BỆNH");
@@ -140,18 +140,18 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnChiTiet.setHorizontalAlignment(SwingConstants.LEFT);
 		btnChiTiet.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Phieukham.png"));
 		btnChiTiet.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnChiTiet.setBounds(959, 555, 174, 61);
+		btnChiTiet.setBounds(959, 534, 174, 61);
 		jpn.add(btnChiTiet);
 		
 		JLabel lblTnhTrng = new JLabel("Tình Trạng");
 		lblTnhTrng.setForeground(Color.BLUE);
 		lblTnhTrng.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTnhTrng.setBounds(959, 492, 88, 29);
+		lblTnhTrng.setBounds(959, 481, 88, 29);
 		jpn.add(lblTnhTrng);
 		
 		lblTinhTrang = new JLabel("");
 		lblTinhTrang.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTinhTrang.setBounds(1108, 492, 230, 29);
+		lblTinhTrang.setBounds(1108, 481, 230, 29);
 		jpn.add(lblTinhTrang);
 
 		// Tao default model
@@ -180,7 +180,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		JScrollPane scrollPane = new JScrollPane(jtb);
 		JScrollBar scb = new JScrollBar();
 		scrollPane.add(scb);
-		scrollPane.setBounds(34, 199, 854, 489);
+		scrollPane.setBounds(34, 199, 854, 472);
 		jpn.add(scrollPane);
 		
 		
@@ -218,13 +218,13 @@ public class subtabPhieuKhamBenh implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		String command = ae.getActionCommand();
+		String maphieukham = lblMaPhieuKham.getText();
+		String mabenhnhan = lblMaBenhNhan.getText();
+		String tenbenhnhan = lblTenBenhNhan.getText();
+		String ngaykham = lblNgayKham.getText();
+		String tinhtrang = lblTinhTrang.getText();
 		if(command.equals("ChiTiet"))
 		{
-			String maphieukham = lblMaPhieuKham.getText();
-			String mabenhnhan = lblMaBenhNhan.getText();
-			String tenbenhnhan = lblTenBenhNhan.getText();
-			String ngaykham = lblNgayKham.getText();
-			String tinhtrang = lblTinhTrang.getText();
 			if(maphieukham=="")
 			{
 				JOptionPane.showMessageDialog(null,
@@ -236,6 +236,25 @@ public class subtabPhieuKhamBenh implements ActionListener {
 					formChiTietPhieu ctp = new formChiTietPhieu(maphieukham,mabenhnhan,tenbenhnhan,ngaykham,tinhtrang);
 					ctp.setVisible(true);
 					ctp.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		}
+		
+		if(command.equals("Sua"))
+		{
+			if(maphieukham=="")
+			{
+				JOptionPane.showMessageDialog(null,
+						"Sửa phiếu thất bại, vui lòng click bảng chọn phiếu khám !", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				try {
+					formSuaPhieu sp = new formSuaPhieu(maphieukham,mabenhnhan,tenbenhnhan,ngaykham);
+					sp.setVisible(true);
+					sp.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
