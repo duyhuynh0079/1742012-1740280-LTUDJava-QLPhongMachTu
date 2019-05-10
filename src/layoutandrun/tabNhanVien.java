@@ -63,6 +63,7 @@ public class tabNhanVien extends JFrame {
 		JPanel pnlBenhNhan = new JPanel();
 		subtabBenhNhan stbn = new subtabBenhNhan();
 		stbn.controlBenhNhan(pnlBenhNhan);
+		jtp.addTab("Bệnh Nhân", pnlBenhNhan);
 		pnlBenhNhan.setLayout(null);
 		
 		//tao tab PhieuKhamBenh
