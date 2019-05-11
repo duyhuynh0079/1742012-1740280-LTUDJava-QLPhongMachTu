@@ -174,11 +174,11 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 	}
 
 	private static void createAndShowGUI() {
-		formSuaPhieu ftp = new formSuaPhieu(maphieukham,mabenhnhan, tenbenhnhan,ngaykham);
+		formSuaPhieu ftp = new formSuaPhieu(maphieukham, mabenhnhan, tenbenhnhan, ngaykham);
 	}
 
 	public formSuaPhieu(String MaPhieuKham, String MaBenhNhan, String TenBenhNhan, String NgayKham) {
-		setSize(1000,600);
+		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);
@@ -194,7 +194,8 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 
 		btnSua = new JButton("Sửa");
 		btnSua.setSelectedIcon(null);
-		btnSua.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\edit1.png"));
+		btnSua.setIcon(new ImageIcon(
+				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\edit1.png"));
 		btnSua.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSua.setBounds(631, 624, 146, 62);
 		jp.add(btnSua);
@@ -467,10 +468,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		lblNgy.setBounds(717, 79, 101, 22);
 		jp.add(lblNgy);
 
-		//truyen vet ngaykham
+		// truyen vet ngaykham
 		Date ngay = new Date();
 		try {
-			 ngay = new SimpleDateFormat("dd-MM-yyyy").parse(ngaykham);
+			ngay = new SimpleDateFormat("dd-MM-yyyy").parse(ngaykham);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -621,40 +622,38 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		lblDonGia10.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDonGia10.setBounds(1170, 492, 103, 32);
 		jp.add(lblDonGia10);
-		
+
 		// load lan dau cac o so luong
-				jtSoLuong1.setText("1");
-				jtSoLuong2.setText("1");
-				jtSoLuong3.setText("1");
-				jtSoLuong4.setText("1");
-				jtSoLuong5.setText("1");
-				jtSoLuong6.setText("1");
-				jtSoLuong7.setText("1");
-				jtSoLuong8.setText("1");
-				jtSoLuong9.setText("1");
-				jtSoLuong10.setText("1");
-				
+		jtSoLuong1.setText("1");
+		jtSoLuong2.setText("1");
+		jtSoLuong3.setText("1");
+		jtSoLuong4.setText("1");
+		jtSoLuong5.setText("1");
+		jtSoLuong6.setText("1");
+		jtSoLuong7.setText("1");
+		jtSoLuong8.setText("1");
+		jtSoLuong9.setText("1");
+		jtSoLuong10.setText("1");
+
 		truyenDuLieuCombobox();
 		ArrayList<thuoc1> alThuoc = thuocDAO.layThuoc();
-		
-		//truyen lay vet tong tien
-				lblTongTien.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
-		
-		//truyen lay vet benh
-		int j = 1;//bien co de xet co bao nhieu loai benh 
+
+		// truyen lay vet tong tien
+		lblTongTien.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
+
+		// truyen lay vet benh
+		int j = 1;// bien co de xet co bao nhieu loai benh
 		List<Object[]> oLoaiBenh = loaibenhDAO.layTenBenhTheoMaPhieuKhamBenh(maphieukham);
 		for (Object[] countResult : oLoaiBenh) {
-			if(j==1) {
+			if (j == 1) {
 				String tenloaibenh1 = countResult[2].toString();
 				cbbLoaiBenh1.setSelectedItem(tenloaibenh1);
 				cbLoaiBenh1.setSelected(true);
-			}
-			else if (j==2){
+			} else if (j == 2) {
 				String tenloaibenh2 = countResult[2].toString();
 				cbbLoaiBenh2.setSelectedItem(tenloaibenh2);
 				cbLoaiBenh2.setSelected(true);
-			}
-			else {
+			} else {
 				String tenloaibenh3 = countResult[2].toString();
 				cbbLoaiBenh3.setSelectedItem(tenloaibenh3);
 				cbLoaiBenh3.setSelected(true);
@@ -662,11 +661,11 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 			j++;
 		}
 
-		//truyen lay vet thuoc
-		int k = 1;//bien co de xet co bao nhieu loai benh 
+		// truyen lay vet thuoc
+		int k = 1;// bien co de xet co bao nhieu loai benh
 		List<Object[]> oThuoc = thuocDAO.laydanhsachThuocTheoMaPhieuKhamBenh(maphieukham);
 		for (Object[] countResult : oThuoc) {
-			if(k==1) {
+			if (k == 1) {
 				String tenthuoc1 = countResult[0].toString();
 				cbbThuoc1.setSelectedItem(tenthuoc1);
 				jtSoLuong1.setText(countResult[1].toString());
@@ -676,8 +675,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
 				tongtien = tongtien1;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==2) {
+			} else if (k == 2) {
 				String tenthuoc2 = countResult[0].toString();
 				cbbThuoc2.setSelectedItem(tenthuoc2);
 				jtSoLuong2.setText(countResult[1].toString());
@@ -687,8 +685,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
 				tongtien = tongtien1 + tongtien2;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==3) {
+			} else if (k == 3) {
 				String tenthuoc3 = countResult[0].toString();
 				cbbThuoc3.setSelectedItem(tenthuoc3);
 				jtSoLuong3.setText(countResult[1].toString());
@@ -698,8 +695,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==4) {
+			} else if (k == 4) {
 				String tenthuoc4 = countResult[0].toString();
 				cbbThuoc4.setSelectedItem(tenthuoc4);
 				jtSoLuong4.setText(countResult[1].toString());
@@ -709,8 +705,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==5) {
+			} else if (k == 5) {
 				String tenthuoc5 = countResult[0].toString();
 				cbbThuoc5.setSelectedItem(tenthuoc5);
 				jtSoLuong5.setText(countResult[1].toString());
@@ -720,8 +715,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==6) {
+			} else if (k == 6) {
 				String tenthuoc6 = countResult[0].toString();
 				cbbThuoc6.setSelectedItem(tenthuoc6);
 				jtSoLuong6.setText(countResult[1].toString());
@@ -731,8 +725,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==7) {
+			} else if (k == 7) {
 				String tenthuoc7 = countResult[0].toString();
 				cbbThuoc7.setSelectedItem(tenthuoc7);
 				jtSoLuong7.setText(countResult[1].toString());
@@ -742,8 +735,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==8) {
+			} else if (k == 8) {
 				String tenthuoc8 = countResult[0].toString();
 				cbbThuoc8.setSelectedItem(tenthuoc8);
 				jtSoLuong8.setText(countResult[1].toString());
@@ -751,10 +743,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				cbThuoc8.setSelected(true);
 				soluong8 = Integer.parseInt(jtSoLuong8.getText());
 				tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+						+ tongtien8;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else if(k==9) {
+			} else if (k == 9) {
 				String tenthuoc9 = countResult[0].toString();
 				cbbThuoc9.setSelectedItem(tenthuoc9);
 				jtSoLuong9.setText(countResult[1].toString());
@@ -762,10 +754,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				cbThuoc9.setSelected(true);
 				soluong9 = Integer.parseInt(jtSoLuong9.getText());
 				tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9;
 				lblTongTien.setText(Float.toString(tongtien));
-			}
-			else {
+			} else {
 				String tenthuoc10 = countResult[0].toString();
 				cbbThuoc10.setSelectedItem(tenthuoc10);
 				jtSoLuong10.setText(countResult[1].toString());
@@ -773,13 +765,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				cbThuoc10.setSelected(true);
 				soluong10 = Integer.parseInt(jtSoLuong10.getText());
 				tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9 + tongtien10;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
 				lblTongTien.setText(Float.toString(tongtien));
 			}
 			k++;
 		}
-		
-		
+
 		cbbThuoc1.addActionListener(this);
 		cbbThuoc2.addActionListener(this);
 		cbbThuoc3.addActionListener(this);
@@ -1345,7 +1337,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						idbenh1 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} 
+			}
 		}
 		if (command.equals("loaibenh2")) {
 			if (cbLoaiBenh2.isSelected()) {
@@ -1363,7 +1355,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						idbenh3 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} 
+			}
 		}
 
 		// su kien khi click checkbox thuoc
@@ -1586,7 +1578,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 
 		if (command.equals("Sua")) {
 			int idbenhnhan = 0;
-			int id = 0; //can truyen ID de update
+			int id = 0; // can truyen ID de update
 			id = phieukhamDAO.layidTheoMaPhieuKhamBenh(maphieukham);
 			Date ngaykham = new Date();
 			// lay id benh nhan. id loaibenh va id thuoc o tren
@@ -1610,20 +1602,19 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh và 1 thuốc !", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
-				if((cbThuoc1.isSelected()&& validate.isNumber(jtSoLuong1.getText()) == false)||
-						(cbThuoc2.isSelected()&& validate.isNumber(jtSoLuong2.getText()) == false)||
-						(cbThuoc3.isSelected()&& validate.isNumber(jtSoLuong3.getText()) == false)||
-						(cbThuoc4.isSelected()&& validate.isNumber(jtSoLuong4.getText()) == false)||
-						(cbThuoc5.isSelected()&& validate.isNumber(jtSoLuong5.getText()) == false)||
-						(cbThuoc6.isSelected()&& validate.isNumber(jtSoLuong6.getText()) == false)||
-						(cbThuoc7.isSelected()&& validate.isNumber(jtSoLuong7.getText()) == false)||
-						(cbThuoc8.isSelected()&& validate.isNumber(jtSoLuong8.getText()) == false)||
-						(cbThuoc9.isSelected()&& validate.isNumber(jtSoLuong9.getText()) == false)||
-						(cbThuoc10.isSelected()&& validate.isNumber(jtSoLuong10.getText()) == false)
-						) {
-							JOptionPane.showMessageDialog(null, "Nhập số cho số lượng thuốc đã chọn!", "WARNING",
-								JOptionPane.WARNING_MESSAGE);}
-				else {
+				if ((cbThuoc1.isSelected() && validate.isNumber(jtSoLuong1.getText()) == false)
+						|| (cbThuoc2.isSelected() && validate.isNumber(jtSoLuong2.getText()) == false)
+						|| (cbThuoc3.isSelected() && validate.isNumber(jtSoLuong3.getText()) == false)
+						|| (cbThuoc4.isSelected() && validate.isNumber(jtSoLuong4.getText()) == false)
+						|| (cbThuoc5.isSelected() && validate.isNumber(jtSoLuong5.getText()) == false)
+						|| (cbThuoc6.isSelected() && validate.isNumber(jtSoLuong6.getText()) == false)
+						|| (cbThuoc7.isSelected() && validate.isNumber(jtSoLuong7.getText()) == false)
+						|| (cbThuoc8.isSelected() && validate.isNumber(jtSoLuong8.getText()) == false)
+						|| (cbThuoc9.isSelected() && validate.isNumber(jtSoLuong9.getText()) == false)
+						|| (cbThuoc10.isSelected() && validate.isNumber(jtSoLuong10.getText()) == false)) {
+					JOptionPane.showMessageDialog(null, "Nhập số cho số lượng thuốc đã chọn!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				} else {
 					// sua bang phieu kham benh truoc
 					phieukhambenh pkb = new phieukhambenh();
 					pkb.setID(id);
@@ -1632,25 +1623,25 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					pkb.setTinhTrang(0);
 					pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
 					phieukhamDAO.suaPhieuKham(pkb);
-					
-					//xoa cac bang trung gian
-					//xoa ctloaibenh
+
+					// xoa cac bang trung gian
+					// xoa ctloaibenh
 					List<Object[]> oCTLoaiBenh = ctloaibenhDAO.layCTLoaiBenhTheoMaPhieuKhamBenh(maphieukham);
 					for (Object[] countResult : oCTLoaiBenh) {
-							ctloaibenh ctlb = new ctloaibenh();
-							ctlb.setID_PhieuKhamBenh(id);
-							ctlb.setID_LoaiBenh((Integer)countResult[0]);
-							ctloaibenhDAO.xoaCTLoaiBenh(ctlb);
-						}
-					//xoa ctthuoc
+						ctloaibenh ctlb = new ctloaibenh();
+						ctlb.setID_PhieuKhamBenh(id);
+						ctlb.setID_LoaiBenh((Integer) countResult[0]);
+						ctloaibenhDAO.xoaCTLoaiBenh(ctlb);
+					}
+					// xoa ctthuoc
 					List<Object[]> oCTThuoc = ctthuocDAO.layCTThuocTheoMaPhieuKhamBenh(maphieukham);
 					for (Object[] countResult : oCTThuoc) {
-							ctthuoc ctt = new ctthuoc();
-							ctt.setID_PhieuKhamBenh(id);
-							ctt.setID_Thuoc((Integer)countResult[0]);
-							ctthuocDAO.xoaCTThuoc(ctt);
+						ctthuoc ctt = new ctthuoc();
+						ctt.setID_PhieuKhamBenh(id);
+						ctt.setID_Thuoc((Integer) countResult[0]);
+						ctthuocDAO.xoaCTThuoc(ctt);
 					}
-					
+
 					// them cac bang trung gian
 					// them bang ctloaibenh
 					ctloaibenh ctlb = new ctloaibenh();
@@ -1663,7 +1654,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 								ctloaibenhDAO.themCTLoaiBenh(ctlb);
 							}
 						}
-					} 
+					}
 					if (cbLoaiBenh2.isSelected()) {
 						for (int i = 0; i < alLoaiBenh.size(); i++) {
 							if (alLoaiBenh.get(i).getTenLoaiBenh().equals(cbbLoaiBenh2.getSelectedItem().toString())) {
@@ -1673,7 +1664,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 								ctloaibenhDAO.themCTLoaiBenh(ctlb);
 							}
 						}
-					} 
+					}
 					if (cbLoaiBenh3.isSelected()) {
 						for (int i = 0; i < alLoaiBenh.size(); i++) {
 							if (alLoaiBenh.get(i).getTenLoaiBenh().equals(cbbLoaiBenh3.getSelectedItem().toString())) {
@@ -1683,8 +1674,8 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 								ctloaibenhDAO.themCTLoaiBenh(ctlb);
 							}
 						}
-					} 
-					//them ctthuoc
+					}
+					// them ctthuoc
 					ctthuoc ctthuoc = new ctthuoc();
 					if (cbThuoc1.isSelected()) {
 						// neu click vao id thuoc1 la id trong db
