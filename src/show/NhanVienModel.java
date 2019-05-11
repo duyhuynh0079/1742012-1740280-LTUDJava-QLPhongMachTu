@@ -25,7 +25,7 @@ public class NhanVienModel extends AbstractTableModel{
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
-		String sql = "SELECT *  FROM nhanvien WHERE TinhTrang=0";
+		String sql = "SELECT *  FROM nhanvien WHERE TinhTrang=1";
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(nhanvien.class);
 		nv = query.list();
@@ -46,7 +46,7 @@ public class NhanVienModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 8;//lay 9 cot tu database
+		return 7;//lay 7 cot tu database
 	}
 
 	@Override
@@ -63,18 +63,16 @@ public class NhanVienModel extends AbstractTableModel{
 		case 1:
 			return nv2.getTenDangNhap();
 		case 2:
-			return nv2.getMatKhau();
-		case 3:
 			return nv2.getHoTenNV();
-		case 4:
+		case 3:
 			return nv2.getNgaySinh();
-		case 5:
+		case 4:
 			return nv2.getDiaChi();
-		case 6:
+		case 5:
 			return nv2.getSDT();
 //		case 7:
 //			return nv2.getTinhTrang();
-		case 7:
+		case 6:
 			return nhanvienDAO.layTenChucVu(nv2.getMaCV());
 		default:
 			return null;
@@ -83,7 +81,7 @@ public class NhanVienModel extends AbstractTableModel{
 	// set ten cot
 		public String getColumnName(int col) {
 			//String[] columnNames=new String[] {"ID nhÃ¢n viÃªn","TÃªn Ä‘Äƒng nháº­p","Máº­t kháº©u","Há»� tÃªn","NgÃ y sinh","Ä�á»‹a chá»‰","Sá»‘ Ä‘iá»‡n thoáº¡i","TÃ¬nh tráº¡ng","Ma chá»©c vá»¥"};
-			String[] columnNames=new String[] {"ID nhan vien","Ten DN","Mat khau","Ho ten","Ngay sinh","Dia chi","So dien thoai","Chuc vu"};
+			String[] columnNames=new String[] {"ID nhân viên","Tên đăng nhập","họ tên","Ngày sinh","Địa chỉ","Số điện thoại","Chức vụ"};
 			return columnNames[col];
 		}
 

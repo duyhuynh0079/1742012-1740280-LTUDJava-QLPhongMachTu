@@ -22,5 +22,8 @@
 		<many-to-one name="dv" class="entity.donvi" lazy="false" fetch="join" cascade="all"> 
 			<column name="ID_DonVi" /> 
 		</many-to-one>
+		<many-to-one name="cd" class="entity.cachdung" lazy="false" fetch="join" cascade="all"> 
+			<column name="ID_CachDung" /> 
+		</many-to-one>
 	</class>
 </hibernate-mapping>
