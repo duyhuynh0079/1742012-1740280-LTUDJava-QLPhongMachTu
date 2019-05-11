@@ -71,7 +71,7 @@ import java.awt.TextArea;
 import javax.swing.DefaultComboBoxModel;
 
 public class nhanvienlayout extends JFrame {
-	// pull request 1
+	// pull request
 	private JPanel contentPane;
 	private JTextField txtHoTenNV;
 	private JTextField txtNgaySinhNV;
