@@ -24,7 +24,7 @@ public class NhanVienTimKiemModel extends AbstractTableModel{
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		//mo ket noi bang session
 		Session s = sf.openSession();
-		String sql = "SELECT * FROM nhanvien  WHERE TinhTrang = 0 AND HoTenNV Like '%"+tim+"%'";
+		String sql = "SELECT * FROM nhanvien  WHERE TinhTrang = 1 AND HoTenNV Like '%"+tim+"%'";
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(nhanvien.class);
 		nv = query.list();

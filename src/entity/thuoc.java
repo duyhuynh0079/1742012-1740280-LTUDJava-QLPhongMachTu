@@ -7,6 +7,7 @@ public class thuoc {
 	private float DonGia;
 	private int TinhTrang;
 	private donvi dv;
+	private cachdung cd;
 	public int getID() {
 		return ID;
 	}
@@ -43,7 +44,14 @@ public class thuoc {
 	public void setDv(donvi dv) {
 		this.dv = dv;
 	}
-	public thuoc(int iD, String maThuoc, String tenThuoc, float donGia, int tinhTrang, donvi dv) {
+	
+	public cachdung getCd() {
+		return cd;
+	}
+	public void setCd(cachdung cd) {
+		this.cd = cd;
+	}
+	public thuoc(int iD, String maThuoc, String tenThuoc, float donGia, int tinhTrang, donvi dv, cachdung cd) {
 		super();
 		ID = iD;
 		MaThuoc = maThuoc;
@@ -51,6 +59,7 @@ public class thuoc {
 		DonGia = donGia;
 		TinhTrang = tinhTrang;
 		this.dv = dv;
+		this.cd = cd;
 	}
 	public thuoc() {
 		super();

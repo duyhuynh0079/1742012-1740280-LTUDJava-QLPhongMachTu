@@ -26,7 +26,7 @@ public class ThuocModel extends AbstractTableModel{
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
 		//String sql = "SELECT * FROM thuoc left outer join donvi on thuoc.ID_DonVi=donvi.ID WHERE thuoc.TinhTrang=0";
-		String sql = "SELECT * FROM thuoc WHERE thuoc.TinhTrang=0";
+		String sql = "SELECT * FROM thuoc WHERE thuoc.TinhTrang=1";
 		SQLQuery query = s.createSQLQuery(sql);
 		query.addEntity(thuoc.class);
 		t = query.list();
@@ -47,7 +47,7 @@ public class ThuocModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 5;//lay 5 cot tu database
+		return 6;//lay 6 cot tu database
 	}
 
 	@Override
@@ -69,13 +69,15 @@ public class ThuocModel extends AbstractTableModel{
 			return t2.getDonGia();
 		case 4:
 			return t2.getDv().getTenDonVi();
+		case 5:
+			return t2.getCd().getTenCachDung();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID thuoc","Ma thuoc","Ten thuoc","Don gia","Don vi"};
+			String[] columnNames=new String[] {"ID thuốc","Mã thuốc","Tên thuốc","Đơn giá","Đơn vị","Cách dùng"};
 			return columnNames[col];
 		}
 

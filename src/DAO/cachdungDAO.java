@@ -51,6 +51,22 @@ public class cachdungDAO {
 		}
 		return alcd;
 	}
+	public static  cachdung timCachDungTheoTenCachDung(String tencd) {
+
+	    List<cachdung> cd = new ArrayList<cachdung>();
+
+	    //Session session = this.sessionFactory.getCurrentSession();
+	    Session session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();
+	    cd = session.createQuery("from cachdung where TenCachDung=?").setParameter(0, tencd).list();
+	    session.getTransaction().commit();
+	    session.close();
+	    if (cd.size() > 0) {
+	        return cd.get(0);
+	    } else {
+	        return null;
+	    }
+	}
 
 	public static cachdung timMaCachDung(String macd) {
 
