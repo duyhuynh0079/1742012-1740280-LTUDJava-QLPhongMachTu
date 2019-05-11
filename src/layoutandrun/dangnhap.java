@@ -54,7 +54,7 @@ public class dangnhap extends JFrame {
 	 */
 	public dangnhap() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
-		setTitle("DANG NHAP");
+		setTitle("ĐĂNG NHẬP");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 469, 259);
 		contentPane = new JPanel();
@@ -62,13 +62,13 @@ public class dangnhap extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblngNhp = new JLabel("DANG NHAP");
+		JLabel lblngNhp = new JLabel("ĐĂNG NHẬP");
 		lblngNhp.setForeground(Color.RED);
 		lblngNhp.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblngNhp.setBounds(162, 11, 119, 35);
 		contentPane.add(lblngNhp);
 		
-		JLabel lblTenDangNhap = new JLabel("Ten dang nhap");
+		JLabel lblTenDangNhap = new JLabel("Tên đăng nhập");
 		lblTenDangNhap.setForeground(Color.BLUE);
 		lblTenDangNhap.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblTenDangNhap.setBounds(59, 63, 124, 27);
@@ -80,7 +80,7 @@ public class dangnhap extends JFrame {
 		txtTenDangNhap.setBounds(217, 63, 170, 25);
 		contentPane.add(txtTenDangNhap);
 		
-		JLabel lblMatKhau = new JLabel("Mat khau");
+		JLabel lblMatKhau = new JLabel("Mật khẩu");
 		lblMatKhau.setForeground(Color.BLUE);
 		lblMatKhau.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblMatKhau.setBounds(59, 101, 124, 27);
@@ -90,7 +90,7 @@ public class dangnhap extends JFrame {
 		pfMatKhau.setBounds(217, 101, 170, 25);
 		contentPane.add(pfMatKhau);
 		
-		JButton btnDangNhap = new JButton("Dang Nhap");
+		JButton btnDangNhap = new JButton("Đăng nhập");
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtTenDangNhap.getText().equals("") ||pfMatKhau.getText().equals("")) {
@@ -135,7 +135,7 @@ public class dangnhap extends JFrame {
 		btnDangNhap.setBounds(59, 151, 158, 41);
 		contentPane.add(btnDangNhap);
 		
-		JButton btnThoat = new JButton("Thoat");
+		JButton btnThoat = new JButton("Thoát");
 		btnThoat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
