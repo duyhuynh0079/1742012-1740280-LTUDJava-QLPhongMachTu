@@ -3,15 +3,22 @@ package entity;
 import java.util.Date;
 
 public class hoadon {
-	private int MaHoaDon;
+	int ID;
+	private String MaHoaDon;
 	private Date NgayThanhToan;
 	private float TienKham;
 	private float TongTien;
-	private int MaPhieuKhamBenh;
-	public int getMaHoaDon() {
+	int ID_PhieuKhamBenh;
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public String getMaHoaDon() {
 		return MaHoaDon;
 	}
-	public void setMaHoaDon(int maHoaDon) {
+	public void setMaHoaDon(String maHoaDon) {
 		MaHoaDon = maHoaDon;
 	}
 	public Date getNgayThanhToan() {
@@ -32,23 +39,23 @@ public class hoadon {
 	public void setTongTien(float tongTien) {
 		TongTien = tongTien;
 	}
-	public int getMaPhieuKhamBenh() {
-		return MaPhieuKhamBenh;
+	public int getID_PhieuKhamBenh() {
+		return ID_PhieuKhamBenh;
 	}
-	public void setMaPhieuKhamBenh(int maPhieuKhamBenh) {
-		MaPhieuKhamBenh = maPhieuKhamBenh;
+	public void setID_PhieuKhamBenh(int iD_PhieuKhamBenh) {
+		ID_PhieuKhamBenh = iD_PhieuKhamBenh;
 	}
-	public hoadon(int maHoaDon, Date ngayThanhToan, float tienKham, float tongTien, int maPhieuKhamBenh) {
+	public hoadon(int iD, String maHoaDon, Date ngayThanhToan, float tienKham, float tongTien, int iD_PhieuKhamBenh) {
 		super();
+		ID = iD;
 		MaHoaDon = maHoaDon;
 		NgayThanhToan = ngayThanhToan;
 		TienKham = tienKham;
 		TongTien = tongTien;
-		MaPhieuKhamBenh = maPhieuKhamBenh;
+		ID_PhieuKhamBenh = iD_PhieuKhamBenh;
 	}
 	public hoadon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 }

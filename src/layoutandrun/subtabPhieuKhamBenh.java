@@ -210,7 +210,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnSuaPhieu.addActionListener(this);
 		btnSuaPhieu.setActionCommand("Sua");
 		btnThanhToan.addActionListener(this);
-		btnThanhToan.setActionCommand("ChiTiet");
+		btnThanhToan.setActionCommand("ThanhToan");
 		btnXemDanhSach.addActionListener(this);
 		btnXemDanhSach.setActionCommand("Xem");
 	}
@@ -225,7 +225,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		String tinhtrang = lblTinhTrang.getText();
 		if(command.equals("ChiTiet"))
 		{
-			if(maphieukham=="")
+			if(maphieukham.equals(""))
 			{
 				JOptionPane.showMessageDialog(null,
 						"Xem thất bại, vui lòng click bảng chọn phiếu khám !", "WARNING",
@@ -242,9 +242,9 @@ public class subtabPhieuKhamBenh implements ActionListener {
 			}
 		}
 		
-		if(command.equals("Sua"))
+		else if(command.equals("Sua"))
 		{
-			if(maphieukham=="")
+			if(maphieukham.equals(""))
 			{
 				JOptionPane.showMessageDialog(null,
 						"Sửa phiếu thất bại, vui lòng click bảng chọn phiếu khám !", "WARNING",
@@ -257,6 +257,33 @@ public class subtabPhieuKhamBenh implements ActionListener {
 					sp.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					// TODO: handle exception
+				}
+			}
+		}
+		
+		else if(command.equals("ThanhToan"))
+		{	
+			if(maphieukham.equals(""))
+			{
+				JOptionPane.showMessageDialog(null,
+						"Thanh toán thất bại, vui lòng click bảng chọn phiếu khám !", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				if(tinhtrang.equals("Đã thanh toán"))
+				{
+					JOptionPane.showMessageDialog(null,
+							"Thanh toán thất bại, phiếu khám này đã thanh toán !", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					try {
+						formThanhToan ftt = new formThanhToan(maphieukham,mabenhnhan,tenbenhnhan,ngaykham,tinhtrang);
+						ftt.setVisible(true);
+						ftt.setLocationRelativeTo(null);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 				}
 			}
 		}
