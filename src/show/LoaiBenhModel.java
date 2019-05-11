@@ -72,7 +72,7 @@ public class LoaiBenhModel extends AbstractTableModel{
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID loai benh","Ma loai benh","Ten loai benh","Trieu chung"};
+			String[] columnNames=new String[] {"ID loại bệnh","Mã loại bệnh","Tên loại bệnh","Triệu chứng"};
 			return columnNames[col];
 		}
 
