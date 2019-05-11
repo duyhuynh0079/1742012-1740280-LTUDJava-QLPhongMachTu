@@ -345,7 +345,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 				hd.setID_PhieuKhamBenh(id);
 				hoadonDAO.themHoaDon(hd);
 				this.dispose();
-
+				//pull request
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
