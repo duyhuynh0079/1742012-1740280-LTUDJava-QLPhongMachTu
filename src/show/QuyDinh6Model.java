@@ -11,12 +11,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import entity.loaibenh;
+import entity.quydinh6;
 
-public class LoaiBenhModel extends AbstractTableModel{
-	private List lb; // list kieu ob sinhvien lay tu enity.sinhvien
-	public static ArrayList<loaibenh> listLB = new ArrayList<loaibenh>();
-	public LoaiBenhModel()
+public class QuyDinh6Model extends AbstractTableModel{
+	private List qd; // list kieu ob sinhvien lay tu enity.sinhvien
+	public static ArrayList<quydinh6> listQD = new ArrayList<quydinh6>();
+	public QuyDinh6Model()
 	{
 		super();
 		//tao session ket noi hibernate den du lieu
@@ -24,15 +24,15 @@ public class LoaiBenhModel extends AbstractTableModel{
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
-		String sql = "SELECT * FROM loaibenh";
+		String sql = "SELECT * FROM quydinh6";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(loaibenh.class);
-		lb = query.list();
+		query.addEntity(quydinh6.class);
+		qd = query.list();
 		
 		//ham hung 1 array list rieng tÃ¡Â»Â« list truyen qua
-		for (Iterator iterator = lb.iterator(); iterator.hasNext();) {
-			loaibenh lb2 = (loaibenh) iterator.next();
-			listLB.add(lb2);
+		for (Iterator iterator = qd.iterator(); iterator.hasNext();) {
+			quydinh6 qd2 = (quydinh6) iterator.next();
+			listQD.add(qd2);
 		}
 		
 		//dong ket noi
@@ -45,33 +45,31 @@ public class LoaiBenhModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 4;//lay 4 cot tu database
+		return 3;//lay 3 cot tu database
 	}
 
 	@Override
 	public int getRowCount() {
-		return lb.size();//so dong bang so dong du lieu DB
+		return qd.size();//so dong bang so dong du lieu DB
 	}
 
 	@Override
 	public Object getValueAt(int row, int cow) {
-		loaibenh lb2 = (loaibenh)lb.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
+		quydinh6 qd2 = (quydinh6)qd.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
 		switch (cow) {//ghep thuoc tinh cho tung cot
 		case 0:
-			return lb2.getID();	
+			return qd2.getID();	
 		case 1:
-			return lb2.getMaLoaiBenh();
+			return qd2.getMaQuyDinh();
 		case 2:
-			return lb2.getTenLoaiBenh();
-		case 3: 
-			return lb2.getTrieuChung();
+			return qd2.getTenQuyDinh();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID loại bệnh","Mã loại bệnh","Tên loại bệnh","Triệu chứng"};
+			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh"};
 			return columnNames[col];
 		}
 

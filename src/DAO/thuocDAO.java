@@ -10,7 +10,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import entity.benhnhan;
-import entity.quidinh;
 import entity.thuoc;
 import entity.thuoc1;
 import util.HibernateUtil;

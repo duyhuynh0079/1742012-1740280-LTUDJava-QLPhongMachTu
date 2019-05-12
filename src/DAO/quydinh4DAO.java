@@ -6,18 +6,19 @@ import java.util.List;
 import org.hibernate.Session;
 
 import entity.cachdung;
-import entity.quidinh;
+import entity.quydinh2;
+import entity.quydinh4;
 import util.HibernateUtil;
 
-public class quidinhDAO {
-	public static  quidinh timMaQuyDinh(String maqd) {
+public class quydinh4DAO {
+	public static  quydinh4 timMaQuyDinh(String maqd) {
 
-	    List<quidinh> qd = new ArrayList<quidinh>();
+	    List<quydinh4> qd = new ArrayList<quydinh4>();
 
 	    //Session session = this.sessionFactory.getCurrentSession();
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    session.beginTransaction();
-	    qd = session.createQuery("from quidinh where MaQuiDinh=?").setParameter(0, maqd).list();
+	    qd = session.createQuery("from quydinh4 where MaQuyDinh=?").setParameter(0, maqd).list();
 	    session.getTransaction().commit();
 	    session.close();
 	    if (qd.size() > 0) {
@@ -26,7 +27,7 @@ public class quidinhDAO {
 	        return null;
 	    }
 	}
-	public static boolean themQuyDinh(quidinh qd) {
+	public static boolean themQuyDinh(quydinh4 qd) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 
 		try {
@@ -42,7 +43,7 @@ public class quidinhDAO {
 			session.close();
 		}
 	}
-	public static boolean suaQuyDinh(quidinh qd) {
+	public static boolean suaQuyDinh(quydinh4 qd) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try{
 			session.beginTransaction();
