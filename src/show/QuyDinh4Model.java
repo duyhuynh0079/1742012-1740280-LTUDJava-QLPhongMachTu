@@ -11,12 +11,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import entity.quidinh;
+import entity.quydinh4;
 
-public class QuiDinhModel extends AbstractTableModel{
+public class QuyDinh4Model extends AbstractTableModel{
 	private List qd; // list kieu ob sinhvien lay tu enity.sinhvien
-	public static ArrayList<quidinh> listQD = new ArrayList<quidinh>();
-	public QuiDinhModel()
+	public static ArrayList<quydinh4> listQD = new ArrayList<quydinh4>();
+	public QuyDinh4Model()
 	{
 		super();
 		//tao session ket noi hibernate den du lieu
@@ -24,14 +24,14 @@ public class QuiDinhModel extends AbstractTableModel{
 		//mo ket noi bang session
 		Session s = sf.openSession();
 		//tao cau query truy van den bang don vi
-		String sql = "SELECT * FROM quidinh";
+		String sql = "SELECT * FROM quydinh4";
 		SQLQuery query = s.createSQLQuery(sql);
-		query.addEntity(quidinh.class);
+		query.addEntity(quydinh4.class);
 		qd = query.list();
 		
 		//ham hung 1 array list rieng tÃ¡Â»Â« list truyen qua
 		for (Iterator iterator = qd.iterator(); iterator.hasNext();) {
-			quidinh qd2 = (quidinh) iterator.next();
+			quydinh4 qd2 = (quydinh4) iterator.next();
 			listQD.add(qd2);
 		}
 		
@@ -45,7 +45,7 @@ public class QuiDinhModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 4;//lay 4 cot tu database
+		return 3;//lay 3 cot tu database
 	}
 
 	@Override
@@ -55,23 +55,21 @@ public class QuiDinhModel extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int row, int cow) {
-		quidinh qd2 = (quidinh)qd.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
+		quydinh4 qd2 = (quydinh4)qd.get(row);//gia tri 1 Ojebt tuong ung 1 dong trong st 
 		switch (cow) {//ghep thuoc tinh cho tung cot
 		case 0:
 			return qd2.getID();	
 		case 1:
-			return qd2.getMaQuiDinh();
+			return qd2.getMaQuyDinh();
 		case 2:
-			return qd2.getTenQuiDinh();
-		case 3: 
-			return qd2.getGiaTri();
+			return qd2.getTenQuyDinh();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh","Giá trị"};
+			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh"};
 			return columnNames[col];
 		}
 

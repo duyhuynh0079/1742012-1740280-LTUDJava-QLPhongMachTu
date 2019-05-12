@@ -13,7 +13,10 @@
 		<mapping resource="entity/benhnhan.hbm.xml" />
 		<mapping resource="entity/donvi.hbm.xml" />
 		<mapping resource="entity/cachdung.hbm.xml" />
-		<mapping resource="entity/quydinh.hbm.xml" />
+		<mapping resource="entity/quydinh1.hbm.xml" />
+		<mapping resource="entity/quydinh2.hbm.xml" />
+		<mapping resource="entity/quydinh4.hbm.xml" />
+		<mapping resource="entity/quydinh6.hbm.xml" />
 		<mapping resource="entity/thuoc.hbm.xml" />
 		<mapping resource="entity/loaibenh.hbm.xml" />	
 		<mapping resource="entity/phieukhambenh.hbm.xml" />	
