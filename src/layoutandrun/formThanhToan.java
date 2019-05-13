@@ -27,6 +27,7 @@ import DAO.phieukhamDAO;
 import DAO.thuocDAO;
 import entity.hoadon;
 import entity.phieukhambenh;
+import entity.thamSoReport;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -48,6 +49,16 @@ public class formThanhToan extends JFrame implements ActionListener {
 	static float TienThuoc;
 	static float TienKham;
 	static float TongTien;
+	static JLabel lblsttBenh1;
+	static JLabel lblsttBenh2;
+	static JLabel lblsttBenh3;
+	static JLabel lblTenBenh1;
+	static JLabel lblTenBenh2;
+	static JLabel lblTenBenh3;
+	static JLabel lblTrieuChung1;
+	static JLabel lblTrieuChung2;
+	static JLabel lblTrieuChung3;
+	static JLabel lblNgayKham;
 	static ArrayList<hoadon> alhd = hoadonDAO.hoadon();
 
 	public static void main(String[] args) {
@@ -148,47 +159,47 @@ public class formThanhToan extends JFrame implements ActionListener {
 		lblStt.setBounds(114, 178, 478, 21);
 		jp.add(lblStt);
 
-		JLabel lblsttBenh1 = new JLabel("");
+		lblsttBenh1 = new JLabel("");
 		lblsttBenh1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblsttBenh1.setBounds(114, 210, 27, 21);
 		jp.add(lblsttBenh1);
 
-		JLabel lblTenBenh1 = new JLabel("");
+		lblTenBenh1 = new JLabel("");
 		lblTenBenh1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTenBenh1.setBounds(173, 210, 177, 21);
 		jp.add(lblTenBenh1);
 
-		JLabel lblTrieuChung1 = new JLabel("");
+		lblTrieuChung1 = new JLabel("");
 		lblTrieuChung1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTrieuChung1.setBounds(415, 210, 508, 21);
 		jp.add(lblTrieuChung1);
 
-		JLabel lblTrieuChung2 = new JLabel("");
+		lblTrieuChung2 = new JLabel("");
 		lblTrieuChung2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTrieuChung2.setBounds(415, 242, 508, 21);
 		jp.add(lblTrieuChung2);
 
-		JLabel lblTenBenh2 = new JLabel("");
+		lblTenBenh2 = new JLabel("");
 		lblTenBenh2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTenBenh2.setBounds(173, 242, 177, 21);
 		jp.add(lblTenBenh2);
 
-		JLabel lblsttBenh2 = new JLabel("");
+		lblsttBenh2 = new JLabel("");
 		lblsttBenh2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblsttBenh2.setBounds(114, 242, 27, 21);
 		jp.add(lblsttBenh2);
 
-		JLabel lblTrieuChung3 = new JLabel("");
+		lblTrieuChung3 = new JLabel("");
 		lblTrieuChung3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTrieuChung3.setBounds(415, 274, 508, 21);
 		jp.add(lblTrieuChung3);
 
-		JLabel lblTenBenh3 = new JLabel("");
+		lblTenBenh3 = new JLabel("");
 		lblTenBenh3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTenBenh3.setBounds(173, 274, 177, 21);
 		jp.add(lblTenBenh3);
 
-		JLabel lblsttBenh3 = new JLabel("");
+		lblsttBenh3 = new JLabel("");
 		lblsttBenh3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblsttBenh3.setBounds(114, 274, 27, 21);
 		jp.add(lblsttBenh3);
@@ -203,7 +214,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 		lblMaBenhNhan.setBounds(175, 126, 177, 19);
 		jp.add(lblMaBenhNhan);
 
-		JLabel lblNgayKham = new JLabel("");
+		lblNgayKham = new JLabel("");
 		lblNgayKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNgayKham.setBounds(559, 72, 177, 21);
 		jp.add(lblNgayKham);
@@ -344,6 +355,24 @@ public class formThanhToan extends JFrame implements ActionListener {
 				hd.setTongTien(TongTien);
 				hd.setID_PhieuKhamBenh(id);
 				hoadonDAO.themHoaDon(hd);
+				thamSoReport t = new thamSoReport();
+				t.setMaPhieuKham(maphieukham);
+				t.setNgayKham(lblNgayKham.getText());
+				t.setMaBenhNhan(mabenhnhan);
+				t.setTenBenhNhan(tenbenhnhan);
+				t.setTienThuoc(lblTienThuoc.getText());
+				t.setTienKham(lblTienKham.getText());
+				t.setTongTien(lblTongTien.getText());
+				t.setSTT1(lblsttBenh1.getText());
+				t.setSTT2(lblsttBenh2.getText());
+				t.setSTT3(lblsttBenh3.getText());
+				t.setTenLoaiBenh1(lblTenBenh1.getText());
+				t.setTenLoaiBenh2(lblTenBenh2.getText());
+				t.setTenLoaiBenh3(lblTenBenh3.getText());
+				t.setTrieuChung1(lblTrieuChung1.getText());
+				t.setTrieuChung2(lblTrieuChung2.getText());
+				t.setTrieuChung3(lblTrieuChung3.getText());
+				inhoadon.thucHienInHoaDon(t);
 				this.dispose();
 				//pull request
 			} catch (ParseException e) {
