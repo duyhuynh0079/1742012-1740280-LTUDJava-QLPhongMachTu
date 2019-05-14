@@ -8,6 +8,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.type.IntegerType;
 
 import entity.loaibenh;
 import entity.thuoc;
@@ -72,6 +73,24 @@ public class loaibenhDAO {
 	    } else {
 	        return null;
 	    }
+	}
+	public static int laySoDongLoaiBenh()
+	{
+		int sodong = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT COUNT(*) as cnt FROM loaibenh";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			int cnt = ((Integer) list.get(0)).intValue();
+			sodong = cnt;
+		} else {
+//			logger.info("No Records found for the specified input...");
+		}
+		session.close();
+		return sodong;
 	}
 	public static boolean themLoaiBenh(loaibenh lb) {
 		Session session = HibernateUtil.getSessionFactory().openSession();

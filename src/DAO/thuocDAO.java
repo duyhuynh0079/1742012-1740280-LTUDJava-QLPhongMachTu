@@ -8,6 +8,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.type.IntegerType;
 
 import entity.benhnhan;
 import entity.thuoc;
@@ -75,6 +76,24 @@ public class thuocDAO {
 	    } else {
 	        return null;
 	    }
+	}
+  	public static int laySoDong()
+	{
+		int sodong = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT COUNT(*) as cnt FROM thuoc WHERE TinhTrang = 1";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			int cnt = ((Integer) list.get(0)).intValue();
+			sodong = cnt;
+		} else {
+//			logger.info("No Records found for the specified input...");
+		}
+		session.close();
+		return sodong;
 	}
 	public static boolean themThuoc(thuoc t) {
 		Session session = HibernateUtil.getSessionFactory().openSession();

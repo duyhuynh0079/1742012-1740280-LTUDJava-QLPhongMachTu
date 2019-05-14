@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.type.IntegerType;
 
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
@@ -75,7 +76,24 @@ public class donvithuocDAO {
 	        return null;
 	    }
 	}
-
+	public static int laySoDong()
+	{
+		int sodong = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT COUNT(*) as cnt FROM donvi";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			int cnt = ((Integer) list.get(0)).intValue();
+			sodong = cnt;
+		} else {
+//			logger.info("No Records found for the specified input...");
+		}
+		session.close();
+		return sodong;
+	}
 	public static boolean themDonViThuoc(donvi dv) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 

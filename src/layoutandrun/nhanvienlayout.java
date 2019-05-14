@@ -636,11 +636,14 @@ public class nhanvienlayout extends JFrame {
 		JButton btnThemLoaiBenh = new JButton("Thêm");
 		btnThemLoaiBenh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (txtMaLoaiBenh.getText().equals("") || txtTenLoaiBenh.getText().equals("")
+				if (DAO.loaibenhDAO.laySoDongLoaiBenh() == DAO.quydinh2DAO.laySoLoaiBenh(1)) {
+					JOptionPane.showMessageDialog(null, "Vượt quá "+ DAO.quydinh2DAO.laySoLoaiBenh(1) + " loại bệnh. Không thêm được!");
+				}
+				else if(txtMaLoaiBenh.getText().equals("") || txtTenLoaiBenh.getText().equals("")
 						|| taTrieuChungLoaiBenh.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui long nhap thong tin!");
+					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
 				} else if (loaibenhDAO.timMaLoaiBenh(txtMaLoaiBenh.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "Ma loai benh da ton tai!");
+					JOptionPane.showMessageDialog(null, "Mã loại bệnh đã tồn tại!");
 				} else {
 					loaibenh lb = new loaibenh();
 					lb.setMaLoaiBenh(txtMaLoaiBenh.getText());
@@ -648,7 +651,7 @@ public class nhanvienlayout extends JFrame {
 					lb.setTrieuChung(taTrieuChungLoaiBenh.getText());
 					try {
 						if (DAO.loaibenhDAO.themLoaiBenh(lb) == true) {
-							JOptionPane.showMessageDialog(null, "Da them loai benh: " + txtMaLoaiBenh.getText());
+							JOptionPane.showMessageDialog(null, "Đã thêm loại bệnh: " + txtMaLoaiBenh.getText());
 							lblIDLoaiBenh.setText(null);
 							txtMaLoaiBenh.setText(null);
 							txtTenLoaiBenh.setText(null);
@@ -656,12 +659,12 @@ public class nhanvienlayout extends JFrame {
 							LoaiBenhModel mdLoaiBenh = new LoaiBenhModel();
 							tableLoaiBenh.setModel(mdLoaiBenh);
 						} else {
-							JOptionPane.showMessageDialog(null, "Them that bai!", "WARNING",
+							JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Loi nhap sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -773,8 +776,7 @@ public class nhanvienlayout extends JFrame {
 					lblIDLoaiBenh.setText(tableLoaiBenh.getValueAt(tableLoaiBenh.getSelectedRow(), 0).toString());
 					txtMaLoaiBenh.setText(tableLoaiBenh.getValueAt(tableLoaiBenh.getSelectedRow(), 1).toString());
 					txtTenLoaiBenh.setText(tableLoaiBenh.getValueAt(tableLoaiBenh.getSelectedRow(), 2).toString());
-					taTrieuChungLoaiBenh
-							.setText(tableLoaiBenh.getValueAt(tableLoaiBenh.getSelectedRow(), 3).toString());
+					taTrieuChungLoaiBenh.setText(tableLoaiBenh.getValueAt(tableLoaiBenh.getSelectedRow(), 3).toString());
 					index = Integer.parseInt(lblIDLoaiBenh.getText());
 				}
 			}
@@ -863,11 +865,13 @@ public class nhanvienlayout extends JFrame {
 		JButton btnThemThuoc = new JButton("Thêm");
 		btnThemThuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
+				if (DAO.thuocDAO.laySoDong() == DAO.quydinh2DAO.laySoLoaiThuoc(1)) {
+					JOptionPane.showMessageDialog(null, "Vượt quá "+ DAO.quydinh2DAO.laySoLoaiThuoc(1) + " loại thuốc. Không thêm được!");
+				}else if(txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui long nhap thong tin!");
+					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
 				} else if (thuocDAO.timMaThuoc(txtMaThuoc.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "Ma thuoc da ton tai!");
+					JOptionPane.showMessageDialog(null, "Mã thuốc đã tồn tại!");
 				} else {
 					thuoc t = new thuoc();
 					donvi dv = new donvi();
@@ -887,8 +891,7 @@ public class nhanvienlayout extends JFrame {
 							txtMaThuoc.setText(null);
 							txtTenThuoc.setText(null);
 							txtDonGiaThuoc.setText(null);
-							cmbDonViTinhThuoc
-									.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
+							cmbDonViTinhThuoc.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
 							cmbCachDung.setModel(new CachDungComboModel(DAO.cachdungDAO.LayDanhSachCachDung()));
 							ThuocModel mdT = new ThuocModel();
 							tableThuoc.setModel(mdT);
@@ -946,8 +949,7 @@ public class nhanvienlayout extends JFrame {
 							txtMaThuoc.setText(null);
 							txtTenThuoc.setText(null);
 							txtDonGiaThuoc.setText(null);
-							cmbDonViTinhThuoc
-									.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
+							cmbDonViTinhThuoc.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
 							cmbCachDung.setModel(new CachDungComboModel(DAO.cachdungDAO.LayDanhSachCachDung()));
 							ThuocModel mdT = new ThuocModel();
 							tableThuoc.setModel(mdT);
@@ -957,7 +959,7 @@ public class nhanvienlayout extends JFrame {
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Loi nhap sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -1002,14 +1004,12 @@ public class nhanvienlayout extends JFrame {
 							txtMaThuoc.setText(null);
 							txtTenThuoc.setText(null);
 							txtDonGiaThuoc.setText(null);
-							cmbDonViTinhThuoc
-									.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
+							cmbDonViTinhThuoc.setModel(new DonViTinhThuocComboModel(DAO.donvithuocDAO.LayDanhSachDonVi()));
 							cmbCachDung.setModel(new CachDungComboModel(DAO.cachdungDAO.LayDanhSachCachDung()));
 							ThuocModel mdT = new ThuocModel();
 							tableThuoc.setModel(mdT);
 						} else {
-							JOptionPane.showMessageDialog(null, "Xóa thất bại!", "WARNING",
-									JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Xóa thất bại!", "WARNING",JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
@@ -1144,9 +1144,12 @@ public class nhanvienlayout extends JFrame {
 		JButton tbnThemDonViThuoc = new JButton("Thêm");
 		tbnThemDonViThuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtMaDonViThuoc.getText().equals("") || txtTenDonViThuoc.getText().equals("")) {
+				if (DAO.donvithuocDAO.laySoDong() == DAO.quydinh2DAO.laySoDonVi(1)) {
+					JOptionPane.showMessageDialog(null, "Vượt quá "+ DAO.quydinh2DAO.laySoDonVi(1) + " đơn vị.Không thêm được!");
+				} else if(txtMaDonViThuoc.getText().equals("") || txtTenDonViThuoc.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-				} else if (donvithuocDAO.timMaDonVi(txtMaDonViThuoc.getText()) != null) {
+				}
+				else if (donvithuocDAO.timMaDonVi(txtMaDonViThuoc.getText()) != null) {
 					JOptionPane.showMessageDialog(null, "Mã đơn vị thuốc đã tồn tại!");
 				} else {
 					donvi dv = new donvi();
@@ -1186,7 +1189,7 @@ public class nhanvienlayout extends JFrame {
 		btnCapNhatDonViThuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtMaDonViThuoc.getText().equals("") || txtTenDonViThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn đơn vị thuốc càn cập nhật!",
+					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn đơn vị thuốc cần cập nhật!",
 							"WARNING", JOptionPane.WARNING_MESSAGE);
 				} else {
 					donvi dv = new donvi();
@@ -1330,10 +1333,12 @@ public class nhanvienlayout extends JFrame {
 		JButton btnThemCachDung = new JButton("Thêm");
 		btnThemCachDung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtMaCachDungThuoc.getText().equals("") || txtTenCachDungThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng nháº­p Ä‘á»§ thÃ´ng tin!");
+				if (DAO.cachdungDAO.laySoDong() == DAO.quydinh2DAO.laySoCachDung(1)) {
+					JOptionPane.showMessageDialog(null, "Vượt quá "+ DAO.quydinh2DAO.laySoCachDung(1) + " cách dùng. Không thêm được!");
+				}else if(txtMaCachDungThuoc.getText().equals("") || txtTenCachDungThuoc.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
 				} else if (cachdungDAO.timMaCachDung(txtMaCachDungThuoc.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "MÃ£ cÃ¡ch dÃ¹ng Ä‘Ã£ tá»“n táº¡i!");
+					JOptionPane.showMessageDialog(null, "Mã cách dùng đã tồn tại!");
 				} else {
 					cachdung cd = new cachdung();
 					cd.setMaCachDung(txtMaCachDungThuoc.getText());
@@ -1341,19 +1346,19 @@ public class nhanvienlayout extends JFrame {
 					try {
 						if (DAO.cachdungDAO.themCachDung(cd) == true) {
 							JOptionPane.showMessageDialog(null,
-									"Ä�Ã£ thÃªm cÃ¡ch dÃ¹ng thuá»‘c: " + txtMaCachDungThuoc.getText());
+									"Đã thêm cách dùng thuốc: " + txtMaCachDungThuoc.getText());
 							lblIDCachDung.setText(null);
 							txtMaCachDungThuoc.setText(null);
 							txtTenCachDungThuoc.setText(null);
 							CachDungModel mdCachDung = new CachDungModel();
 							tableCachDungThuoc.setModel(mdCachDung);
 						} else {
-							JOptionPane.showMessageDialog(null, "ThÃªm tháº¥t báº¡i!", "WARNING",
+							JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING",
+						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING",
 								JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -1374,7 +1379,7 @@ public class nhanvienlayout extends JFrame {
 		btnCapNhatCachDung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtMaCachDungThuoc.getText().equals("") || txtTenCachDungThuoc.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng click báº£ng!", "WARNING",
+					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn cách dùng cần cập nhật!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 				} else {
 					cachdung cd = new cachdung();
@@ -1388,7 +1393,7 @@ public class nhanvienlayout extends JFrame {
 					}
 					try {
 						if (cachdungDAO.suaCachDung(cd) == true) {
-							JOptionPane.showMessageDialog(null, "Sá»­a thÃ nh cÃ´ng !", "WARNING",
+							JOptionPane.showMessageDialog(null, "Sửa thành công!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 							lblIDCachDung.setText(null);
 							txtMaCachDungThuoc.setText(null);
@@ -1397,11 +1402,11 @@ public class nhanvienlayout extends JFrame {
 							tableCachDungThuoc.setModel(mdCachDung);
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Sá»­a tháº¥t báº¡i, vui lÃ²ng click báº£ng chá»�n cÃ¡ch dÃ¹ng sá»¯a !", "WARNING",
+									"Sửa thất bại, vui lòng click bảng chọn cách dùng cần sửa!", "WARNING",
 									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lá»—i Nháº­p Sai !", "WARNING",
+						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING",
 								JOptionPane.WARNING_MESSAGE);
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -1443,12 +1448,9 @@ public class nhanvienlayout extends JFrame {
 			public void valueChanged(ListSelectionEvent event) {
 				// dat if tranh loi
 				if (tableCachDungThuoc.getSelectedRow() >= 0) {
-					lblIDCachDung
-							.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 0).toString());
-					txtMaCachDungThuoc
-							.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 1).toString());
-					txtTenCachDungThuoc
-							.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 2).toString());
+					lblIDCachDung.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 0).toString());
+					txtMaCachDungThuoc.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 1).toString());
+					txtTenCachDungThuoc.setText(tableCachDungThuoc.getValueAt(tableCachDungThuoc.getSelectedRow(), 2).toString());
 					index = Integer.parseInt(lblIDCachDung.getText());
 				}
 			}
@@ -1949,10 +1951,14 @@ public class nhanvienlayout extends JFrame {
 				txtMaQuyDinh.setText(null);
 				txtTenQuyDinh.setText(null);
 				txtGiaTri.setText(null);
-				cmbQuyDinh.setModel(new DefaultComboBoxModel(
-						new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+				cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
 				QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
 				tableQuyDinhThuoc.setModel(modelQuyDinh);
+				System.out.println("So Loai Benh: "+ DAO.quydinh2DAO.laySoLoaiBenh(1));
+				System.out.println("So Loai Thuoc: "+ DAO.quydinh2DAO.laySoLoaiThuoc(1));
+				System.out.println("So Don Vi: "+ DAO.quydinh2DAO.laySoDonVi(1));
+				System.out.println("So Cach Dung: "+ DAO.quydinh2DAO.laySoCachDung(1));
+				System.out.println("So dong: "+ DAO.thuocDAO.laySoDong());
 			}
 		});
 		btnLoadQuyDinhThuoc.setIcon(new ImageIcon(
