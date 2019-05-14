@@ -29,6 +29,9 @@ import entity.donvi;
 import entity.loaibenh;
 import entity.nhanvien;
 import entity.quydinh1;
+import entity.quydinh2;
+import entity.quydinh4;
+import entity.quydinh6;
 import entity.thuoc;
 import show.CachDungComboModel;
 import show.CachDungModel;
@@ -1524,129 +1527,6 @@ public class nhanvienlayout extends JFrame {
 		txtTenQuyDinh.setBounds(403, 181, 170, 25);
 		pnQuyDinh.add(txtTenQuyDinh);
 
-		JButton btnThemQuyDinhThuoc = new JButton("Thêm");
-		btnThemQuyDinhThuoc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
-						|| txtGiaTri.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-				} else if (quydinh1DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
-					JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
-				} else {
-					quydinh1 qd = new quydinh1();
-					qd.setMaQuyDinh(txtMaQuyDinh.getText());
-					qd.setTenQuyDinh(txtTenQuyDinh.getText());
-					qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
-					try {
-						if (DAO.quydinh1DAO.themQuyDinh(qd) == true) {
-							JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
-							lblIDQuyDinh.setText(null);
-							txtMaQuyDinh.setText(null);
-							txtTenQuyDinh.setText(null);
-							txtGiaTri.setText(null);
-							cmbQuyDinh.setModel(new DefaultComboBoxModel(
-									new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
-							QuyDinh1Model mdQuyDinh = new QuyDinh1Model();
-							tableQuyDinhThuoc.setModel(mdQuyDinh);
-						} else {
-							JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",
-									JOptionPane.WARNING_MESSAGE);
-						}
-
-					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
-				}
-			}
-		});
-		btnThemQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
-		btnThemQuyDinhThuoc.setForeground(Color.RED);
-		btnThemQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnThemQuyDinhThuoc.setBounds(182, 331, 115, 41);
-		pnQuyDinh.add(btnThemQuyDinhThuoc);
-
-		JButton btnCapNhatQuyDinhThuoc = new JButton("Cập nhật");
-		btnCapNhatQuyDinhThuoc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
-						|| txtGiaTri.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
-							JOptionPane.WARNING_MESSAGE);
-				} else {
-					quydinh1 qd = new quydinh1();
-					ArrayList<quydinh1> alqd = QuyDinh1Model.listQD;
-					for (int i = 0; i < alqd.size(); i++) {
-						if (index == alqd.get(i).getID()) {
-							qd.setID(alqd.get(i).getID());
-							qd.setMaQuyDinh(txtMaQuyDinh.getText());
-							qd.setTenQuyDinh(txtTenQuyDinh.getText());
-							qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
-						}
-					}
-					try {
-						if (quydinh1DAO.suaQuyDinh(qd) == true) {
-							JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "WARNING",
-									JOptionPane.WARNING_MESSAGE);
-							lblIDQuyDinh.setText(null);
-							txtMaQuyDinh.setText(null);
-							txtTenQuyDinh.setText(null);
-							txtGiaTri.setText(null);
-							cmbQuyDinh.setModel(new DefaultComboBoxModel(
-									new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
-							QuyDinh1Model mdQuyDinh = new QuyDinh1Model();
-							tableQuyDinhThuoc.setModel(mdQuyDinh);
-						} else {
-							JOptionPane.showMessageDialog(null,
-									"Cập nhật thất bại, click bảng chọn quy định cần cập nhật!", "WARNING",
-									JOptionPane.WARNING_MESSAGE);
-						}
-					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-		});
-		btnCapNhatQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
-		btnCapNhatQuyDinhThuoc.setForeground(Color.RED);
-		btnCapNhatQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnCapNhatQuyDinhThuoc.setBounds(362, 331, 140, 41);
-		pnQuyDinh.add(btnCapNhatQuyDinhThuoc);
-
-		JButton btnLoadQuyDinhThuoc = new JButton("Load");
-		btnLoadQuyDinhThuoc.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				lblIDQuyDinh.setText("ID quy định");
-				txtMaQuyDinh.setText(null);
-				txtTenQuyDinh.setText(null);
-				txtGiaTri.setText(null);
-				cmbQuyDinh.setModel(new DefaultComboBoxModel(
-						new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
-				QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
-				tableQuyDinhThuoc.setModel(modelQuyDinh);
-			}
-		});
-		btnLoadQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
-		btnLoadQuyDinhThuoc.setForeground(Color.RED);
-		btnLoadQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
-		btnLoadQuyDinhThuoc.setBounds(559, 331, 109, 41);
-		pnQuyDinh.add(btnLoadQuyDinhThuoc);
-
-		tableQuyDinhThuoc = new JTable();
-		//QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
-		//tableQuyDinhThuoc.setModel(modelQuyDinh);
-		JScrollPane scrollPaneQD = new JScrollPane(tableQuyDinhThuoc);// dan table vao khung jsp
-		scrollPaneQD.setBounds(115, 384, 610, 169);
-		pnQuyDinh.add(scrollPaneQD);
-
 		JLabel lblGiaTri = new JLabel("Giá trị");
 		lblGiaTri.setForeground(Color.BLUE);
 		lblGiaTri.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -1686,6 +1566,411 @@ public class nhanvienlayout extends JFrame {
 		txtSoCachDung.setBounds(403, 295, 170, 25);
 		pnQuyDinh.add(txtSoCachDung);
 		txtSoCachDung.setVisible(false);
+		
+		JButton btnThemQuyDinhThuoc = new JButton("Thêm");
+		btnThemQuyDinhThuoc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cmbQuyDinh.getSelectedIndex() == 0) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
+							|| txtGiaTri.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
+					} else if (quydinh1DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
+					} else {
+						quydinh1 qd = new quydinh1();
+						qd.setMaQuyDinh(txtMaQuyDinh.getText());
+						qd.setTenQuyDinh(txtTenQuyDinh.getText());
+						qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
+						try {
+							if (DAO.quydinh1DAO.themQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
+								lblIDQuyDinh.setText(null);
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								txtGiaTri.setText(null);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(0);
+								QuyDinh1Model mdQuyDinh = new QuyDinh1Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 1) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
+							|| txtGiaTri.getText().equals("") || txtSoDonVi.getText().equals("") || txtSoCachDung.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
+					} else if (quydinh2DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
+					} else {
+						quydinh2 qd = new quydinh2();
+						qd.setMaQuyDinh(txtMaQuyDinh.getText());
+						qd.setSoLoaiBenh(Integer.parseInt(txtTenQuyDinh.getText()));
+						qd.setSoLoaiThuoc(Integer.parseInt(txtGiaTri.getText()));
+						qd.setSoDonVi(Integer.parseInt(txtSoDonVi.getText()));
+						qd.setSoCachDung(Integer.parseInt(txtSoCachDung.getText()));
+						try {
+							if (DAO.quydinh2DAO.themQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Số loại bệnh");
+								lblGiaTri.setText("Số loại thuốc");
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								txtGiaTri.setText(null);
+								txtGiaTri.setVisible(true);
+								
+								lblSoDonVi.setVisible(true);
+								txtSoDonVi.setVisible(true);
+								txtSoDonVi.setText(null);
+								
+								lblGiaTri.setVisible(true);
+								lblSoCachDung.setVisible(true);
+								txtSoCachDung.setVisible(true);
+								txtSoCachDung.setText(null);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(1);
+								QuyDinh2Model mdQuyDinh = new QuyDinh2Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 2) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
+					} else if (quydinh2DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
+					} else {
+						quydinh4 qd = new quydinh4();
+						qd.setMaQuyDinh(txtMaQuyDinh.getText());
+						qd.setTenQuyDinh(txtTenQuyDinh.getText());
+						try {
+							if (DAO.quydinh4DAO.themQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Tên quy định");
+								
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								
+								
+								lblGiaTri.setVisible(false);
+								txtGiaTri.setVisible(false);
+								lblSoDonVi.setVisible(false);
+								txtSoDonVi.setVisible(false);
+								lblSoCachDung.setVisible(false);
+								txtSoCachDung.setVisible(false);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(2);
+								QuyDinh4Model mdQuyDinh = new QuyDinh4Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 3) {
+					
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
+					} else if (quydinh2DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
+					} else {
+						quydinh6 qd = new quydinh6();
+						qd.setMaQuyDinh(txtMaQuyDinh.getText());
+						qd.setTenQuyDinh(txtTenQuyDinh.getText());
+						try {
+							if (DAO.quydinh6DAO.themQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Tên quy định");
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								
+								lblGiaTri.setVisible(false);
+								txtGiaTri.setVisible(false);
+								lblSoDonVi.setVisible(false);
+								txtSoDonVi.setVisible(false);
+								lblSoCachDung.setVisible(false);
+								txtSoCachDung.setVisible(false);
+								
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(3);
+								QuyDinh6Model mdQuyDinh = new QuyDinh6Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null, "Thêm thất bại!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				}
+				
+			}
+		});
+		btnThemQuyDinhThuoc.setIcon(new ImageIcon(
+				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+		btnThemQuyDinhThuoc.setForeground(Color.RED);
+		btnThemQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
+		btnThemQuyDinhThuoc.setBounds(182, 331, 115, 41);
+		pnQuyDinh.add(btnThemQuyDinhThuoc);
+
+		JButton btnCapNhatQuyDinhThuoc = new JButton("Cập nhật");
+		btnCapNhatQuyDinhThuoc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cmbQuyDinh.getSelectedIndex() == 0) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
+							|| txtGiaTri.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						quydinh1 qd = new quydinh1();
+						ArrayList<quydinh1> alqd = QuyDinh1Model.listQD;
+						for (int i = 0; i < alqd.size(); i++) {
+							if (index == alqd.get(i).getID()) {
+								qd.setID(alqd.get(i).getID());
+								qd.setMaQuyDinh(txtMaQuyDinh.getText());
+								qd.setTenQuyDinh(txtTenQuyDinh.getText());
+								qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
+							}
+						}
+						try {
+							if (quydinh1DAO.suaQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "WARNING",JOptionPane.WARNING_MESSAGE);
+								lblIDQuyDinh.setText(null);
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								txtGiaTri.setText(null);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(0);
+								QuyDinh1Model mdQuyDinh = new QuyDinh1Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"Cập nhật thất bại, click bảng chọn quy định cần cập nhật!", "WARNING",
+										JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 1) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
+							|| txtGiaTri.getText().equals("") || txtSoDonVi.getText().equals("") || txtSoCachDung.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						quydinh2 qd = new quydinh2();
+						ArrayList<quydinh2> alqd = QuyDinh2Model.listQD;
+						for (int i = 0; i < alqd.size(); i++) {
+							if (index == alqd.get(i).getID()) {
+								qd.setID(alqd.get(i).getID());
+								qd.setMaQuyDinh(txtMaQuyDinh.getText());
+								qd.setSoLoaiBenh(Integer.parseInt(txtTenQuyDinh.getText()));
+								qd.setSoLoaiThuoc(Integer.parseInt(txtGiaTri.getText()));
+								qd.setSoDonVi(Integer.parseInt(txtSoDonVi.getText()));
+								qd.setSoCachDung(Integer.parseInt(txtSoCachDung.getText()));
+							}
+						}
+						try {
+							if (quydinh2DAO.suaQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "WARNING",JOptionPane.WARNING_MESSAGE);
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Số loại bệnh");
+								lblGiaTri.setText("Số loại thuốc");
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								txtGiaTri.setText(null);
+								txtGiaTri.setVisible(true);
+								
+								lblSoDonVi.setVisible(true);
+								txtSoDonVi.setVisible(true);
+								txtSoDonVi.setText(null);
+								
+								lblGiaTri.setVisible(true);
+								lblSoCachDung.setVisible(true);
+								txtSoCachDung.setVisible(true);
+								txtSoCachDung.setText(null);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(1);
+								QuyDinh2Model mdQuyDinh = new QuyDinh2Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"Cập nhật thất bại, click bảng chọn quy định cần cập nhật!", "WARNING",
+										JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 2) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						quydinh4 qd = new quydinh4();
+						ArrayList<quydinh4> alqd = QuyDinh4Model.listQD;
+						for (int i = 0; i < alqd.size(); i++) {
+							if (index == alqd.get(i).getID()) {
+								qd.setID(alqd.get(i).getID());
+								qd.setMaQuyDinh(txtMaQuyDinh.getText());
+								qd.setTenQuyDinh(txtTenQuyDinh.getText());
+							}
+						}
+						try {
+							if (quydinh4DAO.suaQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "WARNING",JOptionPane.WARNING_MESSAGE);
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Tên quy định");
+								
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								
+								
+								lblGiaTri.setVisible(false);
+								txtGiaTri.setVisible(false);
+								lblSoDonVi.setVisible(false);
+								txtSoDonVi.setVisible(false);
+								lblSoCachDung.setVisible(false);
+								txtSoCachDung.setVisible(false);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(2);
+								QuyDinh4Model mdQuyDinh = new QuyDinh4Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"Cập nhật thất bại, click bảng chọn quy định cần cập nhật!", "WARNING",
+										JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				} else if (cmbQuyDinh.getSelectedIndex() == 3) {
+					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					} else {
+						quydinh6 qd = new quydinh6();
+						ArrayList<quydinh6> alqd = QuyDinh6Model.listQD;
+						for (int i = 0; i < alqd.size(); i++) {
+							if (index == alqd.get(i).getID()) {
+								qd.setID(alqd.get(i).getID());
+								qd.setMaQuyDinh(txtMaQuyDinh.getText());
+								qd.setTenQuyDinh(txtTenQuyDinh.getText());
+							}
+						}
+						try {
+							if (quydinh6DAO.suaQuyDinh(qd) == true) {
+								JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "WARNING",JOptionPane.WARNING_MESSAGE);
+								lblIDQuyDinh.setText("ID quy định");
+								lblTenQuyDinh.setText("Tên quy định");
+								
+								
+								txtMaQuyDinh.setText(null);
+								txtTenQuyDinh.setText(null);
+								
+								
+								lblGiaTri.setVisible(false);
+								txtGiaTri.setVisible(false);
+								lblSoDonVi.setVisible(false);
+								txtSoDonVi.setVisible(false);
+								lblSoCachDung.setVisible(false);
+								txtSoCachDung.setVisible(false);
+								cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+								cmbQuyDinh.setSelectedIndex(2);
+								QuyDinh6Model mdQuyDinh = new QuyDinh6Model();
+								tableQuyDinhThuoc.setModel(mdQuyDinh);
+							} else {
+								JOptionPane.showMessageDialog(null,
+										"Cập nhật thất bại, click bảng chọn quy định cần cập nhật!", "WARNING",
+										JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					//----------------------------------
+				}
+			}
+		});
+		btnCapNhatQuyDinhThuoc.setIcon(new ImageIcon(
+				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+		btnCapNhatQuyDinhThuoc.setForeground(Color.RED);
+		btnCapNhatQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
+		btnCapNhatQuyDinhThuoc.setBounds(362, 331, 140, 41);
+		pnQuyDinh.add(btnCapNhatQuyDinhThuoc);
+
+		JButton btnLoadQuyDinhThuoc = new JButton("Load");
+		btnLoadQuyDinhThuoc.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				lblIDQuyDinh.setText("ID quy định");
+				txtMaQuyDinh.setText(null);
+				txtTenQuyDinh.setText(null);
+				txtGiaTri.setText(null);
+				cmbQuyDinh.setModel(new DefaultComboBoxModel(
+						new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
+				QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
+				tableQuyDinhThuoc.setModel(modelQuyDinh);
+			}
+		});
+		btnLoadQuyDinhThuoc.setIcon(new ImageIcon(
+				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+		btnLoadQuyDinhThuoc.setForeground(Color.RED);
+		btnLoadQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
+		btnLoadQuyDinhThuoc.setBounds(559, 331, 109, 41);
+		pnQuyDinh.add(btnLoadQuyDinhThuoc);
+
+		tableQuyDinhThuoc = new JTable();
+		//Load mac dinh table khi khoi dong
+		QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
+		tableQuyDinhThuoc.setModel(modelQuyDinh);
+		JScrollPane scrollPaneQD = new JScrollPane(tableQuyDinhThuoc);// dan table vao khung jsp
+		scrollPaneQD.setBounds(115, 384, 610, 169);
+		pnQuyDinh.add(scrollPaneQD);
+
+		
 
 		JButton btnDangXuatQD = new JButton("");
 		btnDangXuatQD.addActionListener(new ActionListener() {
@@ -1734,19 +2019,6 @@ public class nhanvienlayout extends JFrame {
 					
 					QuyDinh1Model mdQuyDinh = new QuyDinh1Model();
 					tableQuyDinhThuoc.setModel(mdQuyDinh);
-//					tableQuyDinhThuoc.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//						public void valueChanged(ListSelectionEvent event) {
-//							// dat if tranh loi
-//							if (tableQuyDinhThuoc.getSelectedRow() >= 0) {
-//								lblIDQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
-//								txtMaQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
-//								txtTenQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								txtGiaTri.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 3).toString());
-//								index = Integer.parseInt(lblIDQuyDinh.getText());
-//							}
-//						}
-//					});
-					
 				} else if (cmbQuyDinh.getSelectedIndex() == 1) {
 
 					lblIDQuyDinh.setText("ID quy định");
@@ -1770,21 +2042,6 @@ public class nhanvienlayout extends JFrame {
 					
 					QuyDinh2Model mdQuyDinh = new QuyDinh2Model();
 					tableQuyDinhThuoc.setModel(mdQuyDinh);
-//					tableQuyDinhThuoc.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//						public void valueChanged(ListSelectionEvent event) {
-//							// dat if tranh loi
-//							if (tableQuyDinhThuoc.getSelectedRow() >= 0) {
-//								lblIDQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
-//								txtMaQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
-//								txtTenQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								txtGiaTri.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 3).toString());
-//								txtSoDonVi.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 4).toString());
-//								txtSoCachDung.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 5).toString());
-//								index = Integer.parseInt(lblIDQuyDinh.getText());
-//							}
-//						}
-//					});
-					
 				} else if (cmbQuyDinh.getSelectedIndex() == 2) {
 					lblIDQuyDinh.setText("ID quy định");
 					lblTenQuyDinh.setText("Tên quy định");
@@ -1803,23 +2060,6 @@ public class nhanvienlayout extends JFrame {
 					
 					QuyDinh4Model mdQuyDinh = new QuyDinh4Model();
 					tableQuyDinhThuoc.setModel(mdQuyDinh);
-//					tableQuyDinhThuoc.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//						public void valueChanged(ListSelectionEvent event) {
-//							// dat if tranh loi
-//							if (tableQuyDinhThuoc.getSelectedRow() >= 0) {
-//								lblIDQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
-//								txtMaQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
-//								txtTenQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								index = Integer.parseInt(lblIDQuyDinh.getText());
-//								System.out.println("ID: " + tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
-//								System.out.println("Ma: " + tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
-//								System.out.println("Ten: " + tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								System.out.println("Ten: " + tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								System.out.println("Row: " + tableQuyDinhThuoc.getSelectedRow());
-//								System.out.println("index: " + index);
-//							}
-//						}
-//					});
 					
 					
 				} else if (cmbQuyDinh.getSelectedIndex() == 3) {
@@ -1838,17 +2078,6 @@ public class nhanvienlayout extends JFrame {
 					
 					QuyDinh6Model mdQuyDinh = new QuyDinh6Model();
 					tableQuyDinhThuoc.setModel(mdQuyDinh);
-//					tableQuyDinhThuoc.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//						public void valueChanged(ListSelectionEvent event) {
-//							// dat if tranh loi
-//							if (tableQuyDinhThuoc.getSelectedRow() >= 0) {
-//								lblIDQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
-//								txtMaQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
-//								txtTenQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 2).toString());
-//								index = Integer.parseInt(lblIDQuyDinh.getText());
-//							}
-//						}
-//					});
 				}
 			}
 
@@ -1862,8 +2091,6 @@ public class nhanvienlayout extends JFrame {
 		
 		tableQuyDinhThuoc.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
-				// dat if tranh loi
-//				if(cmbQuyDinh.getSelectedIndex() == 0)
 				if (cmbQuyDinh.getSelectedIndex() == 0 && tableQuyDinhThuoc.getSelectedRow() >= 0) {
 					lblIDQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 0).toString());
 					txtMaQuyDinh.setText(tableQuyDinhThuoc.getValueAt(tableQuyDinhThuoc.getSelectedRow(), 1).toString());
