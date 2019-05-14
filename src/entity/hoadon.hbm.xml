@@ -13,10 +13,10 @@
 		<property name="NgayThanhToan" type="date">
 			<column name="NgayThanhToan" length="100" />
 		</property>
-		<property name="TienKham" type="float">
+		<property name="TienKham" type="double">
 			<column name="TienKham" length="100" />
 		</property>
-		<property name="TongTien" type="float">
+		<property name="TongTien" type="double">
 			<column name="TongTien" length="100" />
 		</property>
 		<property name="ID_PhieuKhamBenh" type="int">

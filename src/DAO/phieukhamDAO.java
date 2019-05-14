@@ -89,10 +89,10 @@ public class phieukhamDAO {
             return id;
         }
     }
-	public static String laytongtientuMaPhieuKham(String maphieukham)
+	public static float laytongtientuMaPhieuKham(String maphieukham)
 	{
 		List lpk;
-		String tongtien = "";
+		float tongtien = 0;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         String sql = "SELECT * FROM phieukhambenh p where p.MaPhieuKhamBenh =:m";
@@ -103,11 +103,12 @@ public class phieukhamDAO {
 
 		for (Iterator iterator = lpk.iterator(); iterator.hasNext();) {
 			phieukhambenh pkb = (phieukhambenh) iterator.next();
-			tongtien = String.valueOf(pkb.getTongTienThuoc());
+			tongtien = pkb.getTongTienThuoc();
 		}
         session.close();
         return tongtien;
 	}
+	
 	public static void suaPhieuKham(phieukhambenh pk) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {

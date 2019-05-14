@@ -118,6 +118,8 @@ public class thuocDAO {
         		"inner join ctthuoc ct on ct.ID_Thuoc = th.ID\r\n" + 
         		"inner join phieukhambenh p on ct.ID_PhieuKhamBenh = p.ID\r\n" + 
         		"where p.MaPhieuKhamBenh =:m";
+        
+        //System.out.println(sql);
         SQLQuery query = session.createSQLQuery(sql);
         query.setParameter("m", maphieukham);
         List<Object[]> o = query.list();

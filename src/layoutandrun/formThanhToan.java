@@ -291,7 +291,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 			}
 			stt++;
 		}
-		lblTienThuoc.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
+	//	lblTienThuoc.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
 		TienThuoc = Float.parseFloat(lblTienThuoc.getText());
 		TienKham = 30000;
 		lblTienKham.setText(String.valueOf(TienKham));
@@ -373,6 +373,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 				t.setTrieuChung2(lblTrieuChung2.getText());
 				t.setTrieuChung3(lblTrieuChung3.getText());
 				inhoadon.thucHienInHoaDon(t);
+				clientthread ct = new clientthread();
 				this.dispose();
 				//pull request
 			} catch (ParseException e) {

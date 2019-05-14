@@ -49,7 +49,6 @@ public class inhoadon {
 			i.setCACHDUNG(countResult[4].toString());
 			dataBeanList.add(i);
 		}
-		System.out.println("Size cua o----"+o.size());
 		JasperReport jasperReport;
 		try {
 			jasperReport = JasperCompileManager
@@ -58,9 +57,7 @@ public class inhoadon {
 			JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataBeanList);
 
 			Map parameters = new HashMap();
-			/**
-			 * Passing ReportTitle and Author as parameters
-			 */
+			
 			parameters.put("ReportTitle", "Hóa Đơn Khám Bệnh");
 			parameters.put("MaPhieuKham", t.getMaPhieuKham());
 			parameters.put("NgayKham", t.getNgayKham());
@@ -85,7 +82,7 @@ public class inhoadon {
 
 			// Chạy báo cáo và export ra file PDF.
 			//JasperExportManager.exportReportToPdfFile(jasperPrint, "E:/Java/StyledTextReport.pdf");
-			JasperViewer.viewReport(jasperPrint);
+			JasperViewer.viewReport(jasperPrint,false);//xem báo cáo rồi save lại
 				
 			System.out.println("Done!");
 		} catch (JRException e1) {

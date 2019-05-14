@@ -1188,6 +1188,78 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				lblDonGia10.setText(Float.toString(alThuoc.get(i).getDonGia()));
 			}
 		}
+		//tinh tong tien khi doi combobox
+			if(cbThuoc1.isSelected())
+			{
+				soluong1 = Integer.parseInt(jtSoLuong1.getText());
+				tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+				tongtien = tongtien1;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc2.isSelected())
+			{
+				soluong2 = Integer.parseInt(jtSoLuong2.getText());
+				tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
+				tongtien = tongtien1 + tongtien2;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc3.isSelected())
+			{
+				soluong3 = Integer.parseInt(jtSoLuong3.getText());
+				tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc4.isSelected())
+			{
+				soluong4 = Integer.parseInt(jtSoLuong4.getText());
+				tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc5.isSelected())
+			{
+				soluong5 = Integer.parseInt(jtSoLuong5.getText());
+				tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc6.isSelected())
+			{
+				soluong6 = Integer.parseInt(jtSoLuong6.getText());
+				tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc7.isSelected())
+			{
+				soluong7 = Integer.parseInt(jtSoLuong7.getText());
+				tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc8.isSelected())
+			{
+				soluong8 = Integer.parseInt(jtSoLuong8.getText());
+				tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc9.isSelected())
+			{
+				soluong9 = Integer.parseInt(jtSoLuong9.getText());
+				tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			if(cbThuoc10.isSelected())
+			{
+				soluong10 = Integer.parseInt(jtSoLuong10.getText());
+				tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9 + tongtien10;
+				lblTongTien.setText(Float.toString(tongtien));
+			}
+			
 		// su kien khi click checkbox loaibenh, lay id cua checkbox
 		String command = ae.getActionCommand();
 
@@ -1456,11 +1528,9 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 
-			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected())
-					|| (!cbThuoc1.isSelected() && !cbThuoc2.isSelected() && !cbThuoc3.isSelected()
-							&& !cbThuoc4.isSelected() && !cbThuoc5.isSelected() && !cbThuoc6.isSelected()
-							&& !cbThuoc7.isSelected() && !cbThuoc9.isSelected() && !cbThuoc10.isSelected())) {
-				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh và 1 thuốc !", "WARNING",
+			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected()))
+			{
+				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
 				if((cbThuoc1.isSelected()&& validate.isNumber(jtSoLuong1.getText()) == false)||
@@ -1581,6 +1651,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Thêm phiếu khám thành công!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 					ArrayList<phieukhambenh> alpk = phieukhamDAO.phieukham();//set lại array list de maphieu tang
+					clientthread ct= new clientthread();
 					this.dispose();
 				}
 			}
