@@ -75,11 +75,11 @@ public class tabNhanVien extends JFrame {
 		pnlPhieuKhamBenh.setLayout(null);
 
 		// tao tab BaoCao
-//		JPanel pnlBaoCao = new JPanel();
-//		subtabBaoCao stbc = new subtabBaoCao();
-//		stbc.controlBaoCao(pnlBaoCao);
-//		jtp.addTab("Báo Cáo", pnlBaoCao);
-//		pnlBaoCao.setLayout(null);
+		JPanel pnlBaoCao = new JPanel();
+		subtabBaoCao stbc = new subtabBaoCao();
+		stbc.controlBaoCao(pnlBaoCao);
+		jtp.addTab("Báo Cáo", pnlBaoCao);
+		pnlBaoCao.setLayout(null);
 
 	}
 }

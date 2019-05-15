@@ -37,13 +37,13 @@
 		<fieldDescription><![CDATA[CACHDUNG]]></fieldDescription>
 	</field>
 	<title>
-		<band height="387" splitType="Stretch">
+		<band height="373" splitType="Stretch">
 			<line>
 				<reportElement x="0" y="0" width="515" height="1" uuid="dcfceafd-43fe-4639-8346-2c4298452af6"/>
 			</line>
 			<textField isBlankWhenNull="true" bookmarkLevel="1">
-				<reportElement x="0" y="9" width="515" height="30" uuid="ed9c2bc9-5eef-4c05-b15a-a6723457517c"/>
-				<textElement textAlignment="Center">
+				<reportElement x="130" y="9" width="383" height="30" uuid="ed9c2bc9-5eef-4c05-b15a-a6723457517c"/>
+				<textElement textAlignment="Left">
 					<font fontName="DejaVu Sans" size="25" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
@@ -246,6 +246,10 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TrieuChung3}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="11" y="3" width="80" height="75" uuid="50052437-ab66-4c02-82f2-6ed4efb44860"/>
+				<imageExpression><![CDATA["C:/Users/Mr.F/Documents/GitHub/1742012-1740280-LTUDJava-QLPhongMachTu/Source/images/ABC.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
