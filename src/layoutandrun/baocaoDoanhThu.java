@@ -23,6 +23,18 @@ import net.sf.jasperreports.view.JasperViewer;
 import util.HibernateUtil;
 
 public class baocaoDoanhThu {
+	public static List<Object[]> laydanhsachKiemTraRong(int Thang, int Nam) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String sql = "SELECT * FROM `hoadon` h WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b  ";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("a",Thang);
+		query.setParameter("b",Nam);
+		List<Object[]> o = query.list();
+		session.close();
+		return o;
+	}
+	
 	public static List<Object[]> laydanhsachTheoThangNam(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -88,21 +100,4 @@ public class baocaoDoanhThu {
 			e1.printStackTrace();
 		}
 	}	
-//		public static void main(String[] args) {
-//			ArrayList<bcdoanhthu> dataBeanList = new ArrayList<bcdoanhthu>();
-//			List<Object[]> o = laydanhsachTheoThangNam(5,2019);
-//			Date Ngay;
-//			int i = 1;
-//			for (Object[] countResult : o) {
-//				bcdoanhthu bc = new bcdoanhthu();
-//				bc.setSTT(String.valueOf(i));
-//				bc.setNGAY(new SimpleDateFormat("dd-MM-yyyy").format(countResult[0]));
-//				bc.setSOBENHNHAN(String.valueOf(countResult[1]));
-//				bc.setDOANHTHU(String.valueOf(countResult[2]));
-//				bc.setTYLE(String.valueOf(1));
-//				dataBeanList.add(bc);
-//				i++;
-//				System.out.println("stt--"+bc.getSTT()+" ngay--"+bc.getNGAY()+" sobenhnhan--"+bc.getSOBENHNHAN()+" doanhthu--"+bc.getDOANHTHU()+" tyle--"+bc.getTYLE());
-//			}
-//		}
 }

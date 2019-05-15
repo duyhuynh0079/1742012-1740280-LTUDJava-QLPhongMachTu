@@ -19,6 +19,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -33,7 +34,6 @@ import javax.swing.JButton;
 
 public class subtabBaoCao extends JFrame implements ActionListener {
 
-
 	private JPanel jpn;
 	private JComboBox cbbThang2;
 	private JComboBox cbbThang3;
@@ -46,15 +46,15 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 	private JButton btnBCLoaiBenh;
 
 	public void controlBaoCao(JPanel jpn) {
-//	public subtabBaoCao() {
-//	
-//		setBounds(100, 100, 450, 300);
-//		jpn = new JPanel();
-//		getContentPane().add(jpn);
-//		setSize(getMaximumSize());
-//		setLocationRelativeTo(null);
-//		setVisible(true);
-//		jpn.setLayout(null);
+		// public subtabBaoCao() {
+		//
+		// setBounds(100, 100, 450, 300);
+		// jpn = new JPanel();
+		// getContentPane().add(jpn);
+		// setSize(getMaximumSize());
+		// setLocationRelativeTo(null);
+		// setVisible(true);
+		// jpn.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Báo Cáo");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -205,8 +205,12 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 		if (command.equals("DoanhThu")) {
 			String Thang = cbbThang1.getSelectedItem().toString();
 			String Nam = cbbNam1.getSelectedItem().toString();
-			System.out.println("Thang: " + Integer.parseInt(Thang) + "-" + Integer.parseInt(Nam));
-			baocaoDoanhThu.thuchienInBaoCaoDoanhThu(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			List<Object[]> o = baocaoDoanhThu.laydanhsachKiemTraRong(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			if (o.size() > 0) {
+				baocaoDoanhThu.thuchienInBaoCaoDoanhThu(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			} else
+				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
 		}
 	}
 }
