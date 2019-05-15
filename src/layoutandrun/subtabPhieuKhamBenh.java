@@ -218,7 +218,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnXemDanhSach.addActionListener(this);
 		btnXemDanhSach.setActionCommand("Xem");
 
-		 serverthread st = new serverthread(jtb);
+		serverthread st = new serverthread(jtb);
 	}
 
 	@Override
@@ -235,10 +235,10 @@ public class subtabPhieuKhamBenh implements ActionListener {
 						JOptionPane.WARNING_MESSAGE);
 			} else {
 				try {
-					//tryen cac lable o tren
+					// tryen cac lable o tren
 					double tienthuoc = phieukhamDAO.laytongtientuMaPhieuKham(maphieukham);
-					double tongtien = tienthuoc +30000;
-					//truyen model thuoc
+					double tongtien = tienthuoc + 30000;
+					// truyen model thuoc
 					System.out.println("Nhan chi tiet");
 					// Tao default model
 					DefaultTableModel MD = new DefaultTableModel(
@@ -251,12 +251,13 @@ public class subtabPhieuKhamBenh implements ActionListener {
 						MD.addRow(new Object[] { countResult[0], countResult[1], countResult[2], countResult[3],
 								countResult[4] });
 					}
-					
+
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							System.out.println("tienthuoc----"+tienthuoc);
-							System.out.println("tienthuoc----"+tongtien);
-							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan, tienthuoc, tongtien);
+							System.out.println("tienthuoc----" + tienthuoc);
+							System.out.println("tienthuoc----" + tongtien);
+							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan,
+									tienthuoc, tongtien);
 							t.setVisible(true);
 						}
 					});
@@ -297,10 +298,33 @@ public class subtabPhieuKhamBenh implements ActionListener {
 							"WARNING", JOptionPane.WARNING_MESSAGE);
 				} else {
 					try {
-						formThanhToan ftt = new formThanhToan(maphieukham, mabenhnhan, tenbenhnhan, ngaykham,
-								tinhtrang);
-						ftt.setVisible(true);
-						ftt.setLocationRelativeTo(null);
+						// tryen cac lable o tren
+						double tienthuoc = phieukhamDAO.laytongtientuMaPhieuKham(maphieukham);
+						double tongtien = tienthuoc + 30000;
+						// truyen model thuoc
+						System.out.println("Nhan thanh toan");
+						// Tao default model
+						DefaultTableModel MD = new DefaultTableModel(
+								new String[] { "Tên Thuốc", "Số Lượng", "Đơn Giá", "Đơn Vị", "Cách Dùng" }, 0);
+						int i = 1;
+
+						List<Object[]> ob = thuocDAO.laydanhsachTheoMaPhieuKhamBenh(maphieukham);
+
+						for (Object[] countResult : ob) {
+							MD.addRow(new Object[] { countResult[0], countResult[1], countResult[2], countResult[3],
+									countResult[4] });
+						}
+
+						SwingUtilities.invokeLater(new Runnable() {
+							public void run() {
+								System.out.println("tienthuoc----" + tienthuoc);
+								System.out.println("tienthuoc----" + tongtien);
+								formThanhToan ftt = new formThanhToan(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan,
+										tenbenhnhan, tienthuoc, tongtien);
+											ftt.setVisible(true);
+							}
+						});
+
 					} catch (Exception e) {
 						// TODO: handle exception
 					}

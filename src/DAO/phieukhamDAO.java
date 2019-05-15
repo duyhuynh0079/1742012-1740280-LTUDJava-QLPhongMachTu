@@ -89,10 +89,10 @@ public class phieukhamDAO {
             return id;
         }
     }
-	public static float laytongtientuMaPhieuKham(String maphieukham)
+	public static double laytongtientuMaPhieuKham(String maphieukham)
 	{
 		List lpk;
-		float tongtien = 0;
+		double tongtien = 0;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         String sql = "SELECT * FROM phieukhambenh p where p.MaPhieuKhamBenh =:m";

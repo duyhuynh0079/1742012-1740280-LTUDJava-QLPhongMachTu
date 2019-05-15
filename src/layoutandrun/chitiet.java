@@ -23,8 +23,6 @@ public class chitiet extends JFrame {
 	private JTable table;
 	
 	public chitiet(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double tienthuoc, double tongtien) {
-		System.out.println("tienthuoc" + tienthuoc);
-		System.out.println("tienthuoc" + tongtien);
 		setSize(1000, 600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
@@ -206,8 +204,6 @@ public class chitiet extends JFrame {
 		table.setModel(modelPhieuKham);
 		scrollPane.setViewportView(table);
 		
-		System.out.println(lblTinhTrang.getText());
-		
 		if(lblTinhTrang.getText().equals("Chưa thanh toán"))
 		{	
 			System.out.println("vào if-------");
@@ -218,7 +214,7 @@ public class chitiet extends JFrame {
 		}
 		else
 		{
-			int TienKham = 30000;
+			double TienKham = 30000;
 			lblTienKham1.setText("Tiền Khám:");
 			lblTienKham.setText(String.valueOf(TienKham));
 			lblTongTien1.setText("Tổng Tiền:");

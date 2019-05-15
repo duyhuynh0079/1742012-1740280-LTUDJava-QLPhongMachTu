@@ -35,61 +35,39 @@ import javax.swing.ImageIcon;
 public class formThanhToan extends JFrame implements ActionListener {
 
 	private JPanel jp;
-	static String mahoadon = "";
-	static String maphieukham = "";
-	static String mabenhnhan = "";
-	static String tenbenhnhan = "";
-	static String ngaykham = "";
-	static String tinhtrang = "";
 	private JTable jtb;
-	private JButton btnIn;
+	private JLabel lblMaPhieuKham;
+	private JLabel lblNgayKham;
+	private JLabel lblMaBenhNhan;
+	private JLabel lblTinhTrang;
+	private JLabel lblTenBenhNhan;
 	private JLabel lblTienThuoc;
 	private JLabel lblTienKham;
 	private JLabel lblTongTien;
-	static float TienThuoc;
-	static float TienKham;
-	static float TongTien;
-	static JLabel lblsttBenh1;
-	static JLabel lblsttBenh2;
-	static JLabel lblsttBenh3;
-	static JLabel lblTenBenh1;
-	static JLabel lblTenBenh2;
-	static JLabel lblTenBenh3;
-	static JLabel lblTrieuChung1;
-	static JLabel lblTrieuChung2;
-	static JLabel lblTrieuChung3;
-	static JLabel lblNgayKham;
+	private JLabel lblsttBenh1;
+	private JLabel lblsttBenh2;
+	private JLabel lblsttBenh3;
+	private JLabel lblTenBenh1;
+	private JLabel lblTenBenh2;
+	private JLabel lblTenBenh3;
+	private JLabel lblTrieuChung1;
+	private JLabel lblTrieuChung2;
+	private JLabel lblTrieuChung3;
+	String mahoadon;
 	static ArrayList<hoadon> alhd = hoadonDAO.hoadon();
 
-	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGUI();
-			}
-		});
-	}
-
-	private static void createAndShowGUI() {
-		formThanhToan ftt = new formThanhToan(maphieukham, mabenhnhan, tenbenhnhan, ngaykham, tinhtrang);
-	}
-
-	public formThanhToan(String MaPhieuKham, String MaBenhNhan, String TenBenhNhan, String NgayKham, String TinhTrang) {
+	public formThanhToan(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double TienThuoc, double TongTien) {
 		// setSize(1000,600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);
-		this.maphieukham = MaPhieuKham;
-		this.mabenhnhan = MaBenhNhan;
-		this.tenbenhnhan = TenBenhNhan;
-		this.ngaykham = NgayKham;
-		this.tinhtrang = TinhTrang;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// đóng form
 		jp = new JPanel();
 		jp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		getContentPane().add(jp);
 		jp.setLayout(null);
-		this.setTitle("Phiếu khám " + maphieukham);
+		this.setTitle("Phiếu khám " + MaPhieuKham);
 
 		JLabel lblNewLabel = new JLabel("Thanh Toán Phiếu Khám Bệnh");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -204,32 +182,32 @@ public class formThanhToan extends JFrame implements ActionListener {
 		lblsttBenh3.setBounds(114, 274, 27, 21);
 		jp.add(lblsttBenh3);
 
-		JLabel lblMaPhieuKham = new JLabel("");
+		lblMaPhieuKham = new JLabel(MaPhieuKham);
 		lblMaPhieuKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaPhieuKham.setBounds(175, 72, 177, 19);
 		jp.add(lblMaPhieuKham);
 
-		JLabel lblMaBenhNhan = new JLabel("");
+		lblMaBenhNhan = new JLabel(MaBenhNhan);
 		lblMaBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaBenhNhan.setBounds(175, 126, 177, 19);
 		jp.add(lblMaBenhNhan);
 
-		lblNgayKham = new JLabel("");
+		lblNgayKham = new JLabel(NgayKham);
 		lblNgayKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNgayKham.setBounds(559, 72, 177, 21);
 		jp.add(lblNgayKham);
 
-		JLabel lblTenBenhNhan = new JLabel("");
+		lblTenBenhNhan = new JLabel(TenBenhNhan);
 		lblTenBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTenBenhNhan.setBounds(559, 126, 177, 21);
 		jp.add(lblTenBenhNhan);
 
-		JLabel lblTinhTrang = new JLabel("");
+		lblTinhTrang = new JLabel(TinhTrang);
 		lblTinhTrang.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTinhTrang.setBounds(880, 72, 134, 21);
 		jp.add(lblTinhTrang);
 
-		lblTienThuoc = new JLabel("");
+		lblTienThuoc = new JLabel(String.valueOf(TienThuoc));
 		lblTienThuoc.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTienThuoc.setBounds(1173, 76, 134, 26);
 		jp.add(lblTienThuoc);
@@ -239,36 +217,31 @@ public class formThanhToan extends JFrame implements ActionListener {
 		lblTienKham.setBounds(1174, 126, 133, 26);
 		jp.add(lblTienKham);
 
-		JLabel lblTinKhm = new JLabel("Tiền Khám:");
-		lblTinKhm.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblTinKhm.setBounds(1060, 122, 120, 30);
-		jp.add(lblTinKhm);
+		JLabel lblTienKham1= new JLabel("Tiền Khám:");
+		lblTienKham1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTienKham1.setBounds(1060, 122, 120, 30);
+		jp.add(lblTienKham1);
 
-		lblTongTien = new JLabel("");
+		lblTongTien = new JLabel(String.valueOf(TongTien));
 		lblTongTien.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTongTien.setBounds(1173, 179, 133, 26);
 		jp.add(lblTongTien);
 
-		JLabel lblTngTin_1 = new JLabel("Tổng Tiền:");
-		lblTngTin_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblTngTin_1.setBounds(1060, 175, 120, 30);
-		jp.add(lblTngTin_1);
+		JLabel lblTongTien1 = new JLabel("Tổng Tiền:");
+		lblTongTien1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTongTien1.setBounds(1060, 175, 120, 30);
+		jp.add(lblTongTien1);
 
-		btnIn = new JButton("In Hóa Đơn");
+		JButton btnIn = new JButton("In Hóa Đơn");
 		btnIn.setIcon(new ImageIcon(
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\in2.png"));
 		btnIn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnIn.setBounds(1059, 231, 193, 61);
 		jp.add(btnIn);
 
-		lblMaPhieuKham.setText(maphieukham);
-		lblMaBenhNhan.setText(mabenhnhan);
-		lblTenBenhNhan.setText(tenbenhnhan);
-		lblNgayKham.setText(ngaykham);
-		lblTinhTrang.setText(tinhtrang);
 
 		int stt = 1;
-		List<Object[]> o = loaibenhDAO.layLoaiBenhTheoMaPhieuKhamBenh(maphieukham);
+		List<Object[]> o = loaibenhDAO.layLoaiBenhTheoMaPhieuKhamBenh(MaPhieuKham);
 		for (Object[] countResult : o) {
 			if (stt == 1) {
 				lblsttBenh1.setText(String.valueOf(stt));
@@ -291,22 +264,11 @@ public class formThanhToan extends JFrame implements ActionListener {
 			}
 			stt++;
 		}
-	//	lblTienThuoc.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
-		TienThuoc = Float.parseFloat(lblTienThuoc.getText());
-		TienKham = 30000;
-		lblTienKham.setText(String.valueOf(TienKham));
-		TongTien = TienThuoc + TienKham;
-		lblTongTien.setText(String.valueOf(TongTien));
 
-		// Tao default model
-		DefaultTableModel modelPhieuKham = new DefaultTableModel(
-				new String[] { "Tên Thuốc", "Số Lượng", "Đơn Giá", "Đơn Vị", "Cách Dùng" }, 0);
-		int i = 1;
-		List<Object[]> ob = thuocDAO.laydanhsachTheoMaPhieuKhamBenh(maphieukham);
-		for (Object[] countResult : ob) {
-			modelPhieuKham.addRow(
-					new Object[] { countResult[0], countResult[1], countResult[2], countResult[3], countResult[4] });
-		}
+		double TienKham = 30000;
+		lblTienKham.setText(String.valueOf(TienKham));
+
+		// Add model truyền qua tu subtabPhieuKhamBenh
 		jtb = new JTable(modelPhieuKham);
 		jtb.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		jtb.setDefaultEditor(Object.class, null);
@@ -327,13 +289,13 @@ public class formThanhToan extends JFrame implements ActionListener {
 			try {
 				// sua tinh trang phieu kham Da Thanh Toan
 				int id = 0;
-				ngay = new SimpleDateFormat("dd-MM-yyyy").parse(ngaykham);
+				ngay = new SimpleDateFormat("dd-MM-yyyy").parse(lblNgayKham.getText());
 				phieukhambenh pkb = new phieukhambenh();
-				id = phieukhamDAO.layidTheoMaPhieuKhamBenh(maphieukham);
+				id = phieukhamDAO.layidTheoMaPhieuKhamBenh(lblMaPhieuKham.getText());
 				pkb.setID(id);
-				pkb.setMaPhieuKhamBenh(maphieukham);
+				pkb.setMaPhieuKhamBenh(lblMaPhieuKham.getText());
 				pkb.setNgayKham(ngay);
-				pkb.setTongTienThuoc(TienThuoc);
+				pkb.setTongTienThuoc(Double.parseDouble(lblTienThuoc.getText()));
 				pkb.setTinhTrang(1);
 				phieukhamDAO.suaPhieuKham(pkb);
 
@@ -342,24 +304,24 @@ public class formThanhToan extends JFrame implements ActionListener {
 				if (alhd.size() == 0) {
 					mahoadon = "HD1";
 				} else {
-					// neu da co roi thi tao chuoi mahphieukham moi tu phieukham cu + 1
+					// neu da co roi thi tao chuoi mahoadon moi tu mahoadon cu + 1
 					mahoadon = alhd.get(alhd.size() - 1).getMaHoaDon();// lay ma hoa don "HD1"
-					int sothutu = Integer.parseInt(maphieukham.replace("PK", ""));// bien "HD1" thanh "1", truyen
+					int sothutu = Integer.parseInt(mahoadon.replace("HD", ""));// bien "HD1" thanh "1", truyen
 																					// vao so thu tu
 					mahoadon = "HD" + (sothutu + 1);
 				}
 				hoadon hd = new hoadon();
 				hd.setMaHoaDon(mahoadon);
 				hd.setNgayThanhToan(new Date());// lay ngay thuc tai
-				hd.setTienKham(TienKham);
-				hd.setTongTien(TongTien);
+				hd.setTienKham(Double.parseDouble(lblTienKham.getText()));
+				hd.setTongTien(Double.parseDouble(lblTongTien.getText()));
 				hd.setID_PhieuKhamBenh(id);
 				hoadonDAO.themHoaDon(hd);
 				thamSoReport t = new thamSoReport();
-				t.setMaPhieuKham(maphieukham);
+				t.setMaPhieuKham(lblMaPhieuKham.getText());
 				t.setNgayKham(lblNgayKham.getText());
-				t.setMaBenhNhan(mabenhnhan);
-				t.setTenBenhNhan(tenbenhnhan);
+				t.setMaBenhNhan(lblMaBenhNhan.getText());
+				t.setTenBenhNhan(lblTenBenhNhan.getText());
 				t.setTienThuoc(lblTienThuoc.getText());
 				t.setTienKham(lblTienKham.getText());
 				t.setTongTien(lblTongTien.getText());
