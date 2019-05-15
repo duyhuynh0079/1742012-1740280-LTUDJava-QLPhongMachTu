@@ -145,6 +145,8 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	static ArrayList<benhnhan> albn = showBenhNhan.albn;
 	static ArrayList<cachdung> alcd = cachdungDAO.layCachDung();
 	static private JDatePickerImpl datePicker;
+	
+	
 	// bien loai benh va thuoc toan cuc
 	int idbenh1 = 0;
 	int idbenh2 = 0;

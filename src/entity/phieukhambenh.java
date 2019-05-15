@@ -6,7 +6,7 @@ public class phieukhambenh {
 	private int ID;
 	private String MaPhieuKhamBenh;
 	private Date NgayKham;
-	private float TongTienThuoc;
+	private double TongTienThuoc;
 	private int TinhTrang;
   
 	public int getID() {
@@ -27,10 +27,10 @@ public class phieukhambenh {
 	public void setNgayKham(Date ngayKham) {
 		NgayKham = ngayKham;
 	}
-	public float getTongTienThuoc() {
+	public double getTongTienThuoc() {
 		return TongTienThuoc;
 	}
-	public void setTongTienThuoc(float tongTienThuoc) {
+	public void setTongTienThuoc(double tongTienThuoc) {
 		TongTienThuoc = tongTienThuoc;
 	}
 	public int getTinhTrang() {
@@ -39,7 +39,7 @@ public class phieukhambenh {
 	public void setTinhTrang(int tinhTrang) {
 		TinhTrang = tinhTrang;
 	}
-	public phieukhambenh(int iD, String maPhieuKhamBenh, Date ngayKham, float tongTienThuoc, int tinhTrang) {
+	public phieukhambenh(int iD, String maPhieuKhamBenh, Date ngayKham, double tongTienThuoc, int tinhTrang) {
 		super();
 		ID = iD;
 		MaPhieuKhamBenh = maPhieuKhamBenh;
