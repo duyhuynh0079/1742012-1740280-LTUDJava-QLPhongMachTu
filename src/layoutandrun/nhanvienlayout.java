@@ -290,7 +290,11 @@ public class nhanvienlayout extends JFrame {
 						|| txtTenDangNhapNV.getText().equals("") || jpMatKhauNV.getText().equals("")
 						|| jpNhapLaiMatKhauNV.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-				} else if (jpMatKhauNV.getText().equals(jpNhapLaiMatKhauNV.getText()) == false) {
+				} else if(validate.isNumber(txtSDTNV.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Số điện thoại chỉ nhập số!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+				}
+				else if (jpMatKhauNV.getText().equals(jpNhapLaiMatKhauNV.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Mật khẩu không khớp nhập lại mật khẩu!");
 					jpMatKhauNV.setText(null);
 					jpNhapLaiMatKhauNV.setText(null);
@@ -373,7 +377,11 @@ public class nhanvienlayout extends JFrame {
 						|| txtTenDangNhapNV.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn nhân viên cần cập nhật!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
-				} else {
+				} else if (validate.isNumber(txtSDTNV.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Số điện thoại chỉ được nhập số!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				else {
 					Date ngaysinh;
 					nhanvien nv = new nhanvien();
 					ArrayList<nhanvien> alnv = NhanVienModel.listNV;
@@ -870,7 +878,11 @@ public class nhanvienlayout extends JFrame {
 				}else if(txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-				} else if (thuocDAO.timMaThuoc(txtMaThuoc.getText()) != null) {
+				} else if (validate.isNumber(txtDonGiaThuoc.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Đơn giá chỉ được nhập số!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				else if (thuocDAO.timMaThuoc(txtMaThuoc.getText()) != null) {
 					JOptionPane.showMessageDialog(null, "Mã thuốc đã tồn tại!");
 				} else {
 					thuoc t = new thuoc();
@@ -923,7 +935,11 @@ public class nhanvienlayout extends JFrame {
 						|| txtDonGiaThuoc.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn thuốc cần cập nhật!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
-				} else {
+				} else if (validate.isNumber(txtDonGiaThuoc.getText()) == false) {
+					JOptionPane.showMessageDialog(null, "Đơn giá chỉ được nhập số!", "WARNING",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				else {
 					thuoc t = new thuoc();
 					donvi dv = new donvi();
 					cachdung cd = new cachdung();
@@ -1576,7 +1592,10 @@ public class nhanvienlayout extends JFrame {
 					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
 							|| txtGiaTri.getText().equals("")) {
 						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-					} else if (quydinh1DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+					} else if (validate.isNumber(txtGiaTri.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Giá trị chỉ được nhập số!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					}else if (quydinh1DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
 						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
 					} else {
 						quydinh1 qd = new quydinh1();
@@ -1609,7 +1628,10 @@ public class nhanvienlayout extends JFrame {
 					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
 							|| txtGiaTri.getText().equals("") || txtSoDonVi.getText().equals("") || txtSoCachDung.getText().equals("")) {
 						JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-					} else if (quydinh2DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
+					} else if (validate.isNumber(txtTenQuyDinh.getText()) == false  || validate.isNumber(txtGiaTri.getText()) == false || validate.isNumber(txtSoDonVi.getText()) == false || validate.isNumber(txtSoCachDung.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Số loại bệnh, số loại thuốc, số đơn vị, số cách dùng chỉ được nhập số!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					}else if (quydinh2DAO.timMaQuyDinh(txtMaQuyDinh.getText()) != null) {
 						JOptionPane.showMessageDialog(null, "Mã quy định đã tồn tại!");
 					} else {
 						quydinh2 qd = new quydinh2();
@@ -1754,7 +1776,10 @@ public class nhanvienlayout extends JFrame {
 							|| txtGiaTri.getText().equals("")) {
 						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
 								JOptionPane.WARNING_MESSAGE);
-					} else {
+					} else if (validate.isNumber(txtGiaTri.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Giá trị chỉ được nhập số!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					}else {
 						quydinh1 qd = new quydinh1();
 						ArrayList<quydinh1> alqd = QuyDinh1Model.listQD;
 						for (int i = 0; i < alqd.size(); i++) {
@@ -1791,6 +1816,9 @@ public class nhanvienlayout extends JFrame {
 					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
 							|| txtGiaTri.getText().equals("") || txtSoDonVi.getText().equals("") || txtSoCachDung.getText().equals("")) {
 						JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn quy định cần cập nhật!", "WARNING",
+								JOptionPane.WARNING_MESSAGE);
+					}else if (validate.isNumber(txtTenQuyDinh.getText()) == false  || validate.isNumber(txtGiaTri.getText()) == false || validate.isNumber(txtSoDonVi.getText()) == false || validate.isNumber(txtSoCachDung.getText()) == false) {
+						JOptionPane.showMessageDialog(null, "Số loại bệnh, số loại thuốc, số đơn vị, số cách dùng chỉ được nhập số!", "WARNING",
 								JOptionPane.WARNING_MESSAGE);
 					} else {
 						quydinh2 qd = new quydinh2();
@@ -1948,17 +1976,25 @@ public class nhanvienlayout extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				lblIDQuyDinh.setText("ID quy định");
+				lblTenQuyDinh.setText("Tên quy định");
+				lblGiaTri.setText("Giá trị");
 				txtMaQuyDinh.setText(null);
 				txtTenQuyDinh.setText(null);
 				txtGiaTri.setText(null);
+				
+				
+				lblGiaTri.setText("Giá trị");
+				lblGiaTri.setVisible(true);
+				txtGiaTri.setText(null);
+				txtGiaTri.setVisible(true);
+				
+				lblSoDonVi.setVisible(false);
+				txtSoDonVi.setVisible(false);
+				lblSoCachDung.setVisible(false);
+				txtSoCachDung.setVisible(false);
 				cmbQuyDinh.setModel(new DefaultComboBoxModel(new String[] { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" }));
 				QuyDinh1Model modelQuyDinh = new QuyDinh1Model();
 				tableQuyDinhThuoc.setModel(modelQuyDinh);
-				System.out.println("So Loai Benh: "+ DAO.quydinh2DAO.laySoLoaiBenh(1));
-				System.out.println("So Loai Thuoc: "+ DAO.quydinh2DAO.laySoLoaiThuoc(1));
-				System.out.println("So Don Vi: "+ DAO.quydinh2DAO.laySoDonVi(1));
-				System.out.println("So Cach Dung: "+ DAO.quydinh2DAO.laySoCachDung(1));
-				System.out.println("So dong: "+ DAO.thuocDAO.laySoDong());
 			}
 		});
 		btnLoadQuyDinhThuoc.setIcon(new ImageIcon(
@@ -1983,7 +2019,7 @@ public class nhanvienlayout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				dangnhap dn = new dangnhap();
 				dn.setVisible(true);
-				dn.setLocationRelativeTo(null); // canh giá»¯a mÃ n hÃ¬nh
+				dn.setLocationRelativeTo(null); // canh giữa màn hình
 				nhanvienlayout.this.setVisible(false);
 			}
 		});
