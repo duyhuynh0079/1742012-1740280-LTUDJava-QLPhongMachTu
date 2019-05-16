@@ -51,8 +51,6 @@ public class inhoadon {
 		}
 		JasperReport jasperReport;
 		try {
-//			jasperReport = JasperCompileManager
-//					.compileReport("C:\\Users\\Mr.F\\eclipse-workspace\\layout\\Blank_A4.jrxml");
 			jasperReport = JasperCompileManager
 					.compileReport("E:\\sourcetree\\src\\Bill.jrxml");
 
