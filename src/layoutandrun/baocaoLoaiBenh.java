@@ -1,7 +1,5 @@
 package layoutandrun;
 
-import java.math.BigInteger;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.Map;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
-import entity.bcdoanhthu;
+import entity.bcloaibenh;
 import entity.bcthuoc;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -21,7 +19,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 import util.HibernateUtil;
 
-public class baocaoThuoc {
+public class baocaoLoaiBenh {
 	public static List<Object[]> laydanhsachKiemTraRong(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -33,14 +31,18 @@ public class baocaoThuoc {
 		session.close();
 		return o;
 	}
+
 	public static List<Object[]> laydanhsachTheoThangNam(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT t.TenThuoc, d.TenDonVi, SUM(ct.SoLuong) AS 'SoLanDung'\r\n"
-				+ "FROM phieukhambenh p, ctthuoc ct, thuoc t, donvi d, cachdung c\r\n"
-				+ "WHERE p.ID = ct.ID_PhieuKhamBenh \r\n" + "AND ct.ID_Thuoc = t.ID\r\n" + "AND t.ID_DonVi = d.ID\r\n"
-				+ "AND t.ID_CachDung = c.ID\r\n" + "AND MONTH(p.NgayKham) =:a \r\n" + "AND YEAR(p.NgayKham) =:b\r\n"
-				+ "AND p.TinhTrang = 1\r\n" + "GROUP BY t.MaThuoc";
+		String sql = "SELECT l.TenLoaiBenh, l.TrieuChung, COUNT(l.TenLoaiBenh) AS 'SoCaBenh' "
+				+ "FROM phieukhambenh p, ctloaibenh ct, loaibenh l "
+				+ "WHERE p.ID = ct.ID_PhieuKhamBenh "
+				+ "AND ct.ID_LoaiBenh = l.ID "
+				+ "AND MONTH(p.NgayKham) =:a "
+				+ "AND YEAR(p.NgayKham) =:b "
+				+ "AND p.TinhTrang = 1 "
+				+ "GROUP BY l.MaLoaiBenh ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("a", Thang);
 		query.setParameter("b", Nam);
@@ -48,31 +50,30 @@ public class baocaoThuoc {
 		session.close();
 		return o;
 	}
-
-	public static void thuchienInBaoCaoThuoc(int Thang, int Nam) {
-		ArrayList<bcthuoc> dataBeanList = new ArrayList<bcthuoc>();
+		public static void thuchienInBaoCaoBenh(int Thang, int Nam) {
+		ArrayList<bcloaibenh> dataBeanList = new ArrayList<bcloaibenh>();
 		List<Object[]> o = laydanhsachTheoThangNam(Thang, Nam);
 		int i = 1;
 		for (Object[] countResult : o) {
-			bcthuoc bc = new bcthuoc();
+			bcloaibenh bc = new bcloaibenh();
 			bc.setSTT(String.valueOf(i));
-			bc.setTHUOC(String.valueOf(countResult[0]));
-			bc.setDONVITINH(String.valueOf(countResult[1]));
-			bc.setSOLANDUNG(String.valueOf(countResult[2]));
+			bc.setTENLOAIBENH(String.valueOf(countResult[0]));
+			bc.setTRIEUCHUNG(String.valueOf(countResult[1]));
+			bc.setSOCABENH(String.valueOf(countResult[2]));
 			dataBeanList.add(bc);
 			i++;
-			System.out.println("stt--" + bc.getSTT() + " thuoc--" + bc.getTHUOC() + " donvitinh--" + bc.getDONVITINH()
-					+ " solandung--" + bc.getSOLANDUNG());
+			System.out.println("stt--" + bc.getSTT() + " tenbenh--" + bc.getTENLOAIBENH() + " trieuchung--" + bc.getTRIEUCHUNG()
+					+ " socabenh--" + bc.getSOCABENH());
 		}
 		JasperReport jasperReport;
 		try {
-			jasperReport = JasperCompileManager.compileReport("E:\\sourcetree\\src\\BCThuoc.jrxml");
+			jasperReport = JasperCompileManager.compileReport("E:\\sourcetree\\src\\BCLoaiBenh.jrxml");
 
 			JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataBeanList);
 
 			Map parameters = new HashMap();
 
-			parameters.put("ReportTitle", "Báo cáo sử dụng thuốc");
+			parameters.put("ReportTitle", "Báo cáo loại bệnh theo tháng");
 			parameters.put("Thang", String.valueOf(Thang) + "-" + String.valueOf(Nam));
 
 			JasperPrint jasperPrint = null;

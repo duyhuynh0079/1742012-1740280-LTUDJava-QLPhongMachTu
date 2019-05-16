@@ -212,5 +212,27 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 		}
+		
+		if (command.equals("Thuoc")) {
+			String Thang = cbbThang2.getSelectedItem().toString();
+			String Nam = cbbNam2.getSelectedItem().toString();
+			List<Object[]> o = baocaoThuoc.laydanhsachKiemTraRong(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			if (o.size() > 0) {
+				baocaoThuoc.thuchienInBaoCaoThuoc(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			} else
+				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+		}
+		
+		if (command.equals("LoaiBenh")) {
+			String Thang = cbbThang3.getSelectedItem().toString();
+			String Nam = cbbNam3.getSelectedItem().toString();
+			List<Object[]> o = baocaoLoaiBenh.laydanhsachKiemTraRong(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			if (o.size() > 0) {
+				baocaoLoaiBenh.thuchienInBaoCaoBenh(Integer.parseInt(Thang), Integer.parseInt(Nam));
+			} else
+				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+		}
 	}
 }
