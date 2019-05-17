@@ -6,8 +6,8 @@ public class hoadon {
 	int ID;
 	private String MaHoaDon;
 	private Date NgayThanhToan;
-	private float TienKham;
-	private float TongTien;
+	private double TienKham;
+	private double TongTien;
 	int ID_PhieuKhamBenh;
 	public int getID() {
 		return ID;
@@ -27,16 +27,16 @@ public class hoadon {
 	public void setNgayThanhToan(Date ngayThanhToan) {
 		NgayThanhToan = ngayThanhToan;
 	}
-	public float getTienKham() {
+	public double getTienKham() {
 		return TienKham;
 	}
-	public void setTienKham(float tienKham) {
+	public void setTienKham(double tienKham) {
 		TienKham = tienKham;
 	}
-	public float getTongTien() {
+	public double getTongTien() {
 		return TongTien;
 	}
-	public void setTongTien(float tongTien) {
+	public void setTongTien(double tongTien) {
 		TongTien = tongTien;
 	}
 	public int getID_PhieuKhamBenh() {
@@ -45,7 +45,7 @@ public class hoadon {
 	public void setID_PhieuKhamBenh(int iD_PhieuKhamBenh) {
 		ID_PhieuKhamBenh = iD_PhieuKhamBenh;
 	}
-	public hoadon(int iD, String maHoaDon, Date ngayThanhToan, float tienKham, float tongTien, int iD_PhieuKhamBenh) {
+	public hoadon(int iD, String maHoaDon, Date ngayThanhToan, double tienKham, double tongTien, int iD_PhieuKhamBenh) {
 		super();
 		ID = iD;
 		MaHoaDon = maHoaDon;

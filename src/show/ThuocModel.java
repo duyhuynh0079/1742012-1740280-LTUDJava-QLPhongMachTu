@@ -46,7 +46,7 @@ public class ThuocModel extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 6;//lay 6 cot tu database
+		return 7;//lay 7 cot tu database
 	}
 
 	@Override
@@ -64,11 +64,13 @@ public class ThuocModel extends AbstractTableModel{
 			return t2.getMaThuoc();
 		case 2:
 			return t2.getTenThuoc();
-		case 3: 
+		case 3:
+			return t2.getSoLuong();
+		case 4: 
 			return t2.getDonGia();
-		case 4:
-			return t2.getDv().getTenDonVi();
 		case 5:
+			return t2.getDv().getTenDonVi();
+		case 6:
 			return t2.getCd().getTenCachDung();
 		default:
 			return null;
@@ -76,7 +78,7 @@ public class ThuocModel extends AbstractTableModel{
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID thuốc","Mã thuốc","Tên thuốc","Đơn giá","Đơn vị","Cách dùng"};
+			String[] columnNames=new String[] {"ID thuốc","Mã thuốc","Tên thuốc","Số lượng","Đơn giá","Đơn vị","Cách dùng"};
 			return columnNames[col];
 		}
 

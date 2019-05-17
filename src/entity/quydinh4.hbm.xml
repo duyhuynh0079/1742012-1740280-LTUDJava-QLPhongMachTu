@@ -13,6 +13,8 @@
 		<property name="TenQuyDinh" type="string">
 			<column name="TenQuyDinh" length="100" />
 		</property>
-	
+		<property name="GiaTri" type="double">
+			<column name="GiaTri" length="100" />
+		</property>
 	</class>
 </hibernate-mapping>

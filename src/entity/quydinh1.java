@@ -4,7 +4,7 @@ public class quydinh1 {
 	private int ID;
 	private String MaQuyDinh;
 	private String TenQuyDinh;
-	private float GiaTri;
+	private int GiaTri;
 	public int getID() {
 		return ID;
 	}
@@ -23,13 +23,13 @@ public class quydinh1 {
 	public void setTenQuyDinh(String tenQuyDinh) {
 		TenQuyDinh = tenQuyDinh;
 	}
-	public float getGiaTri() {
+	public int getGiaTri() {
 		return GiaTri;
 	}
-	public void setGiaTri(float giaTri) {
+	public void setGiaTri(int giaTri) {
 		GiaTri = giaTri;
 	}
-	public quydinh1(int iD, String maQuyDinh, String tenQuyDinh, float giaTri) {
+	public quydinh1(int iD, String maQuyDinh, String tenQuyDinh, int giaTri) {
 		super();
 		ID = iD;
 		MaQuyDinh = maQuyDinh;
