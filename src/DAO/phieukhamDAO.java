@@ -73,6 +73,27 @@ public class phieukhamDAO {
 		}
 		return alpk;
 	}
+	public static ArrayList<phieukhambenh> phieukhamTrongNgay()
+	{
+		ArrayList<phieukhambenh> sophieuhomnay = new ArrayList<phieukhambenh>();
+		List lpk;
+		//tao session ket noi hibernate den du lieu
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		//mo ket noi bang session
+		Session s = sf.openSession();
+		//tao cau query truy van den bang sinh vien
+		String sql = "SELECT * FROM phieukhambenh p WHERE p.NgayKham = CURDATE()";
+		SQLQuery query = s.createSQLQuery(sql);
+		query.addEntity(phieukhambenh.class);
+		lpk = query.list();
+
+		//ham hung 1 array list rieng từ list truyen qua
+		for (Iterator iterator = lpk.iterator(); iterator.hasNext();) {
+			phieukhambenh pkb = (phieukhambenh) iterator.next();
+			sophieuhomnay.add(pkb);
+		}
+		return sophieuhomnay;
+	}
 	
 	public static int themPhieuKham(phieukhambenh pk) {
         int id = 0;

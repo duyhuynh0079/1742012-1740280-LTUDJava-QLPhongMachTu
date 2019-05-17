@@ -36,7 +36,7 @@ public class baocaoThuoc {
 	public static List<Object[]> laydanhsachTheoThangNam(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT t.TenThuoc, d.TenDonVi, SUM(ct.SoLuong) AS 'SoLanDung'\r\n"
+		String sql = "SELECT t.TenThuoc, d.TenDonVi, t.SoLuong, SUM(ct.SoLuong) AS 'SoLanDung'\r\n"
 				+ "FROM phieukhambenh p, ctthuoc ct, thuoc t, donvi d, cachdung c\r\n"
 				+ "WHERE p.ID = ct.ID_PhieuKhamBenh \r\n" + "AND ct.ID_Thuoc = t.ID\r\n" + "AND t.ID_DonVi = d.ID\r\n"
 				+ "AND t.ID_CachDung = c.ID\r\n" + "AND MONTH(p.NgayKham) =:a \r\n" + "AND YEAR(p.NgayKham) =:b\r\n"
@@ -58,11 +58,12 @@ public class baocaoThuoc {
 			bc.setSTT(String.valueOf(i));
 			bc.setTHUOC(String.valueOf(countResult[0]));
 			bc.setDONVITINH(String.valueOf(countResult[1]));
-			bc.setSOLANDUNG(String.valueOf(countResult[2]));
+			bc.setSOLUONG(String.valueOf(countResult[2]));
+			bc.setSOLANDUNG(String.valueOf(countResult[3]));
 			dataBeanList.add(bc);
 			i++;
 			System.out.println("stt--" + bc.getSTT() + " thuoc--" + bc.getTHUOC() + " donvitinh--" + bc.getDONVITINH()
-					+ " solandung--" + bc.getSOLANDUNG());
+					+"--soluong--"+bc.getSOLUONG()+ "--solandung--" + bc.getSOLANDUNG());
 		}
 		JasperReport jasperReport;
 		try {

@@ -1536,7 +1536,7 @@ public class nhanvienlayout extends JFrame {
 					quydinh1 qd = new quydinh1();
 					qd.setMaQuyDinh(txtMaQuyDinh.getText());
 					qd.setTenQuyDinh(txtTenQuyDinh.getText());
-					qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
+					qd.setGiaTri(Integer.parseInt(txtGiaTri.getText()));
 					try {
 						if (DAO.quydinh1DAO.themQuyDinh(qd) == true) {
 							JOptionPane.showMessageDialog(null, "Đã thêm quy định: " + txtMaQuyDinh.getText());
@@ -1584,7 +1584,7 @@ public class nhanvienlayout extends JFrame {
 							qd.setID(alqd.get(i).getID());
 							qd.setMaQuyDinh(txtMaQuyDinh.getText());
 							qd.setTenQuyDinh(txtTenQuyDinh.getText());
-							qd.setGiaTri(Float.parseFloat(txtGiaTri.getText()));
+							qd.setGiaTri(Integer.parseInt(txtGiaTri.getText()));
 						}
 					}
 					try {

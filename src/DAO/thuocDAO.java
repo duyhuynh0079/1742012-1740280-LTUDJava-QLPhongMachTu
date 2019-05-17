@@ -107,6 +107,21 @@ public class thuocDAO {
 			session.close(); 
 		}
 	}
+	public static boolean suaThuoc1(thuoc1 t) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			session.update(t); 
+			session.getTransaction().commit();
+			return true;
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println(e);
+			return false; 
+		}finally {
+			session.close(); 
+		}
+	}
 	
 	public static List<Object[]>laydanhsachTheoMaPhieuKhamBenh(String maphieukham)
 	{

@@ -15,6 +15,9 @@
 	<field name="DONVITINH" class="java.lang.String">
 		<fieldDescription><![CDATA[DONVITINH]]></fieldDescription>
 	</field>
+	<field name="SOLUONG" class="java.lang.String">
+		<fieldDescription><![CDATA[SOLUONG]]></fieldDescription>
+	</field>
 	<field name="SOLANDUNG" class="java.lang.String">
 		<fieldDescription><![CDATA[SOLANDUNG]]></fieldDescription>
 	</field>
@@ -66,32 +69,39 @@
             ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="12" width="70" height="15" uuid="f063b5dc-15be-4718-be5e-a79e7a9d0752"/>
+				<reportElement x="0" y="12" width="50" height="15" uuid="f063b5dc-15be-4718-be5e-a79e7a9d0752"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[STT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="85" y="12" width="170" height="15" uuid="992ef695-e12c-49ef-b2d7-d256e49b5c9d"/>
+				<reportElement x="60" y="12" width="150" height="15" uuid="992ef695-e12c-49ef-b2d7-d256e49b5c9d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Thuốc]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="288" y="12" width="90" height="15" uuid="86eaa7f3-8664-43bc-bf0b-b1cdc0ce93b3"/>
+				<reportElement x="221" y="12" width="90" height="15" uuid="86eaa7f3-8664-43bc-bf0b-b1cdc0ce93b3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Đơn Vị Tính]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="410" y="12" width="103" height="15" uuid="a611ae69-439f-4ffe-bfcc-40b3a5ca68d0"/>
+				<reportElement x="430" y="12" width="83" height="15" uuid="a611ae69-439f-4ffe-bfcc-40b3a5ca68d0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[Số Lần Dùng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="12" width="76" height="15" uuid="d4926c48-ec8c-4370-9683-7a2a316da657"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Số Lượng]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -110,26 +120,31 @@
             ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="410" y="0" width="104" height="15" uuid="56ef191e-61ae-4149-934d-d3ac51e82c02"/>
+				<reportElement x="430" y="0" width="84" height="15" uuid="56ef191e-61ae-4149-934d-d3ac51e82c02"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SOLANDUNG}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="70" height="15" uuid="07a78b3a-87de-43ff-83b3-e20f4d446e9a"/>
+				<reportElement x="0" y="0" width="50" height="15" uuid="07a78b3a-87de-43ff-83b3-e20f4d446e9a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{STT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="0" width="170" height="15" uuid="455c8e6e-13fa-4955-8cc7-b065032033f2"/>
+				<reportElement x="60" y="0" width="150" height="15" uuid="455c8e6e-13fa-4955-8cc7-b065032033f2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{THUOC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="288" y="0" width="90" height="15" uuid="d37839c9-6b09-4b48-b26a-23a3eb1cc653"/>
+				<reportElement x="221" y="0" width="90" height="15" uuid="d37839c9-6b09-4b48-b26a-23a3eb1cc653"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{DONVITINH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="76" height="15" uuid="241ad9d1-83ef-40aa-8304-eceae7931f00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SOLUONG}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

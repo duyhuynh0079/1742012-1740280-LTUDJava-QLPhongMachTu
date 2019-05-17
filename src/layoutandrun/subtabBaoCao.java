@@ -46,15 +46,15 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 	private JButton btnBCLoaiBenh;
 
 	public void controlBaoCao(JPanel jpn) {
-		// public subtabBaoCao() {
-		//
-		// setBounds(100, 100, 450, 300);
-		// jpn = new JPanel();
-		// getContentPane().add(jpn);
-		// setSize(getMaximumSize());
-		// setLocationRelativeTo(null);
-		// setVisible(true);
-		// jpn.setLayout(null);
+//		 public subtabBaoCao() {
+//		
+//		 setBounds(100, 100, 450, 300);
+//		 jpn = new JPanel();
+//		 getContentPane().add(jpn);
+//		 setSize(getMaximumSize());
+//		 setLocationRelativeTo(null);
+//		 setVisible(true);
+//		 jpn.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Báo Cáo");
 		lblNewLabel.setForeground(Color.BLUE);
