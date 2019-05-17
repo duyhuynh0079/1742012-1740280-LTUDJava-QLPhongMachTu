@@ -20,6 +20,7 @@ import DAO.ctloaibenhDAO;
 import DAO.ctthuocDAO;
 import DAO.loaibenhDAO;
 import DAO.phieukhamDAO;
+import DAO.quydinh1DAO;
 import DAO.thuocDAO;
 import entity.benhnhan;
 import entity.cachdung;
@@ -28,6 +29,7 @@ import entity.ctloaibenh;
 import entity.ctthuoc;
 import entity.loaibenh;
 import entity.phieukhambenh;
+import entity.quydinh1;
 import entity.thuoc1;
 import show.showBenhNhan;
 
@@ -145,8 +147,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	static ArrayList<benhnhan> albn = showBenhNhan.albn;
 	static ArrayList<cachdung> alcd = cachdungDAO.layCachDung();
 	static private JDatePickerImpl datePicker;
-	
-	
+
 	// bien loai benh va thuoc toan cuc
 	int idbenh1 = 0;
 	int idbenh2 = 0;
@@ -177,7 +178,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	}
 
 	public formThemPhieu(String MaBenhNhan, String TenBenhNhan) {
-		setSize(1000,600);
+		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);
@@ -1156,7 +1157,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		ArrayList<thuoc1> alThuoc = thuocDAO.layThuoc();
 		ArrayList<loaibenh> alLoaiBenh = loaibenhDAO.layLoaiBenh();
-
 		// su kien thay doi cbb thi dongia doi theo
 		for (int i = 0; i < alThuoc.size(); i++) {
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
@@ -1190,78 +1190,70 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				lblDonGia10.setText(Float.toString(alThuoc.get(i).getDonGia()));
 			}
 		}
-		//tinh tong tien khi doi combobox
-			if(cbThuoc1.isSelected())
-			{
-				soluong1 = Integer.parseInt(jtSoLuong1.getText());
-				tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
-				tongtien = tongtien1;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc2.isSelected())
-			{
-				soluong2 = Integer.parseInt(jtSoLuong2.getText());
-				tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
-				tongtien = tongtien1 + tongtien2;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc3.isSelected())
-			{
-				soluong3 = Integer.parseInt(jtSoLuong3.getText());
-				tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc4.isSelected())
-			{
-				soluong4 = Integer.parseInt(jtSoLuong4.getText());
-				tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc5.isSelected())
-			{
-				soluong5 = Integer.parseInt(jtSoLuong5.getText());
-				tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc6.isSelected())
-			{
-				soluong6 = Integer.parseInt(jtSoLuong6.getText());
-				tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc7.isSelected())
-			{
-				soluong7 = Integer.parseInt(jtSoLuong7.getText());
-				tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc8.isSelected())
-			{
-				soluong8 = Integer.parseInt(jtSoLuong8.getText());
-				tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc9.isSelected())
-			{
-				soluong9 = Integer.parseInt(jtSoLuong9.getText());
-				tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			if(cbThuoc10.isSelected())
-			{
-				soluong10 = Integer.parseInt(jtSoLuong10.getText());
-				tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
-				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8 + tongtien9 + tongtien10;
-				lblTongTien.setText(Float.toString(tongtien));
-			}
-			
+		// tinh tong tien khi doi combobox
+		if (cbThuoc1.isSelected()) {
+			soluong1 = Integer.parseInt(jtSoLuong1.getText());
+			tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+			tongtien = tongtien1;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc2.isSelected()) {
+			soluong2 = Integer.parseInt(jtSoLuong2.getText());
+			tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
+			tongtien = tongtien1 + tongtien2;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc3.isSelected()) {
+			soluong3 = Integer.parseInt(jtSoLuong3.getText());
+			tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc4.isSelected()) {
+			soluong4 = Integer.parseInt(jtSoLuong4.getText());
+			tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc5.isSelected()) {
+			soluong5 = Integer.parseInt(jtSoLuong5.getText());
+			tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc6.isSelected()) {
+			soluong6 = Integer.parseInt(jtSoLuong6.getText());
+			tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc7.isSelected()) {
+			soluong7 = Integer.parseInt(jtSoLuong7.getText());
+			tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc8.isSelected()) {
+			soluong8 = Integer.parseInt(jtSoLuong8.getText());
+			tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc9.isSelected()) {
+			soluong9 = Integer.parseInt(jtSoLuong9.getText());
+			tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+					+ tongtien9;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+		if (cbThuoc10.isSelected()) {
+			soluong10 = Integer.parseInt(jtSoLuong10.getText());
+			tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+					+ tongtien9 + tongtien10;
+			lblTongTien.setText(Float.toString(tongtien));
+		}
+
 		// su kien khi click checkbox loaibenh, lay id cua checkbox
 		String command = ae.getActionCommand();
 
@@ -1273,7 +1265,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 						idbenh1 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} 
+			}
 		}
 		if (command.equals("loaibenh2")) {
 			if (cbLoaiBenh2.isSelected()) {
@@ -1291,7 +1283,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 						idbenh3 = alLoaiBenh.get(i).getID();
 					}
 				}
-			} 
+			}
 		}
 
 		// su kien khi click checkbox thuoc
@@ -1513,6 +1505,15 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		}
 
 		if (command.equals("them")) {
+			ArrayList<phieukhambenh> ALPK = phieukhamDAO.phieukhamTrongNgay();// danh sach phieukham trong ngay hom nay
+			System.out.println("so phieu kham trong ngay:" + ALPK.size());
+			ArrayList<quydinh1> qd1 = quydinh1DAO.quydinh1();
+			int sophieutoida = 0;
+			// lay so phieukham toi da 1 ngay theo quy dinh
+			for (int i = 0; i < qd1.size(); i++) {
+				sophieutoida = qd1.get(i).getGiaTri();
+			}
+			System.out.println("so phieu toi da: " + sophieutoida);
 			int idbenhnhan = 0;
 			int idcachdung = 0;
 			Date ngaykham = new Date();
@@ -1529,134 +1530,329 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected()))
-			{
+			//xet ko chon loai benh
+			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected())) {
 				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
-			} else {
-				if((cbThuoc1.isSelected()&& validate.isNumber(jtSoLuong1.getText()) == false)||
-						(cbThuoc2.isSelected()&& validate.isNumber(jtSoLuong2.getText()) == false)||
-						(cbThuoc3.isSelected()&& validate.isNumber(jtSoLuong3.getText()) == false)||
-						(cbThuoc4.isSelected()&& validate.isNumber(jtSoLuong4.getText()) == false)||
-						(cbThuoc5.isSelected()&& validate.isNumber(jtSoLuong5.getText()) == false)||
-						(cbThuoc6.isSelected()&& validate.isNumber(jtSoLuong6.getText()) == false)||
-						(cbThuoc7.isSelected()&& validate.isNumber(jtSoLuong7.getText()) == false)||
-						(cbThuoc8.isSelected()&& validate.isNumber(jtSoLuong8.getText()) == false)||
-						(cbThuoc9.isSelected()&& validate.isNumber(jtSoLuong9.getText()) == false)||
-						(cbThuoc10.isSelected()&& validate.isNumber(jtSoLuong10.getText()) == false)
-						) {
-							JOptionPane.showMessageDialog(null, "Nhập số cho số lượng thuốc đã chọn!", "WARNING",
-								JOptionPane.WARNING_MESSAGE);}
-				else {
-					// them bang phieu kham benh truoc
-					phieukhambenh pkb = new phieukhambenh();
-					pkb.setMaPhieuKhamBenh(maphieukham);
-					pkb.setNgayKham(ngaykham);
-					pkb.setTinhTrang(0);
-					pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
-					int idpk = phieukhamDAO.themPhieuKham(pkb);
-					// them cac bang trung gian
-					// them bang ctbenhnhan
-					ctbenhnhan ctbn = new ctbenhnhan();
-					ctbn.setID_BenhNhan(idbenhnhan);
-					ctbn.setID_PhieuKhamBenh(idpk);
-					ctbenhnhanDAO.themCTBenhNhan(ctbn);
-					// them bang ctloaibenh
-					ctloaibenh ctlb = new ctloaibenh();
-					if (idbenh1 != 0) {
-						ctlb.setID_LoaiBenh(idbenh1);
-						ctlb.setID_PhieuKhamBenh(idpk);
-						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+				return;
+			}
+			//xet so phieu kham hom nay va qui dinh1
+			if (ALPK.size() == sophieutoida) {
+				JOptionPane.showMessageDialog(null, "Thêm thất bại, hôm nay đã đủ số người: " + sophieutoida, "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			//xet so luong thuoc phai kieu so ko 
+			if ((cbThuoc1.isSelected() && validate.isNumber(jtSoLuong1.getText()) == false)
+					|| (cbThuoc2.isSelected() && validate.isNumber(jtSoLuong2.getText()) == false)
+					|| (cbThuoc3.isSelected() && validate.isNumber(jtSoLuong3.getText()) == false)
+					|| (cbThuoc4.isSelected() && validate.isNumber(jtSoLuong4.getText()) == false)
+					|| (cbThuoc5.isSelected() && validate.isNumber(jtSoLuong5.getText()) == false)
+					|| (cbThuoc6.isSelected() && validate.isNumber(jtSoLuong6.getText()) == false)
+					|| (cbThuoc7.isSelected() && validate.isNumber(jtSoLuong7.getText()) == false)
+					|| (cbThuoc8.isSelected() && validate.isNumber(jtSoLuong8.getText()) == false)
+					|| (cbThuoc9.isSelected() && validate.isNumber(jtSoLuong9.getText()) == false)
+					|| (cbThuoc10.isSelected() && validate.isNumber(jtSoLuong10.getText()) == false)) {
+				JOptionPane.showMessageDialog(null, "Nhập số cho số lượng thuốc đã chọn!", "WARNING",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			// xet soluong thuoc phieu kham va soluong thuoc trong kho
+		
+			for (int t = 0; t < alThuoc.size(); t++) {
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())&&cbThuoc1.isSelected()) {
+					System.out.println("ID--"+alThuoc.get(t).getID()+"--Ten--"+alThuoc.get(t).getTenThuoc()+"---Sl---"+alThuoc.get(t).getSoLuong());
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong1.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idbenh2 != 0) {
-						ctlb.setID_LoaiBenh(idbenh2);
-						ctlb.setID_PhieuKhamBenh(idpk);
-						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())&&cbThuoc2.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong2.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idbenh3 != 0) {
-						ctlb.setID_LoaiBenh(idbenh3);
-						ctlb.setID_PhieuKhamBenh(idpk);
-						ctloaibenhDAO.themCTLoaiBenh(ctlb);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())&&cbThuoc3.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong3.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					ctthuoc ctthuoc = new ctthuoc();
-					if (idthuoc1 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc1);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong1);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())&&cbThuoc4.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong4.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc2 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc2);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong2);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())&&cbThuoc5.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong5.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc3 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc3);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong3);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())&&cbThuoc6.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong6.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc4 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc4);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong4);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())&&cbThuoc7.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong7.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc5 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc5);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong5);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())&&cbThuoc8.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong8.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc6 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc6);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong6);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())&&cbThuoc9.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong9.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc7 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc7);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong7);
-						ctthuocDAO.themCTThuoc(ctthuoc);
+				}
+				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())&&cbThuoc10.isSelected()) {
+					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong10.getText())) {
+						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
+								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
+						return;
 					}
-					if (idthuoc8 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc8);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong8);
-						ctthuocDAO.themCTThuoc(ctthuoc);
-					}
-					if (idthuoc9 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc9);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong9);
-						ctthuocDAO.themCTThuoc(ctthuoc);
-					}
-					if (idthuoc10 !=0)
-					{
-						ctthuoc.setID_Thuoc(idthuoc10);
-						ctthuoc.setID_PhieuKhamBenh(idpk);
-						ctthuoc.setSoLuong(soluong10);
-						ctthuocDAO.themCTThuoc(ctthuoc);
-					}
-					JOptionPane.showMessageDialog(null, "Thêm phiếu khám thành công!", "WARNING",
-							JOptionPane.WARNING_MESSAGE);
-					ArrayList<phieukhambenh> alpk = phieukhamDAO.phieukham();//set lại array list de maphieu tang
-					clientthread ct= new clientthread();
-					this.dispose();
 				}
 			}
+			// xét số bệnh nhân khám hôm nay vượt quy định 1 chưa
+			// them bang phieu kham benh truoc
+			phieukhambenh pkb = new phieukhambenh();
+			pkb.setMaPhieuKhamBenh(maphieukham);
+			pkb.setNgayKham(ngaykham);
+			pkb.setTinhTrang(0);
+			pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
+			int idpk = phieukhamDAO.themPhieuKham(pkb);
+			// them cac bang trung gian
+			// them bang ctbenhnhan
+			ctbenhnhan ctbn = new ctbenhnhan();
+			ctbn.setID_BenhNhan(idbenhnhan);
+			ctbn.setID_PhieuKhamBenh(idpk);
+			ctbenhnhanDAO.themCTBenhNhan(ctbn);
+			// them bang ctloaibenh
+			ctloaibenh ctlb = new ctloaibenh();
+			if (idbenh1 != 0) {
+				ctlb.setID_LoaiBenh(idbenh1);
+				ctlb.setID_PhieuKhamBenh(idpk);
+				ctloaibenhDAO.themCTLoaiBenh(ctlb);
+			}
+			if (idbenh2 != 0) {
+				ctlb.setID_LoaiBenh(idbenh2);
+				ctlb.setID_PhieuKhamBenh(idpk);
+				ctloaibenhDAO.themCTLoaiBenh(ctlb);
+			}
+			if (idbenh3 != 0) {
+				ctlb.setID_LoaiBenh(idbenh3);
+				ctlb.setID_PhieuKhamBenh(idpk);
+				ctloaibenhDAO.themCTLoaiBenh(ctlb);
+			}
+			ctthuoc ctthuoc = new ctthuoc();
+			if (idthuoc1 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc1);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong1);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc2 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc2);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong2);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc3 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc3);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong3);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc4 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc4);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong4);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc5 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc5);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong5);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc6 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc6);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong6);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc7 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc7);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong7);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc8 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc8);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong8);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc9 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc9);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong9);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			if (idthuoc10 != 0) {
+				ctthuoc.setID_Thuoc(idthuoc10);
+				ctthuoc.setID_PhieuKhamBenh(idpk);
+				ctthuoc.setSoLuong(soluong10);
+				ctthuocDAO.themCTThuoc(ctthuoc);
+			}
+			//cap nhat so luong thuoc trong kho NEU phieu kham co thuoc
+			for(int i = 0; i< alThuoc.size(); i++)
+			{
+				thuoc1 th = new thuoc1();
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())&&cbThuoc1.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong1.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())&&cbThuoc2.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong2.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())&&cbThuoc3.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong3.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())&&cbThuoc4.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong4.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())&&cbThuoc5.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong5.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())&&cbThuoc6.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong6.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())&&cbThuoc7.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong7.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())&&cbThuoc8.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong8.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())&&cbThuoc9.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong9.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+				if(alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())&&cbThuoc10.isSelected())
+				{
+					th.setID(alThuoc.get(i).getID());
+					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
+					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
+					th.setDonGia(alThuoc.get(i).getDonGia());
+					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
+					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
+					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
+					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong10.getText()));
+					thuocDAO.suaThuoc1(th);
+				}
+			}
+			JOptionPane.showMessageDialog(null, "Thêm phiếu khám thành công!", "WARNING", JOptionPane.WARNING_MESSAGE);
+			ArrayList<phieukhambenh> alpk = phieukhamDAO.phieukham();// set lại array list de maphieu tang
+			clientthread ct = new clientthread();
+			this.dispose();
 		}
 	}
 }

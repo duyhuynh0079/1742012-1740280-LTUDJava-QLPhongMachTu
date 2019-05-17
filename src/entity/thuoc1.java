@@ -8,6 +8,7 @@ public class thuoc1 {
 	private int TinhTrang;
 	private int ID_DonVi;
 	private int ID_CachDung;
+	private int SoLuong;
 	public int getID() {
 		return ID;
 	}
@@ -50,7 +51,16 @@ public class thuoc1 {
 	public void setID_CachDung(int iD_CachDung) {
 		ID_CachDung = iD_CachDung;
 	}
-	public thuoc1(int iD, String maThuoc, String tenThuoc, float donGia, int tinhTrang, int iD_DonVi, int iD_CachDung) {
+	
+	public int getSoLuong() {
+		return SoLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		SoLuong = soLuong;
+	}
+	
+	public thuoc1(int iD, String maThuoc, String tenThuoc, float donGia, int tinhTrang, int iD_DonVi, int iD_CachDung,
+			int soLuong) {
 		super();
 		ID = iD;
 		MaThuoc = maThuoc;
@@ -59,6 +69,7 @@ public class thuoc1 {
 		TinhTrang = tinhTrang;
 		ID_DonVi = iD_DonVi;
 		ID_CachDung = iD_CachDung;
+		SoLuong = soLuong;
 	}
 	public thuoc1() {
 		super();

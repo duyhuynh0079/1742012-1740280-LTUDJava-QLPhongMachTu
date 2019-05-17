@@ -25,5 +25,8 @@
 		<property name="ID_CachDung" type="int">
 			<column name="ID_CachDung" length="100" />
 		</property>
+		<property name="SoLuong" type="int">
+			<column name="SoLuong" length="100" />
+		</property>
 	</class>
 </hibernate-mapping>

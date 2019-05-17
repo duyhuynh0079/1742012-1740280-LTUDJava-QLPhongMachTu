@@ -34,29 +34,17 @@ public class subtabQuyDinh extends JFrame  {
 	private JPanel jpn;
 	private JTable jtb;
 	private JComboBox cbbQuyDinh;
-	private JScrollPane jsp;
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					subtabQuyDinh frame = new subtabQuyDinh();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	public subtabQuyDinh() {
-		
-//		setBounds(100, 100, 450, 300);
-		jpn = new JPanel();
-		getContentPane().add(jpn);
-		setSize(getMaximumSize());
-		setLocationRelativeTo(null);
-		setVisible(true);
-		jpn.setLayout(null);
+	private JScrollPane jsp;	
+
+	public void controlQuyDinh(JPanel jpn) {
+
+//	public subtabQuyDinh() {
+//		jpn = new JPanel();
+//		getContentPane().add(jpn);
+//		setSize(getMaximumSize());
+//		setLocationRelativeTo(null);
+//		setVisible(true);
+//		jpn.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Quy Định");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -85,13 +73,13 @@ public class subtabQuyDinh extends JFrame  {
 		jtb.setModel(model);
 		jtb.setFont(new Font("Arial", Font.PLAIN, 14));
 		jsp = new JScrollPane(jtb);
-		jsp.setBounds(94, 232, 1023, 214);
+		jsp.setBounds(94, 232, 1170, 214);
 		jpn.add(jsp);
 		
 		JLabel lblNewLabel_2 = new JLabel("*Những quy định trên của phòng mạch chỉ những chức vụ quản lý mới được thay đổi\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		lblNewLabel_2.setForeground(Color.RED);
-		lblNewLabel_2.setBounds(94, 519, 581, 26);
+		lblNewLabel_2.setBounds(94, 508, 581, 26);
 		jpn.add(lblNewLabel_2);
 		
 //		JButton btnNewButton = new JButton("Đổi mật khẩu");
