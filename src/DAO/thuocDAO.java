@@ -91,6 +91,7 @@ public class thuocDAO {
 			sodong = cnt;
 		} else {
 //			logger.info("No Records found for the specified input...");
+			System.out.println("Table rỗng!");
 		}
 		session.close();
 		return sodong;
