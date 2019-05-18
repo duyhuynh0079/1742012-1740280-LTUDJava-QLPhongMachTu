@@ -112,12 +112,12 @@ public class dangnhap extends JFrame {
 						if(tk.getMaCV() == 0){
 							nhanvienlayout admin = new nhanvienlayout(tk.getTenDangNhap(),tk.getID());
 							admin.setVisible(true);
-							admin.setLocationRelativeTo(null); // canh giá»¯a mÃ n hÃ¬nh
+							admin.setLocationRelativeTo(null); // canh giua man hinh
 							dangnhap.this.setVisible(false);
 						}else{
 							tabNhanVien nv = new tabNhanVien();
 							nv.setVisible(true);
-							nv.setLocationRelativeTo(null); // canh giá»¯a mÃ n hÃ¬nh
+							nv.setLocationRelativeTo(null); // canh giua man hinh
 							dangnhap.this.setVisible(false);
 						}
 						
