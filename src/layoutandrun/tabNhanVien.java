@@ -37,7 +37,7 @@ import javax.swing.JRadioButton;
 
 
 public class tabNhanVien extends JFrame {
-	static int manv = 0;
+	static int idnv = 0;
 	static String tennv = "";
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -48,18 +48,18 @@ public class tabNhanVien extends JFrame {
 	}
 
 	private static void createAndShowGUI() {
-		tabNhanVien tnv = new tabNhanVien(tennv, manv);
+		tabNhanVien tnv = new tabNhanVien(tennv, idnv);
 		tnv.setSize(1000, 600);
 		tnv.setLocationRelativeTo(null);
 		tnv.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		tnv.setVisible(true);
 	}
 
-	public tabNhanVien(String tennhanvien, int MANV) {
+	public tabNhanVien(String tennhanvien, int idnhanvien) {
 		tennv = tennhanvien;
-		manv = MANV;
+		idnv = idnhanvien;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle(manv + " " + tennv);
+		setTitle(tennv);
 		JTabbedPane jtp = new JTabbedPane();
 		getContentPane().add(jtp);
 		addComponentToTab(jtp);// goi ham tao cac tab con
