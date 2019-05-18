@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="1473e13c-cd13-4368-b186-92cfe8189aa9">
+	<parameter name="ReportTitle" class="java.lang.String"/>
+	<parameter name="Thang" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="STT" class="java.lang.String">
+		<fieldDescription><![CDATA[STT]]></fieldDescription>
+	</field>
+	<field name="THUOC" class="java.lang.String">
+		<fieldDescription><![CDATA[THUOC]]></fieldDescription>
+	</field>
+	<field name="DONVITINH" class="java.lang.String">
+		<fieldDescription><![CDATA[DONVITINH]]></fieldDescription>
+	</field>
+	<field name="SOLUONG" class="java.lang.String">
+		<fieldDescription><![CDATA[SOLUONG]]></fieldDescription>
+	</field>
+	<field name="SOLANDUNG" class="java.lang.String">
+		<fieldDescription><![CDATA[SOLANDUNG]]></fieldDescription>
+	</field>
+	<title>
+		<band height="147" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="515" height="1" uuid="6d8d0f0d-c873-4e72-8100-763a50e267b2"/>
+			</line>
+			<textField isBlankWhenNull="true" bookmarkLevel="1">
+				<reportElement x="150" y="10" width="365" height="40" uuid="1cb178b7-2b96-4ebf-883e-a6ebcfb254a4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="23" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA["Title"]]></anchorNameExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="248" y="68" width="80" height="20" uuid="c35d62e3-3073-4a1e-8de8-f327da9c7f96"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isItalic="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Thang}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="68" width="50" height="19" uuid="8a7e1078-fe75-4428-b69c-b28f8933891e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Tháng:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="90" height="80" uuid="44f4780b-8964-4f25-9edf-f8e7ab117904"/>
+				<imageExpression><![CDATA["C:/Users/Mr.F/Documents/GitHub/1742012-1740280-LTUDJava-QLPhongMachTu/Source/images/ABC.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="29">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="12" width="515" height="15" backcolor="#70A9A9" uuid="cbf559c3-c307-488b-865a-042adaf7e273"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[
+               
+            ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="50" height="15" uuid="f063b5dc-15be-4718-be5e-a79e7a9d0752"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[STT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="12" width="150" height="15" uuid="992ef695-e12c-49ef-b2d7-d256e49b5c9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Thuốc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="12" width="90" height="15" uuid="86eaa7f3-8664-43bc-bf0b-b1cdc0ce93b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Đơn Vị Tính]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="12" width="83" height="15" uuid="a611ae69-439f-4ffe-bfcc-40b3a5ca68d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Số Lần Dùng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="12" width="76" height="15" uuid="d4926c48-ec8c-4370-9683-7a2a316da657"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[Số Lượng]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="515" height="14" backcolor="#E5ECF9" uuid="9ed365f3-1e26-4c0a-87c6-61074ce096ed"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[
+               
+            ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="0" width="84" height="15" uuid="56ef191e-61ae-4149-934d-d3ac51e82c02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SOLANDUNG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="15" uuid="07a78b3a-87de-43ff-83b3-e20f4d446e9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{STT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="150" height="15" uuid="455c8e6e-13fa-4955-8cc7-b065032033f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{THUOC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="0" width="90" height="15" uuid="d37839c9-6b09-4b48-b26a-23a3eb1cc653"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DONVITINH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="0" width="76" height="15" uuid="241ad9d1-83ef-40aa-8304-eceae7931f00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SOLUONG}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

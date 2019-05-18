@@ -1777,6 +1777,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnThemQuyDinhThuoc = new JButton("Thêm");
 		btnThemQuyDinhThuoc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (cmbQuyDinh.getSelectedIndex() == 0) {
 					if (txtMaQuyDinh.getText().equals("") || txtTenQuyDinh.getText().equals("")
 							|| txtGiaTri.getText().equals("")) {

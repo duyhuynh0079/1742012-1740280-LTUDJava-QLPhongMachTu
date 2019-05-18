@@ -41,11 +41,12 @@ public class tabNhanVien extends JFrame {
 			public void run() {
 				createAndShowGUI();
 			}
-		});	}
+		});
+	}
 
 	private static void createAndShowGUI() {
 		tabNhanVien tnv = new tabNhanVien();
-		tnv.setSize(1000,600);
+		tnv.setSize(1000, 600);
 		tnv.setLocationRelativeTo(null);
 		tnv.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		tnv.setVisible(true);
@@ -59,19 +60,33 @@ public class tabNhanVien extends JFrame {
 	}
 
 	public void addComponentToTab(JTabbedPane jtp) {
-		//tao tab BenhNhan
+		// tao tab BenhNhan
 		JPanel pnlBenhNhan = new JPanel();
 		subtabBenhNhan stbn = new subtabBenhNhan();
 		stbn.controlBenhNhan(pnlBenhNhan);
 		jtp.addTab("Bệnh Nhân", pnlBenhNhan);
 		pnlBenhNhan.setLayout(null);
-		
-		//tao tab PhieuKhamBenh
+
+		// tao tab PhieuKhamBenh
 		JPanel pnlPhieuKhamBenh = new JPanel();
 		subtabPhieuKhamBenh stpkb = new subtabPhieuKhamBenh();
 		stpkb.controlPhieuKhamBenh(pnlPhieuKhamBenh);
 		jtp.addTab("Phiếu Khám Bệnh", pnlPhieuKhamBenh);
 		pnlPhieuKhamBenh.setLayout(null);
-	
+
+		// tao tab BaoCao
+		JPanel pnlBaoCao = new JPanel();
+		subtabBaoCao stbc = new subtabBaoCao();
+		stbc.controlBaoCao(pnlBaoCao);
+		jtp.addTab("Báo Cáo", pnlBaoCao);
+		pnlBaoCao.setLayout(null);
+
+		// tao tab QuyDinh
+		JPanel pnlQuyDinh = new JPanel();
+		subtabQuyDinh stqd = new subtabQuyDinh();
+		stqd.controlQuyDinh(pnlQuyDinh);
+		jtp.addTab("Quy Định", pnlQuyDinh);
+		pnlQuyDinh.setLayout(null);
+
 	}
 }
