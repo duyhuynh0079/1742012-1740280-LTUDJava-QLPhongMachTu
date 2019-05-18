@@ -25,6 +25,8 @@ import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class dangnhap extends JFrame {
 
@@ -75,6 +77,14 @@ public class dangnhap extends JFrame {
 		contentPane.add(lblTenDangNhap);
 		
 		txtTenDangNhap = new JTextField();
+		txtTenDangNhap.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	pfMatKhau.requestFocus();
+				}
+			}
+		});
 		txtTenDangNhap.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenDangNhap.setColumns(10);
 		txtTenDangNhap.setBounds(217, 63, 170, 25);
@@ -87,6 +97,53 @@ public class dangnhap extends JFrame {
 		contentPane.add(lblMatKhau);
 		
 		pfMatKhau = new JPasswordField();
+		pfMatKhau.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER){
+					if (txtTenDangNhap.getText().equals("") ||pfMatKhau.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin!");
+					} else {
+						nhanvien test = new nhanvien();
+						test.setTenDangNhap(txtTenDangNhap.getText());
+						try {
+							test.setMatKhau(DAO.nhanvienDAO.GetPasswordHashText(pfMatKhau.getText()));
+						} catch (NoSuchAlgorithmException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedEncodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						nhanvien tk  = DAO.nhanvienDAO.KiemTraTrung(test);
+						if (tk != null) {
+							if(tk.getMaCV() == 0){
+								nhanvienlayout admin = new nhanvienlayout(tk.getTenDangNhap(),tk.getID());
+								admin.setVisible(true);
+								admin.setLocationRelativeTo(null); // canh giua man hinh
+								dangnhap.this.setVisible(false);
+							}else{
+								tabNhanVien nv = new tabNhanVien(tk.getTenDangNhap(),tk.getID());
+								nv.setVisible(true);
+								nv.setSize(1000, 600);
+								nv.setLocationRelativeTo(null);
+								nv.setExtendedState(JFrame.MAXIMIZED_BOTH);
+								dangnhap.this.setVisible(false);
+							}
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc tài khoản không khớp!");
+							txtTenDangNhap.setText(null);
+							pfMatKhau.setText(null);
+						}
+					}
+	            } else if(arg0.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenDangNhap.requestFocus();
+	            }else if(arg0.getKeyCode() == KeyEvent.VK_UP){
+	            	txtTenDangNhap.requestFocus();
+	            }
+			}
+		});
 		pfMatKhau.setBounds(217, 101, 170, 25);
 		contentPane.add(pfMatKhau);
 		
