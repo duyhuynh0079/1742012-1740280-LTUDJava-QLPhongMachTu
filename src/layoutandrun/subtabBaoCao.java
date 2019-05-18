@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -44,18 +45,24 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 	private JButton btnBCDoanhThu;
 	private JButton btnBCThuoc;
 	private JButton btnBCLoaiBenh;
+	private JButton btnDoiMatKhau;
+	private JButton btnDangXuat;
+	static int manv;
+	static String tennv;
 
-	public void controlBaoCao(JPanel jpn) {
-//		 public subtabBaoCao() {
-//		
-//		 setBounds(100, 100, 450, 300);
-//		 jpn = new JPanel();
-//		 getContentPane().add(jpn);
-//		 setSize(getMaximumSize());
-//		 setLocationRelativeTo(null);
-//		 setVisible(true);
-//		 jpn.setLayout(null);
-
+	public void controlBaoCao(JPanel jpn,int manv,String tennv) {
+		// public subtabBaoCao() {
+		//
+		// setBounds(100, 100, 450, 300);
+		// jpn = new JPanel();
+		// getContentPane().add(jpn);
+		// setSize(getMaximumSize());
+		// setLocationRelativeTo(null);
+		// setVisible(true);
+		// jpn.setLayout(null);
+		this.manv = manv;
+		this.tennv = tennv;
+		
 		JLabel lblNewLabel = new JLabel("Báo Cáo");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
@@ -67,6 +74,20 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
+
+		btnDoiMatKhau = new JButton("Đổi mật khẩu");
+		btnDoiMatKhau.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDoiMatKhau.setForeground(Color.BLUE);
+		btnDoiMatKhau.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnDoiMatKhau.setBounds(1167, 28, 131, 33);
+		jpn.add(btnDoiMatKhau);
+
+		btnDangXuat = new JButton("");
+		btnDangXuat.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\logout.png"));
+		btnDangXuat.setForeground(Color.BLUE);
+		btnDangXuat.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDangXuat.setBounds(1308, 28, 32, 33);
+		jpn.add(btnDangXuat);
 
 		JLabel lblNewLabel_1 = new JLabel("Báo cáo doanh thu theo ngày:\r\n");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -196,7 +217,10 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 		btnBCDoanhThu.setActionCommand("DoanhThu");
 		btnBCThuoc.setActionCommand("Thuoc");
 		btnBCLoaiBenh.setActionCommand("LoaiBenh");
-
+		btnDangXuat.addActionListener(this);
+		btnDoiMatKhau.addActionListener(this);
+		btnDangXuat.setActionCommand("DangXuat");
+		btnDoiMatKhau.setActionCommand("DoiMatKhau");
 	}
 
 	@Override
@@ -212,7 +236,7 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 		}
-		
+
 		if (command.equals("Thuoc")) {
 			String Thang = cbbThang2.getSelectedItem().toString();
 			String Nam = cbbNam2.getSelectedItem().toString();
@@ -223,7 +247,7 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 		}
-		
+
 		if (command.equals("LoaiBenh")) {
 			String Thang = cbbThang3.getSelectedItem().toString();
 			String Nam = cbbNam3.getSelectedItem().toString();
@@ -233,6 +257,23 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 			} else
 				JOptionPane.showMessageDialog(null, "Tháng này phòng khám không hoạt động!", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
+		}
+
+		if (command.equals("DangXuat")) {
+			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
+					JOptionPane.YES_NO_OPTION);
+			if (kq == 0) {
+				dispose();
+				dangnhap dn = new dangnhap();
+				dn.setVisible(true);
+				dn.setLocationRelativeTo(null); // canh giữa màn hình
+			}
+		}
+		
+		if (command.equals("DoiMatKhau")) {
+			doimatkhau dmk = new doimatkhau(tennv, manv);
+			dmk.setVisible(true);
+			dmk.setLocationRelativeTo(null);// canh giua man hinh
 		}
 	}
 }

@@ -55,9 +55,9 @@ public class tabNhanVien extends JFrame {
 		tnv.setVisible(true);
 	}
 
-	public tabNhanVien(String tennhanvien, int idnhanvien) {
+	public tabNhanVien(String tennhanvien, int manhanvien) {
 		tennv = tennhanvien;
-		idnv = idnhanvien;
+		manv = manhanvien;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(tennv);
 		JTabbedPane jtp = new JTabbedPane();
@@ -69,28 +69,28 @@ public class tabNhanVien extends JFrame {
 		// tao tab BenhNhan
 		JPanel pnlBenhNhan = new JPanel();
 		subtabBenhNhan stbn = new subtabBenhNhan();
-		stbn.controlBenhNhan(pnlBenhNhan);
+		stbn.controlBenhNhan(pnlBenhNhan,manv,tennv);
 		jtp.addTab("Bệnh Nhân", pnlBenhNhan);
 		pnlBenhNhan.setLayout(null);
 
 		// tao tab PhieuKhamBenh
 		JPanel pnlPhieuKhamBenh = new JPanel();
 		subtabPhieuKhamBenh stpkb = new subtabPhieuKhamBenh();
-		stpkb.controlPhieuKhamBenh(pnlPhieuKhamBenh);
+		stpkb.controlPhieuKhamBenh(pnlPhieuKhamBenh,manv,tennv);
 		jtp.addTab("Phiếu Khám Bệnh", pnlPhieuKhamBenh);
 		pnlPhieuKhamBenh.setLayout(null);
 
 		// tao tab BaoCao
 		JPanel pnlBaoCao = new JPanel();
 		subtabBaoCao stbc = new subtabBaoCao();
-		stbc.controlBaoCao(pnlBaoCao);
+		stbc.controlBaoCao(pnlBaoCao,manv,tennv);
 		jtp.addTab("Báo Cáo", pnlBaoCao);
 		pnlBaoCao.setLayout(null);
 
 		// tao tab QuyDinh
 		JPanel pnlQuyDinh = new JPanel();
 		subtabQuyDinh stqd = new subtabQuyDinh();
-		stqd.controlQuyDinh(pnlQuyDinh);
+		stqd.controlQuyDinh(pnlQuyDinh,manv,tennv);
 		jtp.addTab("Quy Định", pnlQuyDinh);
 		pnlQuyDinh.setLayout(null);
 

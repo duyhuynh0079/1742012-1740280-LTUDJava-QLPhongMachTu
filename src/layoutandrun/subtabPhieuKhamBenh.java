@@ -48,9 +48,15 @@ public class subtabPhieuKhamBenh implements ActionListener {
 	private JButton btnThanhToan;
 	private JComboBox jcbb;
 	private JLabel lblNewLabel_2;
-	int index;
+	private JButton btnDoiMatKhau;
+	private JButton btnDangXuat;
+	static int manv;
+	static String tennv;
 
-	public void controlPhieuKhamBenh(JPanel jpn) {
+	public void controlPhieuKhamBenh(JPanel jpn,int manv,String tennv) {
+		this.manv = manv;
+		this.tennv = tennv;
+		
 		JLabel lblNewLabel = new JLabel("QUẢN LÝ PHIẾU KHÁM BỆNH");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
@@ -62,6 +68,20 @@ public class subtabPhieuKhamBenh implements ActionListener {
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
+
+		btnDoiMatKhau = new JButton("Đổi mật khẩu");
+		btnDoiMatKhau.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDoiMatKhau.setForeground(Color.BLUE);
+		btnDoiMatKhau.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnDoiMatKhau.setBounds(1167, 28, 131, 33);
+		jpn.add(btnDoiMatKhau);
+
+		btnDangXuat = new JButton("");
+		btnDangXuat.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\logout.png"));
+		btnDangXuat.setForeground(Color.BLUE);
+		btnDangXuat.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDangXuat.setBounds(1308, 28, 32, 33);
+		jpn.add(btnDangXuat);
 
 		JLabel lblNewLabel_5 = new JLabel("Tìm kiếm");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -199,7 +219,6 @@ public class subtabPhieuKhamBenh implements ActionListener {
 					lblTenBenhNhan.setText(jtb.getValueAt(jtb.getSelectedRow(), 2).toString());
 					lblNgayKham.setText(jtb.getValueAt(jtb.getSelectedRow(), 3).toString());
 					lblTinhTrang.setText(jtb.getValueAt(jtb.getSelectedRow(), 4).toString());
-					index = jtb.getSelectedRow();
 				}
 			}
 		});
@@ -210,7 +229,11 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnSuaPhieu.setActionCommand("Sua");
 		btnThanhToan.addActionListener(this);
 		btnThanhToan.setActionCommand("ThanhToan");
-		serverthread st = new serverthread(jtb);
+		btnDangXuat.addActionListener(this);
+		btnDoiMatKhau.addActionListener(this);
+		btnDangXuat.setActionCommand("DangXuat");
+		btnDoiMatKhau.setActionCommand("DoiMatKhau");
+		serverthread st = new serverthread(jtb, jtTimPhieu);
 	}
 
 	@Override
@@ -247,7 +270,8 @@ public class subtabPhieuKhamBenh implements ActionListener {
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan, tienthuoc, tienkham, tongtien);
+							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan,
+									tienthuoc, tienkham, tongtien);
 							t.setVisible(true);
 						}
 					});
@@ -258,7 +282,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 			}
 		}
 
-		else if (command.equals("Sua")) {
+		if (command.equals("Sua")) {
 			if (maphieukham.equals("")) {
 				JOptionPane.showMessageDialog(null, "Sửa phiếu thất bại, vui lòng click bảng chọn phiếu khám !",
 						"WARNING", JOptionPane.WARNING_MESSAGE);
@@ -278,7 +302,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 			}
 		}
 
-		else if (command.equals("ThanhToan")) {
+		if (command.equals("ThanhToan")) {
 			if (maphieukham.equals("")) {
 				JOptionPane.showMessageDialog(null, "Thanh toán thất bại, vui lòng click bảng chọn phiếu khám !",
 						"WARNING", JOptionPane.WARNING_MESSAGE);
@@ -309,8 +333,8 @@ public class subtabPhieuKhamBenh implements ActionListener {
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
 								formThanhToan ftt = new formThanhToan(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan,
-										tenbenhnhan, tienthuoc, tienkham , tongtien);
-											ftt.setVisible(true);
+										tenbenhnhan, tienthuoc, tienkham, tongtien);
+								ftt.setVisible(true);
 							}
 						});
 
@@ -319,6 +343,23 @@ public class subtabPhieuKhamBenh implements ActionListener {
 					}
 				}
 			}
+		}
+
+		if (command.equals("DangXuat")) {
+			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
+					JOptionPane.YES_NO_OPTION);
+			if (kq == 0) {
+				dispose();
+				dangnhap dn = new dangnhap();
+				dn.setVisible(true);
+				dn.setLocationRelativeTo(null); // canh giữa màn hình
+			}
+		}
+		
+		if (command.equals("DoiMatKhau")) {
+			doimatkhau dmk = new doimatkhau(tennv, manv);
+			dmk.setVisible(true);
+			dmk.setLocationRelativeTo(null);// canh giua man hinh
 		}
 	}
 }

@@ -39,7 +39,7 @@ public class ctthuocDAO {
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String sql = "SELECT ct.ID_Thuoc, ct.ID_PhieuKhamBenh FROM phieukhambenh p inner join ctthuoc ct on p.ID = ct.ID_PhieuKhamBenh where p.MaPhieuKhamBenh =:m";
+        String sql = "SELECT ct.* FROM phieukhambenh p inner join ctthuoc ct on p.ID = ct.ID_PhieuKhamBenh where p.MaPhieuKhamBenh =:m";
         SQLQuery query = session.createSQLQuery(sql);
         query.setParameter("m", maphieukham);
         List<Object[]> o = query.list();

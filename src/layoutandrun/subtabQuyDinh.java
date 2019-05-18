@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -29,22 +30,30 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class subtabQuyDinh extends JFrame  {
+public class subtabQuyDinh extends JFrame implements ActionListener {
 
 	private JPanel jpn;
 	private JTable jtb;
 	private JComboBox cbbQuyDinh;
-	private JScrollPane jsp;	
+	private JScrollPane jsp;
+	private JButton btnDoiMatKhau;
+	private JButton btnDangXuat;
+	static int manv;
+	static String tennv;
 
-	public void controlQuyDinh(JPanel jpn) {
-
-//	public subtabQuyDinh() {
-//		jpn = new JPanel();
-//		getContentPane().add(jpn);
-//		setSize(getMaximumSize());
-//		setLocationRelativeTo(null);
-//		setVisible(true);
-//		jpn.setLayout(null);
+	public void controlQuyDinh(JPanel jpn,int manv,String tennv) {
+		// public static void main(String[] args) {
+		// subtabQuyDinh frame = new subtabQuyDinh();
+		// frame.setVisible(true);
+		// }
+		// public subtabQuyDinh() {
+		// jpn = new JPanel();
+		// getContentPane().add(jpn);
+		// setSize(getMaximumSize());
+		// setLocationRelativeTo(null);
+		// jpn.setLayout(null);
+		this.manv = manv;
+		this.tennv = tennv;
 		
 		JLabel lblNewLabel = new JLabel("QUY ĐỊNH");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -57,17 +66,17 @@ public class subtabQuyDinh extends JFrame  {
 				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Quy định :");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(94, 159, 89, 26);
 		jpn.add(lblNewLabel_1);
-		
-		String [] quydinh = {"Quy định 1","Quy định 2","Quy định 4","Quy định 6"};
+
+		String[] quydinh = { "Quy định 1", "Quy định 2", "Quy định 4", "Quy định 6" };
 		cbbQuyDinh = new JComboBox(quydinh);
 		cbbQuyDinh.setBounds(193, 158, 105, 26);
 		jpn.add(cbbQuyDinh);
-		
+
 		jtb = new JTable();
 		QuyDinh1Model model = new QuyDinh1Model();
 		jtb.setModel(model);
@@ -75,50 +84,74 @@ public class subtabQuyDinh extends JFrame  {
 		jsp = new JScrollPane(jtb);
 		jsp.setBounds(94, 232, 1170, 214);
 		jpn.add(jsp);
-		
-		JLabel lblNewLabel_2 = new JLabel("*Những  trên của phòng mạch chỉ những chức vụ quản lý mới được thay đổi\r\n");
+
+		JLabel lblNewLabel_2 = new JLabel(
+				"*Những  trên của phòng mạch chỉ những chức vụ quản lý mới được thay đổi\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setBounds(94, 508, 581, 26);
 		jpn.add(lblNewLabel_2);
-		
-		JButton btnNewButton = new JButton("Đổi mật khẩu");
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton.setForeground(Color.BLUE);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(1238, 79, 122, 33);
-		jpn.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Đăng xuất");
-		btnNewButton_1.setForeground(Color.BLUE);
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton_1.setBounds(1255, 35, 105, 33);
-		jpn.add(btnNewButton_1);
-		
-		//su kien thay doi combobox
-		cbbQuyDinh.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		    	if(cbbQuyDinh.getSelectedItem().equals("Quy định 1"))
-				{
+
+		btnDoiMatKhau = new JButton("Đổi mật khẩu");
+		btnDoiMatKhau.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDoiMatKhau.setForeground(Color.BLUE);
+		btnDoiMatKhau.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnDoiMatKhau.setBounds(1167, 28, 131, 33);
+		jpn.add(btnDoiMatKhau);
+
+		btnDangXuat = new JButton("");
+		btnDangXuat.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\logout.png"));
+		btnDangXuat.setForeground(Color.BLUE);
+		btnDangXuat.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDangXuat.setBounds(1308, 28, 32, 33);
+		jpn.add(btnDangXuat);
+
+		// su kien thay doi combobox
+		cbbQuyDinh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cbbQuyDinh.getSelectedItem().equals("Quy định 1")) {
 					QuyDinh1Model model = new QuyDinh1Model();
 					jtb.setModel(model);
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("Quy định 2"))
-				{
+				if (cbbQuyDinh.getSelectedItem().equals("Quy định 2")) {
 					QuyDinh2Model model = new QuyDinh2Model();
 					jtb.setModel(model);
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("Quy định 4"))
-				{
+				if (cbbQuyDinh.getSelectedItem().equals("Quy định 4")) {
 					QuyDinh4Model model = new QuyDinh4Model();
 					jtb.setModel(model);
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("Quy định 6"))
-				{
+				if (cbbQuyDinh.getSelectedItem().equals("Quy định 6")) {
 					QuyDinh6Model model = new QuyDinh6Model();
 					jtb.setModel(model);
 				}
-		    }
+			}
 		});
+		btnDangXuat.addActionListener(this);
+		btnDoiMatKhau.addActionListener(this);
+		btnDangXuat.setActionCommand("DangXuat");
+		btnDoiMatKhau.setActionCommand("DoiMatKhau");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		String command = arg0.getActionCommand();
+		if (command.equals("DangXuat")) {
+			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
+					JOptionPane.YES_NO_OPTION);
+			if (kq == 0) {
+				dispose();
+				dangnhap dn = new dangnhap();
+				dn.setVisible(true);
+				dn.setLocationRelativeTo(null); // canh giữa màn hình
+			}
+		}
+		
+		if (command.equals("DoiMatKhau")) {
+			doimatkhau dmk = new doimatkhau(tennv, manv);
+			dmk.setVisible(true);
+			dmk.setLocationRelativeTo(null);// canh giua man hinh
+		}
 	}
 }

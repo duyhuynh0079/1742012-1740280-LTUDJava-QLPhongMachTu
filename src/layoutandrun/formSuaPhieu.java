@@ -132,17 +132,17 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 	private JLabel lblDonGia8;
 	private JLabel lblDonGia9;
 	private JLabel lblDonGia10;
-	static float tongtien = 0;
-	static float tongtien1 = 0;
-	static float tongtien2 = 0;
-	static float tongtien3 = 0;
-	static float tongtien4 = 0;
-	static float tongtien5 = 0;
-	static float tongtien6 = 0;
-	static float tongtien7 = 0;
-	static float tongtien8 = 0;
-	static float tongtien9 = 0;
-	static float tongtien10 = 0;
+	static double tongtien = 0;
+	static double tongtien1 = 0;
+	static double tongtien2 = 0;
+	static double tongtien3 = 0;
+	static double tongtien4 = 0;
+	static double tongtien5 = 0;
+	static double tongtien6 = 0;
+	static double tongtien7 = 0;
+	static double tongtien8 = 0;
+	static double tongtien9 = 0;
+	static double tongtien10 = 0;
 	static String maphieukham = "";
 	static ArrayList<phieukhambenh> alpk = phieukhamDAO.phieukham();
 	static ArrayList<benhnhan> albn = showBenhNhan.albn;
@@ -639,7 +639,8 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		ArrayList<thuoc1> alThuoc = thuocDAO.layThuoc();
 
 		// truyen lay vet tong tien
-		// lblTongTien.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
+		tongtien = phieukhamDAO.laytongtientuMaPhieuKham(maphieukham);
+		lblTongTien.setText(String.valueOf(tongtien));
 
 		// truyen lay vet benh
 		int j = 1;// bien co de xet co bao nhieu loai benh
@@ -672,9 +673,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia1.setText(countResult[2].toString());
 				cbThuoc1.setSelected(true);
 				soluong1 = Integer.parseInt(jtSoLuong1.getText());
-				tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+				tongtien1 = soluong1 * Double.parseDouble(lblDonGia1.getText());
 				tongtien = tongtien1;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 2) {
 				String tenthuoc2 = countResult[0].toString();
 				cbbThuoc2.setSelectedItem(tenthuoc2);
@@ -682,9 +683,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia2.setText(countResult[2].toString());
 				cbThuoc2.setSelected(true);
 				soluong2 = Integer.parseInt(jtSoLuong2.getText());
-				tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
+				tongtien2 = soluong2 * Double.parseDouble(lblDonGia2.getText());
 				tongtien = tongtien1 + tongtien2;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 3) {
 				String tenthuoc3 = countResult[0].toString();
 				cbbThuoc3.setSelectedItem(tenthuoc3);
@@ -692,9 +693,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia3.setText(countResult[2].toString());
 				cbThuoc3.setSelected(true);
 				soluong3 = Integer.parseInt(jtSoLuong3.getText());
-				tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
+				tongtien3 = soluong3 * Double.parseDouble(lblDonGia3.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 4) {
 				String tenthuoc4 = countResult[0].toString();
 				cbbThuoc4.setSelectedItem(tenthuoc4);
@@ -702,9 +703,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia4.setText(countResult[2].toString());
 				cbThuoc4.setSelected(true);
 				soluong4 = Integer.parseInt(jtSoLuong4.getText());
-				tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
+				tongtien4 = soluong4 * Double.parseDouble(lblDonGia4.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 5) {
 				String tenthuoc5 = countResult[0].toString();
 				cbbThuoc5.setSelectedItem(tenthuoc5);
@@ -712,9 +713,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia5.setText(countResult[2].toString());
 				cbThuoc5.setSelected(true);
 				soluong5 = Integer.parseInt(jtSoLuong5.getText());
-				tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
+				tongtien5 = soluong5 * Double.parseDouble(lblDonGia5.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 6) {
 				String tenthuoc6 = countResult[0].toString();
 				cbbThuoc6.setSelectedItem(tenthuoc6);
@@ -722,9 +723,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia6.setText(countResult[2].toString());
 				cbThuoc6.setSelected(true);
 				soluong6 = Integer.parseInt(jtSoLuong6.getText());
-				tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
+				tongtien6 = soluong6 * Double.parseDouble(lblDonGia6.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 7) {
 				String tenthuoc7 = countResult[0].toString();
 				cbbThuoc7.setSelectedItem(tenthuoc7);
@@ -732,9 +733,9 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia7.setText(countResult[2].toString());
 				cbThuoc7.setSelected(true);
 				soluong7 = Integer.parseInt(jtSoLuong7.getText());
-				tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
+				tongtien7 = soluong7 * Double.parseDouble(lblDonGia7.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 8) {
 				String tenthuoc8 = countResult[0].toString();
 				cbbThuoc8.setSelectedItem(tenthuoc8);
@@ -742,10 +743,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia8.setText(countResult[2].toString());
 				cbThuoc8.setSelected(true);
 				soluong8 = Integer.parseInt(jtSoLuong8.getText());
-				tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+				tongtien8 = soluong8 * Double.parseDouble(lblDonGia8.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 						+ tongtien8;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else if (k == 9) {
 				String tenthuoc9 = countResult[0].toString();
 				cbbThuoc9.setSelectedItem(tenthuoc9);
@@ -753,10 +754,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia9.setText(countResult[2].toString());
 				cbThuoc9.setSelected(true);
 				soluong9 = Integer.parseInt(jtSoLuong9.getText());
-				tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+				tongtien9 = soluong9 * Double.parseDouble(lblDonGia9.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
 						+ tongtien9;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			} else {
 				String tenthuoc10 = countResult[0].toString();
 				cbbThuoc10.setSelectedItem(tenthuoc10);
@@ -764,10 +765,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				lblDonGia10.setText(countResult[2].toString());
 				cbThuoc10.setSelected(true);
 				soluong10 = Integer.parseInt(jtSoLuong10.getText());
-				tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+				tongtien10 = soluong10 * Double.parseDouble(lblDonGia10.getText());
 				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
 						+ tongtien9 + tongtien10;
-				lblTongTien.setText(Float.toString(tongtien));
+				lblTongTien.setText(Double.toString(tongtien));
 			}
 			k++;
 		}
@@ -822,10 +823,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien1 = 0;
 				} else {
 					soluong1 = Integer.parseInt(jtSoLuong1.getText());
-					tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+					tongtien1 = soluong1 * Double.parseDouble(lblDonGia1.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -839,13 +840,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien1 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong1 = Integer.parseInt(jtSoLuong1.getText());
-						tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
+						tongtien1 = soluong1 * Double.parseDouble(lblDonGia1.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -863,10 +864,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien2 = 0;
 				} else {
 					soluong2 = Integer.parseInt(jtSoLuong2.getText());
-					tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
+					tongtien2 = soluong2 * Double.parseDouble(lblDonGia2.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -880,13 +881,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien2 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong2 = Integer.parseInt(jtSoLuong2.getText());
-						tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
+						tongtien2 = soluong2 * Double.parseDouble(lblDonGia2.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -904,10 +905,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien3 = 0;
 				} else {
 					soluong3 = Integer.parseInt(jtSoLuong3.getText());
-					tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
+					tongtien3 = soluong3 * Double.parseDouble(lblDonGia3.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -921,13 +922,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien3 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong3 = Integer.parseInt(jtSoLuong3.getText());
-						tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
+						tongtien3 = soluong3 * Double.parseDouble(lblDonGia3.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -945,10 +946,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien4 = 0;
 				} else {
 					soluong4 = Integer.parseInt(jtSoLuong4.getText());
-					tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
+					tongtien4 = soluong4 * Double.parseDouble(lblDonGia4.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -962,13 +963,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien4 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong4 = Integer.parseInt(jtSoLuong4.getText());
-						tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
+						tongtien4 = soluong4 * Double.parseDouble(lblDonGia4.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -986,10 +987,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien5 = 0;
 				} else {
 					soluong5 = Integer.parseInt(jtSoLuong5.getText());
-					tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
+					tongtien5 = soluong5 * Double.parseDouble(lblDonGia5.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1001,14 +1002,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				} else {
 					if (jtSoLuong5.getText().equals("")) {
 						tongtien5 = 0;
-						tongtien = tongtien5;
-						lblTongTien.setText(Float.toString(tongtien));
-					} else {
-						soluong5 = Integer.parseInt(jtSoLuong5.getText());
-						tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
+					} else {
+						soluong5 = Integer.parseInt(jtSoLuong5.getText());
+						tongtien5 = soluong5 * Double.parseDouble(lblDonGia5.getText());
+						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+								+ tongtien8 + tongtien9 + tongtien10;
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1026,10 +1028,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien6 = 0;
 				} else {
 					soluong6 = Integer.parseInt(jtSoLuong6.getText());
-					tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
+					tongtien6 = soluong6 * Double.parseDouble(lblDonGia6.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1043,13 +1045,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien6 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong6 = Integer.parseInt(jtSoLuong6.getText());
-						tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
+						tongtien6 = soluong6 * Double.parseDouble(lblDonGia6.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1067,10 +1069,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien7 = 0;
 				} else {
 					soluong7 = Integer.parseInt(jtSoLuong7.getText());
-					tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
+					tongtien7 = soluong7 * Double.parseDouble(lblDonGia7.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1084,13 +1086,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien7 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong7 = Integer.parseInt(jtSoLuong7.getText());
-						tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
+						tongtien7 = soluong7 * Double.parseDouble(lblDonGia7.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1108,10 +1110,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien8 = 0;
 				} else {
 					soluong8 = Integer.parseInt(jtSoLuong8.getText());
-					tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+					tongtien8 = soluong8 * Double.parseDouble(lblDonGia8.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1125,13 +1127,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien8 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong8 = Integer.parseInt(jtSoLuong8.getText());
-						tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+						tongtien8 = soluong8 * Double.parseDouble(lblDonGia8.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1149,10 +1151,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien9 = 0;
 				} else {
 					soluong9 = Integer.parseInt(jtSoLuong9.getText());
-					tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+					tongtien9 = soluong9 * Double.parseDouble(lblDonGia9.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1166,13 +1168,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien9 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong9 = Integer.parseInt(jtSoLuong9.getText());
-						tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+						tongtien9 = soluong9 * Double.parseDouble(lblDonGia9.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1190,10 +1192,10 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					tongtien10 = 0;
 				} else {
 					soluong10 = Integer.parseInt(jtSoLuong10.getText());
-					tongtien1 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+					tongtien1 = soluong10 * Double.parseDouble(lblDonGia10.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			}
 
@@ -1207,13 +1209,13 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 						tongtien10 = 0;
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					} else {
 						soluong10 = Integer.parseInt(jtSoLuong10.getText());
-						tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+						tongtien10 = soluong10 * Double.parseDouble(lblDonGia10.getText());
 						tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 								+ tongtien8 + tongtien9 + tongtien10;
-						lblTongTien.setText(Float.toString(tongtien));
+						lblTongTien.setText(Double.toString(tongtien));
 					}
 				}
 			}
@@ -1231,34 +1233,34 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 
 		for (int i = 0; i < alThuoc.size(); i++) {
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
-				lblDonGia1.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia1.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())) {
-				lblDonGia2.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia2.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())) {
-				lblDonGia3.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia3.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())) {
-				lblDonGia4.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia4.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())) {
-				lblDonGia5.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia5.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())) {
-				lblDonGia6.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia6.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())) {
-				lblDonGia7.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia7.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())) {
-				lblDonGia8.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia8.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())) {
-				lblDonGia9.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia9.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())) {
-				lblDonGia10.setText(Float.toString(alThuoc.get(i).getDonGia()));
+				lblDonGia10.setText(Double.toString(alThuoc.get(i).getDonGia()));
 			}
 
 		}
@@ -1267,8 +1269,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		if (!cbThuoc1.isSelected() && !cbThuoc2.isSelected() && !cbThuoc3.isSelected() && !cbThuoc4.isSelected()
 				&& !cbThuoc5.isSelected() && !cbThuoc6.isSelected() && !cbThuoc7.isSelected() && !cbThuoc8.isSelected()
 				&& !cbThuoc9.isSelected() && !cbThuoc10.isSelected()) {
-			tongtien = 0;
-			lblTongTien.setText(Float.toString(tongtien));
+			lblTongTien.setText(Double.toString(tongtien));
 		}
 
 	}
@@ -1295,101 +1296,182 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		ArrayList<loaibenh> alLoaiBenh = loaibenhDAO.layLoaiBenh();
 
 		// su kien thay doi cbb thi dongia doi theo
+		// su kien thay doi cbb thi dongia doi theo
+		// neu co check box thi thay doi gia tien theo luon
 		for (int i = 0; i < alThuoc.size(); i++) {
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
-				lblDonGia1.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())
+					&& (!cbThuoc1.isSelected())) {
+				lblDonGia1.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien1 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())) {
-				lblDonGia2.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())
+					&& (cbThuoc1.isSelected())) {
+				lblDonGia1.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong1 = Integer.parseInt(jtSoLuong1.getText());
+				tongtien1 = soluong1 * Double.parseDouble(lblDonGia1.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())) {
-				lblDonGia3.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())
+					&& (!cbThuoc2.isSelected())) {
+				lblDonGia2.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien2 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())) {
-				lblDonGia4.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())
+					&& (cbThuoc2.isSelected())) {
+				lblDonGia2.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong2 = Integer.parseInt(jtSoLuong2.getText());
+				tongtien2 = soluong2 * Double.parseDouble(lblDonGia2.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())) {
-				lblDonGia5.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())
+					&& (!cbThuoc3.isSelected())) {
+				lblDonGia3.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien3 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())) {
-				lblDonGia6.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())
+					&& (cbThuoc3.isSelected())) {
+				lblDonGia3.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong3 = Integer.parseInt(jtSoLuong3.getText());
+				tongtien3 = soluong3 * Double.parseDouble(lblDonGia3.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())) {
-				lblDonGia7.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())
+					&& (!cbThuoc4.isSelected())) {
+				lblDonGia4.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien4 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())) {
-				lblDonGia8.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())
+					&& (cbThuoc4.isSelected())) {
+				lblDonGia4.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong4 = Integer.parseInt(jtSoLuong4.getText());
+				tongtien4 = soluong4 * Double.parseDouble(lblDonGia4.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())) {
-				lblDonGia9.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())
+					&& (!cbThuoc5.isSelected())) {
+				lblDonGia5.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien5 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
-			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())) {
-				lblDonGia10.setText(Float.toString(alThuoc.get(i).getDonGia()));
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())
+					&& (cbThuoc5.isSelected())) {
+				lblDonGia5.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong5 = Integer.parseInt(jtSoLuong5.getText());
+				tongtien5 = soluong5 * Double.parseDouble(lblDonGia5.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())
+					&& (!cbThuoc6.isSelected())) {
+				lblDonGia6.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien6 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())
+					&& (cbThuoc6.isSelected())) {
+				lblDonGia6.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong6 = Integer.parseInt(jtSoLuong6.getText());
+				tongtien6 = soluong6 * Double.parseDouble(lblDonGia6.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())
+					&& (!cbThuoc7.isSelected())) {
+				lblDonGia7.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien7 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())
+					&& (cbThuoc7.isSelected())) {
+				lblDonGia7.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong7 = Integer.parseInt(jtSoLuong7.getText());
+				tongtien7 = soluong7 * Double.parseDouble(lblDonGia7.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())
+					&& (!cbThuoc8.isSelected())) {
+				lblDonGia8.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien8 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())
+					&& (cbThuoc8.isSelected())) {
+				lblDonGia8.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong8 = Integer.parseInt(jtSoLuong8.getText());
+				tongtien8 = soluong8 * Double.parseDouble(lblDonGia2.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())
+					&& (!cbThuoc9.isSelected())) {
+				lblDonGia9.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien9 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())
+					&& (cbThuoc9.isSelected())) {
+				lblDonGia9.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong9 = Integer.parseInt(jtSoLuong9.getText());
+				tongtien9 = soluong9 * Double.parseDouble(lblDonGia9.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())
+					&& (!cbThuoc10.isSelected())) {
+				lblDonGia10.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				tongtien10 = 0;
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
+			}
+			if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())
+					&& (cbThuoc10.isSelected())) {
+				lblDonGia10.setText(Double.toString(alThuoc.get(i).getDonGia()));
+				soluong10 = Integer.parseInt(jtSoLuong10.getText());
+				tongtien10 = soluong10 * Double.parseDouble(lblDonGia10.getText());
+				tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
+						+ tongtien9 + tongtien10;
+				lblTongTien.setText(Double.toString(tongtien));
 			}
 		}
-		// tinh tong tien khi doi combobox
-		if (cbThuoc1.isSelected()) {
-			soluong1 = Integer.parseInt(jtSoLuong1.getText());
-			tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
-			tongtien = tongtien1;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc2.isSelected()) {
-			soluong2 = Integer.parseInt(jtSoLuong2.getText());
-			tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
-			tongtien = tongtien1 + tongtien2;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc3.isSelected()) {
-			soluong3 = Integer.parseInt(jtSoLuong3.getText());
-			tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc4.isSelected()) {
-			soluong4 = Integer.parseInt(jtSoLuong4.getText());
-			tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc5.isSelected()) {
-			soluong5 = Integer.parseInt(jtSoLuong5.getText());
-			tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc6.isSelected()) {
-			soluong6 = Integer.parseInt(jtSoLuong6.getText());
-			tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc7.isSelected()) {
-			soluong7 = Integer.parseInt(jtSoLuong7.getText());
-			tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc8.isSelected()) {
-			soluong8 = Integer.parseInt(jtSoLuong8.getText());
-			tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc9.isSelected()) {
-			soluong9 = Integer.parseInt(jtSoLuong9.getText());
-			tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
-					+ tongtien9;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
-		if (cbThuoc10.isSelected()) {
-			soluong10 = Integer.parseInt(jtSoLuong10.getText());
-			tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
-			tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7 + tongtien8
-					+ tongtien9 + tongtien10;
-			lblTongTien.setText(Float.toString(tongtien));
-		}
+
 		// su kien khi click checkbox loaibenh, lay id cua checkbox
 		String command = ae.getActionCommand();
 
@@ -1436,15 +1518,16 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong1 = 0;
 				} else {// neu co so luong thi * len ra tongtien1
 					soluong1 = Integer.parseInt(jtSoLuong1.getText());
-					tongtien1 = soluong1 * Float.parseFloat(lblDonGia1.getText());
-					tongtien = tongtien1;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien1 = soluong1 * Double.parseDouble(lblDonGia1.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				// bo click thi idthuoc1 la 0
 				idthuoc1 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien1));// tong tien - lai tong tien 1
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien1));// tong tien - lai tong tien 1
 			}
 			break;
 		case "tick2":
@@ -1458,14 +1541,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong2 = 0;
 				} else {
 					soluong2 = Integer.parseInt(jtSoLuong2.getText());
-					tongtien2 = soluong2 * Float.parseFloat(lblDonGia2.getText());
-					tongtien = tongtien1 + tongtien2;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien2 = soluong2 * Double.parseDouble(lblDonGia2.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc2 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien2));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien2));
 			}
 			break;
 		case "tick3":
@@ -1479,14 +1563,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong3 = 0;
 				} else {
 					soluong3 = Integer.parseInt(jtSoLuong3.getText());
-					tongtien3 = soluong3 * Float.parseFloat(lblDonGia3.getText());
-					tongtien = tongtien1 + tongtien2 + tongtien3;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien3 = soluong3 * Double.parseDouble(lblDonGia3.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc3 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien3));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien3));
 			}
 			break;
 		case "tick4":
@@ -1500,13 +1585,14 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong4 = 0;
 				} else {
 					soluong4 = Integer.parseInt(jtSoLuong1.getText());
-					tongtien4 = soluong4 * Float.parseFloat(lblDonGia4.getText());
-					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien4 = soluong4 * Double.parseDouble(lblDonGia4.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien4));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien4));
 			}
 			break;
 		case "tick5":
@@ -1520,14 +1606,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong5 = 0;
 				} else {
 					soluong5 = Integer.parseInt(jtSoLuong5.getText());
-					tongtien5 = soluong5 * Float.parseFloat(lblDonGia5.getText());
-					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien5 = soluong5 * Double.parseDouble(lblDonGia5.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc5 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien1));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien1));
 			}
 			break;
 		case "tick6":
@@ -1541,14 +1628,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong6 = 0;
 				} else {
 					soluong6 = Integer.parseInt(jtSoLuong6.getText());
-					tongtien6 = soluong6 * Float.parseFloat(lblDonGia6.getText());
-					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien6 = soluong6 * Double.parseDouble(lblDonGia6.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc6 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien6));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien6));
 			}
 			break;
 		case "tick7":
@@ -1562,14 +1650,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong7 = 0;
 				} else {
 					soluong7 = Integer.parseInt(jtSoLuong7.getText());
-					tongtien7 = soluong7 * Float.parseFloat(lblDonGia7.getText());
-					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7;
-					lblTongTien.setText(Float.toString(tongtien));
+					tongtien7 = soluong7 * Double.parseDouble(lblDonGia7.getText());
+					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc7 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien7));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien7));
 			}
 			break;
 		case "tick8":
@@ -1583,15 +1672,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong8 = 0;
 				} else {
 					soluong8 = Integer.parseInt(jtSoLuong8.getText());
-					tongtien8 = soluong8 * Float.parseFloat(lblDonGia8.getText());
+					tongtien8 = soluong8 * Double.parseDouble(lblDonGia8.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
-							+ tongtien8;
-					lblTongTien.setText(Float.toString(tongtien));
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc8 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien8));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien8));
 			}
 			break;
 		case "tick9":
@@ -1605,15 +1694,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong9 = 0;
 				} else {
 					soluong9 = Integer.parseInt(jtSoLuong9.getText());
-					tongtien9 = soluong9 * Float.parseFloat(lblDonGia9.getText());
+					tongtien9 = soluong9 * Double.parseDouble(lblDonGia9.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
-							+ tongtien8 + tongtien9;
-					lblTongTien.setText(Float.toString(tongtien));
+							+ tongtien8 + tongtien9 + tongtien10;
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc9 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien9));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien9));
 			}
 			break;
 		case "tick10":
@@ -1627,15 +1716,15 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					soluong10 = 0;
 				} else {
 					soluong10 = Integer.parseInt(jtSoLuong10.getText());
-					tongtien10 = soluong10 * Float.parseFloat(lblDonGia10.getText());
+					tongtien10 = soluong10 * Double.parseDouble(lblDonGia10.getText());
 					tongtien = tongtien1 + tongtien2 + tongtien3 + tongtien4 + tongtien5 + tongtien6 + tongtien7
 							+ tongtien8 + tongtien9 + tongtien10;
-					lblTongTien.setText(Float.toString(tongtien));
+					lblTongTien.setText(Double.toString(tongtien));
 				}
 			} else {
 				idthuoc10 = 0;
-				tongtien = Float.parseFloat(lblTongTien.getText());
-				lblTongTien.setText(Float.toString(tongtien - tongtien10));
+				tongtien = Double.parseDouble(lblTongTien.getText());
+				lblTongTien.setText(Double.toString(tongtien - tongtien10));
 			}
 			break;
 		}
@@ -1660,7 +1749,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 			}
 
 			if ((!cbLoaiBenh1.isSelected() && !cbLoaiBenh2.isSelected() && !cbLoaiBenh3.isSelected())) {
-				JOptionPane.showMessageDialog(null, "Thêm thất bại, Chọn ít nhất 1 loại bệnh !", "WARNING",
+				JOptionPane.showMessageDialog(null, "Sửa thất bại, Chọn ít nhất 1 loại bệnh !", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
@@ -1682,8 +1771,6 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 			for (int t = 0; t < alThuoc.size(); t++) {
 				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())
 						&& cbThuoc1.isSelected()) {
-					System.out.println("ID--" + alThuoc.get(t).getID() + "--Ten--" + alThuoc.get(t).getTenThuoc()
-							+ "---Sl---" + alThuoc.get(t).getSoLuong());
 					if (alThuoc.get(t).getSoLuong() < Integer.parseInt(jtSoLuong1.getText())) {
 						JOptionPane.showMessageDialog(null, "Vượt quá thuốc" + alThuoc.get(t).getTenThuoc()
 								+ " trong kho: " + alThuoc.get(t).getSoLuong(), "WARNING", JOptionPane.WARNING_MESSAGE);
@@ -1768,8 +1855,8 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 			pkb.setID(id);
 			pkb.setMaPhieuKhamBenh(maphieukham);
 			pkb.setNgayKham(ngaykham);
+			pkb.setTongTienThuoc(Double.parseDouble(lblTongTien.getText()));
 			pkb.setTinhTrang(0);
-			pkb.setTongTienThuoc(Float.parseFloat(lblTongTien.getText()));
 			phieukhamDAO.suaPhieuKham(pkb);
 
 			// xoa cac bang trung gian
@@ -1781,12 +1868,32 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 				ctlb.setID_LoaiBenh((Integer) countResult[0]);
 				ctloaibenhDAO.xoaCTLoaiBenh(ctlb);
 			}
-			// xoa ctthuoc
+			
+			// xoa ctthuoc va xoa so luong thuoc da them de tang so luong thuoc trong kho len lai
 			List<Object[]> oCTThuoc = ctthuocDAO.layCTThuocTheoMaPhieuKhamBenh(maphieukham);
 			for (Object[] countResult : oCTThuoc) {
+				thuoc1 th1 = new thuoc1();
+				int idthuoc = (Integer) countResult[0];
+				int slkhotang = (Integer)countResult[2];
+				ArrayList<thuoc1> ALth = thuocDAO.layThuocTheoID(idthuoc);
+				for(int j = 0; j<ALth.size();j++)
+				{
+					th1.setID(ALth.get(j).getID()); 
+					th1.setMaThuoc(ALth.get(j).getMaThuoc()); 
+					th1.setTenThuoc(ALth.get(j).getTenThuoc()); 
+					th1.setDonGia(ALth.get(j).getDonGia()); 
+					th1.setTinhTrang(ALth.get(j).getTinhTrang()); 
+					th1.setID_DonVi(ALth.get(j).getID_DonVi()); 
+					th1.setID_CachDung(ALth.get(j).getID_CachDung());
+					th1.setSoLuong(ALth.get(j).getSoLuong() + slkhotang);
+				}
+				//cap nhat so luong thuoc trong kho
+				thuocDAO.suaThuoc1(th1);
 				ctthuoc ctt = new ctthuoc();
 				ctt.setID_PhieuKhamBenh(id);
-				ctt.setID_Thuoc((Integer) countResult[0]);
+				ctt.setID_Thuoc((Integer)countResult[0]);
+				ctt.setSoLuong((Integer)countResult[2]);
+				//xoa chi tiet thuoc
 				ctthuocDAO.xoaCTThuoc(ctt);
 			}
 
@@ -1823,252 +1930,221 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 					}
 				}
 			}
-			// them ctthuoc
+			// them ctthuoc va update lại so luong thuoc 
+			thuoc1 th = new thuoc1();
 			ctthuoc ctthuoc = new ctthuoc();
+			ArrayList<thuoc1> alThuoc1 = thuocDAO.layThuoc();
 			if (cbThuoc1.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
-						idthuoc1 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())) {
+						idthuoc1 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc1);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong1.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong1.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc2.isSelected()) {
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())) {
-						idthuoc2 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())) {
+						idthuoc2 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc2);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong2.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong2.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc3.isSelected()) {
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())) {
-						idthuoc3 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())) {
+						idthuoc3 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc3);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong3.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong3.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc4.isSelected()) {
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())) {
-						idthuoc4 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())) {
+						idthuoc4 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc4);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong4.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong4.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc5.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())) {
-						idthuoc5 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())) {
+						idthuoc5 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc5);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong5.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong5.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc6.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())) {
-						idthuoc6 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())) {
+						idthuoc6 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc6);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong6.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong6.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc7.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())) {
-						idthuoc7 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())) {
+						idthuoc7 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc7);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong7.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong7.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc8.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())) {
-						idthuoc8 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())) {
+						idthuoc8 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc8);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong8.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong8.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc9.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())) {
-						idthuoc9 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())) {
+						idthuoc9 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc9);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong9.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong9.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
 			if (cbThuoc10.isSelected()) {
-				// neu click vao id thuoc1 la id trong db
-				for (int i = 0; i < alThuoc.size(); i++) {
-					if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())) {
-						idthuoc10 = alThuoc.get(i).getID();
+				for (int i = 0; i < alThuoc1.size(); i++) {
+					if (alThuoc1.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())) {
+						idthuoc10 = alThuoc1.get(i).getID();
 						ctthuoc.setID_Thuoc(idthuoc10);
 						ctthuoc.setID_PhieuKhamBenh(id);
 						ctthuoc.setSoLuong(Integer.parseInt(jtSoLuong10.getText()));
 						ctthuocDAO.themCTThuoc(ctthuoc);
+						
+						th.setID(alThuoc1.get(i).getID());
+						th.setMaThuoc(alThuoc1.get(i).getMaThuoc());
+						th.setTenThuoc(alThuoc1.get(i).getTenThuoc());
+						th.setDonGia(alThuoc1.get(i).getDonGia());
+						th.setTinhTrang(alThuoc1.get(i).getTinhTrang());
+						th.setID_DonVi(alThuoc1.get(i).getID_DonVi());
+						th.setID_CachDung(alThuoc1.get(i).getID_CachDung());
+						th.setSoLuong(alThuoc1.get(i).getSoLuong() - Integer.parseInt(jtSoLuong10.getText()));
+						thuocDAO.suaThuoc1(th);
 					}
 				}
 			}
-
-			// cap nhat so luong thuoc trong kho NEU phieu kham co thuoc
-			for (int i = 0; i < alThuoc.size(); i++) {
-				thuoc1 th = new thuoc1();
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())
-						&& cbThuoc1.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong1.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc2.getSelectedItem().toString())
-						&& cbThuoc2.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong2.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc3.getSelectedItem().toString())
-						&& cbThuoc3.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong3.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc4.getSelectedItem().toString())
-						&& cbThuoc4.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong4.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc5.getSelectedItem().toString())
-						&& cbThuoc5.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong5.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc6.getSelectedItem().toString())
-						&& cbThuoc6.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong6.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc7.getSelectedItem().toString())
-						&& cbThuoc7.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong7.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc8.getSelectedItem().toString())
-						&& cbThuoc8.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong8.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc9.getSelectedItem().toString())
-						&& cbThuoc9.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong9.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-				if (alThuoc.get(i).getTenThuoc().equals(cbbThuoc10.getSelectedItem().toString())
-						&& cbThuoc10.isSelected()) {
-					th.setID(alThuoc.get(i).getID());
-					th.setMaThuoc(alThuoc.get(i).getMaThuoc());
-					th.setTenThuoc(alThuoc.get(i).getTenThuoc());
-					th.setDonGia(alThuoc.get(i).getDonGia());
-					th.setTinhTrang(alThuoc.get(i).getTinhTrang());
-					th.setID_DonVi(alThuoc.get(i).getID_DonVi());
-					th.setID_CachDung(alThuoc.get(i).getID_CachDung());
-					th.setSoLuong(alThuoc.get(i).getSoLuong() - Integer.parseInt(jtSoLuong10.getText()));
-					thuocDAO.suaThuoc1(th);
-				}
-			}
 			JOptionPane.showMessageDialog(null, "Sửa phiếu khám thành công!", "WARNING", JOptionPane.WARNING_MESSAGE);
-			clientthread ct = new clientthread();
 			this.dispose();
 		}
 	}
