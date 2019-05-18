@@ -5,7 +5,6 @@ public class quydinh4 {
 	private String MaQuyDinh;
 	private String TenQuyDinh;
 	private double GiaTri;
-	
 	public int getID() {
 		return ID;
 	}
@@ -45,7 +44,6 @@ public class quydinh4 {
 		TenQuyDinh = tenQuyDinh;
 		GiaTri = giaTri;
 	}
-
 	public quydinh4() {
 		super();
 		// TODO Auto-generated constructor stub

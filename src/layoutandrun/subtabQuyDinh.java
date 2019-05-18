@@ -82,18 +82,18 @@ public class subtabQuyDinh extends JFrame  {
 		lblNewLabel_2.setBounds(94, 508, 581, 26);
 		jpn.add(lblNewLabel_2);
 		
-//		JButton btnNewButton = new JButton("Đổi mật khẩu");
-//		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-//		btnNewButton.setForeground(Color.BLUE);
-//		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-//		btnNewButton.setBounds(1238, 79, 122, 33);
-//		jpn.add(btnNewButton);
-//		
-//		JButton btnNewButton_1 = new JButton("Đăng xuất");
-//		btnNewButton_1.setForeground(Color.BLUE);
-//		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-//		btnNewButton_1.setBounds(1255, 35, 105, 33);
-//		jpn.add(btnNewButton_1);
+		JButton btnNewButton = new JButton("Đổi mật khẩu");
+		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton.setForeground(Color.BLUE);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(1238, 79, 122, 33);
+		jpn.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Đăng xuất");
+		btnNewButton_1.setForeground(Color.BLUE);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton_1.setBounds(1255, 35, 105, 33);
+		jpn.add(btnNewButton_1);
 		
 		//su kien thay doi combobox
 		cbbQuyDinh.addActionListener (new ActionListener () {
