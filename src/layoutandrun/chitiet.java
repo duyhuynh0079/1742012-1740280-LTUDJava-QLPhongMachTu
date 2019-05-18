@@ -4,68 +4,34 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import DAO.hoadonDAO;
 import DAO.loaibenhDAO;
-import DAO.phieukhamDAO;
-import DAO.thuocDAO;
-import entity.loaibenh;
-import entity.phieukhambenh;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class formChiTietPhieu extends JFrame {
+public class chitiet extends JFrame {
 	private JPanel jp;
-	static String maphieukham = "";
-	static String mabenhnhan = "";
-	static String tenbenhnhan = "";
-	static String ngaykham = "";
-	static String tinhtrang = "";
-	private JTable jtb;
-
-	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGUI();
-			}
-		});
-	}
-
-	private static void createAndShowGUI() {
-		formChiTietPhieu fctp = new formChiTietPhieu(maphieukham, mabenhnhan, tenbenhnhan, ngaykham, tinhtrang);
-	}
-
-	public formChiTietPhieu(String MaPhieuKham, String MaBenhNhan, String TenBenhNhan, String NgayKham,
-			String TinhTrang) {
-		//setSize(1000, 600);
+	private JTable table;
+	
+	public chitiet(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double tienthuoc, double tongtien) {
+		setSize(1000, 600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setVisible(true);
-		this.maphieukham = MaPhieuKham;
-		this.mabenhnhan = MaBenhNhan;
-		this.tenbenhnhan = TenBenhNhan;
-		this.ngaykham = NgayKham;
-		this.tinhtrang = TinhTrang;
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// đóng form
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		jp = new JPanel();
-		jp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		getContentPane().add(jp);
 		jp.setLayout(null);
-		this.setTitle("Chi tiết phiếu khám " + maphieukham);
-
+		
 		JLabel lblNewLabel = new JLabel("Chi Tiết Phiếu Khám Bệnh");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
@@ -116,18 +82,18 @@ public class formChiTietPhieu extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("Tên Loại Bệnh");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(173, 178, 419, 21);
+		lblNewLabel_2.setBounds(173, 178, 134, 21);
 		jp.add(lblNewLabel_2);
 
 		JLabel lblTriuChng = new JLabel("Triệu Chứng");
 		lblTriuChng.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTriuChng.setBounds(484, 180, 108, 19);
+		lblTriuChng.setBounds(483, 179, 108, 19);
 		jp.add(lblTriuChng);
 
-		JLabel lblTngTin = new JLabel("Tổng Tiền Thuốc:");
-		lblTngTin.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblTngTin.setBounds(921, 119, 177, 30);
-		jp.add(lblTngTin);
+		JLabel lblTienthuoc = new JLabel("Tiền Thuốc:");
+		lblTienthuoc.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTienthuoc.setBounds(922, 126, 109, 30);
+		jp.add(lblTienthuoc);
 
 		JLabel lblStt = new JLabel("STT");
 		lblStt.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -146,7 +112,7 @@ public class formChiTietPhieu extends JFrame {
 
 		JLabel lblTrieuChung1 = new JLabel("");
 		lblTrieuChung1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTrieuChung1.setBounds(483, 210, 391, 21);
+		lblTrieuChung1.setBounds(483, 209, 391, 21);
 		jp.add(lblTrieuChung1);
 
 		JLabel lblTrieuChung2 = new JLabel("");
@@ -179,45 +145,87 @@ public class formChiTietPhieu extends JFrame {
 		lblsttBenh3.setBounds(114, 274, 27, 21);
 		jp.add(lblsttBenh3);
 
-		JLabel lblMaPhieuKham = new JLabel("");
+		JLabel lblMaPhieuKham = new JLabel(MaPhieuKham);
 		lblMaPhieuKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaPhieuKham.setBounds(175, 72, 177, 19);
 		jp.add(lblMaPhieuKham);
 
-		JLabel lblMaBenhNhan = new JLabel("");
+		JLabel lblMaBenhNhan = new JLabel(MaBenhNhan);
 		lblMaBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblMaBenhNhan.setBounds(175, 126, 177, 19);
 		jp.add(lblMaBenhNhan);
 
-		JLabel lblNgayKham = new JLabel("");
+		JLabel lblNgayKham = new JLabel(NgayKham);
 		lblNgayKham.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNgayKham.setBounds(627, 72, 177, 21);
 		jp.add(lblNgayKham);
 
-		JLabel lblTenBenhNhan = new JLabel("");
+		JLabel lblTenBenhNhan = new JLabel(TenBenhNhan);
 		lblTenBenhNhan.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTenBenhNhan.setBounds(627, 126, 177, 21);
 		jp.add(lblTenBenhNhan);
 
-		JLabel lblTinhTrang = new JLabel("");
+		JLabel lblTinhTrang = new JLabel(TinhTrang);
 		lblTinhTrang.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTinhTrang.setBounds(1034, 75, 177, 14);
 		jp.add(lblTinhTrang);
 
+		JLabel lblTienThuoc = new JLabel(String.valueOf(tienthuoc));
+		lblTienThuoc.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTienThuoc.setBounds(1045, 130, 133, 26);
+		jp.add(lblTienThuoc);
+		
+		JLabel lblTienKham = new JLabel("");
+		lblTienKham.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTienKham.setBounds(1045, 184, 133, 26);
+		jp.add(lblTienKham);
+
+		JLabel lblTienKham1 = new JLabel("Tiền Khám:");
+		lblTienKham1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTienKham1.setBounds(922, 180, 109, 30);
+		jp.add(lblTienKham1);
+
 		JLabel lblTongTien = new JLabel("");
-		lblTongTien.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblTongTien.setBounds(1120, 119, 228, 26);
+		lblTongTien.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTongTien.setBounds(1045, 237, 133, 26);
 		jp.add(lblTongTien);
 
-		lblMaPhieuKham.setText(maphieukham);
-		lblMaBenhNhan.setText(mabenhnhan);
-		lblTenBenhNhan.setText(tenbenhnhan);
-		lblNgayKham.setText(ngaykham);
-		lblTinhTrang.setText(tinhtrang);
 
+		JLabel lblTongTien1 = new JLabel("Tổng Tiền:");
+		lblTongTien1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTongTien1.setBounds(922, 233, 103, 30);
+		jp.add(lblTongTien1);
+
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(100, 316, 1130, 375);
+		jp.add(scrollPane);
+		table = new JTable();
+		table.setModel(modelPhieuKham);
+		scrollPane.setViewportView(table);
+		
+		if(lblTinhTrang.getText().equals("Chưa thanh toán"))
+		{	
+			System.out.println("vào if-------");
+			lblTienKham1.setText("");
+			lblTienKham.setText("");
+			lblTongTien1.setText("");
+			lblTongTien.setText("");
+		}
+		else
+		{
+			double TienKham = 30000;
+			lblTienKham1.setText("Tiền Khám:");
+			lblTienKham.setText(String.valueOf(TienKham));
+			lblTongTien1.setText("Tổng Tiền:");
+			lblTongTien.setText(String.valueOf(tongtien));
+		}
 		int stt = 1;
-		List<Object[]> o = loaibenhDAO.layLoaiBenhTheoMaPhieuKhamBenh(maphieukham);
+		loaibenhDAO dao = new loaibenhDAO();
+		List<Object[]> o = dao.layLoaiBenhTheoMPKB(MaPhieuKham);
+		System.out.println("countResult:loaibenhDAO " + o.size());
 		for (Object[] countResult : o) {
+			
 			if (stt == 1) {
 				lblsttBenh1.setText(String.valueOf(stt));
 				String tenloaibenh = countResult[0].toString();
@@ -239,34 +247,5 @@ public class formChiTietPhieu extends JFrame {
 			}
 			stt++;
 		}
-		lblTongTien.setText(phieukhamDAO.laytongtientuMaPhieuKham(maphieukham));
-
-		// Tao default model
-		DefaultTableModel modelPhieuKham = new DefaultTableModel(
-				new String[] { "Tên Thuốc", "Số Lượng", "Đơn Giá", "Đơn Vị", "Cách Dùng" }, 0);
-		int i = 1;
-		List<Object[]> ob = thuocDAO.laydanhsachTheoMaPhieuKhamBenh(maphieukham);
-		for (Object[] countResult : ob) {
-			modelPhieuKham.addRow(
-					new Object[] { countResult[0], countResult[1], countResult[2], countResult[3], countResult[4] });
-		}
-		jtb = new JTable(modelPhieuKham);
-		jtb.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		jtb.setDefaultEditor(Object.class, null);
-		JScrollPane scrollPane = new JScrollPane(jtb);
-		scrollPane.setBounds(100, 316, 1130, 375);
-		jp.add(scrollPane);
-		
-		JLabel lblNewLabel_3 = new JLabel("*Đối với phiếu tình trạng \"Đã thanh toán\" :");
-		lblNewLabel_3.setForeground(Color.RED);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.ITALIC, 14));
-		lblNewLabel_3.setBounds(922, 173, 279, 30);
-		jp.add(lblNewLabel_3);
-		
-		JLabel lblXemTinKhm = new JLabel("Xem tiền khám và tổng tiền thanh toán ở mục Hóa Đơn");
-		lblXemTinKhm.setForeground(Color.RED);
-		lblXemTinKhm.setFont(new Font("Tahoma", Font.ITALIC, 14));
-		lblXemTinKhm.setBounds(922, 210, 381, 30);
-		jp.add(lblXemTinKhm);
 	}
 }

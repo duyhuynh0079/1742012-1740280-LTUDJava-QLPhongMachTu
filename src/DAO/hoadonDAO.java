@@ -37,6 +37,25 @@ public class hoadonDAO {
 		return alhd;
 	}
 	
+	public static double laytongtientuMaPhieuKham(String maphieukham)
+	{
+		List lhd;
+		double tongtien = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String sql = "SELECT hd.* FROM hoadon hd, phieukhambenh p where hd.ID_PhieuKhamBenh = p.ID and p.MaPhieuKhamBenh =:m";
+        SQLQuery query = session.createSQLQuery(sql);
+        query.setParameter("m", maphieukham);
+        query.addEntity(hoadon.class);
+		lhd = query.list();
+
+		for (Iterator iterator = lhd.iterator(); iterator.hasNext();) {
+			hoadon hd = (hoadon) iterator.next();
+			tongtien = hd.getTongTien();
+		}
+		return tongtien;
+	}
+	
 	public static int themHoaDon(hoadon hd) {
         int id = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -135,6 +135,18 @@ public class loaibenhDAO {
         return o;
 	}
 	
+	public List<Object[]>layLoaiBenhTheoMPKB(String maphieukham)
+	{
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String sql = "SELECT DISTINCT l.TenLoaiBenh,l.TrieuChung FROM phieukhambenh p inner join ctloaibenh ct on p.ID = ct.ID_PhieuKhamBenh inner join loaibenh l on ct.ID_LoaiBenh = l.ID where p.MaPhieuKhamBenh =:m";
+        SQLQuery query = session.createSQLQuery(sql);
+        query.setParameter("m", maphieukham);
+        List<Object[]> o = query.list();
+        session.close();
+        return o;
+	}
+	
 	public static List<Object[]>layTenBenhTheoMaPhieuKhamBenh(String maphieukham)
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

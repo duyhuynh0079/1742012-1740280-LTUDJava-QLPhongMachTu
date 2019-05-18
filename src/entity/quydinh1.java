@@ -40,7 +40,4 @@ public class quydinh1 {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
 }

@@ -127,6 +127,21 @@ public class thuocDAO {
 			session.close(); 
 		}
 	}
+	public static boolean suaThuoc1(thuoc1 t) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			session.beginTransaction();
+			session.update(t); 
+			session.getTransaction().commit();
+			return true;
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println(e);
+			return false; 
+		}finally {
+			session.close(); 
+		}
+	}
 	
 	public static List<Object[]>laydanhsachTheoMaPhieuKhamBenh(String maphieukham)
 	{
@@ -138,6 +153,8 @@ public class thuocDAO {
         		"inner join ctthuoc ct on ct.ID_Thuoc = th.ID\r\n" + 
         		"inner join phieukhambenh p on ct.ID_PhieuKhamBenh = p.ID\r\n" + 
         		"where p.MaPhieuKhamBenh =:m";
+        
+        //System.out.println(sql);
         SQLQuery query = session.createSQLQuery(sql);
         query.setParameter("m", maphieukham);
         List<Object[]> o = query.list();
