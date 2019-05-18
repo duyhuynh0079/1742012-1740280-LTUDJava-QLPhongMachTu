@@ -202,7 +202,7 @@ public class nhanvienlayout extends JFrame {
 		JButton button_3 = new JButton("");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -702,7 +702,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuat = new JButton("");
 		btnDangXuat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -902,7 +902,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuatLB = new JButton("");
 		btnDangXuatLB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -1229,7 +1229,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuatT = new JButton("");
 		btnDangXuatT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -1450,7 +1450,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuatDVT = new JButton("");
 		btnDangXuatDVT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -1663,7 +1663,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuatCD = new JButton("");
 		btnDangXuatCD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
@@ -2238,7 +2238,7 @@ public class nhanvienlayout extends JFrame {
 		JButton btnDangXuatQD = new JButton("");
 		btnDangXuatQD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+//				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
 				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
 				if(kq==0)
 				{
