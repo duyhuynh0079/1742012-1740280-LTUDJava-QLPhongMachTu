@@ -115,9 +115,11 @@ public class dangnhap extends JFrame {
 							admin.setLocationRelativeTo(null); // canh giua man hinh
 							dangnhap.this.setVisible(false);
 						}else{
-							tabNhanVien nv = new tabNhanVien();
+							tabNhanVien nv = new tabNhanVien(tk.getTenDangNhap(),tk.getID());
 							nv.setVisible(true);
-							nv.setLocationRelativeTo(null); // canh giua man hinh
+							nv.setSize(1000, 600);
+							nv.setLocationRelativeTo(null);
+							nv.setExtendedState(JFrame.MAXIMIZED_BOTH);
 							dangnhap.this.setVisible(false);
 						}
 						
