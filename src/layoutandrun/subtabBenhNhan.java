@@ -24,6 +24,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -49,9 +50,15 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 	private JRadioButton rdbTenBenhNhan;
 	private JRadioButton rdbMaBenhNhan;
 	private JButton btnThemPhieu;
+	private JButton btnDoiMatKhau;
+	private JButton btnDangXuat;
+	static int manv;
+	static String tennv;
 
-	public void controlBenhNhan(JPanel jpn) {
-
+	public void controlBenhNhan(JPanel jpn,int manv,String tennv) {
+		this.manv = manv;
+		this.tennv = tennv;
+		
 		String[] displayCBB = { "Nam", "Nữ", "Khác" };
 		jtTimKiem = new JTextField();
 		jtTimKiem.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -80,6 +87,20 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		lblNewLabel.setBounds(527, 11, 299, 38);
 		jpn.add(lblNewLabel);
+
+		btnDoiMatKhau = new JButton("Đổi mật khẩu");
+		btnDoiMatKhau.setHorizontalAlignment(SwingConstants.LEFT);
+		btnDoiMatKhau.setForeground(Color.BLUE);
+		btnDoiMatKhau.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnDoiMatKhau.setBounds(1167, 28, 131, 33);
+		jpn.add(btnDoiMatKhau);
+
+		btnDangXuat = new JButton("");
+		btnDangXuat.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\logout.png"));
+		btnDangXuat.setForeground(Color.BLUE);
+		btnDangXuat.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnDangXuat.setBounds(1308, 28, 32, 33);
+		jpn.add(btnDangXuat);
 
 		JLabel lblNewLabel_1 = new JLabel("Mã Bệnh Nhân");
 		lblNewLabel_1.setForeground(Color.BLUE);
@@ -189,7 +210,8 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 
 		btnThemPhieu = new JButton("Thêm Phiếu Khám Bệnh");
 		btnThemPhieu.setSelectedIcon(null);
-		btnThemPhieu.setIcon(new ImageIcon("C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add3.png"));
+		btnThemPhieu.setIcon(new ImageIcon(
+				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add3.png"));
 		btnThemPhieu.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThemPhieu.setBounds(880, 608, 264, 61);
 		jpn.add(btnThemPhieu);
@@ -204,6 +226,10 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnTimKiem.addActionListener(this);
 		btnThemPhieu.setActionCommand("ThemPhieu");
 		btnThemPhieu.addActionListener(this);
+		btnDangXuat.addActionListener(this);
+		btnDoiMatKhau.addActionListener(this);
+		btnDangXuat.setActionCommand("DangXuat");
+		btnDoiMatKhau.setActionCommand("DoiMatKhau");
 
 		jtb.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
@@ -234,22 +260,19 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			if (hoten.equals("") || namsinh.equals("") || diachi.equals("")) {
 				JOptionPane.showMessageDialog(null, "Xuất hiện rỗng, Vui lòng nhập đầy đủ !", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
-			}else {
+			} else {
 				if (validate.isNumber(namsinh) == false) {
 					JOptionPane.showMessageDialog(null, "Nhập số cho năm sinh!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
-				} 
-				else {
+				} else {
 					benhnhan bn = new benhnhan();
-					if(alBN.size()==0)
-					{
+					if (alBN.size() == 0) {
 						mabenhnhanthem = "BN1";
-					}
-					else {
+					} else {
 						String mabenhnhan;
-						mabenhnhan = alBN.get(alBN.size()-1).getMaBenhNhan();
-						int sothutu = Integer.parseInt(mabenhnhan.replace("BN",""));
-						mabenhnhanthem ="BN" + (sothutu + 1); 
+						mabenhnhan = alBN.get(alBN.size() - 1).getMaBenhNhan();
+						int sothutu = Integer.parseInt(mabenhnhan.replace("BN", ""));
+						mabenhnhanthem = "BN" + (sothutu + 1);
 					}
 					bn.setMaBenhNhan(mabenhnhanthem);
 					bn.setTenBenhNhan(hoten);
@@ -267,7 +290,8 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 							jtDiaChi.setText("");
 							jlMaBenhNhan.setText("");
 						} else {
-							JOptionPane.showMessageDialog(null, "Thêm thất bại !", "WARNING", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Thêm thất bại !", "WARNING",
+									JOptionPane.WARNING_MESSAGE);
 						}
 					} catch (Exception e1) {
 						JOptionPane.showMessageDialog(null, "Lỗi Nhập Sai !", "WARNING", JOptionPane.WARNING_MESSAGE);
@@ -334,46 +358,54 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		}
 		if (command.equals("Tim")) {
 			int loai = 0;
-			if(rdbTenBenhNhan.isSelected())
-			{
+			if (rdbTenBenhNhan.isSelected()) {
 				loai = 1;
-			}
-			else{
-				if(rdbMaBenhNhan.isSelected())
-				{
+			} else {
+				if (rdbMaBenhNhan.isSelected()) {
 					loai = 2;
-				}
-				else
-				{
+				} else {
 					JOptionPane.showMessageDialog(null,
 							"Tìm kiếm thất bại, click chọn Tên hoặc Mã, nhập vào khung rồi click Tìm Kiếm !", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 				}
 			}
 			String timkiem = jtTimKiem.getText();
-			showBenhNhan modelBenhNhan = new showBenhNhan(timkiem,loai);
+			showBenhNhan modelBenhNhan = new showBenhNhan(timkiem, loai);
 			jtb.setModel(modelBenhNhan);
 		}
 
-		if(command.equals("ThemPhieu"))
-		{
+		if (command.equals("ThemPhieu")) {
 			String mabenhnhan = jlMaBenhNhan.getText();
 			String tenbenhnhan = jtHoTen.getText();
-			if(mabenhnhan=="")
-			{
-				JOptionPane.showMessageDialog(null,
-						"Thêm thất bại, vui lòng click bảng chọn bệnh nhân !", "WARNING",
+			if (mabenhnhan == "") {
+				JOptionPane.showMessageDialog(null, "Thêm thất bại, vui lòng click bảng chọn bệnh nhân !", "WARNING",
 						JOptionPane.WARNING_MESSAGE);
-			}
-			else {
+			} else {
 				try {
-					formThemPhieu ftp = new formThemPhieu(mabenhnhan,tenbenhnhan);
+					formThemPhieu ftp = new formThemPhieu(mabenhnhan, tenbenhnhan);
 					ftp.setVisible(true);
 					ftp.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
 			}
+		}
+
+		if (command.equals("DangXuat")) {
+			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
+					JOptionPane.YES_NO_OPTION);
+			if (kq == 0) {
+				dispose();
+				dangnhap dn = new dangnhap();
+				dn.setVisible(true);
+				dn.setLocationRelativeTo(null); // canh giữa màn hình
+			}
+		}
+		
+		if (command.equals("DoiMatKhau")) {
+			doimatkhau dmk = new doimatkhau(tennv, manv);
+			dmk.setVisible(true);
+			dmk.setLocationRelativeTo(null);// canh giua man hinh
 		}
 	}
 }

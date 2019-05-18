@@ -9,14 +9,17 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.phieukhamDAO;
 
 public class serverthread extends Thread implements Runnable {
 	static JTable jt;
-	public serverthread(JTable jtpk) {
+	static JTextField jtf;
+	public serverthread(JTable jtpk, JTextField jtf) {
 		this.jt = jtpk ;
+		this.jtf = jtf ;
 		start();
 	}
 	
@@ -46,7 +49,7 @@ public class serverthread extends Thread implements Runnable {
 					modelPhieuKham.addRow(new Object[] { countResult[0], countResult[1], countResult[2], ngaykham, tinhtrang });
 				}
 					jt.setModel(modelPhieuKham);
-					System.out.println("set model thành công "+ modelPhieuKham.getRowCount());
+					jtf = textfieldSearch.createRowFilter(jt);
 				s.close();
 			}
 		} catch (IOException e) {

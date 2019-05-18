@@ -38,6 +38,28 @@ public class thuocDAO {
 		}
 		return alThuoc;
 	}
+	public static ArrayList<thuoc1> layThuocTheoID(int id)
+	{
+		List lst;
+		ArrayList<thuoc1> alThuoc = new ArrayList<thuoc1>();
+		//tao session ket noi hibernate den du lieu
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		//mo ket noi bang session
+		Session s = sf.openSession();
+		//tao cau query truy van den bang sinh vien
+		String sql = "SELECT * FROM thuoc Where ID =:th";
+		SQLQuery query = s.createSQLQuery(sql);
+		query.setParameter("th", id);
+		query.addEntity(thuoc1.class);
+		lst = query.list();
+
+		//ham hung 1 array list rieng từ list truyen qua
+		for (Iterator iterator = lst.iterator(); iterator.hasNext();) {
+			thuoc1 th = (thuoc1) iterator.next();
+			alThuoc.add(th);
+		}
+		return alThuoc;
+	}
 
 	public static String[] layDanhSachTenThuoc() {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
