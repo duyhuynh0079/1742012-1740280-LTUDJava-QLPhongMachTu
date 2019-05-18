@@ -1024,8 +1024,8 @@ public class nhanvienlayout extends JFrame {
 				} else if (txtMaThuoc.getText().equals("") || txtTenThuoc.getText().equals("")
 						|| txtDonGiaThuoc.getText().equals("") || txtSoLuongThuoc.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!");
-				} else if (validate.isNumber(txtDonGiaThuoc.getText()) == false
-						|| validate.isNumber(txtSoLuongThuoc.getText()) == false) {
+				} else if (validate.isWord(txtDonGiaThuoc.getText()) == true
+						|| validate.isNumber(txtSoLuongThuoc.getText()) == false ) {
 					JOptionPane.showMessageDialog(null, "Đơn giá, số lượng chỉ được nhập số!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
 				} else if (thuocDAO.timMaThuoc(txtMaThuoc.getText()) != null) {
@@ -1084,7 +1084,7 @@ public class nhanvienlayout extends JFrame {
 						|| txtDonGiaThuoc.getText().equals("") || txtSoLuongThuoc.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Vui lòng click bảng chọn thuốc cần cập nhật!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
-				} else if (validate.isNumber(txtDonGiaThuoc.getText()) == false
+				} else if (validate.isWord(txtDonGiaThuoc.getText()) == true
 						|| validate.isNumber(txtSoLuongThuoc.getText()) == false) {
 					JOptionPane.showMessageDialog(null, "Đơn giá, sô lượng chỉ được nhập số!", "WARNING",
 							JOptionPane.WARNING_MESSAGE);
