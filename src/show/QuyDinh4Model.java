@@ -45,7 +45,7 @@ public class QuyDinh4Model extends AbstractTableModel{
 
 	@Override
 	public int getColumnCount() {
-		return 3;//lay 3 cot tu database
+		return 4;//lay 3 cot tu database
 	}
 
 	@Override
@@ -63,13 +63,15 @@ public class QuyDinh4Model extends AbstractTableModel{
 			return qd2.getMaQuyDinh();
 		case 2:
 			return qd2.getTenQuyDinh();
+		case 3:
+			return qd2.getGiaTri();
 		default:
 			return null;
 		}
 	}
 	// set ten cot
 		public String getColumnName(int col) {
-			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh"};
+			String[] columnNames=new String[] {"ID qui định","Mã qui định","Tên qui đinh","Giá trị"};
 			return columnNames[col];
 		}
 

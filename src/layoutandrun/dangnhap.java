@@ -94,7 +94,7 @@ public class dangnhap extends JFrame {
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtTenDangNhap.getText().equals("") ||pfMatKhau.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Vui lÃ²ng nháº­p Ä‘á»§ thÃ´ng tin!");
+					JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin!");
 				} else {
 					nhanvien test = new nhanvien();
 					test.setTenDangNhap(txtTenDangNhap.getText());
@@ -110,7 +110,7 @@ public class dangnhap extends JFrame {
 					nhanvien tk  = DAO.nhanvienDAO.KiemTraTrung(test);
 					if (tk != null) {
 						if(tk.getMaCV() == 0){
-							nhanvienlayout admin = new nhanvienlayout(tk.getTenDangNhap());
+							nhanvienlayout admin = new nhanvienlayout(tk.getTenDangNhap(),tk.getID());
 							admin.setVisible(true);
 							admin.setLocationRelativeTo(null); // canh giá»¯a mÃ n hÃ¬nh
 							dangnhap.this.setVisible(false);
@@ -122,7 +122,7 @@ public class dangnhap extends JFrame {
 						}
 						
 					} else {
-						JOptionPane.showMessageDialog(null, "TÃªn Ä‘Äƒng nháº­p hoáº·c máº­t kháº©u khÃ´ng Ä‘Ãºng!");
+						JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc tài khoản không khớp!");
 						txtTenDangNhap.setText(null);
 						pfMatKhau.setText(null);
 					}
@@ -138,7 +138,12 @@ public class dangnhap extends JFrame {
 		JButton btnThoat = new JButton("Thoát");
 		btnThoat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dispose();
+				setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+				int kq=JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?","Thông báo",JOptionPane.YES_NO_OPTION);
+				if(kq==0)
+				{
+					dispose();
+				}
 			}
 		});
 		btnThoat.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));

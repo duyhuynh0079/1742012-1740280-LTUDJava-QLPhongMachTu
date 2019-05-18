@@ -21,7 +21,7 @@ public class dangnhapDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		nhanvien tknv1 = null;
 		session.beginTransaction();
-		String sql = "SELECT * FROM nhanvien where TenDangNhap =:h and MatKhau =:v";
+		String sql = "SELECT * FROM nhanvien where TenDangNhap =:h and MatKhau =:v and TinhTrang=1";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("h",tknv.getTenDangNhap());
 		query.setParameter("v",tknv.getMatKhau());

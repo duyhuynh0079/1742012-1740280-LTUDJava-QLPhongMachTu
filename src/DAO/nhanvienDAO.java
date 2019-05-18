@@ -13,9 +13,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.type.IntegerType;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringType;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import entity.loaibenh;
@@ -60,11 +63,143 @@ public class nhanvienDAO {
 		
 		return tknv1;
 	}
+	public static String layHoTenNV(int ID)
+	{
+		String hoten = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT HoTenNV as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			String cnt = ((String) list.get(0)).toString();
+			hoten = cnt;
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return hoten;
+	}
+	public static String layNgaySinhNV(int ID)
+	{
+		String ngaysinh = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT NgaySinh as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			Date cnt = ((Date) list.get(0));
+			ngaysinh = cnt.toString();
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return ngaysinh;
+	}
+	public static String layDiaChiNV(int ID)
+	{
+		String diachi = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT DiaChi as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			String cnt = ((String) list.get(0)).toString();
+			diachi = cnt;
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return diachi;
+	}
+	public static String laySDTNV(int ID)
+	{
+		String dienthoai = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT SDT as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			String cnt = ((String) list.get(0)).toString();
+			dienthoai = cnt;
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return dienthoai;
+	}
+	public static String layTenDangNhapNV(int ID)
+	{
+		String tendangnhap = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT TenDangNhap as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			String cnt = ((String) list.get(0)).toString();
+			tendangnhap = cnt;
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return tendangnhap;
+	}
+	public static String layMatKhauNV(int ID)
+	{
+		String MatKhau = "";
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT MatKhau as cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",ID);
+//		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			String cnt = ((String) list.get(0)).toString();
+			MatKhau = cnt;
+		} else {
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return MatKhau;
+	}
+	public static int layMaChucVu(int manv)
+	{
+		int macv = 0;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		String SQL_QUERY = "SELECT MaCV cnt FROM nhanvien WHERE TinhTrang = 1 and ID =:h";
+		SQLQuery query = session.createSQLQuery(SQL_QUERY);
+		query.setParameter("h",manv);
+		query.addScalar("cnt", IntegerType.INSTANCE);
+		List list = query.list();
+		if (list != null && !list.isEmpty()) {
+			int cnt = ((Integer) list.get(0)).intValue();
+			macv = cnt;
+		} else {
+//			logger.info("No Records found for the specified input...");
+			System.out.println("Table rỗng!");
+		}
+		session.close();
+		return macv;
+	}
 	public static  nhanvien timTenDangNhapTrung(String tendn) {
 
 	    List<nhanvien> nv = new ArrayList<nhanvien>();
-
-	    //Session session = this.sessionFactory.getCurrentSession();
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    session.beginTransaction();
 	    nv = session.createQuery("from nhanvien where TenDangNhap=?").setParameter(0, tendn).list();
@@ -124,28 +259,9 @@ public class nhanvienDAO {
 		return Base64.getEncoder().encodeToString(hash);
 	}
     public static String unHash(String pw)  throws NoSuchAlgorithmException, UnsupportedEncodingException {  
-//		try {
-//			MessageDigest md = MessageDigest.getInstance("SHA-1");
-//			md.update(hashedPassword.getBytes("UTF-8"));
-//			char[] raw = md.digest().toString().toCharArray();
-//			return Base64.getEncoder().encodeToString(raw);
-//		} catch (Exception e) {
-//			throw
-//    	new RuntimeException(e);
-//		}
     	MessageDigest digest = MessageDigest.getInstance("SHA-1");
 		digest.reset();
 		byte[] hash = digest.digest(pw.getBytes("UTF-8"));
 		return Base64.getDecoder().decode(hash).toString();
 	} 
-//    public static String unHash2(String pw)  {  
-//	try {
-//			MessageDigest md = MessageDigest.getInstance("SHA-1");
-//			md.update(hashedPassword.getBytes("UTF-8"));
-//			char[] raw = md.digest().toString().toCharArray();
-//			return Base64.getEncoder().encodeToString(raw);
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//			}
-//    }
 }

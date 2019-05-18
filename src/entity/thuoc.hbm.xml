@@ -13,7 +13,10 @@
 		<property name="TenThuoc" type="string">
 			<column name="TenThuoc" length="100" />
 		</property>
-		<property name="DonGia" type="float">
+		<property name="SoLuong" type="int">
+			<column name="SoLuong" length="11" />
+		</property>
+		<property name="DonGia" type="double">
 			<column name="DonGia" length="100" />
 		</property>
 		<property name="TinhTrang" type="int">
