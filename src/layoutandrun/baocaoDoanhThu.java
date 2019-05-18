@@ -38,8 +38,8 @@ public class baocaoDoanhThu {
 	public static List<Object[]> laydanhsachTheoThangNam(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT h.NgayThanhToan,COUNT(h.NgayThanhToan) as 'SoBenhNhan',COUNT(h.NgayThanhToan)*30000 as 'DoanhThu' "
-				+ "FROM `hoadon` h WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b GROUP BY h.NgayThanhToan ";
+		String sql = "SELECT h.NgayThanhToan,COUNT(h.NgayThanhToan) as 'SoBenhNhan', SUM(h.TienKham) FROM `hoadon` h "
+				+ "WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b GROUP BY h.NgayThanhToan  ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("a",Thang);
 		query.setParameter("b",Nam);
@@ -55,8 +55,7 @@ public class baocaoDoanhThu {
 		int i = 1;
 		double tongdoanhthu = 0;
 		for (Object[] countResult : o) {
-			BigInteger b = new BigInteger(countResult[2].toString());
-			tongdoanhthu = tongdoanhthu + b.doubleValue();
+			tongdoanhthu = tongdoanhthu + (double)countResult[2];
 		}
 		for (Object[] countResult : o) {
 			bcdoanhthu bc = new bcdoanhthu();
@@ -66,8 +65,7 @@ public class baocaoDoanhThu {
 			bc.setDOANHTHU(String.valueOf(countResult[2]));
 			double tyle = 0;
 			double tylelamtron = 0;
-			BigInteger b1 = new BigInteger(countResult[2].toString());
-			tyle = (b1.doubleValue()/tongdoanhthu)*100;
+			tyle = ((double)countResult[2]/tongdoanhthu)*100;
 			tylelamtron = Math.round(tyle*100.0)/100.0;
 			bc.setTYLE(String.valueOf(tylelamtron));
 			dataBeanList.add(bc);

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +30,9 @@ import javax.swing.table.DefaultTableModel;
 
 import DAO.hoadonDAO;
 import DAO.phieukhamDAO;
+import DAO.quydinh4DAO;
 import DAO.thuocDAO;
+import entity.quydinh4;
 
 public class subtabPhieuKhamBenh implements ActionListener {
 	private JLabel lblMaPhieuKham;
@@ -43,7 +46,6 @@ public class subtabPhieuKhamBenh implements ActionListener {
 	private JButton btnSuaPhieu;
 	private JButton btnXemDanhSach;
 	private JButton btnThanhToan;
-	private JButton btnTimKiem;
 	private JComboBox jcbb;
 	private JLabel lblNewLabel_2;
 	int index;
@@ -65,13 +67,6 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_5.setBounds(36, 74, 72, 23);
 		jpn.add(lblNewLabel_5);
-
-		btnXemDanhSach = new JButton("Danh Sách");
-		btnXemDanhSach.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\load.png"));
-		btnXemDanhSach.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnXemDanhSach.setBounds(643, 95, 174, 50);
-		jpn.add(btnXemDanhSach);
 
 		btnSuaPhieu = new JButton("Sửa Phiếu");
 		btnSuaPhieu.setIcon(new ImageIcon(
@@ -215,9 +210,6 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnSuaPhieu.setActionCommand("Sua");
 		btnThanhToan.addActionListener(this);
 		btnThanhToan.setActionCommand("ThanhToan");
-		btnXemDanhSach.addActionListener(this);
-		btnXemDanhSach.setActionCommand("Xem");
-
 		serverthread st = new serverthread(jtb);
 	}
 
@@ -237,7 +229,8 @@ public class subtabPhieuKhamBenh implements ActionListener {
 				try {
 					// tryen cac lable o tren
 					double tienthuoc = phieukhamDAO.laytongtientuMaPhieuKham(maphieukham);
-					double tongtien = tienthuoc + 30000;
+					double tienkham = quydinh4DAO.laytienkhamTuBanQuyDinh4();
+					double tongtien = tienthuoc + tienkham;
 					// truyen model thuoc
 					System.out.println("Nhan chi tiet");
 					// Tao default model
@@ -254,10 +247,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							System.out.println("tienthuoc----" + tienthuoc);
-							System.out.println("tienthuoc----" + tongtien);
-							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan,
-									tienthuoc, tongtien);
+							chitiet t = new chitiet(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan, tenbenhnhan, tienthuoc, tienkham, tongtien);
 							t.setVisible(true);
 						}
 					});
@@ -300,7 +290,8 @@ public class subtabPhieuKhamBenh implements ActionListener {
 					try {
 						// tryen cac lable o tren
 						double tienthuoc = phieukhamDAO.laytongtientuMaPhieuKham(maphieukham);
-						double tongtien = tienthuoc + 30000;
+						double tienkham = quydinh4DAO.laytienkhamTuBanQuyDinh4();
+						double tongtien = tienthuoc + tienkham;
 						// truyen model thuoc
 						System.out.println("Nhan thanh toan");
 						// Tao default model
@@ -317,10 +308,8 @@ public class subtabPhieuKhamBenh implements ActionListener {
 
 						SwingUtilities.invokeLater(new Runnable() {
 							public void run() {
-								System.out.println("tienthuoc----" + tienthuoc);
-								System.out.println("tienthuoc----" + tongtien);
 								formThanhToan ftt = new formThanhToan(MD, maphieukham, ngaykham, tinhtrang, mabenhnhan,
-										tenbenhnhan, tienthuoc, tongtien);
+										tenbenhnhan, tienthuoc, tienkham , tongtien);
 											ftt.setVisible(true);
 							}
 						});
