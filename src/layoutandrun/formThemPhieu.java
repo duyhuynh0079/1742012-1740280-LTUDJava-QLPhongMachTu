@@ -1558,7 +1558,6 @@ public class formThemPhieu extends JFrame implements ActionListener {
 				return;
 			}
 			// xet soluong thuoc phieu kham va soluong thuoc trong kho
-		
 			for (int t = 0; t < alThuoc.size(); t++) {
 				if (alThuoc.get(t).getTenThuoc().equals(cbbThuoc1.getSelectedItem().toString())&&cbThuoc1.isSelected()) {
 					System.out.println("ID--"+alThuoc.get(t).getID()+"--Ten--"+alThuoc.get(t).getTenThuoc()+"---Sl---"+alThuoc.get(t).getSoLuong());

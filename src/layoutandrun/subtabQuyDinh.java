@@ -46,7 +46,7 @@ public class subtabQuyDinh extends JFrame  {
 //		setVisible(true);
 //		jpn.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Quy Định");
+		JLabel lblNewLabel = new JLabel("QUY ĐỊNH");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
 		lblNewLabel.setBounds(585, 11, 136, 50);
@@ -63,7 +63,7 @@ public class subtabQuyDinh extends JFrame  {
 		lblNewLabel_1.setBounds(94, 159, 89, 26);
 		jpn.add(lblNewLabel_1);
 		
-		String [] quydinh = {"QD1","QD2","QD4","QD6"};
+		String [] quydinh = {"Quy định 1","Quy định 2","Quy định 4","Quy định 6"};
 		cbbQuyDinh = new JComboBox(quydinh);
 		cbbQuyDinh.setBounds(193, 158, 105, 26);
 		jpn.add(cbbQuyDinh);
@@ -76,7 +76,7 @@ public class subtabQuyDinh extends JFrame  {
 		jsp.setBounds(94, 232, 1170, 214);
 		jpn.add(jsp);
 		
-		JLabel lblNewLabel_2 = new JLabel("*Những quy định trên của phòng mạch chỉ những chức vụ quản lý mới được thay đổi\r\n");
+		JLabel lblNewLabel_2 = new JLabel("*Những  trên của phòng mạch chỉ những chức vụ quản lý mới được thay đổi\r\n");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		lblNewLabel_2.setForeground(Color.RED);
 		lblNewLabel_2.setBounds(94, 508, 581, 26);
@@ -98,28 +98,25 @@ public class subtabQuyDinh extends JFrame  {
 		//su kien thay doi combobox
 		cbbQuyDinh.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
-		    	if(cbbQuyDinh.getSelectedItem().equals("QD1"))
+		    	if(cbbQuyDinh.getSelectedItem().equals("Quy định 1"))
 				{
 					QuyDinh1Model model = new QuyDinh1Model();
 					jtb.setModel(model);
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("QD2"))
+				if(cbbQuyDinh.getSelectedItem().equals("Quy định 2"))
 				{
 					QuyDinh2Model model = new QuyDinh2Model();
 					jtb.setModel(model);
-					System.out.println("Quy định 2");
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("QD4"))
+				if(cbbQuyDinh.getSelectedItem().equals("Quy định 4"))
 				{
 					QuyDinh4Model model = new QuyDinh4Model();
 					jtb.setModel(model);
-					System.out.println("Quy định 4");
 				}
-				if(cbbQuyDinh.getSelectedItem().equals("QD6"))
+				if(cbbQuyDinh.getSelectedItem().equals("Quy định 6"))
 				{
 					QuyDinh6Model model = new QuyDinh6Model();
 					jtb.setModel(model);
-					System.out.println("Quy định 6");
 				}
 		    }
 		});

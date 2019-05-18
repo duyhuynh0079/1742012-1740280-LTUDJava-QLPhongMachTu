@@ -56,7 +56,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 	String mahoadon;
 	static ArrayList<hoadon> alhd = hoadonDAO.hoadon();
 
-	public formThanhToan(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double TienThuoc, double TongTien) {
+	public formThanhToan(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double TienThuoc, double TienKham, double TongTien) {
 		// setSize(1000,600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
@@ -212,7 +212,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 		lblTienThuoc.setBounds(1173, 76, 134, 26);
 		jp.add(lblTienThuoc);
 
-		lblTienKham = new JLabel("");
+		lblTienKham = new JLabel(String.valueOf(TienKham));
 		lblTienKham.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTienKham.setBounds(1174, 126, 133, 26);
 		jp.add(lblTienKham);
@@ -265,7 +265,6 @@ public class formThanhToan extends JFrame implements ActionListener {
 			stt++;
 		}
 
-		double TienKham = 30000;
 		lblTienKham.setText(String.valueOf(TienKham));
 
 		// Add model truyền qua tu subtabPhieuKhamBenh

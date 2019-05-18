@@ -8,34 +8,35 @@ public class quydinh4 {
 	public int getID() {
 		return ID;
 	}
+
 	public void setID(int iD) {
 		ID = iD;
 	}
+
 	public String getMaQuyDinh() {
 		return MaQuyDinh;
 	}
+
 	public void setMaQuyDinh(String maQuyDinh) {
 		MaQuyDinh = maQuyDinh;
 	}
+
 	public String getTenQuyDinh() {
 		return TenQuyDinh;
 	}
+
 	public void setTenQuyDinh(String tenQuyDinh) {
 		TenQuyDinh = tenQuyDinh;
 	}
+
 	public double getGiaTri() {
 		return GiaTri;
 	}
+
 	public void setGiaTri(double giaTri) {
 		GiaTri = giaTri;
 	}
-	
-	/**
-	 * @param iD
-	 * @param maQuyDinh
-	 * @param tenQuyDinh
-	 * @param giaTri
-	 */
+
 	public quydinh4(int iD, String maQuyDinh, String tenQuyDinh, double giaTri) {
 		super();
 		ID = iD;

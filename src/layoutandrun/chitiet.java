@@ -22,7 +22,7 @@ public class chitiet extends JFrame {
 	private JPanel jp;
 	private JTable table;
 	
-	public chitiet(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double tienthuoc, double tongtien) {
+	public chitiet(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double tienthuoc, double tienkham, double tongtien) {
 		setSize(1000, 600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
@@ -214,9 +214,9 @@ public class chitiet extends JFrame {
 		}
 		else
 		{
-			double TienKham = 30000;
+			
 			lblTienKham1.setText("Tiền Khám:");
-			lblTienKham.setText(String.valueOf(TienKham));
+			lblTienKham.setText(String.valueOf(tienkham));
 			lblTongTien1.setText("Tổng Tiền:");
 			lblTongTien.setText(String.valueOf(tongtien));
 		}
