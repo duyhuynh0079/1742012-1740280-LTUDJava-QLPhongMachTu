@@ -16,16 +16,14 @@ import DAO.phieukhamDAO;
 
 public class serverthread extends Thread implements Runnable {
 	static JTable jt;
-	static JTextField jtf;
-	public serverthread(JTable jtpk, JTextField jtf) {
+	public serverthread(JTable jtpk) {
 		this.jt = jtpk ;
-		this.jtf = jtf ;
 		start();
 	}
 	
 	public void run() {
 		try {
-			ServerSocket ss = new ServerSocket(6789);// server socket port 2k
+			ServerSocket ss = new ServerSocket(6789);// server socket port  6789
 			while (true) {
 				System.out.println("Đang lắng nghe kết nối-------");
 				Socket s = ss.accept();// khi co 1 socket con ket noi
@@ -49,7 +47,6 @@ public class serverthread extends Thread implements Runnable {
 					modelPhieuKham.addRow(new Object[] { countResult[0], countResult[1], countResult[2], ngaykham, tinhtrang });
 				}
 					jt.setModel(modelPhieuKham);
-					jtf = textfieldSearch.createRowFilter(jt);
 				s.close();
 			}
 		} catch (IOException e) {

@@ -23,7 +23,7 @@ public class baocaoLoaiBenh {
 	public static List<Object[]> laydanhsachKiemTraRong(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT * FROM `hoadon` h WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b  ";
+		String sql = "SELECT * FROM `phieukhambenh` p WHERE p.TinhTrang = 1 AND MONTH(p.NgayKham) =:a AND YEAR(p.NgayKham) =:b  ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("a",Thang);
 		query.setParameter("b",Nam);

@@ -248,7 +248,7 @@
 			</textField>
 			<image>
 				<reportElement x="11" y="3" width="80" height="75" uuid="50052437-ab66-4c02-82f2-6ed4efb44860"/>
-				<imageExpression><![CDATA["C:/Users/Mr.F/Documents/GitHub/1742012-1740280-LTUDJava-QLPhongMachTu/Source/images/ABC.png"]]></imageExpression>
+				<imageExpression><![CDATA["E:/sourcetree/Source/images/ABC.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

@@ -33,6 +33,8 @@ import show.showBenhNhan;
 
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
@@ -178,6 +180,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 	}
 
 	public formSuaPhieu(String MaPhieuKham, String MaBenhNhan, String TenBenhNhan, String NgayKham) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -195,7 +198,7 @@ public class formSuaPhieu extends JFrame implements ActionListener {
 		btnSua = new JButton("Sửa");
 		btnSua.setSelectedIcon(null);
 		btnSua.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\edit1.png"));
+				"E:\\sourcetree\\Source\\images\\edit1.png"));
 		btnSua.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSua.setBounds(631, 624, 146, 62);
 		jp.add(btnSua);

@@ -55,7 +55,7 @@ public class dangnhap extends JFrame {
 	 * Create the frame.
 	 */
 	public dangnhap() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC.png"));
 		setTitle("ĐĂNG NHẬP");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 469, 259);

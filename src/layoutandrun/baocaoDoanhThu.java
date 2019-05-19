@@ -26,7 +26,7 @@ public class baocaoDoanhThu {
 	public static List<Object[]> laydanhsachKiemTraRong(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT * FROM `hoadon` h WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b  ";
+		String sql = "SELECT * FROM `phieukhambenh` p WHERE p.TinhTrang = 1 AND MONTH(p.NgayKham) =:a AND YEAR(p.NgayKham) =:b  ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("a",Thang);
 		query.setParameter("b",Nam);
@@ -38,8 +38,12 @@ public class baocaoDoanhThu {
 	public static List<Object[]> laydanhsachTheoThangNam(int Thang, int Nam) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		String sql = "SELECT h.NgayThanhToan,COUNT(h.NgayThanhToan) as 'SoBenhNhan', SUM(h.TienKham) FROM `hoadon` h "
-				+ "WHERE MONTH(h.NgayThanhToan) =:a AND YEAR(h.NgayThanhToan) =:b GROUP BY h.NgayThanhToan  ";
+		String sql = "SELECT p.NgayKham,COUNT(p.NgayKham) as 'SoBenhNhan', SUM(h.TienKham)\r\n" + 
+				"FROM `hoadon` h, phieukhambenh p \r\n" + 
+				"WHERE h.ID_PhieuKhamBenh = p.ID\r\n" + 
+				"AND p.TinhTrang = 1\r\n" + 
+				"AND MONTH(h.NgayThanhToan) =:a \r\n" + 
+				"AND YEAR(h.NgayThanhToan) =:b GROUP BY p.NgayKham  ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("a",Thang);
 		query.setParameter("b",Nam);

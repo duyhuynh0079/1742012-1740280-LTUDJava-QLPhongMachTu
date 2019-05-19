@@ -10,7 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -33,8 +36,9 @@ import DAO.phieukhamDAO;
 import DAO.quydinh4DAO;
 import DAO.thuocDAO;
 import entity.quydinh4;
+import show.showBenhNhan;
 
-public class subtabPhieuKhamBenh implements ActionListener {
+public class subtabPhieuKhamBenh extends JFrame implements ActionListener {
 	private JLabel lblMaPhieuKham;
 	private JLabel lblMaBenhNhan;
 	private JLabel lblTenBenhNhan;
@@ -44,6 +48,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 	private JTextField jtTimPhieu;
 	private JButton btnChiTiet;
 	private JButton btnSuaPhieu;
+	private JButton btnTimKiem;
 	private JButton btnXemDanhSach;
 	private JButton btnThanhToan;
 	private JComboBox jcbb;
@@ -52,11 +57,16 @@ public class subtabPhieuKhamBenh implements ActionListener {
 	private JButton btnDangXuat;
 	static int manv;
 	static String tennv;
+	static JFrame jfr;
+	private JRadioButton rdbTenBenhNhan;
+	private JRadioButton rdbMaBenhNhan;
+	private JRadioButton rdbMaPhieuKham;
 
-	public void controlPhieuKhamBenh(JPanel jpn,int manv,String tennv) {
+	public void controlPhieuKhamBenh(JPanel jpn, int manv, String tennv, JFrame jfr) {
 		this.manv = manv;
 		this.tennv = tennv;
-		
+		this.jfr = jfr;
+
 		JLabel lblNewLabel = new JLabel("QUẢN LÝ PHIẾU KHÁM BỆNH");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 25));
@@ -65,7 +75,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+				"E:\\sourcetree\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
 
@@ -83,30 +93,19 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnDangXuat.setBounds(1308, 28, 32, 33);
 		jpn.add(btnDangXuat);
 
-		JLabel lblNewLabel_5 = new JLabel("Tìm kiếm");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_5.setBounds(36, 74, 72, 23);
-		jpn.add(lblNewLabel_5);
-
 		btnSuaPhieu = new JButton("Sửa Phiếu");
 		btnSuaPhieu.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\edit2.png"));
+				"E:\\sourcetree\\Source\\images\\edit2.png"));
 		btnSuaPhieu.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSuaPhieu.setBounds(959, 610, 174, 61);
 		jpn.add(btnSuaPhieu);
 
 		btnThanhToan = new JButton("Thanh \r\nToán");
 		btnThanhToan.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\hoadon.png"));
+				"E:\\sourcetree\\Source\\images\\hoadon.png"));
 		btnThanhToan.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThanhToan.setBounds(1164, 610, 174, 61);
 		jpn.add(btnThanhToan);
-
-		JLabel lblNewLabel_1 = new JLabel("*Có thể nhập tìm theo tên bệnh nhân, mã phiếu khám, ngày khám...\r\n");
-		lblNewLabel_1.setForeground(Color.RED);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 14));
-		lblNewLabel_1.setBounds(34, 153, 425, 23);
-		jpn.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("Mã Phiếu Khám");
 		lblNewLabel_3.setForeground(Color.BLUE);
@@ -161,7 +160,7 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnChiTiet = new JButton("Chi Tiết");
 		btnChiTiet.setHorizontalAlignment(SwingConstants.LEFT);
 		btnChiTiet.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Phieukham.png"));
+				"E:\\sourcetree\\Source\\images\\Phieukham.png"));
 		btnChiTiet.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnChiTiet.setBounds(959, 534, 174, 61);
 		jpn.add(btnChiTiet);
@@ -203,12 +202,47 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		scrollPane.setBounds(34, 199, 854, 472);
 		jpn.add(scrollPane);
 
-		jtTimPhieu = textfieldSearch.createRowFilter(jtb);
+		jtTimPhieu = new JTextField();
 		jtTimPhieu.setToolTipText("Nhập đối tượng tìm kiếm ");
 		jtTimPhieu.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		jtTimPhieu.setBounds(34, 102, 347, 37);
+		jtTimPhieu.setBounds(34, 107, 204, 37);
 		jpn.add(jtTimPhieu);
 		jtTimPhieu.setColumns(10);
+
+		rdbTenBenhNhan = new JRadioButton("Tên Bệnh Nhân");
+		rdbTenBenhNhan.setFont(new Font("Arial", Font.BOLD, 12));
+		rdbTenBenhNhan.setBounds(556, 129, 120, 15);
+		jpn.add(rdbTenBenhNhan);
+
+		rdbMaBenhNhan = new JRadioButton("Mã Bệnh Nhân");
+		rdbMaBenhNhan.setFont(new Font("Arial", Font.BOLD, 12));
+		rdbMaBenhNhan.setBounds(424, 129, 120, 15);
+		jpn.add(rdbMaBenhNhan);
+
+		rdbMaPhieuKham = new JRadioButton("Mã Phiếu Khám\r\n");
+		rdbMaPhieuKham.setFont(new Font("Arial", Font.BOLD, 12));
+		rdbMaPhieuKham.setBounds(283, 129, 120, 15);
+		jpn.add(rdbMaPhieuKham);
+
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbTenBenhNhan);
+		group.add(rdbMaBenhNhan);
+		group.add(rdbMaPhieuKham);
+
+		btnTimKiem = new JButton("Tìm Kiếm");
+		btnTimKiem.setIcon(new ImageIcon(
+				"E:\\sourcetree\\Source\\images\\search.png"));
+		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnTimKiem.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnTimKiem.setBounds(741, 136, 147, 37);
+		jpn.add(btnTimKiem);
+
+		btnXemDanhSach = new JButton("Danh Sách");
+		btnXemDanhSach.setIcon(new ImageIcon(
+				"E:\\sourcetree\\Source\\images\\load.png"));
+		btnXemDanhSach.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnXemDanhSach.setBounds(741, 84, 147, 37);
+		jpn.add(btnXemDanhSach);
 
 		jtb.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
@@ -233,7 +267,11 @@ public class subtabPhieuKhamBenh implements ActionListener {
 		btnDoiMatKhau.addActionListener(this);
 		btnDangXuat.setActionCommand("DangXuat");
 		btnDoiMatKhau.setActionCommand("DoiMatKhau");
-		serverthread st = new serverthread(jtb, jtTimPhieu);
+		btnTimKiem.addActionListener(this);
+		btnXemDanhSach.addActionListener(this);
+		btnTimKiem.setActionCommand("Tim");
+		btnXemDanhSach.setActionCommand("Xem");
+		serverthread st = new serverthread(jtb);
 	}
 
 	@Override
@@ -349,17 +387,78 @@ public class subtabPhieuKhamBenh implements ActionListener {
 			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
 					JOptionPane.YES_NO_OPTION);
 			if (kq == 0) {
-				dispose();
-				dangnhap dn = new dangnhap();
-				dn.setVisible(true);
-				dn.setLocationRelativeTo(null); // canh giữa màn hình
+				mythread mt = new mythread();
+				mt.start();
+				this.dispose();
 			}
 		}
-		
+
 		if (command.equals("DoiMatKhau")) {
 			doimatkhau dmk = new doimatkhau(tennv, manv);
 			dmk.setVisible(true);
 			dmk.setLocationRelativeTo(null);// canh giua man hinh
+		}
+
+		if (command.equals("Xem")) {
+			DefaultTableModel modelPhieuKham2 = new DefaultTableModel(
+					new String[] { "Mã Phiếu Khám", "Mã Bệnh Nhân", "Tên Bệnh Nhân", "Ngày Khám", "Tình Trạng" }, 0);
+			List<Object[]> o = phieukhamDAO.layDanhSanhPhieuKham();
+			for (Object[] countResult : o) {
+				// chinh sua hien thi ngay mat gio giay
+				Date ngay = (Date) countResult[3];// chuyen object vi tri do sang ngay
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); // format kieu mong muon
+				String ngaykham2 = dateFormat.format(ngay);// chuyen ngay sang chuoi
+				int sotinhtrang = (Integer) countResult[4];// chuyen object sang so
+				String tinhtrang2 = "";
+				if (sotinhtrang == 0) {
+					tinhtrang2 = "Chưa thanh toán";
+				} else
+					tinhtrang2 = "Đã thanh toán";
+				modelPhieuKham2
+						.addRow(new Object[] { countResult[0], countResult[1], countResult[2], ngaykham2, tinhtrang2 });
+			}
+			jtb.setModel(modelPhieuKham2);
+		}
+		if (command.equals("Tim")) {
+			System.out.println("nhan nut tim");
+			int loai = 0;
+			if (rdbMaPhieuKham.isSelected()) {
+				loai = 1;
+			} else {
+				if (rdbMaBenhNhan.isSelected()) {
+					loai = 2;
+				} else {
+					if (rdbTenBenhNhan.isSelected()) {
+						loai = 3;
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Tìm kiếm thất bại, click chọn loại, nhập từ khóa vào khung rồi click Tìm Kiếm !",
+								"WARNING", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			}
+
+			System.out.println("loai: " + loai);
+			String timkiem = jtTimPhieu.getText();
+			// Tao default model
+			DefaultTableModel modelPhieuKham1 = new DefaultTableModel(
+					new String[] { "Mã Phiếu Khám", "Mã Bệnh Nhân", "Tên Bệnh Nhân", "Ngày Khám", "Tình Trạng" }, 0);
+			List<Object[]> o = phieukhamDAO.layDanhSanhPhieuKham(timkiem, loai);
+			for (Object[] countResult : o) {
+				// chinh sua hien thi ngay mat gio giay
+				Date ngay = (Date) countResult[3];// chuyen object vi tri do sang ngay
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); // format kieu mong muon
+				String ngaykham1 = dateFormat.format(ngay);// chuyen ngay sang chuoi
+				int sotinhtrang = (Integer) countResult[4];// chuyen object sang so
+				String tinhtrang1 = "";
+				if (sotinhtrang == 0) {
+					tinhtrang1 = "Chưa thanh toán";
+				} else
+					tinhtrang1 = "Đã thanh toán";
+				modelPhieuKham1
+						.addRow(new Object[] { countResult[0], countResult[1], countResult[2], ngaykham1, tinhtrang1 });
+			}
+			jtb.setModel(modelPhieuKham1);
 		}
 	}
 }

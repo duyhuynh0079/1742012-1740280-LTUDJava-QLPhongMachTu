@@ -15,6 +15,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.Properties;
 import java.awt.Color;
 import javax.swing.JComboBox;
@@ -37,7 +38,7 @@ import javax.swing.JRadioButton;
 
 
 public class tabNhanVien extends JFrame {
-	static int idnv = 0;
+	static int manv = 0;
 	static String tennv = "";
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -48,7 +49,7 @@ public class tabNhanVien extends JFrame {
 	}
 
 	private static void createAndShowGUI() {
-		tabNhanVien tnv = new tabNhanVien(tennv, idnv);
+		tabNhanVien tnv = new tabNhanVien(tennv, manv);
 		tnv.setSize(1000, 600);
 		tnv.setLocationRelativeTo(null);
 		tnv.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -58,6 +59,7 @@ public class tabNhanVien extends JFrame {
 	public tabNhanVien(String tennhanvien, int manhanvien) {
 		tennv = tennhanvien;
 		manv = manhanvien;
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(tennv);
 		JTabbedPane jtp = new JTabbedPane();
@@ -69,28 +71,28 @@ public class tabNhanVien extends JFrame {
 		// tao tab BenhNhan
 		JPanel pnlBenhNhan = new JPanel();
 		subtabBenhNhan stbn = new subtabBenhNhan();
-		stbn.controlBenhNhan(pnlBenhNhan,manv,tennv);
+		stbn.controlBenhNhan(pnlBenhNhan,manv,tennv,this);
 		jtp.addTab("Bệnh Nhân", pnlBenhNhan);
 		pnlBenhNhan.setLayout(null);
 
 		// tao tab PhieuKhamBenh
 		JPanel pnlPhieuKhamBenh = new JPanel();
 		subtabPhieuKhamBenh stpkb = new subtabPhieuKhamBenh();
-		stpkb.controlPhieuKhamBenh(pnlPhieuKhamBenh,manv,tennv);
+		stpkb.controlPhieuKhamBenh(pnlPhieuKhamBenh,manv,tennv,this);
 		jtp.addTab("Phiếu Khám Bệnh", pnlPhieuKhamBenh);
 		pnlPhieuKhamBenh.setLayout(null);
 
 		// tao tab BaoCao
 		JPanel pnlBaoCao = new JPanel();
 		subtabBaoCao stbc = new subtabBaoCao();
-		stbc.controlBaoCao(pnlBaoCao,manv,tennv);
+		stbc.controlBaoCao(pnlBaoCao,manv,tennv,this);
 		jtp.addTab("Báo Cáo", pnlBaoCao);
 		pnlBaoCao.setLayout(null);
 
 		// tao tab QuyDinh
 		JPanel pnlQuyDinh = new JPanel();
 		subtabQuyDinh stqd = new subtabQuyDinh();
-		stqd.controlQuyDinh(pnlQuyDinh,manv,tennv);
+		stqd.controlQuyDinh(pnlQuyDinh,manv,tennv,this);
 		jtp.addTab("Quy Định", pnlQuyDinh);
 		pnlQuyDinh.setLayout(null);
 

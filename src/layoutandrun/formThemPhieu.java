@@ -35,6 +35,8 @@ import show.showBenhNhan;
 
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
@@ -178,6 +180,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 	}
 
 	public formThemPhieu(String MaBenhNhan, String TenBenhNhan) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -203,7 +206,7 @@ public class formThemPhieu extends JFrame implements ActionListener {
 		btnThem = new JButton("Thêm");
 		btnThem.setSelectedIcon(null);
 		btnThem.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add2.png"));
+				"E:\\sourcetree\\Source\\images\\add2.png"));
 		btnThem.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThem.setBounds(631, 624, 146, 62);
 		jp.add(btnThem);
