@@ -193,7 +193,6 @@ public class nhanvienlayout extends JFrame {
 				doimatkhau dmk = new doimatkhau(tennv, manv);
 				dmk.setVisible(true);
 				dmk.setLocationRelativeTo(null);// canh giua man hinh
-				System.out.println(DAO.nhanvienDAO.layMaChucVu(manv));
 			}
 		});
 		btnDoiMatKhauNV.setIcon(new ImageIcon(
