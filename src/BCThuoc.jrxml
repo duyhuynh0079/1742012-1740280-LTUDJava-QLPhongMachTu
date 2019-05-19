@@ -50,7 +50,7 @@
 			</staticText>
 			<image>
 				<reportElement x="10" y="10" width="90" height="80" uuid="44f4780b-8964-4f25-9edf-f8e7ab117904"/>
-				<imageExpression><![CDATA["C:/Users/Mr.F/Documents/GitHub/1742012-1740280-LTUDJava-QLPhongMachTu/Source/images/ABC.png"]]></imageExpression>
+				<imageExpression><![CDATA["E:/sourcetree/Source/images/ABC.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

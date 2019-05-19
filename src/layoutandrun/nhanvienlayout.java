@@ -143,7 +143,7 @@ public class nhanvienlayout extends JFrame {
 		manv = MANV;
 		setTitle(tennv);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+				"E:\\sourcetree\\Source\\images\\ABC.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 971, 661);
 		contentPane = new JPanel();
@@ -174,7 +174,7 @@ public class nhanvienlayout extends JFrame {
 
 		JPanel pnTaiKhoan = new JPanel();
 		tabbedPane.addTab("Tài Khoản", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\userTaiKhoan.png"),
+				"E:\\sourcetree\\Source\\images\\userTaiKhoan.png"),
 				pnTaiKhoan, null);
 		pnTaiKhoan.setLayout(null);
 
@@ -194,7 +194,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDoiMatKhauNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnDoiMatKhauNV.setForeground(Color.RED);
 		btnDoiMatKhauNV.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnDoiMatKhauNV.setBounds(384, 330, 168, 41);
@@ -214,7 +214,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		button_3.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		button_3.setToolTipText("Đăng xuất");
 		button_3.setForeground(Color.RED);
 		button_3.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -301,7 +301,7 @@ public class nhanvienlayout extends JFrame {
 
 		JPanel pnNhanVien = new JPanel();
 		tabbedPane.addTab("Nhân viên", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Pharmacist_Male_Light.png"),
+				"E:\\sourcetree\\Source\\images\\Pharmacist_Male_Light.png"),
 				pnNhanVien, null);
 		tabbedPane.setBackgroundAt(1, new Color(255, 255, 255));
 		pnNhanVien.setLayout(null);
@@ -501,7 +501,7 @@ public class nhanvienlayout extends JFrame {
 		btnThemNV.setForeground(Color.RED);
 		btnThemNV.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		btnThemNV.setBounds(102, 292, 115, 41);
 		pnNhanVien.add(btnThemNV);
 
@@ -570,7 +570,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatNV.setForeground(Color.RED);
 		btnCapNhatNV.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatNV.setBounds(256, 292, 140, 41);
@@ -628,7 +628,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnXoaNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));
+				"E:\\sourcetree\\Source\\images\\delete.png"));
 		btnXoaNV.setForeground(Color.RED);
 		btnXoaNV.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnXoaNV.setBounds(439, 292, 103, 41);
@@ -636,7 +636,7 @@ public class nhanvienlayout extends JFrame {
 
 		JButton btnLoadNV = new JButton("Load");
 		btnLoadNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadNV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblIDNV.setText(null);
@@ -693,7 +693,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnTimNV.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\search.png"));
+				"E:\\sourcetree\\Source\\images\\search.png"));
 		btnTimNV.setForeground(Color.RED);
 		btnTimNV.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnTimNV.setBounds(583, 292, 109, 41);
@@ -715,7 +715,7 @@ public class nhanvienlayout extends JFrame {
 		});
 		btnDangXuat.setToolTipText("Đăng xuất");
 		btnDangXuat.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuat.setForeground(Color.RED);
 		btnDangXuat.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnDangXuat.setBounds(908, 0, 42, 42);
@@ -723,7 +723,7 @@ public class nhanvienlayout extends JFrame {
 
 		JPanel pnLoaiBenh = new JPanel();
 		tabbedPane.addTab("Loại Bệnh", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\loaibenh.png"),
+				"E:\\sourcetree\\Source\\images\\loaibenh.png"),
 				pnLoaiBenh, null);
 		pnLoaiBenh.setLayout(null);
 
@@ -820,7 +820,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnThemLoaiBenh.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		btnThemLoaiBenh.setForeground(Color.RED);
 		btnThemLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemLoaiBenh.setBounds(252, 281, 115, 41);
@@ -868,7 +868,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatLoaiBenh.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatLoaiBenh.setForeground(Color.RED);
 		btnCapNhatLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatLoaiBenh.setBounds(433, 281, 140, 41);
@@ -886,7 +886,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnLoadLoaiBenh.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadLoaiBenh.setForeground(Color.RED);
 		btnLoadLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnLoadLoaiBenh.setBounds(629, 281, 109, 41);
@@ -914,7 +914,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatLB.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuatLB.setToolTipText("Đăng xuất");
 		btnDangXuatLB.setForeground(Color.RED);
 		btnDangXuatLB.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -938,7 +938,7 @@ public class nhanvienlayout extends JFrame {
 		// ql Thuoc
 		JPanel pnThuoc = new JPanel();
 		tabbedPane.addTab("Thuốc", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\thuoc.jpg"),
+				"E:\\sourcetree\\Source\\images\\thuoc.jpg"),
 				pnThuoc, null);
 		tabbedPane.setBackgroundAt(3, new Color(255, 255, 255));
 		pnThuoc.setLayout(null);
@@ -1071,7 +1071,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnThemThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		btnThemThuoc.setForeground(Color.RED);
 		btnThemThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemThuoc.setBounds(164, 267, 115, 41);
@@ -1135,7 +1135,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatThuoc.setForeground(Color.RED);
 		btnCapNhatThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatThuoc.setBounds(335, 267, 140, 41);
@@ -1192,7 +1192,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnXoaThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));
+				"E:\\sourcetree\\Source\\images\\delete.png"));
 		btnXoaThuoc.setForeground(Color.RED);
 		btnXoaThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnXoaThuoc.setBounds(518, 267, 103, 41);
@@ -1213,7 +1213,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnLoadThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadThuoc.setForeground(Color.RED);
 		btnLoadThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnLoadThuoc.setBounds(676, 267, 109, 41);
@@ -1241,7 +1241,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatT.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuatT.setToolTipText("Đăng xuất");
 		btnDangXuatT.setForeground(Color.RED);
 		btnDangXuatT.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -1285,7 +1285,7 @@ public class nhanvienlayout extends JFrame {
 		// ql Don vi thuoc
 		JPanel pnDonViThuoc = new JPanel();
 		tabbedPane.addTab("Đơn Vị Thuốc", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\donvithuoc.jpg"),
+				"E:\\sourcetree\\Source\\images\\donvithuoc.jpg"),
 				pnDonViThuoc, null);
 		tabbedPane.setBackgroundAt(4, new Color(255, 255, 255));
 		pnDonViThuoc.setLayout(null);
@@ -1370,7 +1370,7 @@ public class nhanvienlayout extends JFrame {
 		});
 
 		tbnThemDonViThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		tbnThemDonViThuoc.setForeground(Color.RED);
 		tbnThemDonViThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		tbnThemDonViThuoc.setBounds(237, 233, 115, 41);
@@ -1415,7 +1415,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatDonViThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatDonViThuoc.setForeground(Color.RED);
 		btnCapNhatDonViThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatDonViThuoc.setBounds(417, 233, 140, 41);
@@ -1432,7 +1432,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnLoadDonViThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadDonViThuoc.setForeground(Color.RED);
 		btnLoadDonViThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnLoadDonViThuoc.setBounds(614, 233, 109, 41);
@@ -1462,7 +1462,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatDVT.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuatDVT.setToolTipText("Đăng xuất");
 		btnDangXuatDVT.setForeground(Color.RED);
 		btnDangXuatDVT.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -1485,7 +1485,7 @@ public class nhanvienlayout extends JFrame {
 		// ql cach dung
 		JPanel pnCachDung = new JPanel();
 		tabbedPane.addTab("Cách Dùng", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\huongdan.png"),
+				"E:\\sourcetree\\Source\\images\\huongdan.png"),
 				pnCachDung, null);
 		tabbedPane.setBackgroundAt(5, new Color(255, 255, 255));
 		pnCachDung.setLayout(null);
@@ -1565,7 +1565,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnThemCachDung.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		btnThemCachDung.setForeground(Color.RED);
 		btnThemCachDung.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemCachDung.setBounds(235, 233, 115, 41);
@@ -1610,7 +1610,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatCachDung.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatCachDung.setForeground(Color.RED);
 		btnCapNhatCachDung.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatCachDung.setBounds(415, 233, 140, 41);
@@ -1627,7 +1627,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnLoadCachDung.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadCachDung.setForeground(Color.RED);
 		btnLoadCachDung.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnLoadCachDung.setBounds(612, 233, 109, 41);
@@ -1675,7 +1675,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatCD.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuatCD.setToolTipText("Đăng xuất");
 		btnDangXuatCD.setForeground(Color.RED);
 		btnDangXuatCD.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -1687,7 +1687,7 @@ public class nhanvienlayout extends JFrame {
 		// ql quy dinh
 		JPanel pnQuyDinh = new JPanel();
 		tabbedPane.addTab("Quy Định\r\n", new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\quidinh.png"),
+				"E:\\sourcetree\\Source\\images\\quidinh.png"),
 				pnQuyDinh, null);
 		tabbedPane.setBackgroundAt(6, new Color(255, 255, 255));
 		pnQuyDinh.setLayout(null);
@@ -1971,7 +1971,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnThemQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add-icon.png"));
+				"E:\\sourcetree\\Source\\images\\add-icon.png"));
 		btnThemQuyDinhThuoc.setForeground(Color.RED);
 		btnThemQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnThemQuyDinhThuoc.setBounds(226, 331, 115, 41);
@@ -2190,7 +2190,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnCapNhatQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+				"E:\\sourcetree\\Source\\images\\update1.png"));
 		btnCapNhatQuyDinhThuoc.setForeground(Color.RED);
 		btnCapNhatQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnCapNhatQuyDinhThuoc.setBounds(406, 331, 140, 41);
@@ -2223,7 +2223,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnLoadQuyDinhThuoc.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\Refresh.png"));
+				"E:\\sourcetree\\Source\\images\\Refresh.png"));
 		btnLoadQuyDinhThuoc.setForeground(Color.RED);
 		btnLoadQuyDinhThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnLoadQuyDinhThuoc.setBounds(603, 331, 109, 41);
@@ -2250,7 +2250,7 @@ public class nhanvienlayout extends JFrame {
 			}
 		});
 		btnDangXuatQD.setIcon(new ImageIcon(
-				"E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\logout.png"));
+				"E:\\sourcetree\\Source\\images\\logout.png"));
 		btnDangXuatQD.setToolTipText("Đăng xuất");
 		btnDangXuatQD.setForeground(Color.RED);
 		btnDangXuatQD.setFont(new Font("Arial", Font.PLAIN, 17));

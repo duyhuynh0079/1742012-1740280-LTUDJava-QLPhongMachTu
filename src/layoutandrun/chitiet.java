@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ public class chitiet extends JFrame {
 	private JTable table;
 	
 	public chitiet(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double tienthuoc, double tienkham, double tongtien) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		setSize(1000, 600);
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);

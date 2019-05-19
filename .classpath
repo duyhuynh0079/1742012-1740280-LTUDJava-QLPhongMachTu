@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="Source/src"/>
 	<classpathentry kind="lib" path="E:/LienThong/HocKy_II/Java/java-hibernate-20180621T083427Z-001/Hibernate/jdatepicker-1.3.4.jar"/>
 	<classpathentry kind="lib" path="E:/LienThong/HocKy_II/Java/java-hibernate-20180621T083427Z-001/Hibernate/libmysql.jar"/>
 	<classpathentry kind="lib" path="E:/LienThong/HocKy_II/Java/java-hibernate-20180621T083427Z-001/Hibernate/hibernate-release-4.3.11.Final/hibernate-release-4.3.11.Final/lib/envers/hibernate-envers-4.3.11.Final.jar"/>

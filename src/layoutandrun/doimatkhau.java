@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -62,6 +63,7 @@ public class doimatkhau extends JFrame {
 	 * Create the frame.
 	 */
 	public doimatkhau(String tennhanvien, int MANV) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		tennv = tennhanvien;
 		manv = MANV;
 		setTitle(tennv + " Đổi mật khẩu" );
@@ -158,14 +160,14 @@ public class doimatkhau extends JFrame {
 				}
 			}
 		});
-		btnDoiMatKhauDMT.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update1.png"));
+		btnDoiMatKhauDMT.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\update1.png"));
 		btnDoiMatKhauDMT.setForeground(Color.RED);
 		btnDoiMatKhauDMT.setFont(new Font("Arial", Font.PLAIN, 17));
 		btnDoiMatKhauDMT.setBounds(58, 198, 170, 41);
 		contentPane.add(btnDoiMatKhauDMT);
 		
 		JButton btnThoatDMT = new JButton("Thoát");
-		btnThoatDMT.setIcon(new ImageIcon("E:\\LienThong\\HocKy_IV\\Java\\DA1\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\delete.png"));
+		btnThoatDMT.setIcon(new ImageIcon("E:\\sourcetree\\Source\\images\\delete.png"));
 		btnThoatDMT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();

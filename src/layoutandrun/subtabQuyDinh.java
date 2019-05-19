@@ -29,8 +29,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class subtabQuyDinh extends JFrame implements ActionListener {
+	public subtabQuyDinh() {
+	}
 
 	private JPanel jpn;
 	private JTable jtb;
@@ -40,8 +43,9 @@ public class subtabQuyDinh extends JFrame implements ActionListener {
 	private JButton btnDangXuat;
 	static int manv;
 	static String tennv;
+	static JFrame jfr;
 
-	public void controlQuyDinh(JPanel jpn,int manv,String tennv) {
+	public void controlQuyDinh(JPanel jpn,int manv,String tennv,JFrame jfr) {
 		// public static void main(String[] args) {
 		// subtabQuyDinh frame = new subtabQuyDinh();
 		// frame.setVisible(true);
@@ -54,6 +58,7 @@ public class subtabQuyDinh extends JFrame implements ActionListener {
 		// jpn.setLayout(null);
 		this.manv = manv;
 		this.tennv = tennv;
+		this.jfr = jfr;
 		
 		JLabel lblNewLabel = new JLabel("QUY ĐỊNH");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -63,7 +68,7 @@ public class subtabQuyDinh extends JFrame implements ActionListener {
 
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+				"E:\\sourcetree\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
 
@@ -141,10 +146,9 @@ public class subtabQuyDinh extends JFrame implements ActionListener {
 			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
 					JOptionPane.YES_NO_OPTION);
 			if (kq == 0) {
-				dispose();
-				dangnhap dn = new dangnhap();
-				dn.setVisible(true);
-				dn.setLocationRelativeTo(null); // canh giữa màn hình
+				mythread mt = new mythread();
+				mt.start();
+				this.dispose();
 			}
 		}
 		

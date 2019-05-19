@@ -1,4 +1,4 @@
-package layoutandrun;
+	package layoutandrun;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -54,10 +54,12 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 	private JButton btnDangXuat;
 	static int manv;
 	static String tennv;
+	static JFrame jfr;
 
-	public void controlBenhNhan(JPanel jpn,int manv,String tennv) {
+	public void controlBenhNhan(JPanel jpn,int manv,String tennv, JFrame jfrcha) {
 		this.manv = manv;
 		this.tennv = tennv;
+		this.jfr = jfrcha;
 		
 		String[] displayCBB = { "Nam", "Nữ", "Khác" };
 		jtTimKiem = new JTextField();
@@ -69,7 +71,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 
 		btnTimKiem = new JButton("Tìm Kiếm");
 		btnTimKiem.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\search.png"));
+				"E:\\sourcetree\\Source\\images\\search.png"));
 		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnTimKiem.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnTimKiem.setBounds(429, 99, 137, 37);
@@ -77,7 +79,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 
 		btnXemDanhSach = new JButton("Xem Danh Sách");
 		btnXemDanhSach.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\load.png"));
+				"E:\\sourcetree\\Source\\images\\load.png"));
 		btnXemDanhSach.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnXemDanhSach.setBounds(594, 99, 184, 37);
 		jpn.add(btnXemDanhSach);
@@ -154,21 +156,21 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnThem = new JButton("Thêm");
 		btnThem.setSelectedIcon(null);
 		btnThem.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add.png"));
+				"E:\\sourcetree\\Source\\images\\add.png"));
 		btnThem.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThem.setBounds(880, 548, 111, 38);
 		jpn.add(btnThem);
 
 		btnSua = new JButton("Sửa");
 		btnSua.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\update.png"));
+				"E:\\sourcetree\\Source\\images\\update.png"));
 		btnSua.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSua.setBounds(1035, 548, 111, 38);
 		jpn.add(btnSua);
 
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+				"E:\\sourcetree\\Source\\images\\ABC.png"));
 		label.setBounds(1025, 11, 121, 120);
 		jpn.add(label);
 
@@ -211,7 +213,7 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 		btnThemPhieu = new JButton("Thêm Phiếu Khám Bệnh");
 		btnThemPhieu.setSelectedIcon(null);
 		btnThemPhieu.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\add3.png"));
+				"E:\\sourcetree\\Source\\images\\add3.png"));
 		btnThemPhieu.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnThemPhieu.setBounds(880, 608, 264, 61);
 		jpn.add(btnThemPhieu);
@@ -395,10 +397,9 @@ public class subtabBenhNhan extends JFrame implements ActionListener {
 			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
 					JOptionPane.YES_NO_OPTION);
 			if (kq == 0) {
-				dispose();
-				dangnhap dn = new dangnhap();
-				dn.setVisible(true);
-				dn.setLocationRelativeTo(null); // canh giữa màn hình
+				mythread mt = new mythread();
+				mt.start();
+				jfr.dispose();
 			}
 		}
 		

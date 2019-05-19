@@ -33,6 +33,35 @@ public class phieukhamDAO {
 	        session.close();
 	        return o;
 	}
+	public static List<Object[]> layDanhSanhPhieuKham(String timkiem, int loai) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String sql = "";
+    	if(loai==1)
+		{
+			 sql = "SELECT p.MaPhieuKhamBenh,b.MaBenhNhan, b.TenBenhNhan,p.NgayKham,p.TinhTrang FROM phieukhambenh p inner join ctbenhnhan ct on p.ID = ct.ID_PhieuKhamBenh inner join benhnhan b on ct.ID_BenhNhan = b.ID WHERE p.MaPhieuKhamBenh Like '%"+timkiem+"%' ORDER BY p.MaPhieuKhamBenh ASC ";
+		}
+		else{
+			if(loai==2) 
+			{
+				 sql = "SELECT p.MaPhieuKhamBenh,b.MaBenhNhan, b.TenBenhNhan,p.NgayKham,p.TinhTrang FROM phieukhambenh p inner join ctbenhnhan ct on p.ID = ct.ID_PhieuKhamBenh inner join benhnhan b on ct.ID_BenhNhan = b.ID WHERE b.MaBenhNhan Like '%"+timkiem+"%' ORDER BY p.MaPhieuKhamBenh ASC";
+
+			}
+			else {
+				if(loai==3)
+				{
+					sql = "SELECT p.MaPhieuKhamBenh,b.MaBenhNhan, b.TenBenhNhan,p.NgayKham,p.TinhTrang FROM phieukhambenh p inner join ctbenhnhan ct on p.ID = ct.ID_PhieuKhamBenh inner join benhnhan b on ct.ID_BenhNhan = b.ID WHERE b.TenBenhNhan Like '%"+timkiem+"%' ORDER BY p.MaPhieuKhamBenh ASC";
+				}
+				else sql = "SELECT DISTINCT p.MaPhieuKhamBenh,b.MaBenhNhan, b.TenBenhNhan,p.NgayKham,p.TinhTrang FROM phieukhambenh p inner join ctbenhnhan ct on p.ID = ct.ID_PhieuKhamBenh inner join benhnhan b on ct.ID_BenhNhan = b.ID ORDER BY p.MaPhieuKhamBenh ASC";
+			}
+				
+				
+		}        
+    	SQLQuery query = session.createSQLQuery(sql);
+        List<Object[]> o = query.list();
+        session.close();
+        return o;
+}
 	public static int layidTheoMaPhieuKhamBenh(String maphieukham)
 	{
 		List lpk;

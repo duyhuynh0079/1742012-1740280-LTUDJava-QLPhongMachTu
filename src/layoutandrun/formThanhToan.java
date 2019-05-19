@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -58,6 +59,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 
 	public formThanhToan(DefaultTableModel modelPhieuKham, String MaPhieuKham, String NgayKham, String TinhTrang, String MaBenhNhan, String TenBenhNhan, double TienThuoc, double TienKham, double TongTien) {
 		// setSize(1000,600);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\sourcetree\\Source\\images\\ABC77.png"));
 		setSize(getMaximumSize());
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -234,7 +236,7 @@ public class formThanhToan extends JFrame implements ActionListener {
 
 		JButton btnIn = new JButton("In Hóa Đơn");
 		btnIn.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\in2.png"));
+				"E:\\sourcetree\\Source\\images\\in2.png"));
 		btnIn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnIn.setBounds(1059, 231, 193, 61);
 		jp.add(btnIn);

@@ -49,8 +49,9 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 	private JButton btnDangXuat;
 	static int manv;
 	static String tennv;
+	static JFrame jfr;
 
-	public void controlBaoCao(JPanel jpn,int manv,String tennv) {
+	public void controlBaoCao(JPanel jpn,int manv,String tennv,JFrame jfr) {
 		// public subtabBaoCao() {
 		//
 		// setBounds(100, 100, 450, 300);
@@ -62,6 +63,7 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 		// jpn.setLayout(null);
 		this.manv = manv;
 		this.tennv = tennv;
+		this.jfr = jfr;
 		
 		JLabel lblNewLabel = new JLabel("Báo Cáo");
 		lblNewLabel.setForeground(Color.BLUE);
@@ -71,7 +73,7 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\ABC.png"));
+				"E:\\sourcetree\\Source\\images\\ABC.png"));
 		label.setBounds(1026, 28, 115, 84);
 		jpn.add(label);
 
@@ -192,21 +194,21 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 
 		btnBCDoanhThu = new JButton("In");
 		btnBCDoanhThu.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\report2.png"));
+				"E:\\sourcetree\\Source\\images\\report2.png"));
 		btnBCDoanhThu.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBCDoanhThu.setBounds(812, 191, 121, 67);
 		jpn.add(btnBCDoanhThu);
 
 		btnBCThuoc = new JButton("In");
 		btnBCThuoc.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\report1.png"));
+				"E:\\sourcetree\\Source\\images\\report1.png"));
 		btnBCThuoc.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBCThuoc.setBounds(812, 350, 121, 73);
 		jpn.add(btnBCThuoc);
 
 		btnBCLoaiBenh = new JButton("In");
 		btnBCLoaiBenh.setIcon(new ImageIcon(
-				"C:\\Users\\Mr.F\\Documents\\GitHub\\1742012-1740280-LTUDJava-QLPhongMachTu\\Source\\images\\report3.png"));
+				"E:\\sourcetree\\Source\\images\\report3.png"));
 		btnBCLoaiBenh.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBCLoaiBenh.setBounds(812, 520, 121, 67);
 		jpn.add(btnBCLoaiBenh);
@@ -263,10 +265,9 @@ public class subtabBaoCao extends JFrame implements ActionListener {
 			int kq = JOptionPane.showConfirmDialog(null, "Bạn có muốn thoát chương trình?", "Thông báo",
 					JOptionPane.YES_NO_OPTION);
 			if (kq == 0) {
-				dispose();
-				dangnhap dn = new dangnhap();
-				dn.setVisible(true);
-				dn.setLocationRelativeTo(null); // canh giữa màn hình
+				mythread mt = new mythread();
+				mt.start();
+				this.dispose();
 			}
 		}
 		
