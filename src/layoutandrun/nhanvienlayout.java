@@ -78,6 +78,8 @@ import java.awt.Component;
 import javax.swing.JTextArea;
 import java.awt.TextArea;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class nhanvienlayout extends JFrame {
 	// pull request
@@ -116,6 +118,7 @@ public class nhanvienlayout extends JFrame {
 	private JLabel lblSoCachDung;
 	private JTextField textField_2;
 	private JTextField txtSoLuongThuoc;
+	private JTextArea taTrieuChungLoaiBenh;
 
 	/**
 	 * Launch the application.
@@ -752,6 +755,14 @@ public class nhanvienlayout extends JFrame {
 		pnLoaiBenh.add(lblMLoiBnh);
 
 		txtMaLoaiBenh = new JTextField();
+		txtMaLoaiBenh.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenLoaiBenh.requestFocus();
+	            }
+			}
+		});
 		txtMaLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtMaLoaiBenh.setColumns(10);
 		txtMaLoaiBenh.setBounds(429, 104, 217, 25);
@@ -764,6 +775,16 @@ public class nhanvienlayout extends JFrame {
 		pnLoaiBenh.add(lblTnLoiBnh);
 
 		txtTenLoaiBenh = new JTextField();
+		txtTenLoaiBenh.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_DOWN){
+					taTrieuChungLoaiBenh.requestFocus();
+	            }else if(arg0.getKeyCode() == KeyEvent.VK_UP){
+	            	txtMaLoaiBenh.requestFocus();
+	            }
+			}
+		});
 		txtTenLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenLoaiBenh.setColumns(10);
 		txtTenLoaiBenh.setBounds(429, 142, 217, 25);
@@ -775,7 +796,15 @@ public class nhanvienlayout extends JFrame {
 		lblTriuChng.setBounds(298, 178, 125, 27);
 		pnLoaiBenh.add(lblTriuChng);
 
-		JTextArea taTrieuChungLoaiBenh = new JTextArea();
+		taTrieuChungLoaiBenh = new JTextArea();
+		taTrieuChungLoaiBenh.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtTenLoaiBenh.requestFocus();
+	            }
+			}
+		});
 		taTrieuChungLoaiBenh.setFont(new Font("Arial", Font.PLAIN, 17));
 		taTrieuChungLoaiBenh.setBounds(429, 178, 217, 74);
 		pnLoaiBenh.add(taTrieuChungLoaiBenh);
@@ -968,6 +997,14 @@ public class nhanvienlayout extends JFrame {
 		pnThuoc.add(lblMaThuoc);
 
 		txtMaThuoc = new JTextField();
+		txtMaThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenThuoc.requestFocus();
+	            }
+			}
+		});
 		txtMaThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtMaThuoc.setColumns(10);
 		txtMaThuoc.setBounds(226, 107, 170, 25);
@@ -980,6 +1017,16 @@ public class nhanvienlayout extends JFrame {
 		pnThuoc.add(llbTenThuoc);
 
 		txtTenThuoc = new JTextField();
+		txtTenThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtSoLuongThuoc.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtMaThuoc.requestFocus();
+	            }
+			}
+		});
 		txtTenThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenThuoc.setColumns(10);
 		txtTenThuoc.setBounds(226, 145, 170, 25);
@@ -992,6 +1039,14 @@ public class nhanvienlayout extends JFrame {
 		pnThuoc.add(lblDonGia);
 
 		txtDonGiaThuoc = new JTextField();
+		txtDonGiaThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtSoLuongThuoc.requestFocus();
+	            }
+			}
+		});
 		txtDonGiaThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtDonGiaThuoc.setColumns(10);
 		txtDonGiaThuoc.setBounds(663, 107, 170, 25);
@@ -1261,6 +1316,16 @@ public class nhanvienlayout extends JFrame {
 		pnThuoc.add(lblSLng);
 
 		txtSoLuongThuoc = new JTextField();
+		txtSoLuongThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtDonGiaThuoc.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtTenThuoc.requestFocus();
+	            }
+			}
+		});
 		txtSoLuongThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtSoLuongThuoc.setColumns(10);
 		txtSoLuongThuoc.setBounds(226, 183, 170, 25);
@@ -1315,6 +1380,14 @@ public class nhanvienlayout extends JFrame {
 		pnDonViThuoc.add(lblMaDonViThuoc);
 
 		txtMaDonViThuoc = new JTextField();
+		txtMaDonViThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenDonViThuoc.requestFocus();
+	            }
+			}
+		});
 		txtMaDonViThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtMaDonViThuoc.setColumns(10);
 		txtMaDonViThuoc.setBounds(470, 116, 170, 25);
@@ -1327,6 +1400,14 @@ public class nhanvienlayout extends JFrame {
 		pnDonViThuoc.add(lblTenDonViThuoc);
 
 		txtTenDonViThuoc = new JTextField();
+		txtTenDonViThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtMaDonViThuoc.requestFocus();
+	            }
+			}
+		});
 		txtTenDonViThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenDonViThuoc.setColumns(10);
 		txtTenDonViThuoc.setBounds(470, 154, 170, 25);
@@ -1515,12 +1596,28 @@ public class nhanvienlayout extends JFrame {
 		pnCachDung.add(lblMaCachDungThuoc);
 
 		txtMaCachDungThuoc = new JTextField();
+		txtMaCachDungThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenCachDungThuoc.requestFocus();
+	            }
+			}
+		});
 		txtMaCachDungThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtMaCachDungThuoc.setColumns(10);
 		txtMaCachDungThuoc.setBounds(483, 118, 170, 25);
 		pnCachDung.add(txtMaCachDungThuoc);
 
 		txtTenCachDungThuoc = new JTextField();
+		txtTenCachDungThuoc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtMaCachDungThuoc.requestFocus();
+	            }
+			}
+		});
 		txtTenCachDungThuoc.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenCachDungThuoc.setColumns(10);
 		txtTenCachDungThuoc.setBounds(483, 156, 170, 25);
@@ -1717,6 +1814,14 @@ public class nhanvienlayout extends JFrame {
 		pnQuyDinh.add(lblMQuynh);
 
 		txtMaQuyDinh = new JTextField();
+		txtMaQuyDinh.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtTenQuyDinh.requestFocus();
+	            }
+			}
+		});
 		txtMaQuyDinh.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtMaQuyDinh.setColumns(10);
 		txtMaQuyDinh.setBounds(447, 143, 170, 25);
@@ -1729,6 +1834,16 @@ public class nhanvienlayout extends JFrame {
 		pnQuyDinh.add(lblTenQuyDinh);
 
 		txtTenQuyDinh = new JTextField();
+		txtTenQuyDinh.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtGiaTri.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtMaQuyDinh.requestFocus();
+	            }
+			}
+		});
 		txtTenQuyDinh.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtTenQuyDinh.setColumns(10);
 		txtTenQuyDinh.setBounds(447, 181, 170, 25);
@@ -1741,12 +1856,32 @@ public class nhanvienlayout extends JFrame {
 		pnQuyDinh.add(lblGiaTri);
 
 		txtGiaTri = new JTextField();
+		txtGiaTri.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtSoDonVi.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtTenQuyDinh.requestFocus();
+	            }
+			}
+		});
 		txtGiaTri.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtGiaTri.setColumns(10);
 		txtGiaTri.setBounds(447, 219, 170, 25);
 		pnQuyDinh.add(txtGiaTri);
 
 		txtSoDonVi = new JTextField();
+		txtSoDonVi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	txtSoCachDung.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtGiaTri.requestFocus();
+	            }
+			}
+		});
 		txtSoDonVi.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtSoDonVi.setColumns(10);
 		txtSoDonVi.setBounds(447, 257, 170, 25);
@@ -1768,6 +1903,14 @@ public class nhanvienlayout extends JFrame {
 		lblSoCachDung.setVisible(false);
 
 		txtSoCachDung = new JTextField();
+		txtSoCachDung.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	txtSoDonVi.requestFocus();
+	            }
+			}
+		});
 		txtSoCachDung.setFont(new Font("Arial", Font.PLAIN, 17));
 		txtSoCachDung.setColumns(10);
 		txtSoCachDung.setBounds(447, 295, 170, 25);
