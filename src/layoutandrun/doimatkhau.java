@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class doimatkhau extends JFrame {
 
@@ -91,6 +93,16 @@ public class doimatkhau extends JFrame {
 		contentPane.add(lblMtKhuMi);
 		
 		pwMatKhauMoi = new JPasswordField();
+		pwMatKhauMoi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	pwReMatKhau.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	pwMatKhauCu.requestFocus();
+	            }
+			}
+		});
 		pwMatKhauMoi.setBounds(216, 101, 170, 25);
 		contentPane.add(pwMatKhauMoi);
 		
@@ -183,10 +195,149 @@ public class doimatkhau extends JFrame {
 		contentPane.add(lblNhpLiMt);
 		
 		pwReMatKhau = new JPasswordField();
+		pwReMatKhau.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					try {
+						matkhaunhapvao = nhanvienDAO.GetPasswordHashText(pwMatKhauCu.getText());
+						matkhauCSDL = DAO.nhanvienDAO.layMatKhauNV(manv);
+					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e2) {
+						e2.printStackTrace();
+					}
+					if(pwMatKhauCu.getText().equals("") || pwMatKhauMoi.getText().equals("") || pwReMatKhau.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin!");
+					}else if(pwMatKhauMoi.getText().equals(pwReMatKhau.getText())== false) {
+						JOptionPane.showMessageDialog(null, "Mật khẩu không khớp, nhập lại mật khẩu mới!");
+						pwMatKhauMoi.setText(null);
+						pwReMatKhau.setText(null);
+						
+					}else if(matkhaunhapvao.equals(matkhauCSDL) == false) {
+						JOptionPane.showMessageDialog(null, "Sai mật khẩu cũ, nhập lại mật khẩu cũ!");
+						pwMatKhauCu.setText(null);
+					}else {
+						Date ngaysinh;
+						nhanvien nv = new nhanvien();
+						nv.setID(manv);
+						nv.setTenDangNhap(DAO.nhanvienDAO.layTenDangNhapNV(manv));
+						String matkhaudahash = "";
+						try {
+							matkhaudahash = nhanvienDAO.GetPasswordHashText(pwReMatKhau.getText());
+						} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						nv.setMatKhau(matkhaudahash);
+						nv.setHoTenNV(DAO.nhanvienDAO.layHoTenNV(manv));
+						try {
+							ngaysinh = new SimpleDateFormat("yyyy-MM-dd").parse(DAO.nhanvienDAO.layNgaySinhNV(manv));
+							nv.setNgaySinh(ngaysinh);
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						nv.setDiaChi(DAO.nhanvienDAO.layDiaChiNV(manv));
+						nv.setSDT(DAO.nhanvienDAO.laySDTNV(manv));
+						nv.setTinhTrang(1);
+						nv.setMaCV(DAO.nhanvienDAO.layMaChucVu(manv));
+						try {
+							if (nhanvienDAO.suaNhanVien(nv) == true) {
+								setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+								int kq=JOptionPane.showConfirmDialog(null, "Đã đổi mật khẩu","Thông báo",JOptionPane.YES_NO_OPTION);
+								if(kq==0)
+								{
+									dispose();
+								}
+								
+							} else {
+								JOptionPane.showMessageDialog(null,"Lỗi!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+	            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	pwMatKhauCu.requestFocus();
+	            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+	            	pwMatKhauMoi.requestFocus();
+	            }
+			}
+		});
 		pwReMatKhau.setBounds(216, 139, 170, 25);
 		contentPane.add(pwReMatKhau);
 		
 		pwMatKhauCu = new JPasswordField();
+		pwMatKhauCu.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					try {
+						matkhaunhapvao = nhanvienDAO.GetPasswordHashText(pwMatKhauCu.getText());
+						matkhauCSDL = DAO.nhanvienDAO.layMatKhauNV(manv);
+					} catch (NoSuchAlgorithmException | UnsupportedEncodingException e2) {
+						e2.printStackTrace();
+					}
+					if(pwMatKhauCu.getText().equals("") || pwMatKhauMoi.getText().equals("") || pwReMatKhau.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Vui lòng nhập đủ thông tin!");
+					}else if(pwMatKhauMoi.getText().equals(pwReMatKhau.getText())== false) {
+						JOptionPane.showMessageDialog(null, "Mật khẩu không khớp, nhập lại mật khẩu mới!");
+						pwMatKhauMoi.setText(null);
+						pwReMatKhau.setText(null);
+						
+					}else if(matkhaunhapvao.equals(matkhauCSDL) == false) {
+						JOptionPane.showMessageDialog(null, "Sai mật khẩu cũ, nhập lại mật khẩu cũ!");
+						pwMatKhauCu.setText(null);
+					}else {
+						Date ngaysinh;
+						nhanvien nv = new nhanvien();
+						nv.setID(manv);
+						nv.setTenDangNhap(DAO.nhanvienDAO.layTenDangNhapNV(manv));
+						String matkhaudahash = "";
+						try {
+							matkhaudahash = nhanvienDAO.GetPasswordHashText(pwReMatKhau.getText());
+						} catch (NoSuchAlgorithmException | UnsupportedEncodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						nv.setMatKhau(matkhaudahash);
+						nv.setHoTenNV(DAO.nhanvienDAO.layHoTenNV(manv));
+						try {
+							ngaysinh = new SimpleDateFormat("yyyy-MM-dd").parse(DAO.nhanvienDAO.layNgaySinhNV(manv));
+							nv.setNgaySinh(ngaysinh);
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						nv.setDiaChi(DAO.nhanvienDAO.layDiaChiNV(manv));
+						nv.setSDT(DAO.nhanvienDAO.laySDTNV(manv));
+						nv.setTinhTrang(1);
+						nv.setMaCV(DAO.nhanvienDAO.layMaChucVu(manv));
+						try {
+							if (nhanvienDAO.suaNhanVien(nv) == true) {
+								setDefaultCloseOperation(DO_NOTHING_ON_CLOSE );
+								int kq=JOptionPane.showConfirmDialog(null, "Đã đổi mật khẩu","Thông báo",JOptionPane.YES_NO_OPTION);
+								if(kq==0)
+								{
+									dispose();
+								}
+								
+							} else {
+								JOptionPane.showMessageDialog(null,"Lỗi!", "WARNING",JOptionPane.WARNING_MESSAGE);
+							}
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(null, "Lỗi nhập sai!", "WARNING", JOptionPane.WARNING_MESSAGE);
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+	            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+	            	pwMatKhauMoi.requestFocus();
+	            }
+				
+			}
+		});
 		pwMatKhauCu.setBounds(216, 61, 170, 25);
 		contentPane.add(pwMatKhauCu);
 	}
